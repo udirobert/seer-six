@@ -103,8 +103,15 @@ html[data-theme="dark"] {
   --bg-signal: #241536;
   --fg: #F4F4F6;
   --fg-mute: #9B9BA6;
-  --fg-signal: var(--ef-violet-alt);
-  --fg-on-signal: #0C0C0F;
+  /* Same argument as the light block, arriving from the other side: the kit’s
+     alt violet is 4.47:1 on the page ground and 4.13:1 on a raised panel, so
+     at 11 px it fails as type. It is kept untouched wherever it is a mark
+     (chart lines, the spine, the hatched bar — all over 3:1, which is what a
+     graphic owes) and lightened only where it is reading. Same hue, 260°, 8
+     steps up. The ink on a violet *fill* has to go the other way: on #7D33FF
+     the page ground measures 3.52:1, white measures 5.54:1. */
+  --fg-signal: #9B6BF9;
+  --fg-on-signal: var(--ef-paper);
   --fg-up: var(--ef-up);
   --fg-warn: var(--ef-warn);
   --ink-150: #2C2C34;
