@@ -1,1 +1,599 @@
-<!doctype html><meta charset=utf-8><title>probe contract</title><body style="font:16px ui-monospace;padding:4rem"><p>PROBE :: contract<p><a href="/">root</a>
+<!DOCTYPE html>
+<html lang="en" data-surface="contract">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The motion contract — every interval this site uses, and what it is for · Seer, six interfaces</title>
+<meta name="description" content="The seventh document: the rules the six surfaces obey. Five durations, nine legs, each keyed to a relation in Seer's data or an operation in the Conditional Tokens Framework — plus a runtime audit that reads every stylesheet and script in the entry and prints every number it finds.">
+<script src="../leg.js"></script>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../motion.css">
+<link rel="stylesheet" href="../ui.css">
+<link rel="stylesheet" href="contract.css">
+</head>
+<body>
+<div id="surface-bar" class="vt-chrome"></div>
+
+<main class="wrap">
+  <div id="surface-depth"></div>
+
+  <header class="masthead">
+    <p class="eyebrow">Document seven · not a surface — the rules the six obey</p>
+    <h1>The motion&nbsp;contract</h1>
+    <p class="lede">Six surfaces sharing a palette can still feel like six products. What makes them one product is
+      that the same market survives being handed from one to the other, and that the time the hand-over takes is a
+      fact about the data rather than a preference about the feel. So every interval on this site was fixed before
+      any of it was built, from a relation in Seer’s API or an operation in the Conditional Tokens Framework, and
+      lives in one stylesheet. This page reads that stylesheet back out of your browser and prints what it finds —
+      including the exceptions I have admitted to rather than hidden. Press
+      <span class="kbd">R</span> at any moment: the argument only holds if the same information is still on screen
+      when the motion is gone, and section 5 counts the frames that proves it.</p>
+  </header>
+
+  <section class="block" aria-labelledby="s1">
+    <h2 id="s1">1 · One scale, five steps</h2>
+    <p class="blocknote">There are five durations in this system and no others. Each bar below is drawn at a width
+      proportional to the value the browser actually resolved for the token, not to a number copied into prose — so
+      if the stylesheet and this page ever disagree, the bar moves and the check under it fails.</p>
+    <ul class="scale" id="scale"></ul>
+    <p class="verdict" id="scale-check"></p>
+  </section>
+
+  <div class="mktcard">
+    <section class="block" style="border-top:0;padding-top:0" aria-labelledby="s2">
+      <h2 id="s2">2 · Nine legs, and the relation each one stands for</h2>
+      <p class="blocknote">A leg is the relation between the document you left and the document you arrive at. Six
+        are taken across a real page boundary, two inside a single page, and one is the deliberate absence of all of
+        them. <b>rehearse</b> plays that leg on the stage to the right, against the same keyframes and the same two
+        tokens — it is not a substitute for the cross-document case, which can only happen between two documents.
+        <b>take it</b> performs the real navigation, which is why it leaves this page; it leaves from here, so the
+        badge reads <code>from: contract</code>, and inside the product the same leg is taken from the surface named
+        in the source line.</p>
+      <ul class="legrows" id="legs"></ul>
+    </section>
+
+    <aside class="detail" aria-labelledby="stage-h">
+      <p class="eyebrow">The stage</p>
+      <h2 id="stage-h">Rehearse a leg</h2>
+      <div class="stage" id="stage">
+        <div class="panes">
+          <div class="pane old" id="p-old" hidden>
+            <span class="lbl">the document you left</span>
+            <span class="q" id="old-q">—</span>
+            <span class="oddsbar" id="old-bar"></span>
+          </div>
+          <div class="pane new" id="p-new">
+            <span class="lbl">the document you arrive at</span>
+            <span class="q" id="new-q">—</span>
+            <span class="big num" id="new-big">$0.00</span>
+            <span class="oddsbar" id="new-bar"></span>
+          </div>
+        </div>
+        <p class="stagefoot" id="stagefoot">Pick a leg on the left. Nothing here is keyed to a number written into
+          this page: the animation strings applied to these two panes reference <code>var(--d-<em>step</em>)</code>
+          and <code>var(--e-<em>which</em>)</code> — the same two tokens <code>motion.css</code> uses, which is why
+          pressing <span class="kbd">R</span> makes the rehearsal snap instead of ease, with no branch in this
+          page’s code to do it.</p>
+      </div>
+    </aside>
+  </div>
+
+  <section class="block" aria-labelledby="s3">
+    <h2 id="s3">3 · Enforcement: the stylesheet and the scripts, audited in your browser</h2>
+    <p class="blocknote">“No ad-hoc numbers” is worth nothing unless something checks it, and a table printed in
+      prose is a promise, not a proof. So this section fetches every stylesheet and every script in the entry, parses
+      them with the browser’s own CSSOM, walks every declaration whose property is a duration or a transition
+      shorthand, and classifies the value. A number that is not a token reference appears here as a violation, on the
+      page that is making the claim — it cannot rot quietly when someone edits a file at two in the morning.</p>
+    <div class="audit" id="audit"><p class="blocknote">auditing…</p></div>
+    <ul class="kflist" id="kflist"></ul>
+  </section>
+
+  <section class="block" aria-labelledby="s4">
+    <h2 id="s4">4 · What survives the removal of the motion</h2>
+    <p class="blocknote">This is the part of the argument the rest of the field has not made, and it is the part that
+      decides whether any of the above was engineering or decoration. Under <code>prefers-reduced-motion: reduce</code>
+      — or the hand switch, <span class="kbd">R</span>, so you can test it without leaving your seat — nothing here
+      eases. Every transition resolves to its end state at <code>0.01ms</code>: a <b>snap</b>, never a pause halfway,
+      because a paused element is information taken away and not given back. What each animation was saying is also
+      written down, as structure:</p>
+    <ul class="survive" id="survive"></ul>
+    <p class="blocknote" style="margin-top:var(--s-5)">And one property of the keyframes themselves is what makes the
+      snap safe: every animation in <code>motion.css</code> ends at <code>transform: none; opacity: 1</code> — the
+      state its element was authored in. Nothing can be caught mid-flight by a system that only ever animates things
+      back to where they already are.</p>
+  </section>
+
+  <section class="block" aria-labelledby="s5">
+    <h2 id="s5">5 · The ledger, measured in your browser this session</h2>
+    <p class="blocknote">Every arrival at every one of the seven documents samples <code>document.getAnimations()</code>
+      for seventy frames — roughly the first 1.2 seconds — and writes what it saw into this browser’s session storage.
+      What matters is the longest unbroken run of frames in which something was animating: with motion on, a leg’s run
+      is the leg’s duration; with motion reduced, it is <b>zero</b>. That is the difference between snapping and
+      pausing, in numbers, and it is the only way to observe a cross-document transition at all — it lives for a few
+      frames and then is gone, so the instrument has to run inside the document being transitioned into. Click around
+      the six surfaces, come back here, and the table fills. Press <span class="kbd">R</span>, do the same, and
+      compare the two runs.</p>
+    <div class="ledgerbar">
+      <button type="button" class="act ghost" id="clear-ledger">Clear the ledger</button>
+      <span class="stat" id="ledger-stat"></span>
+    </div>
+    <table class="ledger" id="ledger">
+      <caption class="visually-hidden">Arrivals recorded in this browsing session, with the frames each spent animating</caption>
+      <thead><tr>
+        <th scope="col">document</th><th scope="col">leg</th><th scope="col">from</th>
+        <th scope="col" class="num">animating frames</th><th scope="col" class="num">longest run</th>
+        <th scope="col">what was moving</th>
+      </tr></thead>
+      <tbody id="ledger-body"></tbody>
+    </table>
+    <p class="blocknote" id="ledger-note"></p>
+  </section>
+
+  <section class="block" aria-labelledby="s6">
+    <h2 id="s6">6 · What this does not claim</h2>
+    <div class="limits">
+      <div>
+        <p class="eyebrow">Reach</p>
+        <ul>
+          <li>Cross-document view transitions are Chromium 126+ and Safari 18.2+; Firefox does not ship them yet.
+            There, every page still stands alone at its own URL and the navigation happens as a cut. The ledger
+            records no animations — so the claim degrades to “it works where the platform allows”, which is stated
+            rather than hidden.</li>
+          <li>A leg in a URL is a declaration, not a promise. A cold arrival — a typed address, a pasted link, a
+            reload — has no previous document, so the browser cuts whatever the query string says. The row for the
+            arrival that put this page here usually demonstrates exactly that.</li>
+          <li>Nothing here is a WCAG certification. It is a set of measurements, run by <code>tools/a11y.mjs</code>
+            over six documents × three viewports with reduced motion forced on, with contrast computed from rendered
+            <code>getComputedStyle</code> values. Measured, not certified.</li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow">Data</p>
+        <ul>
+          <li>All prices, liquidity, verification states and histories are a prebaked snapshot of
+            <code>markets-search</code> and <code>markets-charts</code> at the timestamp in the footer, with a live
+            fetch behind <code>?live=1</code> on the explorer and risk surfaces only.</li>
+          <li>Nothing synthetic is presented as real. The Futarchy surface shows the fields the protocol actually
+            returns — four outcome tokens, two collaterals, <code>odds: null</code> on all 398 rows — and the composed
+            conditional pair on that page is labelled as composed.</li>
+          <li>The typeface is a disclosed substitution. The Electric Foundation kit specifies PP Neue Montreal and
+            Inter Tight, both commercially licensed and not web-fontable here, so this ships self-hosted IBM Plex
+            under the SIL Open Font License with the licensed names still first in the stack. The departure is in the
+            rationale, not buried in a stylesheet.</li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow">Why motion is allowed to mean anything at all</p>
+        <ul class="cites">
+          <li><a href="http://idl.cs.washington.edu/files/2007-AnimatedTransitions-InfoVis.pdf">Heer &amp; Robertson,
+            2007</a> — <em>Animated Transitions in Statistical Data Graphics</em>, IEEE TVCG 13(6):1240–1247.
+            <span class="why">The load-bearing citation: transitions between two views of changing data measurably
+            improve a reader’s ability to track <em>which</em> object changed and by how much. A price is exactly such
+            a change, and a market seen in a list and then on its own page is one object in two views.</span></li>
+          <li><a href="https://tecfa.unige.ch/tecfa/teaching/BSEP/articles/Kim-Tversky-Morrison2007.pdf">Kim, Yoon,
+            Whang, Tversky &amp; Morrison, 2007</a> — <em>The effect of animation on comprehension</em>.
+            <span class="why">Included deliberately, because it is the boundary condition: animation frequently fails
+            to help and splits attention when it is decorative. The rule this page enforces exists to stay inside
+            that finding rather than argue with it.</span></li>
+          <li><a href="https://www.uxinmotion.com/article/ux-motion-manifesto">UX in Motion Manifesto</a> — Issara
+            Willenskomer.
+            <span class="why">Continuity, relationship and expectation as named usability functions of interface
+            motion — the industry vocabulary for the claim the ledger measures.</span></li>
+          <li><a href="https://drafts.csswg.org/css-view-transitions-2/">CSS View Transitions, Level 2</a> — W3C draft.
+            <span class="why">The cross-document case, which is what lets a market object travel between two
+            standalone URLs rather than two routes inside one application.</span></li>
+          <li><a href="https://docs.seer.pm/llms.txt">Seer documentation index</a> and
+            <a href="https://app.seer.pm">app.seer.pm</a>.
+            <span class="why">Every field name in the table above is quoted from the API these documents describe.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Read the rules as motion, on the surfaces that obey them</h2>
+    <p class="blocknote">Each link arrives by the leg a surface would actually take, so the transition you get is the
+      transition being described.</p>
+    <ul class="lateral" id="lateral"></ul>
+  </section>
+
+  <footer id="snapshot"></footer>
+</main>
+
+<aside class="leg-badge" id="leg-badge" aria-hidden="true"></aside>
+
+<script type="module">
+import { load, boot, esc, dur, ease, index, legBadge, announce,
+         pct, ROOT, SURFACES, LEG_STEP } from '../shell.js';
+
+const d = await load('markets', 'charts', 'tree', 'meta');
+const { markets, charts, tree, meta } = d;
+const ix = index(markets, tree);
+const $ = (id) => document.getElementById(id);
+const slow = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--slow')) || 1;
+
+/* ---------- 1. the five steps ---------- */
+
+const STEPS = [
+  [1, 'a verification state changed', 'the shortest thing that can be noticed as “this is not a story”'],
+  [2, 'lateral: the same market, a sibling reading', 'nothing about the market changed, only the job being done'],
+  [3, 'an object keeps its identity across a boundary; a merge settles', 'the interval for “the same thing, somewhere else”'],
+  [4, 'a price moved between two snapshots', 'displacement comes from the delta, not from taste'],
+  [5, 'fan-out: one becoming many — root → app, parent → child, splitPosition', 'the widest relation in the tree gets the longest time']
+];
+$('scale').innerHTML = STEPS.map(([n, use, why]) => `
+  <li class="srow" data-step="${n}" ${n === 4 ? 'data-note="price"' : ''}>
+    <span class="tok num">--d-${n}</span>
+    <span class="rail"><span class="fill" data-w="${(dur(n) / dur(5) * 100).toFixed(1)}"></span></span>
+    <span class="ms num">${dur(n)} ms</span>
+    <span class="use"><b>${esc(use)}</b> — <span class="mute">${esc(why)}</span></span>
+  </li>`).join('');
+/* The width is set a frame late so the bar animates its own measurement in at
+   the price interval — the only place in this file a number is used to time
+   something, and it is read out of the stylesheet rather than typed. */
+requestAnimationFrame(() => document.querySelectorAll('.fill')
+  .forEach((f) => { f.style.width = `${f.dataset.w}%`; }));
+
+const EXPECT = [200, 220, 320, 400, 520];
+const fails = EXPECT.map((e, i) => [i + 1, Math.round(e * slow), dur(i + 1)]).filter(([, w, g]) => w !== g);
+$('scale-check').innerHTML = fails.length
+  ? `<b>Check failed</b> on ${fails.map(([s]) => `--d-${s}`).join(', ')}: the stylesheet resolved to ` +
+    `${fails.map(([, , g]) => `${g} ms`).join(', ')}, expected ${fails.map(([, w]) => `${w} ms`).join(', ')}.`
+  : `<b>Check passed</b> — ${EXPECT.map((e) => Math.round(e * slow)).join(' / ')} ms, read back out of the resolved
+     stylesheet${slow > 1 ? `, scaled by <code>--slow: ${slow}</code> for filming` : ''}. The three easings are the
+     kit curves <span class="num">${esc(ease('out'))}</span>, <span class="num">${esc(ease('in'))}</span>,
+     <span class="num">${esc(ease('std'))}</span>. Nothing else in this entry names a millisecond, and section 3 is
+     the machine that says so.`;
+
+/* ---------- 2. the nine legs ---------- */
+
+const priced = markets.filter((m) => m.odds?.length > 1 && m.odds.some((v) => v != null) && m.liq > 0);
+const HERO = priced[0] || markets[0];
+const COND = markets.find((m) => m.pm && ix.byId.get(m.pm)) || markets.find((m) => m.pm);
+const ARB = markets.find((m) => m.arb || m.pa) || markets.find((m) => m.v && m.v !== 'verified');
+const bars = (arr) => (arr || []).map((v) => `<i style="width:${Math.max(0, v)}%"></i>`).join('');
+
+function to(path, leg, m) {
+  const u = new URL(`${ROOT}/${path}`, location.href);
+  if (m) u.searchParams.set('m', m);
+  if (leg) u.searchParams.set('leg', leg);
+  u.searchParams.set('from', 'contract');
+  const s = new URLSearchParams(location.search).get('slow');
+  if (s) u.searchParams.set('slow', s);
+  return `${u.pathname}${u.search}`;
+}
+
+const LEGS = [
+  { k: 'morph', st: 3, neu: ['root-arrive', '--e-out'],
+    rel: 'One market, two documents: the row in the explorer and the market on its own page are the same object.',
+    src: 'id · markets-search',
+    rule: 'the group moves and the parts never fade — <code>animation: none</code> on old and new, because an opacity change would tell the reader a new thing had appeared.',
+    take: ['open a real market', to('m/index.html', 'morph', HERO.id)] },
+  { k: 'lateral', st: 2, old: ['slide-out', '--e-in'], neu: ['slide-in', '--e-out'],
+    rel: 'Same market, sibling reading: all six surfaces sit at the same depth, so moving between them changes the job, not the object.',
+    src: 'the six are one level wide',
+    rule: 'horizontal displacement only, at the shortest cross-document interval. Anything slower would imply the market itself had moved.',
+    take: ['app → deep', to('deep/index.html', 'lateral', HERO.id)] },
+  { k: 'fan', st: 5, old: ['fan-out', '--e-in'], neu: ['fan-in', '--e-out'],
+    rel: 'Protocol root → one of five apps: one thing becoming many.',
+    src: 'parentCollectionId · the root page’s tree',
+    rule: 'outward and slowest. The six cards on the root page leave by this leg, and the relation genuinely is one-to-many.',
+    take: ['root → explorer', to('app/index.html', 'fan')] },
+  { k: 'split', st: 5, neu: ['root-arrive', '--e-out'],
+    rel: 'A parent question and the conditional markets sitting under each of its outcomes.',
+    src: 'parentMarketId · CTF splitPosition',
+    rule: 'the same outward interval as a fan, because it is the same edge of the tree taken with collateral attached.',
+    take: ['a conditional child', to('deep/index.html', 'split', COND?.id)] },
+  { k: 'back', st: 3, neu: ['root-arrive', '--e-out'],
+    rel: 'Child → parent. The tree edge traversed upward.',
+    src: 'parentMarketId',
+    rule: 'the identity interval, not the fan interval: returning to the parent question does not turn one thing into many.',
+    take: ['child → the book', to('app/index.html', 'back')] },
+  { k: 'redeem', st: 3, old: ['fan-out', '--e-in', 'reverse'], neu: ['fan-in', '--e-out', 'reverse'],
+    rel: 'Outcome legs merged back into collateral, or a resolved market redeemed.',
+    src: 'mergePositions · redeemPositions',
+    rule: 'the fan keyframes run backwards at the merge interval — a collapse is a split with time reversed, and it settles rather than explodes, so it is not the longest step.',
+    take: ['opportunity, then Merge', to('opportunity/index.html', 'redeem', HERO.id)] },
+  { k: 'price', st: 4,
+    rel: 'A market’s odds moved between snapshots, or the reader picked a different outcome leg.',
+    src: 'odds[]',
+    rule: 'vertical only. The sign of the delta sets the direction and the magnitude sets the distance in <code>em</code>, so the travel is a reading of the number.',
+    take: ['a market, then pick a leg', to('m/index.html', 'morph', HERO.id)] },
+  { k: 'verify', st: 1,
+    rel: 'A verification state flipped: not_verified → verified, or a resolution got challenged.',
+    src: 'verification.status · questionsInArbitration',
+    rule: 'one shot, never a loop, capped at the shortest interval. A state under dispute is information, not narrative, and this system will not make it dramatic.',
+    take: ['risk, then challenge', to('risk/index.html', 'lateral', ARB?.id)] },
+  { k: 'direct', st: null, cold: 1,
+    rel: 'A cold arrival. There is nothing to transition from.',
+    src: 'a typed address · a pasted link · a reload',
+    rule: 'every pseudo animation switched off by <code>html[data-leg="direct"]</code>. The cut is a designed state of this contract, not an accident of the platform.',
+    take: ['arrive cold', to('app/index.html', null)] }
+];
+
+const shorthand = (v, st) => `${v[0]} var(--d-${st}) var(${v[1]})${v[2] ? ` ${v[2]}` : ''} both`;
+
+$('legs').innerHTML = LEGS.map((L) => `
+  <li class="legrow" ${L.cold ? 'data-cold="1"' : ''}>
+    <span class="lft">
+      <span class="lg">${esc(L.k)}</span>
+      <span class="src num">${L.st ? `--d-${L.st} · ${dur(L.st)} ms` : 'no interval'}</span>
+    </span>
+    <span class="mid">
+      <p class="rel">${esc(L.rel)}</p>
+      <p class="mrule">${L.rule}<br><span class="num">${esc(L.src)}</span></p>
+    </span>
+    <span class="take">
+      <button type="button" class="act ghost" data-rehearse="${L.k}">rehearse</button>
+      <a class="act" href="${L.take[1]}">${esc(L.take[0])}</a>
+    </span>
+  </li>`).join('');
+$('legs').addEventListener('click', (e) => {
+  const b = e.target.closest('[data-rehearse]');
+  if (b) rehearse(b.dataset.rehearse);
+});
+
+/* ---------- the stage ---------- */
+
+const NAME = HERO.name.length > 58 ? `${HERO.name.slice(0, 56)}…` : HERO.name;
+const OTHER = markets.find((m) => m.id !== HERO.id);
+$('old-q').textContent = OTHER ? `${OTHER.name.slice(0, 46)}…` : 'the list you came from';
+$('new-q').textContent = NAME;
+$('new-big').textContent = `$${((HERO.odds?.[0] ?? 0) / 100).toFixed(2)}`;
+$('old-bar').innerHTML = bars([34, 66]);
+$('new-bar').innerHTML = bars((HERO.odds || []).slice(0, 4));
+
+const anm = (el, sh) => {
+  el.style.animation = 'none';
+  void el.offsetWidth;                       /* reflow, so pressing twice retriggers */
+  el.style.animation = sh;
+};
+const foot = (html) => { $('stagefoot').innerHTML = html; };
+
+function rehearse(key) {
+  const L = LEGS.find((x) => x.k === key);
+  const stage = $('stage'), old = $('p-old'), nw = $('p-new'), big = $('new-big');
+  [old, nw, big].forEach((n) => { n.style.animation = 'none'; });
+  stage.classList.remove('verify-hit');
+  nw.removeEventListener('animationend', settle);
+
+  if (key === 'direct') {
+    old.hidden = true;
+    foot('Nothing applied. <code>html[data-leg="direct"]</code> switches every pseudo animation off — this is what a ' +
+      'cold arrival looks like, and the contract treats it as a designed state.');
+    announce('Direct: a cut, with nothing to carry.');
+    return;
+  }
+  if (key === 'verify') {
+    old.hidden = true;
+    anm(stage, 'verify-hit var(--d-1) var(--e-std)');
+    foot(`Applied to the stage → <code>animation: verify-hit var(--d-1) var(--e-std)</code><br>
+      One flash of the signal ground over ${dur(1)} ms, ending transparent, never repeating. Press
+      <span class="kbd">R</span> and it is simply not there — which is safe, because the pill and the risk score say
+      the state in words regardless.`);
+    announce(`Verification state changed: one ${dur(1)} ms flash, and the same fact written as text.`);
+    return;
+  }
+  if (key === 'price') {
+    old.hidden = true;
+    const a = (HERO.odds?.[0] ?? 0) / 100, b = (HERO.odds?.[1] ?? 0) / 100;
+    const from = Math.min(Math.abs(b - a) * 2.4, 1.1) * (b >= a ? 1 : -1);
+    big.textContent = `$${b.toFixed(2)}`;
+    big.style.setProperty('--tick-from', `${from.toFixed(2)}em`);
+    anm(big, 'price-tick var(--d-4) var(--e-out) both');
+    foot(`Applied to the price → <code>animation: price-tick var(--d-4) var(--e-out) both</code><br>
+      <code>--tick-from: ${from.toFixed(2)}em</code> — the real odds of this market, ${pct(HERO.odds?.[0])} →
+      ${pct(HERO.odds?.[1])}. The sign is the direction, the distance is the delta, and both come out of
+      <code>odds[]</code> rather than from this page.`);
+    announce(`Price change: ${pct(HERO.odds?.[0])} to ${pct(HERO.odds?.[1])}.`);
+    return;
+  }
+  const sh = shorthand(L.neu, L.st);
+  old.hidden = false;
+  if (L.old) anm(old, shorthand(L.old, L.st));
+  anm(nw, sh);
+  nw.addEventListener('animationend', settle);
+  foot(`Applied to the panes →<br><code>${L.old ? `old: animation: ${shorthand(L.old, L.st)}<br>` : 'old: animation: none — it stays, and the new document arrives over it<br>'}new: animation: ${sh}</code>`);
+  announce(`${key}: ${L.rel}`);
+}
+function settle() { $('p-old').hidden = true; }
+
+/* ---------- 3. the audit ---------- */
+
+const CSS_FILES = ['tokens.css', 'fonts.css', 'motion.css', 'ui.css', 'home.css', 'app/app.css', 'deep/deep.css',
+  'm/market.css', 'opportunity/opportunity.css', 'risk/risk.css', 'futarchy/futarchy.css', 'contract/contract.css'];
+const SCRIPT_FILES = ['shell.js', 'leg.js'];
+const PAGE_FILES = ['index.html', 'app/index.html', 'deep/index.html', 'm/index.html', 'opportunity/index.html',
+  'risk/index.html', 'futarchy/index.html', 'contract/index.html'];
+
+const DUR_DECL = /(?:^|[{;\s])(animation|animation-duration|animation-delay|transition|transition-duration|transition-delay)\s*:([^;}]+)/g;
+const NUM_DUR = /(?:^|[^-\w.])\d+(?:\.\d+)?m?s\b/;
+const KNOWN_KF = {
+  'root-arrive': 'morph · split · back — a document arriving where the market itself did not move',
+  'slide-out': 'lateral — leaving sideways',
+  'slide-in': 'lateral — arriving sideways',
+  'fan-out': 'fan — leaving outward · redeem — the identical geometry reversed',
+  'fan-in': 'fan — arriving outward · redeem — the identical geometry reversed',
+  'price-tick': 'odds[] moved — vertical, sign and distance from the delta',
+  'verify-hit': 'verification.status changed — one shot',
+  'reveal': 'DECLARED EXCEPTION — driven by scroll position rather than data, opacity only, so with motion off the block is simply present'
+};
+
+let A = fresh();
+function fresh() {
+  return { sheets: 0, decls: 0, token: 0, stop: 0, snap: 0, unnamed: 0, bad: [],
+    kf: new Set(), jsFiles: 0, jsBad: [], steps: {}, stepKinds: 0, failed: null };
+}
+function classify(v) {
+  if (v.includes('0.01ms')) return 'snap';
+  if (v.includes('var(--d-')) return 'token';
+  if (/^\s*none\b/.test(v)) return 'stop';
+  if (NUM_DUR.test(v)) return 'bad';
+  return 'unnamed';
+}
+/* The durations are read out of the source text rather than the CSSOM: Chrome
+   expands the `animation` shorthand into its longhands and leaves a `var()`
+   substitution as an empty string, so a walk of the parsed tree would report
+   zero durations for precisely the declarations that matter. The keyframe
+   inventory, which the tree does expose, still comes from the parser. */
+function walkKf(rules) {
+  for (const r of rules) {
+    if (r instanceof CSSKeyframesRule) A.kf.add(r.name);
+    else if (r.cssRules) walkKf(r.cssRules);
+  }
+}
+async function text(path) {
+  const res = await fetch(`${ROOT}/${path}`, { cache: 'no-store' });
+  if (!res.ok) throw new Error(`${path} → HTTP ${res.status}`);
+  return res.text();
+}
+async function auditCssFile(f) {
+  const src = (await text(f)).replace(/\/\*[\s\S]*?\*\//g, '');
+  A.sheets++;
+  for (const m of src.matchAll(DUR_DECL)) {
+    const v = m[2].trim();
+    A.decls++;
+    const kind = classify(v);
+    if (kind === 'bad') A.bad.push(`${f} · ${m[1]}: ${v.slice(0, 88)}`);
+    else A[kind]++;
+  }
+  const sheet = new CSSStyleSheet();
+  sheet.replaceSync(src);
+  walkKf(sheet.cssRules);
+}
+function scanJs(src, where) {
+  A.jsFiles++;
+  const re = /(?:duration|animation|transition|animationDuration|transitionDuration)\s*[:=]\s*['"`]([^'"`]{0,120})['"`]/g;
+  for (const m of src.matchAll(re)) {
+    if (m[1].includes('var(--d-') || /^\s*(none|auto)\s*$/.test(m[1])) continue;
+    if (NUM_DUR.test(m[1])) A.jsBad.push(`${where} · ${m[1]}`);
+  }
+  for (const m of src.matchAll(/\bstep:\s*([1-5])\b/g)) {
+    A.steps[m[1]] = (A.steps[m[1]] || 0) + 1;
+    A.stepKinds++;
+  }
+}
+try {
+  A = fresh();
+  for (const f of CSS_FILES) await auditCssFile(f);
+  for (const f of SCRIPT_FILES) scanJs(await text(f), f);
+  for (const f of PAGE_FILES) {
+    const html = await text(f);
+    for (const m of html.matchAll(/<script(?![^>]*\ssrc=)[^>]*>([\s\S]*?)<\/script>/g)) {
+      if (m[1].trim()) scanJs(m[1], `${f} · inline`);
+    }
+  }
+} catch (e) {
+  A = { ...fresh(), failed: e.message };
+}
+
+const orphan = [...A.kf].filter((n) => !KNOWN_KF[n]);
+const undefinedKf = Object.keys(KNOWN_KF).filter((n) => !A.kf.has(n));
+const violations = [...A.bad, ...A.jsBad, ...orphan.map((n) => `@keyframes ${n} — defined, named by nothing`)];
+
+$('audit').innerHTML = A.failed
+  ? `<p class="blocknote"><b>The audit could not run here.</b> Reading the entry’s own source needs HTTP; from
+     <code>file://</code> a browser will not let a page fetch sideways, and it reported
+     <code>${esc(A.failed)}</code>. This section is therefore blank rather than reassuring — which is the correct
+     outcome for a page whose claim is that something is checking. The hosted entry reads
+     ${CSS_FILES.length} stylesheets and ${SCRIPT_FILES.length + PAGE_FILES.length} scripts.</p>`
+  : `<p class="blocknote">Scope: ${A.sheets} of ${CSS_FILES.length} stylesheets and ${A.jsFiles} scripts — the whole
+     entry, not only what this page loads. Every value below is a count of what the walk actually saw.</p>` + [
+  ['stylesheets parsed', A.sheets, `of ${CSS_FILES.length}`, A.sheets === CSS_FILES.length],
+  ['duration declarations walked', A.decls, 'all classified', A.decls > 0],
+  ['referencing <code>var(--d-<em>step</em>)</code>', A.token, 'the rule', A.token > 0],
+  ['<code>none</code> — the contract’s own stop states', A.stop, 'required by the contract', A.stop > 0],
+  ['the declared <code>0.01ms</code> snap under reduce', A.snap, 'exception 1', A.snap > 0],
+  ['naming no duration at all (scroll-driven, or inheriting)', A.unnamed, 'exception 2', true],
+  ['<b>ad-hoc numbers in stylesheets</b>', A.bad.length, A.bad.length ? 'violation' : 'clean', A.bad.length === 0],
+  ['<b>literal durations in scripts</b>', A.jsBad.length, A.jsBad.length ? 'violation' : 'clean', A.jsBad.length === 0],
+  ['call sites naming a step, in scripts', A.stepKinds, `steps ${Object.keys(A.steps).sort().join(' · ') || '—'}`, A.stepKinds > 0],
+  ['keyframes defined / each mapped to a leg', `${A.kf.size} / ${A.kf.size - orphan.length}`,
+    orphan.length ? 'orphan' : 'no orphans', orphan.length === 0]
+  ].map(([t, v, tag, ok]) => `<div class="kv" data-ok="${ok ? 1 : 0}"><span>${t}</span>
+    <span class="v num">${v}</span><span class="tag">${tag}</span></div>`).join('') +
+  (violations.length ? `<p class="blocknote"><b>What this page is complaining about</b><br>${
+    violations.map((v) => `<code>${esc(v)}</code>`).join('<br>')}</p>` : '') +
+  (undefinedKf.length ? `<p class="blocknote">Named in the contract, absent from the stylesheets:
+    <code>${esc(undefinedKf.join(', '))}</code> — that is drift, and it is worth knowing.</p>` : '');
+
+$('kflist').innerHTML = A.failed ? '' :
+  Object.entries(KNOWN_KF).map(([n, why]) => `
+  <li ${A.kf.has(n) ? '' : 'data-orphan="1"'}><span class="nm">@keyframes ${esc(n)}</span>
+    <span>${esc(why)}</span><span class="num">${A.kf.has(n) ? 'defined' : 'not defined'}</span></li>`).join('') +
+  orphan.map((n) => `<li data-orphan="1"><span class="nm">@keyframes ${esc(n)}</span>
+    <span>defined in a stylesheet and named by nothing in the contract — this page is telling you it exists.</span>
+    <span class="num">orphan</span></li>`).join('');
+
+/* ---------- 4. what survives ---------- */
+
+$('survive').innerHTML = [
+  ['Where you are', 'The rail above every page prints the surface number of six and its depth from the protocol root, so the hierarchy the fan-out gestures at is a sentence before it is a movement.', 'all seven documents · #surface-depth'],
+  ['That it is the same market', 'The question, the market id and the outcome index are reprinted in the destination’s masthead. The morph makes the continuity felt; the text makes it checkable.', '/m/ · deep · risk · opportunity'],
+  ['Which way the price went', 'The history line carries ▲ or ▼, the percentage, and an <code>idx</code> marker because the quote asset is savings xDAI rather than dollars. The vertical travel is the same sign and the same magnitude, already written down.', '/m/ · app · risk small multiples'],
+  ['Parent → child', 'The parent edge is labelled with its tree depth and the child carries the outcome index it came from; the fan is a bordered, indented list. Structure does that work, not motion.', '/m/ · deep'],
+  ['A basket that closes', 'The partition rail is drawn at its final widths with the Σ readout and a marked line at $1.00, so “these legs do not sum to a dollar” is readable as geometry with the transition removed.', 'opportunity'],
+  ['A challenge, not a story', 'The verify flash is the one signal here with no static twin, which is exactly why it is capped at the shortest step. The state itself is a worded pill and a factor in the risk score, both of which recompute whether or not anything flashed.', 'risk'],
+  ['Nothing left mid-flight', 'Every keyframe ends at <code>transform: none; opacity: 1</code>, so the snap lands on the authored state. The stage above is written in the state its rehearsals finish in, which is why reducing motion cannot break it.', 'motion.css']
+].map(([t, b, w]) => `<li><b>${esc(t)}</b>${b}<span class="where">${esc(w)}</span></li>`).join('');
+
+/* ---------- 5. the ledger ---------- */
+
+function ledger() {
+  let log = [];
+  try { log = JSON.parse(sessionStorage.getItem('seer.vt.log') || '[]'); } catch (e) { log = []; }
+  const rows = log.slice().reverse();
+  $('ledger-body').innerHTML = rows.length ? rows.map((r) => `
+    <tr data-state="${r.reduced ? 'reduced' : r.longest ? 'moved' : 'cut'}">
+      <td>${esc(r.path)}</td>
+      <td class="num">${esc(r.leg)}${LEG_STEP[r.leg] ? ` <span class="mute">--d-${LEG_STEP[r.leg]}</span>` : ''}</td>
+      <td class="num">${esc(r.from)}</td>
+      <td class="num">${r.moving}/${r.frames}</td>
+      <td class="num">${r.longest}</td>
+      <td class="anims">${esc(r.anims.map((a) => a.replace(/^-ua-view-transition-/, 'ua:')).join(' · ') || '—')}</td>
+    </tr>`).join('')
+    : `<tr><td colspan="6">Nothing recorded yet — the arrival that put this page here should appear within about a
+        second, and every navigation you take after it adds a row.</td></tr>`;
+  const on = rows.filter((r) => !r.reduced && r.longest > 0);
+  const off = rows.filter((r) => r.reduced);
+  const mean = (a) => (a.length ? Math.round(a.reduce((s, r) => s + r.longest, 0) / a.length) : null);
+  const fr = rows[0]?.frames || 70;
+  $('ledger-stat').innerHTML = `${rows.length} arrival${rows.length === 1 ? '' : 's'} in this session · ` +
+    `longest run with motion <b>${mean(on) ?? '—'}</b> frames · with motion reduced <b>${mean(off) ?? '—'}</b> frames · ` +
+    `sampled ${fr} frames ≈ ${(fr / 60).toFixed(1)} s${slow > 1 ? ` at --slow: ${slow}` : ''}`;
+  $('ledger-note').innerHTML = `<b>Reading it:</b> <span class="num">●</span> something was animating,
+    <span class="num">○</span> motion reduced, <span class="num">∅</span> nothing to transition from.
+    A row showing <code>0/${fr}</code> with no names is either a
+    reduced-motion arrival — the proof — or a cold one, where the URL declared a leg but there was no previous
+    document to transition from, so the browser correctly cut. Names beginning <code>ua:</code> are Chrome’s own
+    animations for the view-transition pseudo-elements; the bare names are the ones authored in
+    <code>motion.css</code>. Both are reported, because the claim is about the whole system and not only the part of
+    it that I wrote.`;
+}
+$('clear-ledger').addEventListener('click', () => {
+  try { sessionStorage.removeItem('seer.vt.log'); } catch (e) {}
+  ledger();
+  announce('Ledger cleared. Navigating again starts the record from empty.');
+});
+ledger();
+setTimeout(ledger, 1500);
+
+/* ---------- rails ---------- */
+
+$('lateral').innerHTML = SURFACES.map((s) => `
+  <li><a href="${to(s.href, s.key === 'home' ? 'back' : 'fan')}" data-leg="${s.key === 'home' ? 'back' : 'fan'}">
+    <span class="slot-n">${s.n}</span>${esc(s.label)}<span class="arrow">→</span></a></li>`).join('');
+
+$('snapshot').innerHTML =
+  `Snapshot <b>${esc(meta.iso)}</b> · ${markets.length} markets baked from <code>markets-search</code>, chains 100 ` +
+  `and 1 · audit read ${A.sheets} stylesheets and ${A.jsFiles} scripts at runtime · press
+   <span class="kbd">R</span> to take the motion away and keep the meaning · <code>?slow=4</code> scales the whole
+   contract uniformly for filming, which is why it cannot introduce a number.`;
+
+legBadge();
+boot({ surface: 'contract' });
+</script>
+</body>
+</html>

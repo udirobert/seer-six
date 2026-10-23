@@ -71,6 +71,8 @@ html[data-theme="dark"] .mute { color: var(--fg-mute); }
 #surface-bar a:hover { color: var(--fg); background: var(--bg-raise); }
 #surface-bar a[aria-current="page"] { color: var(--fg); background: var(--bg-signal); }
 #surface-bar a[aria-current="page"] .slot-n { background: var(--ef-violet); color: var(--fg-on-signal); }
+#surface-bar .bar-rules { margin-left: auto; border-left: var(--rule-strong); color: var(--fg-mute); }
+#surface-bar .bar-rules + .bar-tail { margin-left: 0; }
 .slot-n {
   font-size: var(--t-micro); line-height: 1; padding: 3px 5px;
   border: 1px solid currentColor; border-radius: var(--r-sm);
@@ -145,9 +147,9 @@ html[data-theme="dark"] .spine path.line { stroke: var(--ef-violet-alt); }
   border-top: var(--rule); margin-top: var(--s-8); padding: var(--s-5) 0 var(--s-8);
   font-size: var(--t-small); color: var(--fg-mute);
 }
-#snapshot .kbd {
+.kbd {
   font-family: var(--font-num); border: var(--rule); border-radius: 3px;
-  padding: 1px 5px; font-size: var(--t-micro);
+  padding: 1px 5px; font-size: var(--t-micro); white-space: nowrap;
 }
 
 /* ---------- responsive ---------- */
@@ -192,6 +194,9 @@ html[data-theme="dark"] .spine path.line { stroke: var(--ef-violet-alt); }
 .block { border-top: var(--rule); padding-top: var(--s-5); }
 .block h2 { font-size: var(--t-h3); margin-bottom: var(--s-2); }
 .blocknote { font-size: var(--t-small); color: var(--fg-mute); max-width: 74ch; }
+.detail { border: var(--rule-strong); border-radius: var(--r-lg); padding: var(--s-5); background: var(--bg); }
+.detail .eyebrow { margin-bottom: var(--s-2); }
+.detail h2 { font-size: var(--t-h3); margin-bottom: var(--s-3); }
 .empty {
   font-size: var(--t-small); color: var(--fg-mute); border: 1px dashed var(--ink-150);
   border-radius: var(--r-sm); padding: var(--s-4); margin: var(--s-4) 0 0;

@@ -16,6 +16,11 @@ export const SURFACES = [
   { key: 'risk',        n: 6, depth: 1, label: 'Risk',        href: 'risk/index.html' }
 ];
 
+/* The seventh document is not a surface: it is the rules the six obey. It sits
+   at the root beside the protocol node, so it is reachable from every page
+   without inflating "six interfaces" into seven. */
+export const RULES = { key: 'contract', n: null, depth: 0, label: 'Contract', href: 'contract/index.html' };
+
 const MODULES = {
   markets: 'markets.js', tree: 'tree.js', cats: 'cats.js', charts: 'charts.js',
   events: 'events.js', people: 'people.js', links: 'links.js', meta: 'meta.js',
@@ -262,6 +267,13 @@ export function announce(msg) {
   setTimeout(() => { el.textContent = msg; }, 60);
 }
 
+function rulesHref(here) {
+  const u = keepFilm(new URL(`${ROOT}/${RULES.href}`, location.href));
+  u.searchParams.set('leg', here.depth === 0 ? 'fan' : 'lateral');
+  u.searchParams.set('from', here.key);
+  return `${u.pathname}${u.search}`;
+}
+
 function toggles(nav, here) {
   const h = document.documentElement;
   nav.addEventListener('click', (e) => {
@@ -270,7 +282,9 @@ function toggles(nav, here) {
       /* The leg is already in the href, so the browser performs the
          navigation: intercepting it to call location.assign would take the
          transition off the link-click path it was designed for. */
-      announce(`${link.textContent.trim()}, surface ${link.querySelector('.slot-n').textContent} of six.`);
+      announce(link.classList.contains('bar-rules')
+        ? 'Contract. The rules these six documents obey.'
+        : `${link.textContent.trim()}, surface ${link.querySelector('.slot-n').textContent} of six.`);
       return;
     }
     const btn = e.target.closest('button[data-act]');
@@ -299,22 +313,25 @@ export function setReduced(on) {
 }
 
 export function boot(opts) {
-  const here = SURFACES.find((s) => s.key === opts.surface) || SURFACES[0];
+  const here = SURFACES.find((s) => s.key === opts.surface) || RULES;
+  const rules = here.key === RULES.key;
   const nav = document.getElementById('surface-bar');
   if (nav) {
     nav.classList.add('vt-chrome');
     nav.setAttribute('aria-label', 'Seer surfaces');
     nav.innerHTML = SURFACES.map((s) => {
       const on = s.key === here.key;
-      const leg = s.depth === here.depth ? 'lateral' : s.depth < here.depth ? 'back' : 'fan';
+      const leg = rules ? (s.key === 'home' ? 'back' : 'fan')
+        : s.depth === here.depth ? 'lateral' : s.depth < here.depth ? 'back' : 'fan';
       const href = keepFilm(new URL(`${ROOT}/${s.href}`, location.href));
       href.searchParams.set('leg', leg);
       href.searchParams.set('from', here.key);
       return `<a href="${href.pathname}${href.search}" data-leg="${leg}"${on ? ' aria-current="page"' : ''}>` +
         `<span class="slot-n">${s.n}</span>${esc(s.label)}</a>`;
     }).join('') +
+      `<a href="${rulesHref(here)}" data-leg="${here.depth === 0 ? 'fan' : 'lateral'}"${rules ? ' aria-current="page"' : ''} class="bar-rules"><span class="slot-n">§</span>Contract</a>` +
       `<span class="bar-tail">` +
-      `<button type="button" data-act="theme" class="ghost">${here && document.documentElement.dataset.theme === 'dark' ? 'Light' : 'Dark'}</button>` +
+      `<button type="button" data-act="theme" class="ghost">${document.documentElement.dataset.theme === 'dark' ? 'Light' : 'Dark'}</button>` +
       `<button type="button" data-act="reduce" class="ghost" aria-pressed="${document.documentElement.dataset.reduced === '1'}">Reduce motion</button>` +
       `</span>`;
     toggles(nav, here);
@@ -323,8 +340,10 @@ export function boot(opts) {
   const depth = document.getElementById('surface-depth');
   if (depth) {
     depth.innerHTML =
-      `<b>${esc(here.label)} ${here.n}/6</b>` +
-      `<span class="dsep">depth ${here.depth} from protocol root</span>` +
+      `<b>${esc(here.label)}${here.n != null ? ` ${here.n}/6` : ''}</b>` +
+      `<span class="dsep">${here.n != null
+        ? `depth ${here.depth} from protocol root`
+        : 'the rules the six obey · not a surface'}</span>` +
       (opts.marketDepth != null
         ? `<span class="dsep">market tree depth ${opts.marketDepth}</span>` : '');
   }
@@ -362,23 +381,39 @@ export function boot(opts) {
 /* A cross-document transition lives for a few frames and then disappears, so
    nothing can assert on it after the fact. Sample what is animating across the
    first second of every arrival and leave the record where a harness can read
-   it — this is also the reduced-motion proof: the list must be empty there. */
+   it. The frame count is the reduced-motion proof in numbers: with motion on an
+   arrival spends a visible run of frames animating, with motion off it reaches
+   its end state in one, because the contract snaps rather than pausing. */
 function vtProbe() {
   const h = document.documentElement;
   const seen = new Set();
-  let frame = 0;
+  const FRAMES = 70;
+  let frame = 0, moving = 0, longest = 0, run = 0;
   (function sample() {
-    for (const a of document.getAnimations()) seen.add(a.animationName || 'waapi');
-    if (++frame < 70) { requestAnimationFrame(sample); return; }
+    const list = document.getAnimations();
+    if (list.length) {
+      moving++; run++; longest = Math.max(longest, run);
+      for (const a of list) seen.add(a.animationName || 'waapi');
+    } else run = 0;
+    if (++frame < FRAMES) { requestAnimationFrame(sample); return; }
     const rec = {
-      path: location.pathname,
+      t: Math.round(Date.now() / 1000),
+      path: location.pathname.replace(ROOT, '') || '/',
       leg: h.dataset.leg,
-      from: h.dataset.from,
-      slow: getComputedStyle(h).getPropertyValue('--slow').trim(),
+      from: h.dataset.from || '—',
+      slow: getComputedStyle(h).getPropertyValue('--slow').trim() || '1',
       reduced: reduced(),
+      frames: FRAMES,
+      moving,
+      longest,
       anims: [...seen].sort()
     };
-    try { sessionStorage.setItem('seer.vt', JSON.stringify(rec)); } catch (e) {}
+    try {
+      const log = JSON.parse(sessionStorage.getItem('seer.vt.log') || '[]');
+      log.push(rec);
+      sessionStorage.setItem('seer.vt.log', JSON.stringify(log.slice(-30)));
+      sessionStorage.setItem('seer.vt', JSON.stringify(rec));
+    } catch (e) {}
     window.__vt = rec;
   })();
 }

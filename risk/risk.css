@@ -25,9 +25,6 @@
 .chip[aria-current="true"] { background: var(--ef-violet); border-color: var(--ef-violet); color: #fff; }
 .chip.more { border-style: dashed; color: var(--fg-mute); cursor: default; }
 
-.detail { border: var(--rule-strong); border-radius: var(--r-lg); padding: var(--s-5); background: var(--bg); }
-.detail .eyebrow { margin-bottom: var(--s-2); }
-.detail h2 { font-size: var(--t-h3); margin-bottom: var(--s-3); }
 .score {
   font-family: var(--font-num); font-size: 2.5rem; font-weight: 500; line-height: 1;
   letter-spacing: -.03em; color: var(--fg-signal); margin: var(--s-3) 0;

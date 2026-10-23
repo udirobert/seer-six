@@ -1,0 +1,168 @@
+/* contract.css — the rules page.
+   Deliberately the thinnest stylesheet in the entry: it introduces no motion of
+   its own, because a page whose argument is "nothing moves without a reason"
+   would be self-refuting if it did. Every duration here is a token reference,
+   and the page prints the audit of that claim at runtime. */
+
+/* ---------- 1. the scale ---------- */
+
+.scale { list-style: none; margin: var(--s-5) 0 0; padding: 0; }
+.srow {
+  display: grid; grid-template-columns: 74px minmax(0, 1fr) 84px minmax(0, 34ch);
+  gap: var(--s-4); align-items: center;
+  padding: var(--s-3) 0; border-top: var(--rule);
+  font-size: var(--t-small);
+}
+.srow:last-child { border-bottom: var(--rule); }
+.srow .tok { color: var(--fg-signal); }
+.srow .rail { display: block; height: 14px; background: var(--bg-raise); border-radius: 2px; overflow: hidden; }
+.srow .fill {
+  display: block; height: 100%; width: 0;
+  background: repeating-linear-gradient(90deg, var(--ef-violet) 0 6px,
+              color-mix(in srgb, var(--ef-violet) 62%, transparent) 6px 10px);
+  transition: width var(--d-4) var(--e-out);
+}
+html[data-theme="dark"] .srow .fill {
+  background: repeating-linear-gradient(90deg, var(--ef-violet-alt) 0 6px,
+              color-mix(in srgb, var(--ef-violet-alt) 62%, transparent) 6px 10px);
+}
+.srow .ms { text-align: right; }
+.srow[data-step="5"] .tok { color: var(--ef-warn); }
+.srow[data-note="price"] .fill {
+  background: repeating-linear-gradient(90deg, var(--ef-up) 0 6px,
+              color-mix(in srgb, var(--ef-up) 62%, transparent) 6px 10px);
+}
+
+.verdict {
+  margin-top: var(--s-4); font-size: var(--t-small); color: var(--fg-mute);
+  border-left: 2px solid var(--ef-violet); padding-left: var(--s-4);
+}
+.verdict b { color: var(--fg); }
+
+/* ---------- 2. the leg table ---------- */
+
+.legrows { list-style: none; margin: 0; padding: 0; }
+.legrow {
+  display: grid; grid-template-columns: 116px minmax(0, 1fr) 176px;
+  gap: var(--s-2) var(--s-4); align-items: start;
+  padding: var(--s-4) 0; border-top: var(--rule);
+}
+.legrow:last-child { border-bottom: var(--rule); }
+.legrow .lft { display: grid; gap: 3px; }
+.legrow .mid { display: grid; gap: var(--s-2); }
+.legrow .lg {
+  font-family: var(--font-num); font-size: var(--t-body); font-weight: 500;
+  color: var(--fg); display: flex; align-items: baseline; gap: 6px;
+}
+.legrow .lg .num { font-size: var(--t-micro); color: var(--fg-mute); }
+.legrow .src {
+  font-family: var(--font-num); font-size: var(--t-micro);
+  color: var(--fg-signal); word-break: break-word;
+}
+.legrow .rel { margin: 0; font-size: var(--t-small); max-width: 74ch; }
+.legrow .mrule {
+  margin: 0; font-size: var(--t-micro); color: var(--ink-500); max-width: 74ch;
+  border-left: 1px solid var(--ink-150); padding-left: var(--s-3);
+}
+.legrow .take { display: flex; flex-wrap: wrap; gap: var(--s-2); justify-content: flex-end; }
+.legrow .take a.act { text-decoration: none; }
+.legrow[data-cold="1"] { opacity: .78; }
+
+/* ---------- the rehearsal stage ---------- */
+
+.stage { position: relative; border: var(--rule); border-radius: var(--r-lg);
+  background: var(--bg-raise); min-height: 220px; overflow: hidden; }
+.panes { position: relative; height: 190px; }
+.pane {
+  position: absolute; inset: var(--s-4);
+  display: grid; gap: var(--s-3); align-content: center;
+  background: var(--bg); border: var(--rule-strong); border-radius: var(--r-sm);
+  padding: var(--s-4);
+}
+.pane[hidden] { display: none; }
+.pane .q { font-weight: 500; font-size: var(--t-h3); line-height: var(--lh-tight); }
+.pane .big { font-family: var(--font-num); font-size: clamp(2rem, 1.4rem + 2.6vw, 3rem); line-height: 1; }
+.pane .big[data-null="1"] { color: var(--ink-300); }
+.pane.old { border-style: dashed; color: var(--fg-mute); }
+.pane .lbl {
+  font-family: var(--font-num); font-size: var(--t-micro); letter-spacing: .12em;
+  text-transform: uppercase; color: var(--fg-mute);
+}
+.stagefoot {
+  display: grid; gap: var(--s-2); padding: var(--s-4); border-top: var(--rule);
+  font-size: var(--t-micro); color: var(--fg-mute);
+}
+.stagefoot code { color: var(--fg-signal); }
+
+/* ---------- 3. the audit ---------- */
+
+.audit { display: grid; gap: var(--s-3); margin-top: var(--s-5); }
+.kv {
+  display: grid; grid-template-columns: minmax(0, 1fr) 96px auto; gap: var(--s-3);
+  align-items: baseline; font-size: var(--t-small);
+  border-bottom: var(--rule); padding-bottom: var(--s-2);
+}
+.kv .v { font-family: var(--font-num); font-size: var(--t-h3); text-align: right; }
+.kv .tag {
+  font-family: var(--font-num); font-size: var(--t-micro); letter-spacing: .08em;
+  text-transform: uppercase; padding: 2px 6px; border-radius: var(--r-sm);
+  border: 1px solid currentColor; white-space: nowrap;
+}
+.kv[data-ok="1"] .tag { color: var(--ef-up); }
+.kv[data-ok="0"] .tag { color: var(--ef-warn); }
+.kv .v { color: var(--fg); }
+.kflist { list-style: none; margin: var(--s-4) 0 0; padding: 0; display: grid; gap: 3px; }
+.kflist li {
+  display: grid; grid-template-columns: 132px minmax(0, 1fr) auto; gap: var(--s-3);
+  font-size: var(--t-micro); color: var(--fg-mute); align-items: baseline;
+}
+.kflist .nm { font-family: var(--font-num); color: var(--fg); }
+.kflist li[data-orphan="1"] .nm { color: var(--ef-warn); }
+
+/* ---------- 4. what survives ---------- */
+
+.survive { list-style: none; margin: var(--s-5) 0 0; padding: 0; display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(228px, 1fr)); gap: var(--s-4); }
+.survive li { border-top: var(--rule-strong); padding-top: var(--s-3); font-size: var(--t-small); }
+.survive b { display: block; font-size: var(--t-body); font-weight: 500; margin-bottom: 3px; }
+.survive .where {
+  display: block; margin-top: var(--s-2); font-family: var(--font-num);
+  font-size: var(--t-micro); color: var(--fg-mute);
+}
+
+/* ---------- 5. the ledger ---------- */
+
+.ledger { width: 100%; border-collapse: collapse; font-size: var(--t-small); margin-top: var(--s-5); }
+.ledger th, .ledger td { text-align: left; padding: var(--s-2) var(--s-3) var(--s-2) 0;
+  border-bottom: var(--rule); vertical-align: baseline; }
+.ledger th { font-family: var(--font-num); font-size: var(--t-micro); letter-spacing: .1em;
+  text-transform: uppercase; color: var(--fg-mute); font-weight: 400; white-space: nowrap; }
+.ledger td.num, .ledger th.num { font-family: var(--font-num); text-align: right; }
+.ledger tr[data-state="reduced"] td:first-child::after { content: " ○"; color: var(--fg-mute); }
+.ledger tr[data-state="moved"] td:first-child::after { content: " ●"; color: var(--ef-violet); }
+.ledger tr[data-state="cut"] td:first-child::after { content: " ∅"; color: var(--ink-300); }
+.ledger .anims { color: var(--fg-mute); font-size: var(--t-micro); }
+.ledgerbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); margin-top: var(--s-4); }
+.ledgerbar .stat { font-family: var(--font-num); font-size: var(--t-small); color: var(--fg-mute); }
+
+/* ---------- 6. limits ---------- */
+
+.limits { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--s-6); margin-top: var(--s-5); }
+.limits ul { margin: 0; padding-left: var(--s-5); font-size: var(--t-small); color: var(--fg-mute); }
+.limits li { margin-bottom: var(--s-2); }
+.cites { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); }
+.cites a { font-weight: 500; }
+.cites .why { display: block; font-size: var(--t-micro); color: var(--fg-mute); }
+
+@media (max-width: 900px) {
+  .legrow { grid-template-columns: minmax(0, 1fr) auto; }
+  .legrow .lft { grid-column: 1; }
+  .legrow .take { grid-column: 2; }
+  .legrow .mid { grid-column: 1 / 3; }
+  .srow { grid-template-columns: 66px minmax(0, 1fr) 72px; }
+  .srow .use { grid-column: 2 / 4; }
+  .kv, .kflist li { grid-template-columns: minmax(0, 1fr) auto; }
+  .ledger { font-size: var(--t-micro); }
+  .ledger .anims { display: none; }
+}
