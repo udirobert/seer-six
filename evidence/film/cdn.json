@@ -10,6 +10,17 @@
    "storage_key": "4fdbf7c46b6a11801a263a43f126937e4e8389e77887e8757e32c540770f2242",
    "uploaded_at": "2026-10-23T16:06:58.101Z",
    "readback": "200 8013521 bytes · byte-for-byte"
+  },
+  {
+   "file": "seer-six-reel.mp4",
+   "bytes": 8789941,
+   "type": "video/mp4",
+   "chain_id": 232,
+   "uri": "lens://776f0e285f57f252b3d607174a1273fdf2f1ce655606989ca567a920ee8153ca",
+   "gateway_url": "https://api.grove.storage/776f0e285f57f252b3d607174a1273fdf2f1ce655606989ca567a920ee8153ca",
+   "storage_key": "776f0e285f57f252b3d607174a1273fdf2f1ce655606989ca567a920ee8153ca",
+   "uploaded_at": "2026-10-23T23:00:38.236Z",
+   "readback": "200 8789941 bytes · byte-for-byte"
   }
  ]
 }
