@@ -6,7 +6,7 @@
   padding: var(--s-4) 0; border-top: var(--rule-strong); border-bottom: var(--rule);
   position: sticky; top: 57px; background: var(--bg); z-index: 20;
 }
-.ctl { display: grid; gap: 4px; }
+.ctl { display: grid; gap: 4px; position: relative; }
 .ctl label {
   font-family: var(--font-num); font-size: var(--t-micro); letter-spacing: .12em;
   text-transform: uppercase; color: var(--fg-mute);
@@ -14,6 +14,22 @@
 .ctl input, .ctl select {
   font: inherit; font-size: var(--t-small); color: var(--fg); background: var(--bg);
   border: var(--rule); border-radius: var(--r-sm); padding: 8px 10px; min-width: 170px;
+  height: 34px; box-sizing: border-box;
+}
+/* A native <select> on macOS draws its own chrome at a different height than the
+   search field next to it, so the row of controls reads as three unrelated widgets.
+   The control is ours: same box, same border, and a chevron built from borders and
+   currentColor — a hex in an SVG data-URI would break the colour quarantine. */
+.ctl select {
+  appearance: none; -webkit-appearance: none; padding-right: 28px; cursor: pointer;
+  transition: border-color var(--d-1) var(--e-std);
+}
+.ctl select:hover { border-color: var(--ink-300); }
+.ctl:has(select)::after {
+  content: ""; position: absolute; right: 12px; bottom: 15px;
+  width: 0; height: 0; color: var(--fg-mute); pointer-events: none;
+  border-left: 3.5px solid transparent; border-right: 3.5px solid transparent;
+  border-top: 4.5px solid currentColor;
 }
 /* No outline:none here. The ring comes from motion.css's :focus-visible rule;
    suppressing it on :focus would also suppress it on keyboard focus. */
@@ -48,8 +64,17 @@
 .c-depth .fan { color: var(--fg-signal); }
 
 .c-name { display: grid; gap: 3px; }
-.mkt-name { font-size: var(--t-body); line-height: 1.3; }
-.under { font-size: var(--t-micro); color: var(--fg-mute); }
+/* Names ship whole from the bake, so the row — not the data — decides how much of a
+   long question is visible. Two lines, then the tail goes to the title attribute. */
+.mkt-name {
+  font-size: var(--t-body); line-height: 1.3;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.under {
+  font-size: var(--t-micro); color: var(--fg-mute);
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+}
 .under b { color: var(--fg); font-weight: 400; }
 
 .c-price { display: grid; gap: 5px; }

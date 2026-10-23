@@ -115,7 +115,7 @@ export function legBadge(opts = {}) {
     const step = LEG_STEP[leg];
     badge.innerHTML = `<b>leg · ${esc(step ? leg : 'cold arrival')}</b>` +
       (step ? `<span>${dur(step)}ms · --d-${step}</span>` +
-        `<span class="faded">${esc(ease(leg === 'lateral' ? 'std' : 'out'))}</span>` : '') +
+        `<span class="faded ease">${esc(ease(leg === 'lateral' ? 'std' : 'out'))}</span>` : '') +
       `<span class="faded">reduced: ${reduced() ? 'on (snap)' : 'off'}</span>` +
       (opts.tail ? `<span class="faded">${esc(opts.tail)}</span>`
         : `<span class="faded">from: ${esc(h.dataset.from || 'direct')}</span>`);
@@ -139,8 +139,15 @@ export function money(n) {
 export function pct(v, dp = 1) {
   return v == null || isNaN(v) ? '—' : v.toFixed(dp) + '%';
 }
+/* finalizeTs arrives as one repeated sentinel — 33260976000, i.e. November 3024 — on
+   201 of the 284 markets in this snapshot, and only 83 carry a real date. Formatted as
+   a duration it read "finalizes in 12141mo", and scored as a far date it charged every
+   undated market a settlement penalty for a date the protocol never set. So the
+   sentinel is named here and treated as the absence of information, everywhere. */
+export const NO_FINALIZE = 33260976000;
+export const isDated = (ts) => !!ts && ts !== NO_FINALIZE;
 export function ago(ts, now = Date.now() / 1000) {
-  if (!ts) return 'no date set';
+  if (!isDated(ts)) return 'no date set';
   const d = ts - now, past = d < 0, a = Math.abs(d);
   const [n, unit] = a >= 30 * DAY ? [Math.round(a / 30 / DAY), 'mo']
     : a >= DAY ? [Math.round(a / DAY), 'd']
@@ -148,10 +155,13 @@ export function ago(ts, now = Date.now() / 1000) {
     : [Math.max(1, Math.round(a / 60)), 'min'];
   return past ? `${n}${unit} ago` : `in ${n}${unit}`;
 }
+export function finalizesText(ts, now = Date.now() / 1000) {
+  return isDated(ts) ? `finalizes ${ago(ts, now)}` : 'no finalize date on record';
+}
 export function stateOf(r, now = Date.now() / 1000) {
   if (r.rep) return { k: 'resolved', t: 'Resolved' };
   if (r.arb || r.pa) return { k: 'arb', t: 'In arbitration' };
-  if (r.f && r.f < now) return { k: 'finalizing', t: 'Finalizing' };
+  if (isDated(r.f) && r.f < now) return { k: 'finalizing', t: 'Finalizing' };
   if (!r.hl) return { k: 'noliquidity', t: 'No pool' };
   return { k: 'live', t: 'Open' };
 }
@@ -267,6 +277,19 @@ export function announce(msg) {
   setTimeout(() => { el.textContent = msg; }, 60);
 }
 
+/* ?m=<id> is a promise about which object the page will show. When the snapshot does not
+   hold that market the page still has to render something, but it names the substitution:
+   a stranger's question must not quietly wear the identity a link asked for. */
+export function flagSubstitution(wanted, shown, set) {
+  if (!wanted || wanted === shown) return;
+  const p = document.createElement('p');
+  p.className = 'blocknote livenote';
+  p.innerHTML = `The address asked for <b>0x${esc(wanted)}…</b>. That market is not in ${set}, ` +
+    `so this page shows <b>0x${esc(shown)}…</b> — a different question.`;
+  document.querySelector('main')?.insertAdjacentElement('afterbegin', p);
+  announce(`Substituted 0x${shown} for the requested 0x${wanted}.`);
+}
+
 function rulesHref(here) {
   const u = keepFilm(new URL(`${ROOT}/${RULES.href}`, location.href));
   u.searchParams.set('leg', here.depth === 0 ? 'fan' : 'lateral');
@@ -335,6 +358,11 @@ export function boot(opts) {
       `<button type="button" data-act="reduce" class="ghost" aria-pressed="${document.documentElement.dataset.reduced === '1'}">Reduce motion</button>` +
       `</span>`;
     toggles(nav, here);
+    /* The leg readout is chrome, so it belongs in the bar. Floating it over the page
+       covered the liquidity column on the explorer and a travel link on the market
+       document, which is an instrument hiding the thing it measures. */
+    const badge = document.getElementById('leg-badge');
+    if (badge) nav.insertBefore(badge, nav.querySelector('.bar-rules'));
   }
 
   const depth = document.getElementById('surface-depth');

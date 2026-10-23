@@ -67,7 +67,12 @@ html[data-theme="dark"] .seg[data-lead="1"] { background: var(--ef-violet-alt); 
 }
 .picks button:hover { border-color: var(--ef-violet); }
 .picks button[aria-current="true"] { border-color: var(--ef-violet); background: var(--bg-signal); }
-.picks .pn { font-size: var(--t-small); font-weight: 500; }
+/* Questions ship whole, so a pick card decides how much to show: three lines, then
+   the rest lives in the title attribute and in the market document. */
+.picks .pn {
+  font-size: var(--t-small); font-weight: 500;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;
+}
 .picks .pm { font-size: var(--t-micro); color: var(--fg-mute); font-family: var(--font-num); }
 
 .proj { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); margin-top: var(--s-5); }

@@ -32,7 +32,7 @@ export function rowFromApi(m) {
   const parent = m.parentMarket || {};
   const row = {
     id: short(m.id),
-    name: flat(m.marketName).slice(0, 96),
+    name: flat(m.marketName).slice(0, 200),
     ch: parseInt(m.chainId, 10) || 0,
     ty: m.type === 'Futarchy' ? 'F' : 'G',
     outs: outs.slice(0, 16),

@@ -92,7 +92,7 @@
 
 <script type="module">
 import { load, boot, index, esc, money, stateOf, spine, tagTravellers, disarm,
-         legBadge, ROOT, announce, SURFACES } from '../shell.js';
+         legBadge, ROOT, announce, flagSubstitution, SURFACES } from '../shell.js';
 
 const d = await load('markets', 'tree', 'charts', 'links', 'meta');
 const [markets, tree, charts, links, meta] = [d.markets, d.tree, d.charts, d.links, d.meta];
@@ -115,6 +115,7 @@ const wanted = new URLSearchParams(location.search).get('m');
    this surface, so it is the market the surface opens on. */
 let rec = complete.find((r) => r.m.id === wanted) || thin || complete[0];
 let cur = rec.m;
+flagSubstitution(wanted, cur.id, `the ${complete.length} markets whose every leg has a print`);
 let lead = cur.odds.indexOf(Math.max(...cur.odds));
 let win = lead;
 let mode = 'live';
@@ -123,10 +124,12 @@ const usd = (v) => `$${(v / 100).toFixed(3)}`;
 const usd2 = (v) => `$${(v / 100).toFixed(2)}`;
 const $ = (id) => document.getElementById(id);
 
-$('picks').innerHTML = complete.slice(0, 12).map((r) => `<li>
+const shownPicks = complete.slice(0, 12);
+const pickNames = shownPicks.reduce((s, r) => s.set(r.m.name, (s.get(r.m.name) || 0) + 1), new Map());
+$('picks').innerHTML = shownPicks.map((r) => `<li>
   <button type="button" data-id="${r.m.id}" aria-current="${r.m.id === cur.id}">
-    <span class="pn">${esc(r.m.name)}</span>
-    <span class="pm">Σ ${usd(r.sum)} · ${money(r.m.liq)} liq</span>
+    <span class="pn" title="${esc(r.m.name)} · 0x${esc(r.m.id)}…">${esc(r.m.name)}</span>
+    <span class="pm">Σ ${usd(r.sum)} · ${money(r.m.liq)} liq${pickNames.get(r.m.name) > 1 ? ` · <b>0x${esc(r.m.id)}…</b>` : ''}</span>
   </button></li>`).join('');
 
 function dollarHTML() {
@@ -179,6 +182,7 @@ function paint() {
   $('sumline').classList.toggle('closed', mode === 'payout' || close);
   $('ruler-right').textContent = mode === 'payout' || rec.sum <= 100 ? '$1.00' : usd(rec.sum);
   $('who').textContent = cur.name;
+  $('who').title = cur.name;
   $('mid').textContent = `id 0x${cur.id}… · Σ over ${cur.outs.length} legs`;
   const st = stateOf(cur);
   $('state').textContent = st.t;

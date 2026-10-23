@@ -45,7 +45,7 @@
 
 <script type="module">
 import { load, boot, index, esc, money, pct, stateOf, spine, tagTravellers, disarm,
-         reduced, animate, legBadge, dur, ROOT, announce, SURFACES } from '../shell.js';
+         reduced, animate, legBadge, dur, ROOT, announce, flagSubstitution, SURFACES } from '../shell.js';
 
 const d = await load('markets', 'tree', 'charts', 'links', 'meta');
 const [markets, tree, charts, links, meta] = [d.markets, d.tree, d.charts, d.links, d.meta];
@@ -54,6 +54,7 @@ const wide = markets.filter((m) => (m.outs || []).length >= 4).sort((a, b) => b.
 
 const wanted = new URLSearchParams(location.search).get('m');
 let cur = ix.byId.get(wanted) || wide[0];
+flagSubstitution(wanted, cur.id, `the ${wide.length} wide-branch markets this page reads`);
 document.getElementById('rail-count').textContent = String(wide.length);
 
 function railHTML() {
@@ -63,7 +64,7 @@ function railHTML() {
     aria-controls="stage" tabindex="${m.id === cur.id ? 0 : -1}"
     data-id="${m.id}" aria-selected="${m.id === cur.id}">
       <span class="num oc">${(m.outs || []).length}${m.no ? '+' : ''}</span>
-      <span class="rn">${esc(m.name)}</span>
+      <span class="rn" title="${esc(m.name)} · 0x${esc(m.id)}…">${esc(m.name)}</span>
       <span class="num rl">${money(m.liq)}</span></button>`).join('');
 }
 

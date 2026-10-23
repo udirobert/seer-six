@@ -73,8 +73,8 @@
 <aside class="leg-badge" id="leg-badge" aria-hidden="true"></aside>
 
 <script type="module">
-import { load, boot, index, esc, money, stateOf, ago, spine, tagTravellers, disarm, animate,
-         legBadge, ROOT, announce, SURFACES } from '../shell.js';
+import { load, boot, index, esc, money, stateOf, ago, isDated, spine, tagTravellers, disarm, animate,
+         legBadge, ROOT, announce, flagSubstitution, SURFACES } from '../shell.js';
 import { fetchLive, liveState, merge, utc } from '../live.js';
 
 const d = await load('markets', 'tree', 'charts', 'links', 'meta');
@@ -95,6 +95,7 @@ const RUNGS = [
    ladder can be recomputed in front of the reader. */
 function factors(m, challenged) {
   const to = m.vol / Math.max(m.liq, 1);
+  const dated = isDated(m.f);
   const dset = (m.f - now) / DAY;
   return [
     ['verification', m.v === 'verified' ? 0 : m.v === 'not_verified' ? 2 : 3,
@@ -103,8 +104,8 @@ function factors(m, challenged) {
     ['depth', !m.hl ? 0 : m.liq < 100 ? 1.5 : m.liq < 1000 ? 0.75 : 0,
      `${money(m.liq)} locked`, 'liquidityUSD'],
     ['turnover', to > 5 ? 2 : to > 1 ? 1 : 0, `${to.toFixed(1)}× volume over liquidity`, 'volumeUSD ÷ liquidityUSD'],
-    ['settlement', dset < 0 ? 1 : dset < 3 ? 0.5 : dset < 30 ? 1 : 2,
-     `${ago(m.f)} · finalizes`, 'finalizesAt'],
+    ['settlement', !dated || dset < 0 ? 1 : dset < 3 ? 0.5 : dset < 30 ? 1 : 2,
+     dated ? `${ago(m.f)} · finalizes` : 'no finalize date recorded', 'finalizeTs'],
     ['conditional', m.pm ? 1 : 0, m.pm ? `child of 0x${m.pm}…` : 'root question', 'parentMarketId'],
     ['arbitration', (m.arb || m.pa) ? 3 : 0,
      (m.arb || m.pa) ? `${m.arb} question(s) in arbitration` : 'none recorded', 'questionsInArbitration'],
@@ -117,6 +118,7 @@ const rungOf = (s) => (s >= 6.5 ? 4 : s >= 5 ? 3 : s >= 3.5 ? 2 : s >= 2 ? 1 : 0
 const challenged = new Set();
 const wanted = new URLSearchParams(location.search).get('m');
 let cur = ix.byId.get(wanted) || markets.slice().sort((a, b) => b.liq - a.liq)[0];
+flagSubstitution(wanted, cur.id, `the ${markets.length} markets in this snapshot`);
 
 function rungList() {
   const buckets = [[], [], [], [], []];
@@ -244,7 +246,7 @@ $('model').innerHTML = [
   ['pool', '0 – 2', 'hasLiquidity', 'Without a Swapr pool the only exit is waiting for resolution or being the maker.'],
   ['depth', '0 – 1.5', 'liquidityUSD', 'Size you can actually leave through, in dollars, at this snapshot.'],
   ['turnover', '0 – 2', 'volumeUSD ÷ liquidityUSD', 'Volume far above locked liquidity is trading against a thin book, not depth.'],
-  ['settlement', '0 – 2', 'finalizesAt', 'How long the money is unavailable, and whether the date has already passed.'],
+  ['settlement', '0 – 2', 'finalizeTs', 'How long the money is unavailable. An elapsed date and an unscheduled one both score 1: 201 of these markets carry a sentinel, not a date.'],
   ['conditional', '0 – 1', 'parentMarketId', 'A child inherits its parent’s resolution risk on top of its own.'],
   ['arbitration', '0 – 3', 'questionsInArbitration', 'A disputed question is not a price, it is an opinion about a court.'],
   ['resolved', '−1 – 0', 'resolved', 'A settled market has no forward risk left, only a redemption to collect.']

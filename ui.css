@@ -96,16 +96,18 @@ button.ghost[aria-pressed="true"] { background: var(--ef-violet); color: var(--f
 #surface-depth b { color: var(--fg); font-weight: 500; }
 #surface-depth .dsep { border-left: 1px solid var(--ink-150); padding-left: var(--s-3); }
 
+/* The leg readout is docked in the surface bar (shell.js moves the node there),
+   which is sticky — so it stays on screen without ever covering the thing it
+   describes. Floating it bottom-right put it over a liquidity column. */
 .leg-badge {
-  position: fixed; bottom: var(--s-4); right: var(--s-4); z-index: 40;
-  display: grid; gap: 2px; padding: var(--s-3) var(--s-4);
-  background: var(--ink-900); color: var(--ef-paper);
-  border-radius: var(--r-lg); font-size: var(--t-micro); line-height: 1.35;
-  box-shadow: var(--shadow-float);
+  display: flex; align-items: center; gap: var(--s-3);
+  margin-left: var(--s-4); padding: 0 var(--s-4);
+  border-left: var(--rule); color: var(--fg-mute);
+  font-size: var(--t-micro); line-height: 1; white-space: nowrap;
 }
-html[data-theme="dark"] .leg-badge { background: var(--ef-violet-soft); color: var(--ef-ink); }
-.leg-badge b { font-size: var(--t-small); font-weight: 500; }
+.leg-badge b { font-size: var(--t-micro); font-weight: 500; color: var(--fg); }
 .leg-badge .faded { opacity: .66; }
+html[data-theme="dark"] .leg-badge { color: var(--fg-mute); }
 
 /* ---------- market rows ---------- */
 
@@ -167,6 +169,10 @@ html[data-theme="dark"] .spine path.line { stroke: var(--ef-violet-alt); }
   padding: 1px 5px; font-size: var(--t-micro); white-space: nowrap;
 }
 
+/* The bar is one row of fixed labels; the easing is the least load-bearing of the
+   badge's five readings, so it is the first thing to go when the row gets tight. */
+@media (max-width: 1200px) { .leg-badge .ease { display: none; } }
+
 /* ---------- responsive ---------- */
 
 @media (max-width: 860px) {
@@ -187,12 +193,12 @@ html[data-theme="dark"] .spine path.line { stroke: var(--ef-violet-alt); }
   padding: var(--s-6) 0 var(--s-7);
 }
 .masthead .eyebrow { grid-column: 1; grid-row: 1; }
-.masthead h1 { grid-column: 1; grid-row: 2; margin-bottom: 0; max-width: 13ch; }
+.masthead h1 { grid-column: 1; grid-row: 2; margin-bottom: 0; max-width: 18ch; text-wrap: balance; }
 .masthead .lede { grid-column: 2; grid-row: 2; margin-bottom: 0; max-width: 46ch; }
 @media (max-width: 900px) {
   /* Collapsing the tracks is not enough: the children name their columns
      explicitly, so a single-track grid still resolves `grid-column: 2` into a
-     second, implicit column and the headline stays a 13ch ribbon. */
+     second, implicit column and the headline stays a narrow ribbon. */
   .masthead { grid-template-columns: 1fr; align-items: start; }
   .masthead .eyebrow, .masthead h1, .masthead .lede { grid-column: 1; grid-row: auto; }
   .masthead h1 { max-width: none; }
@@ -214,6 +220,12 @@ html[data-theme="dark"] .spine path.line { stroke: var(--ef-violet-alt); }
   content: '·'; margin-right: var(--s-3); color: var(--fg-mute);
 }
 .metastrip .out { white-space: nowrap; }
+/* A strip is one line of facts. A 200-character question belongs in the headline,
+   not here, so the copy of it that rides in a strip gets two lines and a title. */
+.metastrip .mkt-name {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2;
+  overflow: hidden; max-width: 62ch; line-height: 1.35;
+}
 
 
 .grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-6); padding: var(--s-6) 0; }

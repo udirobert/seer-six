@@ -67,7 +67,10 @@ def market_row(m):
     q = (m.get("questions") or [{}])[0]
     full = m["id"]
     WRAPPED[full] = m.get("wrappedTokens") or []
-    name = re.sub(r"\s+", " ", (m.get("marketName") or "").strip())[:96]
+    # Names ship whole. A row clamps them in CSS where the layout needs it; slicing
+    # them here cut 116 of 284 questions mid-word, including the headline of the
+    # market document — the one object the boundary claim is about.
+    name = re.sub(r"\s+", " ", (m.get("marketName") or "").strip())[:200]
     outs = [re.sub(r"\s+", " ", str(o).strip())[:40] for o in (m.get("outcomes") or [])]
     row = {
         "id": short(full),

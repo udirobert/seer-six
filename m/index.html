@@ -34,12 +34,13 @@ import { CHARTS } from '../data/charts.js';
 import { EVENTS } from '../data/events.js';
 import { LINKS } from '../data/links.js';
 import { META } from '../data/meta.js';
-import { boot, index, esc, money, pct, stateOf, ago, seerURL, ROOT, legBadge,
-         reduced, announce, tagTravellers, SURFACES } from '../shell.js';
+import { boot, index, esc, money, pct, stateOf, ago, finalizesText, seerURL, ROOT, legBadge,
+         reduced, announce, tagTravellers, flagSubstitution, SURFACES } from '../shell.js';
 
 const ix = index(MARKETS, TREE);
 const id = new URLSearchParams(location.search).get('m');
 const m = ix.byId.get(id) || MARKETS[0];
+flagSubstitution(id, m.id, `the ${MARKETS.length} markets in this snapshot`);
 document.title = `${m.name} · Seer`;
 
 const st = stateOf(m), depth = ix.depthOf(m.id), parent = ix.parentOf(m.id);
@@ -162,7 +163,7 @@ document.getElementById('stage').innerHTML = `
         <span class="num">${money(m.vol)} volume</span>
         <span class="num">chain ${m.ch}</span>
         <span class="num">verification ${esc(m.v || 'none')}</span>
-        <span class="num">finalizes ${ago(m.f)}</span>
+        <span class="num">${esc(finalizesText(m.f))}</span>
         <span class="num" title="market id is truncated to 10 hex characters in this snapshot">id 0x${esc(m.id)}…</span>
         ${link ? `<a class="out" href="${link}">open this market on Seer ↗</a>` : ''}
       </div>

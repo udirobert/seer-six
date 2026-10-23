@@ -86,7 +86,7 @@
 <aside class="leg-badge" id="leg-badge" aria-hidden="true"></aside>
 
 <script type="module">
-import { load, boot, esc, money, ago, tagTravellers, disarm, animate, reduced,
+import { load, boot, esc, money, ago, finalizesText, tagTravellers, disarm, animate, reduced,
          legBadge, ROOT, announce, SURFACES } from '../shell.js';
 
 const d = await load('futarchy', 'markets', 'meta');
@@ -116,7 +116,7 @@ function pairHTML() {
     <span class="stem" id="stem">
       <span class="q mkt-name" data-vt="name">${esc(cur.nm)}</span>
       <span class="meta">market 0x${esc(cur.id)}… · arbitrator 0x${esc(cur.ar)}… ·
-        timeout ${(cur.to / 86400).toFixed(1)} d · opens ${ago(cur.o)} · finalizes ${ago(cur.f)}</span>
+        timeout ${(cur.to / 86400).toFixed(1)} d · opens ${ago(cur.o)} · ${esc(finalizesText(cur.f))}</span>
     </span>`;
 }
 
