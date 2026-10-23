@@ -104,6 +104,12 @@ button.ghost[aria-pressed="true"] { background: var(--ef-violet); color: var(--f
   margin-left: var(--s-4); padding: 0 var(--s-4);
   border-left: var(--rule); color: var(--fg-mute);
   font-size: var(--t-micro); line-height: 1; white-space: nowrap;
+  /* One slot, same width on every document. The bar is the paired `chrome`
+     snapshot, so during a cross-document morph the outgoing and incoming readouts
+     are painted on top of each other for the whole interval; when the badge was
+     free to size itself to its text, the longer of the two ran into the Contract
+     button and a still of the signature gesture looked like broken layout. */
+  min-width: 44ch;
 }
 .leg-badge b { font-size: var(--t-micro); font-weight: 500; color: var(--fg); }
 /* No opacity here. As a floating chip this readout sat on ink-900, where 66% of
@@ -173,7 +179,6 @@ html[data-theme="dark"] .spine path.line { stroke: var(--ef-violet-alt); }
 
 /* The bar is one row of fixed labels; the easing is the least load-bearing of the
    badge's five readings, so it is the first thing to go when the row gets tight. */
-@media (max-width: 1200px) { .leg-badge .ease { display: none; } }
 
 /* ---------- responsive ---------- */
 

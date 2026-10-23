@@ -114,8 +114,7 @@ export function legBadge(opts = {}) {
     const leg = h.dataset.leg;
     const step = LEG_STEP[leg];
     badge.innerHTML = `<b>leg · ${esc(step ? leg : 'cold arrival')}</b>` +
-      (step ? `<span>${dur(step)}ms · --d-${step}</span>` +
-        `<span class="faded ease">${esc(ease(leg === 'lateral' ? 'std' : 'out'))}</span>` : '') +
+      (step ? `<span>${dur(step)}ms · --d-${step}</span>` : '') +
       `<span class="faded">reduced: ${reduced() ? 'on (snap)' : 'off'}</span>` +
       (opts.tail ? `<span class="faded">${esc(opts.tail)}</span>`
         : `<span class="faded">from: ${esc(h.dataset.from || 'direct')}</span>`);
