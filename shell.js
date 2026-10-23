@@ -81,9 +81,43 @@ export function animate(el, frames, opts = {}) {
   });
 }
 
-export function sameDoc(mutate) {
+/* An in-page leg is the same contract as a cross-document one: the caller says
+   which relation it is walking, the stylesheet decides how long that takes. */
+export function sameDoc(mutate, leg) {
   if (!document.startViewTransition || reduced()) { mutate(); return null; }
-  return document.startViewTransition(mutate);
+  const h = document.documentElement;
+  const prev = h.dataset.leg;
+  if (leg) h.dataset.leg = leg;
+  const t = document.startViewTransition(mutate);
+  if (leg) t.finished.finally(() => { h.dataset.leg = prev; });
+  return t;
+}
+
+/* ---------- the leg badge ---------- */
+
+export const LEG_STEP = { morph: 3, fan: 5, lateral: 2, back: 3, split: 5, redeem: 3, verify: 1 };
+
+/* The badge is the argument written on the screen: it names the relation the
+   current motion stands for and the token that times it, so no reader has to
+   trust that a duration came from anywhere other than the contract. */
+export function legBadge(opts = {}) {
+  const badge = document.getElementById('leg-badge');
+  if (!badge) return;
+  const h = document.documentElement;
+  const draw = () => {
+    const leg = h.dataset.leg;
+    const step = LEG_STEP[leg];
+    badge.innerHTML = `<b>leg · ${esc(step ? leg : 'cold arrival')}</b>` +
+      (step ? `<span>${dur(step)}ms · --d-${step}</span>` +
+        `<span class="faded">${esc(ease(leg === 'lateral' ? 'std' : 'out'))}</span>` : '') +
+      `<span class="faded">reduced: ${reduced() ? 'on (snap)' : 'off'}</span>` +
+      (opts.tail ? `<span class="faded">${esc(opts.tail)}</span>`
+        : `<span class="faded">from: ${esc(h.dataset.from || 'direct')}</span>`);
+  };
+  draw();
+  matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', draw);
+  new MutationObserver(draw).observe(h,
+    { attributes: true, attributeFilter: ['data-reduced', 'data-leg', 'data-theme'] });
 }
 
 /* ---------- formatters ---------- */
@@ -114,6 +148,32 @@ export function stateOf(r, now = Date.now() / 1000) {
   if (r.f && r.f < now) return { k: 'finalizing', t: 'Finalizing' };
   if (!r.hl) return { k: 'noliquidity', t: 'No pool' };
   return { k: 'live', t: 'Open' };
+}
+
+/* ---------- the history line ---------- */
+
+/* One implementation of an honesty rule, shared by every surface: a line is
+   drawn only where the API actually has a pool series, the level is indexed to
+   its own first print because the quote asset is savings xDAI rather than
+   dollars, and a row with no pool says so in words. */
+export function spine(charts, id, w = 120, h = 26) {
+  const s = charts?.[id];
+  const pts = s?.[0]?.s || [];
+  if (!s) return '<span class="nohist">no pool history</span>';
+  if (pts.length < 2) return '<span class="nohist">too few prints</span>';
+  const pad = 2;
+  const vals = pts.map((p) => p[1]);
+  const lo = Math.min(...vals), hi = Math.max(...vals), rg = hi - lo || 1;
+  const X = (i) => (i / (pts.length - 1)) * (w - pad * 2) + pad;
+  const Y = (v) => h - pad - ((v - lo) / rg) * (h - pad * 2);
+  const d = pts.map((p, i) => `${i ? 'L' : 'M'}${X(i).toFixed(1)} ${Y(p[1]).toFixed(1)}`).join(' ');
+  const last = pts[pts.length - 1][1], first = pts[0][1];
+  const dir = last > first ? 'up' : last < first ? 'down' : 'flat';
+  const chg = first > 0 ? ((last - first) / first) * 100 : 0;
+  return `<svg class="spine" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true">
+    <path class="area" d="${d} L${X(pts.length - 1)} ${h} L${X(0)} ${h} Z" data-hist="${dir}"/>
+    <path class="line" d="${d}"/><circle cx="${X(pts.length - 1)}" cy="${Y(last)}" r="2"/>
+  </svg><span class="delta" data-dir="${dir}">${dir === 'flat' ? '±' : dir === 'up' ? '▲' : '▼'}${pct(Math.abs(chg), 1)}<em>idx</em></span>`;
 }
 
 /* ---------- the travelling object ---------- */

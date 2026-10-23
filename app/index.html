@@ -80,7 +80,7 @@
 
 <script type="module">
 import { load, boot, index, esc, money, pct, stateOf, ago, marketURL, armTravellers,
-         sameDoc, reduced, dur, ease, ROOT, announce } from '../shell.js';
+         sameDoc, reduced, legBadge, spine, ROOT, announce } from '../shell.js';
 
 const d = await load('markets', 'tree', 'charts', 'links', 'meta');
 const [markets, tree, charts, links, meta] = [d.markets, d.tree, d.charts, d.links, d.meta];
@@ -92,30 +92,6 @@ const spread = (r) => {
   const o = (r.odds || []).filter((v) => v != null);
   return o.length > 1 ? Math.max(...o) - Math.min(...o) : 0;
 };
-const hist = (id) => charts?.[id];
-
-/* Price history exists for 14 markets in this snapshot. The other rows say so
-   instead of drawing an invented line. */
-function spineSVG(id) {
-  const s = hist(id);
-  if (!s) return '<span class="nohist">no pool history</span>';
-  const pts = s[0]?.s || [];
-  const w = 120, h = 26, pad = 2;
-  if (pts.length < 2) return '<span class="nohist">too few prints</span>';
-  const vals = pts.map((p) => p[1]);
-  const lo = Math.min(...vals), hi = Math.max(...vals), rg = hi - lo || 1;
-  const X = (i) => (i / (pts.length - 1)) * (w - pad * 2) + pad;
-  const Y = (v) => h - pad - ((v - lo) / rg) * (h - pad * 2);
-  const d = pts.map((p, i) => `${i ? 'L' : 'M'}${X(i).toFixed(1)} ${Y(p[1]).toFixed(1)}`).join(' ');
-  const last = pts[pts.length - 1][1], first = pts[0][1];
-  const dir = last > first ? 'up' : last < first ? 'down' : 'flat';
-  const chg = first > 0 ? ((last - first) / first) * 100 : 0;
-  return `<svg class="spine" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true">
-    <path class="area" d="${d} L${X(pts.length - 1)} ${h} L${X(0)} ${h} Z" data-hist="${dir}"/>
-    <path class="line" d="${d}"/><circle cx="${X(pts.length - 1)}" cy="${Y(last)}" r="2"/>
-  </svg><span class="delta" data-dir="${dir}">${dir === 'flat' ? '±' : dir === 'up' ? '▲' : '▼'}${pct(Math.abs(chg), 1)}<em>idx</em></span>`;
-}
-
 function rowHTML(m) {
   const st = stateOf(m), d = ix.depthOf(m.id), fan = kidsOf(m.id).length;
   const parent = ix.parentOf(m.id);
@@ -133,7 +109,7 @@ function rowHTML(m) {
     <span class="oddsbar">${top}</span>
     <span class="odds-val num">${pct((m.odds || []).filter((v) => v != null)[0] ?? null)}</span>
   </span>
-  <span class="c-spine" data-vt="spine">${spineSVG(m.id)}</span>
+  <span class="c-spine" data-vt="spine">${spine(charts, m.id)}</span>
   <span class="c-liq num">${money(m.liq)}</span>
   <span class="c-state"><span class="pill" data-k="${st.k}">${st.t}</span></span>
 </a>`;
@@ -192,19 +168,7 @@ snap.innerHTML = `Snapshot <b>${esc(meta.iso)}</b> from <code>${esc(meta.source)
 
 boot({ surface: 'app' });
 
-const badge = document.getElementById('leg-badge');
-function drawBadge() {
-  const leg = document.documentElement.dataset.leg || 'lateral';
-  const step = { morph: 3, fan: 5, lateral: 2, back: 3, split: 5, redeem: 3, verify: 1 }[leg];
-  badge.innerHTML = `<b>leg · ${esc(step ? leg : 'cold arrival')}</b>` +
-    (step ? `<span>${dur(step)}ms · --d-${step}</span><span class="faded">${esc(ease('out'))}</span>` : '') +
-    `<span class="faded">reduced: ${reduced() ? 'on (snap)' : 'off'}</span>` +
-    `<span class="faded">from: ${esc(document.documentElement.dataset.from || 'direct')}</span>`;
-}
-drawBadge();
-matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', drawBadge);
-new MutationObserver(drawBadge).observe(document.documentElement,
-  { attributes: true, attributeFilter: ['data-reduced', 'data-leg', 'data-theme'] });
+legBadge();
 document.getElementById('surface-bar').addEventListener('click', (e) => {
   if (e.target.closest('a[data-leg]')) {
     setTimeout(() => {

@@ -33,7 +33,7 @@ import { CHARTS } from '../data/charts.js';
 import { EVENTS } from '../data/events.js';
 import { LINKS } from '../data/links.js';
 import { META } from '../data/meta.js';
-import { boot, index, esc, money, pct, stateOf, ago, seerURL, ROOT, dur, ease,
+import { boot, index, esc, money, pct, stateOf, ago, seerURL, ROOT, legBadge,
          reduced, announce, tagTravellers, SURFACES } from '../shell.js';
 
 const ix = index(MARKETS, TREE);
@@ -44,26 +44,51 @@ document.title = `${m.name} · Seer`;
 const st = stateOf(m), depth = ix.depthOf(m.id), parent = ix.parentOf(m.id);
 const kids = ix.kids.get(m.id) || [];
 const series = CHARTS?.[m.id];
-const lead = (m.odds || []).findIndex((v) => v != null);
+const priced = (m.odds || []).map((v, i) => [v, i]).filter(([v]) => v != null);
+/* The headline is the market's current answer, not its first row: outcome 0 is
+   often the losing leg of a resolved question. */
+const lead = priced.length ? priced.reduce((a, b) => (b[0] > a[0] ? b : a))[1] : -1;
+let sel = lead;
 const events = (EVENTS || []).filter((e) => e.mid === m.id);
 const shown = (m.outs || []).length;
 
 function priceBlock() {
   const legs = (m.outs || []).map((o, i) => {
     const v = m.odds ? m.odds[i] : null;
-    return `<li class="leg${i === lead ? ' lead' : ''}">
+    return `<li><button type="button" class="leg${i === sel ? ' lead' : ''}" data-i="${i}"
+      ${i === sel ? 'aria-current="true"' : ''}
+      aria-label="${esc(o)}, ${(m.odds?.[i] ?? 0).toFixed(1)} percent">
       <span class="leg-o">${esc(o)}</span>
       <span class="leg-p num">${v == null ? '—' : '$' + (v / 100).toFixed(2)}</span>
       <span class="leg-bar"><i style="width:${v || 0}%"></i></span>
-      <span class="leg-s num">${pct(v)}</span></li>`;
+      <span class="leg-s num">${pct(v)}</span></button></li>`;
   }).join('');
+  const v = m.odds ? m.odds[sel] : null;
   return `<div class="pricecard">
     <p class="eyebrow">Outcome price · one share pays $1 if it happens</p>
-    <p class="bigprice num" data-vt="spine">${m.odds?.[lead] != null ? '$' + (m.odds[lead] / 100).toFixed(2) : 'no price yet'}</p>
+    <p class="bigprice num" data-vt="spine">${v != null ? '$' + (v / 100).toFixed(2) : 'no price yet'}</p>
+    <p class="bignm">${v != null
+      ? `${esc(m.outs[sel])} · outcome ${sel} · pick another leg`
+      : 'nothing is priced in this snapshot'}</p>
     <ul class="legs" data-vt="odds">${legs}</ul>
-    <p class="sumcheck num">basket Σ ${((m.odds || []).reduce((a, v) => a + (v || 0), 0) / 100).toFixed(3)} dollars
+    <p class="sumcheck num">basket Σ ${((m.odds || []).reduce((a, x) => a + (x || 0), 0) / 100).toFixed(3)} dollars
       ${m.no ? `· ${shown} of ${m.no} outcomes shown` : ''}</p>
   </div>`;
+}
+
+/* Picking a leg is a price change, so it takes the price interval: vertical
+   only, direction from the sign, displacement from the magnitude. */
+function paintPrice() {
+  const el = document.querySelector('.pricecard');
+  const from = parseFloat(document.querySelector('.bigprice').textContent.replace('$', '')) || 0;
+  el.outerHTML = priceBlock();
+  const big = document.querySelector('.bigprice');
+  const to = (m.odds?.[sel] ?? 0) / 100;
+  tagTravellers(document.querySelector('.mktcard'));
+  if (reduced() || !isFinite(from)) return;
+  big.classList.add('price-tick');
+  big.style.setProperty('--tick-from',
+    `${(to >= from ? 1 : -1) * Math.min(Math.abs(to - from) * 2.4, 1.1)}em`);
 }
 
 function treeBlock() {
@@ -184,21 +209,20 @@ document.getElementById('snapshot').innerHTML =
    the four names the explorer armed on the row that just moved. */
 tagTravellers(document.querySelector('.mktcard'));
 
+document.querySelector('.legs').addEventListener('click', (e) => {
+  const b = e.target.closest('.leg');
+  if (!b) return;
+  const i = +b.dataset.i;
+  if (i === sel || m.odds?.[i] == null) return;
+  sel = i;
+  paintPrice();
+  announce(`${m.outs[i]}: ${(m.odds[i] / 100).toFixed(2)} dollars per share.`);
+});
+
 boot({ surface: 'app', marketDepth: depth });
 document.querySelector('[data-legname]').textContent = document.documentElement.dataset.leg;
 
-const badge = document.getElementById('leg-badge');
-function drawBadge() {
-  const leg = document.documentElement.dataset.leg || 'direct';
-  const step = { morph: 3, fan: 5, lateral: 2, back: 3, split: 5, redeem: 3, verify: 1 }[leg];
-  badge.innerHTML = `<b>leg · ${esc(step ? leg : 'cold arrival')}</b>` +
-    (step ? `<span>${dur(step)}ms · --d-${step}</span><span class="faded">${esc(ease('out'))}</span>` : '') +
-    `<span class="faded">reduced: ${reduced() ? 'on (snap)' : 'off'}</span>` +
-    `<span class="faded">0x${esc(m.id)} travels</span>`;
-}
-drawBadge();
-new MutationObserver(drawBadge).observe(document.documentElement,
-  { attributes: true, attributeFilter: ['data-reduced', 'data-leg'] });
+legBadge({ tail: `0x${m.id} travels` });
 
 /* The one animation allowed inside the object: vertical, signed by the delta,
    displaced by its magnitude. */

@@ -1,1 +1,234 @@
-<!doctype html><meta charset=utf-8><title>probe deep</title><body style="font:16px ui-monospace;padding:4rem"><p>PROBE :: deep<p><a href="/">root</a>
+<!DOCTYPE html>
+<html lang="en" data-surface="deep">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep — the wide branch · Seer, six interfaces</title>
+<meta name="description" content="A market with six outcomes is not a longer list, it is a wider branch. Deep reads the legs, splits a dollar of collateral through the Conditional Tokens Framework, and refuses to morph between two different questions.">
+<script src="../leg.js"></script>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../motion.css">
+<link rel="stylesheet" href="../ui.css">
+<link rel="stylesheet" href="deep.css">
+</head>
+<body>
+<div id="surface-bar" class="vt-chrome"></div>
+
+<main class="wrap">
+  <div id="surface-depth"></div>
+
+  <header class="masthead">
+    <p class="eyebrow">Surface 3 of 6 · one protocol, read for breadth</p>
+    <h1>Deep</h1>
+    <p class="lede">A binary market is a coin. A market with six outcomes is a branch that has already
+      split five times. Deep is the reading that counts the legs instead of hiding them behind a
+      yes/no toggle — <b id="rail-count">—</b> markets in this snapshot have four outcomes or more.</p>
+  </header>
+
+  <section class="block" aria-labelledby="rail-h">
+    <h2 id="rail-h">The wide branches</h2>
+    <p class="blocknote">Ordered by liquidity. Picking one here changes the object, so nothing morphs —
+      the contract only carries identity across a boundary when the same market is on both sides of it.
+      Arriving from the market document is different: that leg does morph, and the three parts of the
+      object that travel are named on this page too.</p>
+    <div class="rail" id="rail" role="tablist" aria-label="Markets with four or more outcomes"></div>
+  </section>
+
+  <section class="deep" id="stage"></section>
+
+  <footer id="snapshot"></footer>
+</main>
+
+<aside class="leg-badge" id="leg-badge" aria-hidden="true"></aside>
+
+<script type="module">
+import { load, boot, index, esc, money, pct, stateOf, spine, tagTravellers, disarm,
+         reduced, animate, legBadge, dur, ROOT, announce, SURFACES } from '../shell.js';
+
+const d = await load('markets', 'tree', 'charts', 'links', 'meta');
+const [markets, tree, charts, links, meta] = [d.markets, d.tree, d.charts, d.links, d.meta];
+const ix = index(markets, tree);
+const wide = markets.filter((m) => (m.outs || []).length >= 4).sort((a, b) => b.liq - a.liq);
+
+const wanted = new URLSearchParams(location.search).get('m');
+let cur = ix.byId.get(wanted) || wide[0];
+document.getElementById('rail-count').textContent = String(wide.length);
+
+function railHTML() {
+  return wide.slice(0, 24).map((m) => `<button type="button" data-id="${m.id}"
+    aria-current="${m.id === cur.id}">
+      <span class="num oc">${(m.outs || []).length}${m.no ? '+' : ''}</span>
+      <span class="rn">${esc(m.name)}</span>
+      <span class="num rl">${money(m.liq)}</span></button>`).join('');
+}
+
+function pathOf(m) {
+  const path = [];
+  let n = m, guard = 0;
+  while (n && guard++ < 8) { path.unshift(n); n = ix.parentOf(n.id); }
+  return path;
+}
+
+function ledgerHTML(m) {
+  const rows = (m.outs || []).map((o, i) => {
+    const v = m.odds ? m.odds[i] : null;
+    return `<tr><td class="li">${esc(o)}</td><td class="num co">${i}</td>
+      <td class="num px">${v == null ? '—' : '$' + (v / 100).toFixed(2)}</td>
+      <td class="num sh">${v == null ? '—' : (100 / v).toFixed(2)}</td>
+      <td><span class="leg-bar"><i style="width:${v || 0}%"></i></span></td></tr>`;
+  }).join('');
+  const sum = (m.odds || []).reduce((a, v) => a + (v || 0), 0);
+  return `<table class="ledger"><caption class="visually-hidden">
+      One dollar of collateral split across ${m.outs.length} outcome tokens</caption>
+    <thead><tr><th scope="col">Outcome</th><th scope="col" class="num">Index</th>
+      <th scope="col" class="num">Price</th><th scope="col" class="num">Shares per $1</th>
+      <th scope="col">Weight</th></tr></thead><tbody>${rows}</tbody>
+    <tfoot><tr><th scope="row" colspan="2">Σ of priced legs</th>
+      <td class="num" colspan="3">${(sum / 100).toFixed(3)} dollars${
+        Math.abs(sum - 100) > 0.5 ? ' · the missing cents are the legs with no pool, not a rounding error' : ' · the invariant holds'}</td>
+    </tr></tfoot></table>`;
+}
+
+function stageHTML(m) {
+  const st = stateOf(m), depth = ix.depthOf(m.id), kids = ix.kids.get(m.id) || [];
+  const path = pathOf(m);
+  const parent = ix.parentOf(m.id);
+  const link = `https://app.seer.pm/markets/${m.ch}/${links?.[m.id] || ''}`;
+  return `
+  <div class="mktcard">
+    <header class="mhead">
+      <p class="eyebrow">Carried by leg <b data-legname>—</b> · ${path.length - 1} split${path.length - 1 === 1 ? '' : 's'} below the stem</p>
+      <h2 class="mkt-name" data-vt="name">${esc(m.name)}</h2>
+      <div class="metastrip">
+        <span class="pill" data-k="${st.k}">${st.t}</span>
+        <span class="num">${(m.outs || []).length} outcomes</span><span class="dot">·</span>
+        <span class="num">${money(m.liq)} liquidity</span><span class="dot">·</span>
+        <span class="num">chain ${m.ch}</span><span class="dot">·</span>
+        <span class="num">verification ${esc(m.v || 'none')}</span>
+        <span class="num" title="market id is truncated to 10 hex characters in this snapshot">id 0x${esc(m.id)}…</span>
+        ${links?.[m.id] ? `<a class="out" href="${link}">open on Seer ↗</a>` : ''}
+      </div>
+    </header>
+    <div class="pricecol">
+      <p class="eyebrow">Outcome prices · one share pays $1</p>
+      <p class="spinebox" data-vt="spine">${spine(charts, m.id)}</p>
+      <div class="oddsgrid" data-vt="odds">
+        ${(m.outs || []).map((o, i) => `<span class="og-row"><b>${esc(o)}</b>
+          <i class="og-bar"><i style="width:${m.odds?.[i] || 0}%"></i></i>
+          <em class="num">${pct(m.odds?.[i])}</em></span>`).join('')}
+      </div>
+    </div>
+  </div>
+
+  <div class="two">
+    <section class="block">
+      <h3>Split a dollar</h3>
+      <p class="blocknote"><code>splitPosition(contractId, payoutCollateral)</code> is one contract call that
+        mints one share of every outcome for a dollar in. The motion here is that call: the collateral goes
+        out to all legs at once, because a split is one operation, not a queue. The interval is the fan —
+        ${dur(5)}ms, the widest step in the contract.</p>
+      <div class="splitter">
+        <div class="collateral num" id="col">$1.00 · collateral</div>
+        <button type="button" class="act" id="do-split">splitPosition</button>
+        <button type="button" class="act ghost" id="do-merge">mergePositions</button>
+        <ol class="minted" id="minted">
+          ${(m.outs || []).map((o, i) => `<li><span>${esc(o)}</span><em class="num">1 share</em></li>`).join('')}
+        </ol>
+      </div>
+      ${ledgerHTML(m)}
+    </section>
+
+    <section class="block">
+      <h3>How deep this branch is</h3>
+      <ol class="path">
+        ${path.map((n, i) => `<li style="--d:${i}">
+          <span class="num lvl">d${i}</span>
+          ${i === path.length - 1 ? `<span class="nm">${esc(n.name)}</span>`
+            : `<a class="nm" href="${ROOT}/m/?m=${n.id}&leg=back&from=deep">${esc(n.name)}</a>`}
+          ${n.po != null && i > 0 ? `<span class="num cond">as outcome ${esc(String(n.po))} of the question above</span>` : ''}
+        </li>`).join('')}
+      </ol>
+      ${kids.length ? `<p class="blocknote">This branch has ${kids.length} children of its own —
+        <a href="${ROOT}/app/?leg=split&from=deep">the book shows them as depth</a>.</p>` : ''}
+      <h3>The same object as a machine reads it</h3>
+      <p class="blocknote">Not a JSON viewer bolted on for effect: this is the shape a resolver or an agent
+        gets, and it is the shape the motion above is choreographed from. The fields that drive the
+        choreography are the same ones that drive the protocol.</p>
+      <pre class="agent">${esc(JSON.stringify({
+        id: '0x' + m.id + '…', type: m.ty === 'G' ? 'Generic' : 'Futarchy', chainId: m.ch,
+        outcomes: m.outs, prices_cents: m.odds, parentMarket: m.pm ? '0x' + m.pm + '…' : null,
+        parentOutcomeIndex: m.po, children: kids.length, liquidityUSD: m.liq,
+        verification: m.v, state: st.t, snapshot: meta.iso }, null, 1))}</pre>
+    </section>
+  </div>
+
+  <section class="block">
+    <h3>Read this market somewhere else</h3>
+    <ul class="lateral">
+      ${SURFACES.filter((s) => !['home', 'deep'].includes(s.key)).map((s) =>
+        `<li><a href="${ROOT}/${s.href.split('/')[0]}/?m=${encodeURIComponent(m.id)}&leg=lateral&from=deep">
+          <span class="slot-n">${s.n}</span>${esc(s.label)}<span class="arrow">→</span></a></li>`).join('')}
+    </ul>
+  </section>`;
+}
+
+function paint(carry) {
+  const stage = document.getElementById('stage');
+  if (!carry) disarm();
+  stage.innerHTML = stageHTML(cur);
+  document.querySelector('[data-legname]').textContent =
+    document.documentElement.dataset.leg === 'direct' ? 'a rail pick (no leg)' : document.documentElement.dataset.leg;
+  tagTravellers(stage);
+  const m = cur;
+  stage.querySelector('#do-split').addEventListener('click', () => fan(m, 'out'));
+  stage.querySelector('#do-merge').addEventListener('click', () => fan(m, 'in'));
+  document.getElementById('snapshot').innerHTML =
+    `Snapshot <b>${esc(meta.iso)}</b> · ${wide.length} markets with four or more outcomes · ` +
+    `<a href="${ROOT}/contract/?leg=lateral&from=deep">the contract this choreography comes from</a> · ` +
+    `press <span class="kbd">R</span> to take the motion away and read the same page.`;
+  boot({ surface: 'deep', marketDepth: ix.depthOf(m.id) });
+  legBadge();
+}
+
+/* The split, in code: one interval, all legs at once, outward. With motion
+   reduced the ledger and the minted list are already on screen, so the button
+   simply resolves to the end state — which is the same thing the animation
+   was going to show. */
+function fan(m, dir) {
+  const col = document.getElementById('col');
+  const legs = [...document.querySelectorAll('#minted li')];
+  legs.forEach((n) => { n.hidden = false; });
+  if (reduced()) { announce(dir === 'out' ? 'Collateral split into ' + legs.length + ' legs.' : 'Legs merged into collateral.'); return; }
+  const out = dir === 'out';
+  animate(col, out
+    ? [{ transform: 'none', opacity: 1 }, { transform: 'scale(.9)', opacity: .45 }]
+    : [{ transform: 'scale(.9)', opacity: .45 }, { transform: 'none', opacity: 1 }], { step: 5 });
+  legs.forEach((n, i) => {
+    const box = n.getBoundingClientRect(), c = col.getBoundingClientRect();
+    const dx = (c.left + c.width / 2) - (box.left + box.width / 2);
+    const dy = (c.top + c.height / 2) - (box.top + box.height / 2);
+    animate(n, out
+      ? [{ transform: `translate(${dx}px, ${dy}px) scale(.4)`, opacity: 0 }, { transform: 'none', opacity: 1 }]
+      : [{ transform: 'none', opacity: 1 }, { transform: `translate(${dx}px, ${dy}px) scale(.4)`, opacity: 0 }],
+      { step: 5 });
+  });
+  announce(out ? `splitPosition: one dollar minted ${legs.length} outcome tokens.`
+    : 'mergePositions: the legs are collateral again.');
+}
+
+document.getElementById('rail').innerHTML = railHTML();
+document.getElementById('rail').addEventListener('click', (e) => {
+  const b = e.target.closest('button[data-id]');
+  if (!b || b.dataset.id === cur.id) return;
+  cur = ix.byId.get(b.dataset.id);
+  /* A different market is a different object: the rail repaints without a
+     transition rather than pretending one question turns into another. */
+  paint(false);
+  this.innerHTML = railHTML();
+});
+
+paint(true);
+</script>
+</body>
+</html>
