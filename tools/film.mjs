@@ -22,7 +22,9 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const ENTRY = resolve(HERE, '..');
 
 function loadPlaywright() {
-  try { return require('playwright'); } catch (e) { /* fall through */ }
+  for (const m of ['playwright', 'playwright-core']) {
+    try { return require(m); } catch (e) { /* fall through */ }
+  }
   const cache = join(process.env.HOME, '.npm', '_npx');
   const hit = existsSync(cache) && require('fs').readdirSync(cache)
     .map((d) => join(cache, d, 'node_modules', 'playwright'))
@@ -31,6 +33,18 @@ function loadPlaywright() {
   return require(hit);
 }
 const { chromium } = loadPlaywright();
+
+/* Same launch discipline as a11y.mjs, deliberately duplicated rather than
+   shared: the reel and the measurements have to be taken on the same engine,
+   and a judge comparing the two should be able to read that off either file. */
+function launchOpts() {
+  const o = {};
+  if (process.env.CHROME_PATH) o.executablePath = process.env.CHROME_PATH;
+  else o.channel = process.env.CHANNEL || 'chrome';
+  const root = typeof process.getuid === 'function' && process.getuid() === 0;
+  if (root) o.args = ['--no-sandbox', '--disable-dev-shm-usage'];
+  return o;
+}
 
 const argv = process.argv.slice(2);
 const opt = (name, def) => {

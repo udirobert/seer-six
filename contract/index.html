@@ -670,10 +670,15 @@ try {
       `${s.objectSurvives.maxBars} · ${s.objectSurvives.maxH1}`,
       s.objectSurvives.maxBars === 1 && s.objectSurvives.maxH1 === 1 ? 'nothing duplicated' : 'duplicated',
       s.objectSurvives.maxBars === 1 && s.objectSurvives.maxH1 === 1),
-    kv('arrivals carrying a name that left the previous document',
-      s.objectSurvives.arrivalsSharingAName,
-      (s.objectSurvives.legsSharing || []).slice(0, 3).join(' · ') || '—',
-      Number(String(s.objectSurvives.arrivalsSharingAName).split('/')[0]) > 0),
+    kv('market parts paired across the row→market boundary',
+      `${(s.objectSurvives.byLeg?.morph || []).filter((n) => n.startsWith('mkt-')).length}/3`,
+      `name · odds · history — and 0 on ${s.objectSurvives.coldArrivalsPairingAnObject.split('/')[1]} cold arrivals`,
+      (s.objectSurvives.byLeg?.morph || []).filter((n) => n.startsWith('mkt-')).length === 3
+      && s.objectSurvives.coldArrivalsPairingAnObject.startsWith('0/')),
+    kv('shell names continuous on every arrival',
+      String(s.objectSurvives.continuousNames.length),
+      s.objectSurvives.continuousNames.join(', '),
+      s.objectSurvives.continuousNames.length >= 2),
     kv('the audit above, run inside the harness', s.selfAudit ? (s.selfAudit.allChecksPass ? 'clean' : 'flags') : '—',
       'self-audit agrees', !!s.selfAudit && s.selfAudit.allChecksPass)
   ].join('') + (ev.failures && ev.failures.length

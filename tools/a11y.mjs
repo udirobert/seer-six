@@ -329,13 +329,6 @@ const FOCUS_READ = () => {
 
 /* ---------- the run ---------- */
 
-/* Every view-transition-name in the document as it is right now. The browser
-   prefixes its own group animations "-ua-"; those are bookkeeping, not identity,
-   so they are dropped and only the names this code chose are compared. */
-const NAMED = () => [...new Set([...document.querySelectorAll('*')]
-  .map((e) => getComputedStyle(e).viewTransitionName)
-  .filter((n) => n && n !== 'none' && !n.startsWith('-ua-')))].sort();
-
 async function collect(page, p, label) {
   await p.waitForFunction(() => window.__vt, null, { timeout: 8000 }).catch(() => {});
   const probe = await p.evaluate(() => window.__vt || null);
@@ -482,21 +475,41 @@ function summarise(rows, axe, focus, dark) {
         return `${z.filter((r) => r.probe.ms >= STEP_MS[LEG_STEP[r.probe.leg]] * 0.5).length}/${z.length}`;
       })()
     },
-    objectSurvives: {
-      claim: 'after a warm arrival exactly one chrome bar and one h1 exist, and at least one view-transition-name is the same one that left the previous document',
-      arrivals: warm.length,
-      maxBars: Math.max(0, ...rows.map((r) => r.survival.bars)),
-      maxH1: Math.max(0, ...rows.map((r) => r.survival.h1)),
-      /* Not every leg carries an object: home is the root and contract is the
-         rules, so they name nothing and should. Counting those as failures
-         would be the harness arguing with the design instead of with itself. */
-      arrivalsSharingAName: `${warm.filter((r) => (r.shared || []).length).length}/${warm.length}`,
-      namedAcrossBoundary: [...new Set(warm.flatMap((r) => r.shared || []))].sort(),
-      legsSharing: [...new Set(warm.filter((r) => (r.shared || []).length)
-        .map((r) => `${r.probe.from || 'cold'}→${r.page}:${r.shared.join('+')}`))].sort(),
-      documentsNamingNothing: [...new Set(warm.filter((r) => !r.survival.travellers)
-        .map((r) => r.page))].sort()
-    },
+    /* Which names the browser paired across the boundary. This is the only
+       evidence for "the same object arrived" that cannot be produced by reading
+       one document: Chromium runs a `-ua-view-transition-group-anim-<name>`
+       animation for a name it found on BOTH sides and for no other. Nothing in
+       the incoming DOM proves a match, and nothing in the outgoing DOM survives
+       to be read after the click — so the transition's own bookkeeping is what
+       is recorded here. `chrome` and `root` pair on every arrival, because the
+       shell is continuous; `mkt-*` pair only on the legs that carry a market. */
+    objectSurvives: (() => {
+      const paired = (r) => [...new Set(((r.probe || {}).anims || [])
+        .map((a) => (/^-ua-view-transition-group-anim-(.+)$/).exec(a)?.[1])
+        .filter(Boolean))].sort();
+      const byName = {};
+      for (const r of warm) for (const n of paired(r)) {
+        (byName[n] ||= { legs: new Set(), pages: new Set() }).legs.add(r.probe.leg);
+        byName[n].pages.add(`${r.probe.from}→${r.page}`);
+      }
+      return {
+        claim: 'Chromium runs a group animation for a view-transition-name found on both sides of the boundary and for no other, so a paired name is the browser’s record that the object crossed',
+        arrivals: warm.length,
+        maxBars: Math.max(0, ...rows.map((r) => r.survival.bars)),
+        maxH1: Math.max(0, ...rows.map((r) => r.survival.h1)),
+        continuousNames: Object.keys(byName).filter((n) => byName[n].pages.size >= 8).sort(),
+        objectNamesPaired: Object.fromEntries(Object.entries(byName)
+          .filter(([n]) => n.startsWith('mkt-'))
+          .map(([n, v]) => [n, { legs: [...v.legs].sort(), arrivals: [...v.pages].sort() }])),
+        arrivalsPairingAnObject: `${warm.filter((r) => paired(r)
+          .some((n) => n.startsWith('mkt-'))).length}/${warm.length}`,
+        coldArrivalsPairingAnObject: `${cold.filter((r) => ((r.probe || {}).anims || [])
+          .some((a) => a.includes('group-anim-mkt-'))).length}/${cold.length}`,
+        byLeg: Object.fromEntries([...new Set(warm.map((r) => r.probe.leg))]
+          .map((leg) => [leg, [...new Set(warm.filter((r) => r.probe.leg === leg)
+            .flatMap(paired))].sort()]))
+      };
+    })(),
     coldCuts: {
       /* Genuinely cold: each page is reached from about:blank, so no document
          opted in on the other side and the browser has nothing to transition
@@ -627,16 +640,10 @@ for (const [mkey, mval] of MOTION) {
             : `#surface-bar a:nth-of-type(${page.nth})`;
         const hit = await p.locator(sel).first().isVisible().catch(() => false);
         if (!hit && page.market) log(`   ! ${sel} absent — falling back to any row`);
-        /* Names on the far side, taken before the click: the outgoing document
-           is gone the moment the arrival lands, and an identity that cannot be
-           seen leaving cannot be proven arriving. */
-        const leaving = await p.evaluate(NAMED);
         await p.click(hit || !page.market ? sel : '[data-market]');
         await p.waitForFunction(() => window.__vt, null, { timeout: 8000 }).catch(() => {});
         await quiet(p);
-        const rec = await collect(page, p, 'warm');
-        rec.shared = leaving.filter((n) => rec.survival.vtNames.includes(n));
-        rows.push(rec);
+        rows.push(await collect(page, p, 'warm'));
       }
     } catch (e) { note(`walk/${vkey}`, e); }
     await p.close();
