@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-23T18:14:32.930Z",
- "duration_s": 304,
+ "generated": "2026-10-23T21:24:56.243Z",
+ "duration_s": 258,
  "url": "https://udirobert.github.io/seer-six",
  "engine": "chrome 155.0.8059.86",
  "os": "darwin 25.6.0 arm64",
@@ -32,7 +32,7 @@
    "anyMoving": true,
    "fullMotionComparator": {
     "maxFrames": 33,
-    "maxMs": 523
+    "maxMs": 527
    }
   },
   "motionRuns": {
@@ -41,147 +41,19 @@
    "minLongestRunFrames": 15,
    "maxLongestRunFrames": 33,
    "legs": {
-    "deep": "lateral:16f",
+    "deep": "lateral:17f",
     "futarchy": "lateral:17f",
-    "opportunity": "lateral:15f",
-    "risk": "lateral:17f",
+    "opportunity": "lateral:16f",
+    "risk": "lateral:16f",
     "contract": "lateral:25f",
     "home": "back:21f",
     "app": "fan:33f",
-    "m": "morph:26f"
+    "m": "morph:25f"
    }
   },
   "intervalHonesty": {
    "claim": "the motion measured on arrival lands on the five-step scale the contract declares, per leg",
    "rows": [
-    {
-     "page": "deep",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 247,
-     "ratio": 1.12
-    },
-    {
-     "page": "futarchy",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 251,
-     "ratio": 1.14
-    },
-    {
-     "page": "opportunity",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 249,
-     "ratio": 1.13
-    },
-    {
-     "page": "risk",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 223,
-     "ratio": 1.01
-    },
-    {
-     "page": "contract",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 388,
-     "ratio": 1.76
-    },
-    {
-     "page": "home",
-     "leg": "back",
-     "step": 3,
-     "declaredMs": 320,
-     "measuredMs": 316,
-     "ratio": 0.99
-    },
-    {
-     "page": "app",
-     "leg": "fan",
-     "step": 5,
-     "declaredMs": 520,
-     "measuredMs": 523,
-     "ratio": 1.01
-    },
-    {
-     "page": "m",
-     "leg": "morph",
-     "step": 3,
-     "declaredMs": 320,
-     "measuredMs": 399,
-     "ratio": 1.25
-    },
-    {
-     "page": "deep",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 233,
-     "ratio": 1.06
-    },
-    {
-     "page": "futarchy",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 235,
-     "ratio": 1.07
-    },
-    {
-     "page": "opportunity",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 234,
-     "ratio": 1.06
-    },
-    {
-     "page": "risk",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 239,
-     "ratio": 1.09
-    },
-    {
-     "page": "contract",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 391,
-     "ratio": 1.78
-    },
-    {
-     "page": "home",
-     "leg": "back",
-     "step": 3,
-     "declaredMs": 320,
-     "measuredMs": 304,
-     "ratio": 0.95
-    },
-    {
-     "page": "app",
-     "leg": "fan",
-     "step": 5,
-     "declaredMs": 520,
-     "measuredMs": 522,
-     "ratio": 1
-    },
-    {
-     "page": "m",
-     "leg": "morph",
-     "step": 3,
-     "declaredMs": 320,
-     "measuredMs": 388,
-     "ratio": 1.21
-    },
     {
      "page": "deep",
      "leg": "lateral",
@@ -195,47 +67,47 @@
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 253,
-     "ratio": 1.15
+     "measuredMs": 242,
+     "ratio": 1.1
     },
     {
      "page": "opportunity",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 231,
-     "ratio": 1.05
+     "measuredMs": 238,
+     "ratio": 1.08
     },
     {
      "page": "risk",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 244,
-     "ratio": 1.11
+     "measuredMs": 232,
+     "ratio": 1.05
     },
     {
      "page": "contract",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 388,
-     "ratio": 1.76
+     "measuredMs": 401,
+     "ratio": 1.82
     },
     {
      "page": "home",
      "leg": "back",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 319,
-     "ratio": 1
+     "measuredMs": 315,
+     "ratio": 0.98
     },
     {
      "page": "app",
      "leg": "fan",
      "step": 5,
      "declaredMs": 520,
-     "measuredMs": 522,
+     "measuredMs": 518,
      "ratio": 1
     },
     {
@@ -243,8 +115,136 @@
      "leg": "morph",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 400,
-     "ratio": 1.25
+     "measuredMs": 402,
+     "ratio": 1.26
+    },
+    {
+     "page": "deep",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 230,
+     "ratio": 1.05
+    },
+    {
+     "page": "futarchy",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 237,
+     "ratio": 1.08
+    },
+    {
+     "page": "opportunity",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 222,
+     "ratio": 1.01
+    },
+    {
+     "page": "risk",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 253,
+     "ratio": 1.15
+    },
+    {
+     "page": "contract",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 404,
+     "ratio": 1.84
+    },
+    {
+     "page": "home",
+     "leg": "back",
+     "step": 3,
+     "declaredMs": 320,
+     "measuredMs": 307,
+     "ratio": 0.96
+    },
+    {
+     "page": "app",
+     "leg": "fan",
+     "step": 5,
+     "declaredMs": 520,
+     "measuredMs": 527,
+     "ratio": 1.01
+    },
+    {
+     "page": "m",
+     "leg": "morph",
+     "step": 3,
+     "declaredMs": 320,
+     "measuredMs": 374,
+     "ratio": 1.17
+    },
+    {
+     "page": "deep",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 249,
+     "ratio": 1.13
+    },
+    {
+     "page": "futarchy",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 252,
+     "ratio": 1.15
+    },
+    {
+     "page": "opportunity",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 239,
+     "ratio": 1.09
+    },
+    {
+     "page": "risk",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 232,
+     "ratio": 1.05
+    },
+    {
+     "page": "contract",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 395,
+     "ratio": 1.8
+    },
+    {
+     "page": "home",
+     "leg": "back",
+     "step": 3,
+     "declaredMs": 320,
+     "measuredMs": 315,
+     "ratio": 0.98
+    },
+    {
+     "page": "app",
+     "leg": "fan",
+     "step": 5,
+     "declaredMs": 520,
+     "measuredMs": 517,
+     "ratio": 0.99
+    },
+    {
+     "page": "m",
+     "leg": "morph",
+     "step": 3,
+     "declaredMs": 320,
+     "measuredMs": 393,
+     "ratio": 1.23
     }
    ],
    "atOrAboveHalf": "24/24"
@@ -290,7 +290,7 @@
      ]
     }
    },
-   "arrivalsPairingAnObject": "10/48",
+   "arrivalsPairingAnObject": "11/48",
    "coldArrivalsPairingAnObject": "0/48",
    "byLeg": {
     "lateral": [
@@ -376,13 +376,13 @@
   },
   "contrast": {
    "claim": "text contrast computed from rendered getComputedStyle values, in both themes, not eyeballed",
-   "readings": 41769,
+   "readings": 41948,
    "minRatio": 5.54,
    "failReadings": 0,
    "failPages": [],
    "worst": [],
    "dark": {
-    "readings": 3712,
+    "readings": 3752,
     "minRatio": 4.75,
     "failReadings": 0,
     "failPages": [],
@@ -399,8 +399,8 @@
    "measuredInBrowser": true,
    "rows": {
     "stylesheets parsed": "12",
-    "duration declarations walked": "36",
-    "referencing var(--d-step)": "21",
+    "duration declarations walked": "37",
+    "referencing var(--d-step)": "22",
     "none — the contract’s own stop states": "10",
     "the declared 0.01ms snap under reduce": "4",
     "naming no duration at all (scroll-driven, or inheriting)": "1",
@@ -410,8 +410,8 @@
     "keyframes defined / each mapped to a leg": "8 / 8"
    },
    "checks": 10,
-   "sampledFrom": "reduce/390x844/cold",
-   "emptySamples": 2,
+   "sampledFrom": "reduce/390x844/warm",
+   "emptySamples": 3,
    "allChecksPass": true
   }
  },
@@ -424,7 +424,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779277,
+    "t": 1792790700,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -432,8 +432,8 @@
     "reduced": true,
     "frames": 70,
     "moving": 2,
-    "longest": 2,
-    "ms": 13,
+    "longest": 1,
+    "ms": 0,
     "anims": [
      "waapi"
     ]
@@ -508,7 +508,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779279,
+    "t": 1792790702,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -574,7 +574,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 2023,
+    "checked": 2067,
     "min": 6.61,
     "p10": 6.61,
     "median": 7.03,
@@ -590,7 +590,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779280,
+    "t": 1792790703,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -675,7 +675,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779282,
+    "t": 1792790704,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -758,7 +758,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779283,
+    "t": 1792790706,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -829,9 +829,9 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 144,
+    "checked": 146,
     "min": 5.54,
-    "p10": 6.61,
+    "p10": 6.18,
     "median": 7.03,
     "fails": [],
     "failCount": 0,
@@ -845,7 +845,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779285,
+    "t": 1792790707,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -891,7 +891,7 @@
      "why": "the risk ladder",
      "present": true,
      "visible": true,
-     "text": "The ladder 1 Settled29 markets · verified, pooled, and either resolved or a long way from ",
+     "text": "The ladder 1 Settled52 markets · verified, pooled, and either resolved or a long way from ",
      "page": "risk"
     },
     {
@@ -913,7 +913,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 295,
+    "checked": 283,
     "min": 5.54,
     "p10": 6.18,
     "median": 17.75,
@@ -929,7 +929,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779286,
+    "t": 1792790709,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -981,7 +981,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
+     "text": "auditing…",
      "page": "contract"
     },
     {
@@ -993,73 +993,12 @@
      "page": "contract"
     }
    ],
-   "audit": [
-    {
-     "what": "stylesheets parsed",
-     "value": "12",
-     "tag": "of 12",
-     "ok": true
-    },
-    {
-     "what": "duration declarations walked",
-     "value": "36",
-     "tag": "all classified",
-     "ok": true
-    },
-    {
-     "what": "referencing var(--d-step)",
-     "value": "21",
-     "tag": "the rule",
-     "ok": true
-    },
-    {
-     "what": "none — the contract’s own stop states",
-     "value": "10",
-     "tag": "required by the contract",
-     "ok": true
-    },
-    {
-     "what": "the declared 0.01ms snap under reduce",
-     "value": "4",
-     "tag": "exception 1",
-     "ok": true
-    },
-    {
-     "what": "naming no duration at all (scroll-driven, or inheriting)",
-     "value": "1",
-     "tag": "exception 2",
-     "ok": true
-    },
-    {
-     "what": "ad-hoc numbers in stylesheets",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "literal durations in scripts",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "call sites naming a step, in scripts",
-     "value": "6",
-     "tag": "steps 2 · 5",
-     "ok": true
-    },
-    {
-     "what": "keyframes defined / each mapped to a leg",
-     "value": "8 / 8",
-     "tag": "no orphans",
-     "ok": true
-    }
-   ],
+   "audit": [],
    "contrast": {
-    "checked": 335,
+    "checked": 188,
     "min": 5.54,
     "p10": 6.61,
-    "median": 7.03,
+    "median": 6.61,
     "fails": [],
     "failCount": 0,
     "skippedOverImage": 0
@@ -1072,7 +1011,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779287,
+    "t": 1792790710,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -1099,7 +1038,7 @@
    },
    "live": true,
    "lang": "en",
-   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2 · Seer",
+   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2025? · Seer",
    "survival": {
     "bars": 1,
     "h1": 1,
@@ -1157,7 +1096,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779290,
+    "t": 1792790713,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -1242,7 +1181,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779304,
+    "t": 1792790726,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -1325,7 +1264,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779305,
+    "t": 1792790727,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -1396,9 +1335,9 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 144,
+    "checked": 146,
     "min": 5.54,
-    "p10": 6.61,
+    "p10": 6.18,
     "median": 7.03,
     "fails": [],
     "failCount": 0,
@@ -1412,7 +1351,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779306,
+    "t": 1792790728,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -1458,7 +1397,7 @@
      "why": "the risk ladder",
      "present": true,
      "visible": true,
-     "text": "The ladder 1 Settled29 markets · verified, pooled, and either resolved or a long way from ",
+     "text": "The ladder 1 Settled52 markets · verified, pooled, and either resolved or a long way from ",
      "page": "risk"
     },
     {
@@ -1480,7 +1419,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 295,
+    "checked": 283,
     "min": 5.54,
     "p10": 6.18,
     "median": 17.75,
@@ -1496,7 +1435,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779308,
+    "t": 1792790730,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -1569,13 +1508,13 @@
     },
     {
      "what": "duration declarations walked",
-     "value": "36",
+     "value": "37",
      "tag": "all classified",
      "ok": true
     },
     {
      "what": "referencing var(--d-step)",
-     "value": "21",
+     "value": "22",
      "tag": "the rule",
      "ok": true
     },
@@ -1639,7 +1578,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779309,
+    "t": 1792790731,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -1721,7 +1660,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779310,
+    "t": 1792790732,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -1787,7 +1726,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 2023,
+    "checked": 2067,
     "min": 6.61,
     "p10": 6.61,
     "median": 7.03,
@@ -1803,7 +1742,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792779312,
+    "t": 1792790734,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -1830,7 +1769,7 @@
    },
    "live": true,
    "lang": "en",
-   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2 · Seer",
+   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2025? · Seer",
    "survival": {
     "bars": 1,
     "h1": 1,
@@ -1888,16 +1827,16 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779325,
+    "t": 1792790744,
     "path": "/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": true,
     "frames": 70,
-    "moving": 1,
-    "longest": 1,
-    "ms": 0,
+    "moving": 2,
+    "longest": 2,
+    "ms": 18,
     "anims": [
      "waapi"
     ]
@@ -1972,7 +1911,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779326,
+    "t": 1792790746,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -2038,7 +1977,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 2024,
+    "checked": 2068,
     "min": 6.61,
     "p10": 6.61,
     "median": 7.03,
@@ -2054,7 +1993,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779328,
+    "t": 1792790747,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -2139,7 +2078,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779329,
+    "t": 1792790749,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -2222,7 +2161,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779330,
+    "t": 1792790750,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -2293,9 +2232,9 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 145,
+    "checked": 147,
     "min": 5.54,
-    "p10": 6.61,
+    "p10": 6.18,
     "median": 7.03,
     "fails": [],
     "failCount": 0,
@@ -2309,7 +2248,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779331,
+    "t": 1792790751,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -2355,7 +2294,7 @@
      "why": "the risk ladder",
      "present": true,
      "visible": true,
-     "text": "The ladder 1 Settled29 markets · verified, pooled, and either resolved or a long way from ",
+     "text": "The ladder 1 Settled52 markets · verified, pooled, and either resolved or a long way from ",
      "page": "risk"
     },
     {
@@ -2377,7 +2316,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 296,
+    "checked": 284,
     "min": 5.54,
     "p10": 6.18,
     "median": 17.75,
@@ -2393,7 +2332,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779333,
+    "t": 1792790752,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -2466,13 +2405,13 @@
     },
     {
      "what": "duration declarations walked",
-     "value": "36",
+     "value": "37",
      "tag": "all classified",
      "ok": true
     },
     {
      "what": "referencing var(--d-step)",
-     "value": "21",
+     "value": "22",
      "tag": "the rule",
      "ok": true
     },
@@ -2520,7 +2459,7 @@
     }
    ],
    "contrast": {
-    "checked": 388,
+    "checked": 389,
     "min": 5.54,
     "p10": 6.57,
     "median": 7.03,
@@ -2536,7 +2475,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779334,
+    "t": 1792790753,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -2563,7 +2502,7 @@
    },
    "live": true,
    "lang": "en",
-   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2 · Seer",
+   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2025? · Seer",
    "survival": {
     "bars": 1,
     "h1": 1,
@@ -2621,7 +2560,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779336,
+    "t": 1792790756,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -2706,7 +2645,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779350,
+    "t": 1792790769,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -2789,7 +2728,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779351,
+    "t": 1792790771,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -2860,9 +2799,9 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 145,
+    "checked": 147,
     "min": 5.54,
-    "p10": 6.61,
+    "p10": 6.18,
     "median": 7.03,
     "fails": [],
     "failCount": 0,
@@ -2876,7 +2815,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779352,
+    "t": 1792790772,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -2922,7 +2861,7 @@
      "why": "the risk ladder",
      "present": true,
      "visible": true,
-     "text": "The ladder 1 Settled29 markets · verified, pooled, and either resolved or a long way from ",
+     "text": "The ladder 1 Settled52 markets · verified, pooled, and either resolved or a long way from ",
      "page": "risk"
     },
     {
@@ -2944,7 +2883,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 296,
+    "checked": 284,
     "min": 5.54,
     "p10": 6.18,
     "median": 17.75,
@@ -2960,7 +2899,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779353,
+    "t": 1792790773,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -3033,13 +2972,13 @@
     },
     {
      "what": "duration declarations walked",
-     "value": "36",
+     "value": "37",
      "tag": "all classified",
      "ok": true
     },
     {
      "what": "referencing var(--d-step)",
-     "value": "21",
+     "value": "22",
      "tag": "the rule",
      "ok": true
     },
@@ -3087,7 +3026,7 @@
     }
    ],
    "contrast": {
-    "checked": 427,
+    "checked": 428,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -3103,7 +3042,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779355,
+    "t": 1792790775,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -3185,7 +3124,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779356,
+    "t": 1792790776,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -3251,7 +3190,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 2024,
+    "checked": 2068,
     "min": 6.61,
     "p10": 6.61,
     "median": 7.03,
@@ -3267,7 +3206,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792779357,
+    "t": 1792790777,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -3294,7 +3233,7 @@
    },
    "live": true,
    "lang": "en",
-   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2 · Seer",
+   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2025? · Seer",
    "survival": {
     "bars": 1,
     "h1": 1,
@@ -3352,16 +3291,16 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779362,
+    "t": 1792790789,
     "path": "/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": true,
     "frames": 70,
-    "moving": 3,
+    "moving": 2,
     "longest": 2,
-    "ms": 16,
+    "ms": 39,
     "anims": [
      "waapi"
     ]
@@ -3436,7 +3375,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779363,
+    "t": 1792790790,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -3502,7 +3441,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 2329,
+    "checked": 2373,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -3518,7 +3457,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779366,
+    "t": 1792790793,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -3603,7 +3542,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779367,
+    "t": 1792790795,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -3686,7 +3625,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779369,
+    "t": 1792790796,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -3757,9 +3696,9 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 152,
+    "checked": 154,
     "min": 5.54,
-    "p10": 6.61,
+    "p10": 6.18,
     "median": 7.03,
     "fails": [],
     "failCount": 0,
@@ -3773,7 +3712,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779370,
+    "t": 1792790797,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -3819,7 +3758,7 @@
      "why": "the risk ladder",
      "present": true,
      "visible": true,
-     "text": "The ladder 1 Settled29 markets · verified, pooled, and either resolved or a long way from ",
+     "text": "The ladder 1 Settled52 markets · verified, pooled, and either resolved or a long way from ",
      "page": "risk"
     },
     {
@@ -3841,7 +3780,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 303,
+    "checked": 291,
     "min": 5.54,
     "p10": 6.18,
     "median": 17.75,
@@ -3857,7 +3796,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779371,
+    "t": 1792790799,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -3930,13 +3869,13 @@
     },
     {
      "what": "duration declarations walked",
-     "value": "36",
+     "value": "37",
      "tag": "all classified",
      "ok": true
     },
     {
      "what": "referencing var(--d-step)",
-     "value": "21",
+     "value": "22",
      "tag": "the rule",
      "ok": true
     },
@@ -4000,7 +3939,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779373,
+    "t": 1792790800,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -4027,7 +3966,7 @@
    },
    "live": true,
    "lang": "en",
-   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2 · Seer",
+   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2025? · Seer",
    "survival": {
     "bars": 1,
     "h1": 1,
@@ -4085,7 +4024,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779376,
+    "t": 1792790803,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -4154,7 +4093,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 185,
+    "checked": 184,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -4170,7 +4109,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779389,
+    "t": 1792790817,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -4237,7 +4176,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 167,
+    "checked": 166,
     "min": 5.54,
     "p10": 6.18,
     "median": 6.61,
@@ -4253,7 +4192,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779390,
+    "t": 1792790818,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -4324,9 +4263,9 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 152,
+    "checked": 153,
     "min": 5.54,
-    "p10": 6.61,
+    "p10": 6.18,
     "median": 7.03,
     "fails": [],
     "failCount": 0,
@@ -4340,7 +4279,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779391,
+    "t": 1792790819,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -4386,7 +4325,7 @@
      "why": "the risk ladder",
      "present": true,
      "visible": true,
-     "text": "The ladder 1 Settled29 markets · verified, pooled, and either resolved or a long way from ",
+     "text": "The ladder 1 Settled52 markets · verified, pooled, and either resolved or a long way from ",
      "page": "risk"
     },
     {
@@ -4408,7 +4347,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 303,
+    "checked": 289,
     "min": 5.54,
     "p10": 6.18,
     "median": 17.75,
@@ -4424,7 +4363,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779393,
+    "t": 1792790820,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -4497,13 +4436,13 @@
     },
     {
      "what": "duration declarations walked",
-     "value": "36",
+     "value": "37",
      "tag": "all classified",
      "ok": true
     },
     {
      "what": "referencing var(--d-step)",
-     "value": "21",
+     "value": "22",
      "tag": "the rule",
      "ok": true
     },
@@ -4551,7 +4490,7 @@
     }
    ],
    "contrast": {
-    "checked": 448,
+    "checked": 447,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -4567,7 +4506,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779394,
+    "t": 1792790821,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -4633,7 +4572,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 131,
+    "checked": 129,
     "min": 5.54,
     "p10": 6.18,
     "median": 6.61,
@@ -4649,7 +4588,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779395,
+    "t": 1792790823,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -4715,7 +4654,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 2329,
+    "checked": 2372,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -4731,7 +4670,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792779396,
+    "t": 1792790824,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -4758,7 +4697,7 @@
    },
    "live": true,
    "lang": "en",
-   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2 · Seer",
+   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2025? · Seer",
    "survival": {
     "bars": 1,
     "h1": 1,
@@ -4800,7 +4739,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 76,
+    "checked": 74,
     "min": 5.54,
     "p10": 6.61,
     "median": 6.61,
@@ -4816,7 +4755,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779401,
+    "t": 1792790831,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -4825,7 +4764,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 516,
+    "ms": 522,
     "anims": [
      "waapi"
     ]
@@ -4900,7 +4839,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779402,
+    "t": 1792790832,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -4966,7 +4905,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 2023,
+    "checked": 2067,
     "min": 6.61,
     "p10": 6.61,
     "median": 7.03,
@@ -4982,7 +4921,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779403,
+    "t": 1792790834,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -5067,7 +5006,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779405,
+    "t": 1792790835,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -5150,7 +5089,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779406,
+    "t": 1792790836,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -5219,9 +5158,9 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 144,
+    "checked": 146,
     "min": 5.54,
-    "p10": 6.61,
+    "p10": 6.18,
     "median": 7.03,
     "fails": [],
     "failCount": 0,
@@ -5235,7 +5174,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779407,
+    "t": 1792790838,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -5281,7 +5220,7 @@
      "why": "the risk ladder",
      "present": true,
      "visible": true,
-     "text": "The ladder 1 Settled29 markets · verified, pooled, and either resolved or a long way from ",
+     "text": "The ladder 1 Settled52 markets · verified, pooled, and either resolved or a long way from ",
      "page": "risk"
     },
     {
@@ -5303,7 +5242,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 295,
+    "checked": 283,
     "min": 5.54,
     "p10": 6.18,
     "median": 17.75,
@@ -5319,7 +5258,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779408,
+    "t": 1792790839,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -5328,7 +5267,7 @@
     "frames": 70,
     "moving": 23,
     "longest": 23,
-    "ms": 368,
+    "ms": 366,
     "anims": [
      "waapi"
     ]
@@ -5394,13 +5333,13 @@
     },
     {
      "what": "duration declarations walked",
-     "value": "36",
+     "value": "37",
      "tag": "all classified",
      "ok": true
     },
     {
      "what": "referencing var(--d-step)",
-     "value": "21",
+     "value": "22",
      "tag": "the rule",
      "ok": true
     },
@@ -5464,7 +5403,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779409,
+    "t": 1792790840,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -5493,7 +5432,7 @@
    },
    "live": true,
    "lang": "en",
-   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2 · Seer",
+   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2025? · Seer",
    "survival": {
     "bars": 1,
     "h1": 1,
@@ -5551,16 +5490,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779412,
+    "t": 1792790843,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 247,
+    "moving": 16,
+    "longest": 16,
+    "ms": 232,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5644,7 +5583,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779425,
+    "t": 1792790856,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -5653,7 +5592,7 @@
     "frames": 70,
     "moving": 17,
     "longest": 17,
-    "ms": 251,
+    "ms": 242,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5736,16 +5675,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779426,
+    "t": 1792790857,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 249,
+    "moving": 16,
+    "longest": 16,
+    "ms": 238,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5814,9 +5753,9 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 144,
+    "checked": 146,
     "min": 5.54,
-    "p10": 6.61,
+    "p10": 6.18,
     "median": 7.03,
     "fails": [],
     "failCount": 0,
@@ -5830,7 +5769,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779428,
+    "t": 1792790859,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -5839,7 +5778,7 @@
     "frames": 70,
     "moving": 16,
     "longest": 16,
-    "ms": 223,
+    "ms": 232,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5886,7 +5825,7 @@
      "why": "the risk ladder",
      "present": true,
      "visible": true,
-     "text": "The ladder 1 Settled29 markets · verified, pooled, and either resolved or a long way from ",
+     "text": "The ladder 1 Settled52 markets · verified, pooled, and either resolved or a long way from ",
      "page": "risk"
     },
     {
@@ -5908,7 +5847,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 295,
+    "checked": 283,
     "min": 5.54,
     "p10": 6.18,
     "median": 17.75,
@@ -5924,16 +5863,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779429,
+    "t": 1792790860,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 25,
-    "longest": 25,
-    "ms": 388,
+    "moving": 26,
+    "longest": 26,
+    "ms": 401,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5946,16 +5885,16 @@
     ]
    },
    "depth": {
-    "text": "Contractthe rules the six obey · not a surface",
+    "text": "",
     "visible": true
    },
    "bar": {
-    "links": 7,
-    "current": 1,
-    "labelled": "Seer surfaces"
+    "links": 0,
+    "current": 0,
+    "labelled": null
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: risk",
+    "text": "",
     "visible": false
    },
    "live": false,
@@ -5985,7 +5924,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
+     "text": "auditing…",
      "page": "contract"
     },
     {
@@ -5997,73 +5936,12 @@
      "page": "contract"
     }
    ],
-   "audit": [
-    {
-     "what": "stylesheets parsed",
-     "value": "12",
-     "tag": "of 12",
-     "ok": true
-    },
-    {
-     "what": "duration declarations walked",
-     "value": "36",
-     "tag": "all classified",
-     "ok": true
-    },
-    {
-     "what": "referencing var(--d-step)",
-     "value": "21",
-     "tag": "the rule",
-     "ok": true
-    },
-    {
-     "what": "none — the contract’s own stop states",
-     "value": "10",
-     "tag": "required by the contract",
-     "ok": true
-    },
-    {
-     "what": "the declared 0.01ms snap under reduce",
-     "value": "4",
-     "tag": "exception 1",
-     "ok": true
-    },
-    {
-     "what": "naming no duration at all (scroll-driven, or inheriting)",
-     "value": "1",
-     "tag": "exception 2",
-     "ok": true
-    },
-    {
-     "what": "ad-hoc numbers in stylesheets",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "literal durations in scripts",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "call sites naming a step, in scripts",
-     "value": "6",
-     "tag": "steps 2 · 5",
-     "ok": true
-    },
-    {
-     "what": "keyframes defined / each mapped to a leg",
-     "value": "8 / 8",
-     "tag": "no orphans",
-     "ok": true
-    }
-   ],
+   "audit": [],
    "contrast": {
-    "checked": 424,
+    "checked": 191,
     "min": 5.54,
     "p10": 6.61,
-    "median": 7.03,
+    "median": 6.61,
     "fails": [],
     "failCount": 0,
     "skippedOverImage": 0
@@ -6076,16 +5954,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779430,
+    "t": 1792790863,
     "path": "/",
     "leg": "back",
     "from": "contract",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 21,
-    "longest": 21,
-    "ms": 316,
+    "moving": 20,
+    "longest": 20,
+    "ms": 315,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6165,7 +6043,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779431,
+    "t": 1792790864,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -6174,7 +6052,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 523,
+    "ms": 518,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6239,7 +6117,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 2023,
+    "checked": 2067,
     "min": 6.61,
     "p10": 6.61,
     "median": 7.03,
@@ -6255,16 +6133,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792779433,
+    "t": 1792790865,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 25,
-    "longest": 25,
-    "ms": 399,
+    "moving": 26,
+    "longest": 26,
+    "ms": 402,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6292,7 +6170,7 @@
    },
    "live": true,
    "lang": "en",
-   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2 · Seer",
+   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2025? · Seer",
    "survival": {
     "bars": 1,
     "h1": 1,
@@ -6350,16 +6228,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779434,
+    "t": 1792790867,
     "path": "/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 32,
-    "longest": 32,
-    "ms": 512,
+    "moving": 33,
+    "longest": 33,
+    "ms": 514,
     "anims": [
      "waapi"
     ]
@@ -6434,7 +6312,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779436,
+    "t": 1792790869,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -6500,7 +6378,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 2024,
+    "checked": 2068,
     "min": 6.61,
     "p10": 6.61,
     "median": 7.03,
@@ -6516,7 +6394,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779437,
+    "t": 1792790870,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -6601,7 +6479,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779438,
+    "t": 1792790872,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -6684,7 +6562,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779440,
+    "t": 1792790873,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -6753,9 +6631,9 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 145,
+    "checked": 147,
     "min": 5.54,
-    "p10": 6.61,
+    "p10": 6.18,
     "median": 7.03,
     "fails": [],
     "failCount": 0,
@@ -6769,7 +6647,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779441,
+    "t": 1792790874,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -6815,7 +6693,7 @@
      "why": "the risk ladder",
      "present": true,
      "visible": true,
-     "text": "The ladder 1 Settled29 markets · verified, pooled, and either resolved or a long way from ",
+     "text": "The ladder 1 Settled52 markets · verified, pooled, and either resolved or a long way from ",
      "page": "risk"
     },
     {
@@ -6837,7 +6715,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 296,
+    "checked": 284,
     "min": 5.54,
     "p10": 6.18,
     "median": 17.75,
@@ -6853,7 +6731,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779443,
+    "t": 1792790875,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -6862,22 +6740,22 @@
     "frames": 70,
     "moving": 23,
     "longest": 23,
-    "ms": 366,
+    "ms": 364,
     "anims": [
      "waapi"
     ]
    },
    "depth": {
-    "text": "",
+    "text": "Contractthe rules the six obey · not a surface",
     "visible": true
    },
    "bar": {
-    "links": 0,
-    "current": 0,
-    "labelled": null
+    "links": 7,
+    "current": 1,
+    "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "",
+    "text": "leg · cold arrivalreduced: offfrom: direct",
     "visible": false
    },
    "live": false,
@@ -6907,7 +6785,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "auditing…",
+     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
      "page": "contract"
     },
     {
@@ -6919,12 +6797,73 @@
      "page": "contract"
     }
    ],
-   "audit": [],
+   "audit": [
+    {
+     "what": "stylesheets parsed",
+     "value": "12",
+     "tag": "of 12",
+     "ok": true
+    },
+    {
+     "what": "duration declarations walked",
+     "value": "37",
+     "tag": "all classified",
+     "ok": true
+    },
+    {
+     "what": "referencing var(--d-step)",
+     "value": "22",
+     "tag": "the rule",
+     "ok": true
+    },
+    {
+     "what": "none — the contract’s own stop states",
+     "value": "10",
+     "tag": "required by the contract",
+     "ok": true
+    },
+    {
+     "what": "the declared 0.01ms snap under reduce",
+     "value": "4",
+     "tag": "exception 1",
+     "ok": true
+    },
+    {
+     "what": "naming no duration at all (scroll-driven, or inheriting)",
+     "value": "1",
+     "tag": "exception 2",
+     "ok": true
+    },
+    {
+     "what": "ad-hoc numbers in stylesheets",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "literal durations in scripts",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "call sites naming a step, in scripts",
+     "value": "6",
+     "tag": "steps 2 · 5",
+     "ok": true
+    },
+    {
+     "what": "keyframes defined / each mapped to a leg",
+     "value": "8 / 8",
+     "tag": "no orphans",
+     "ok": true
+    }
+   ],
    "contrast": {
-    "checked": 192,
+    "checked": 392,
     "min": 5.54,
-    "p10": 6.61,
-    "median": 6.61,
+    "p10": 6.57,
+    "median": 7.03,
     "fails": [],
     "failCount": 0,
     "skippedOverImage": 0
@@ -6937,16 +6876,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779444,
+    "t": 1792790877,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 25,
-    "longest": 25,
-    "ms": 394,
+    "moving": 24,
+    "longest": 24,
+    "ms": 383,
     "anims": [
      "price-tick"
     ]
@@ -6966,7 +6905,7 @@
    },
    "live": true,
    "lang": "en",
-   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2 · Seer",
+   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2025? · Seer",
    "survival": {
     "bars": 1,
     "h1": 1,
@@ -7024,7 +6963,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779446,
+    "t": 1792790879,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -7033,7 +6972,7 @@
     "frames": 70,
     "moving": 16,
     "longest": 16,
-    "ms": 233,
+    "ms": 230,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7117,7 +7056,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779460,
+    "t": 1792790893,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -7126,7 +7065,7 @@
     "frames": 70,
     "moving": 16,
     "longest": 16,
-    "ms": 235,
+    "ms": 237,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7209,16 +7148,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779461,
+    "t": 1792790894,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 234,
+    "moving": 15,
+    "longest": 15,
+    "ms": 222,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7287,9 +7226,9 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 145,
+    "checked": 147,
     "min": 5.54,
-    "p10": 6.61,
+    "p10": 6.18,
     "median": 7.03,
     "fails": [],
     "failCount": 0,
@@ -7303,16 +7242,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779462,
+    "t": 1792790895,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 239,
+    "moving": 17,
+    "longest": 17,
+    "ms": 253,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7357,7 +7296,7 @@
      "why": "the risk ladder",
      "present": true,
      "visible": true,
-     "text": "The ladder 1 Settled29 markets · verified, pooled, and either resolved or a long way from ",
+     "text": "The ladder 1 Settled52 markets · verified, pooled, and either resolved or a long way from ",
      "page": "risk"
     },
     {
@@ -7379,7 +7318,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 296,
+    "checked": 284,
     "min": 5.54,
     "p10": 6.18,
     "median": 17.75,
@@ -7395,16 +7334,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779464,
+    "t": 1792790897,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 25,
-    "longest": 25,
-    "ms": 391,
+    "moving": 26,
+    "longest": 26,
+    "ms": 404,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7417,16 +7356,16 @@
     ]
    },
    "depth": {
-    "text": "Contractthe rules the six obey · not a surface",
+    "text": "",
     "visible": true
    },
    "bar": {
-    "links": 7,
-    "current": 1,
-    "labelled": "Seer surfaces"
+    "links": 0,
+    "current": 0,
+    "labelled": null
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: risk",
+    "text": "",
     "visible": false
    },
    "live": false,
@@ -7456,7 +7395,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
+     "text": "auditing…",
      "page": "contract"
     },
     {
@@ -7468,73 +7407,12 @@
      "page": "contract"
     }
    ],
-   "audit": [
-    {
-     "what": "stylesheets parsed",
-     "value": "12",
-     "tag": "of 12",
-     "ok": true
-    },
-    {
-     "what": "duration declarations walked",
-     "value": "36",
-     "tag": "all classified",
-     "ok": true
-    },
-    {
-     "what": "referencing var(--d-step)",
-     "value": "21",
-     "tag": "the rule",
-     "ok": true
-    },
-    {
-     "what": "none — the contract’s own stop states",
-     "value": "10",
-     "tag": "required by the contract",
-     "ok": true
-    },
-    {
-     "what": "the declared 0.01ms snap under reduce",
-     "value": "4",
-     "tag": "exception 1",
-     "ok": true
-    },
-    {
-     "what": "naming no duration at all (scroll-driven, or inheriting)",
-     "value": "1",
-     "tag": "exception 2",
-     "ok": true
-    },
-    {
-     "what": "ad-hoc numbers in stylesheets",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "literal durations in scripts",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "call sites naming a step, in scripts",
-     "value": "6",
-     "tag": "steps 2 · 5",
-     "ok": true
-    },
-    {
-     "what": "keyframes defined / each mapped to a leg",
-     "value": "8 / 8",
-     "tag": "no orphans",
-     "ok": true
-    }
-   ],
+   "audit": [],
    "contrast": {
-    "checked": 437,
+    "checked": 192,
     "min": 5.54,
     "p10": 6.61,
-    "median": 7.03,
+    "median": 6.61,
     "fails": [],
     "failCount": 0,
     "skippedOverImage": 0
@@ -7547,7 +7425,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779465,
+    "t": 1792790899,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -7556,7 +7434,7 @@
     "frames": 70,
     "moving": 20,
     "longest": 20,
-    "ms": 304,
+    "ms": 307,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7636,7 +7514,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779466,
+    "t": 1792790900,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -7645,7 +7523,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 522,
+    "ms": 527,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7710,7 +7588,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 2024,
+    "checked": 2068,
     "min": 6.61,
     "p10": 6.61,
     "median": 7.03,
@@ -7726,16 +7604,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792779468,
+    "t": 1792790902,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 25,
-    "longest": 25,
-    "ms": 388,
+    "moving": 24,
+    "longest": 24,
+    "ms": 374,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7763,7 +7641,7 @@
    },
    "live": true,
    "lang": "en",
-   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2 · Seer",
+   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2025? · Seer",
    "survival": {
     "bars": 1,
     "h1": 1,
@@ -7821,7 +7699,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779469,
+    "t": 1792790904,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -7830,7 +7708,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 519,
+    "ms": 515,
     "anims": [
      "waapi"
     ]
@@ -7905,7 +7783,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779471,
+    "t": 1792790905,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -7971,7 +7849,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 2329,
+    "checked": 2373,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -7987,7 +7865,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779474,
+    "t": 1792790908,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -8072,7 +7950,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779475,
+    "t": 1792790910,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -8155,7 +8033,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779477,
+    "t": 1792790911,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -8224,9 +8102,9 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 152,
+    "checked": 154,
     "min": 5.54,
-    "p10": 6.61,
+    "p10": 6.18,
     "median": 7.03,
     "fails": [],
     "failCount": 0,
@@ -8240,7 +8118,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779478,
+    "t": 1792790913,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -8286,7 +8164,7 @@
      "why": "the risk ladder",
      "present": true,
      "visible": true,
-     "text": "The ladder 1 Settled29 markets · verified, pooled, and either resolved or a long way from ",
+     "text": "The ladder 1 Settled52 markets · verified, pooled, and either resolved or a long way from ",
      "page": "risk"
     },
     {
@@ -8308,7 +8186,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 303,
+    "checked": 291,
     "min": 5.54,
     "p10": 6.18,
     "median": 17.75,
@@ -8324,31 +8202,31 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779480,
+    "t": 1792790914,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 23,
-    "longest": 23,
-    "ms": 366,
+    "moving": 24,
+    "longest": 24,
+    "ms": 381,
     "anims": [
      "waapi"
     ]
    },
    "depth": {
-    "text": "",
+    "text": "Contractthe rules the six obey · not a surface",
     "visible": true
    },
    "bar": {
-    "links": 0,
-    "current": 0,
-    "labelled": null
+    "links": 7,
+    "current": 1,
+    "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "",
+    "text": "leg · cold arrivalreduced: offfrom: direct",
     "visible": true
    },
    "live": false,
@@ -8378,7 +8256,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "auditing…",
+     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
      "page": "contract"
     },
     {
@@ -8390,11 +8268,72 @@
      "page": "contract"
     }
    ],
-   "audit": [],
+   "audit": [
+    {
+     "what": "stylesheets parsed",
+     "value": "12",
+     "tag": "of 12",
+     "ok": true
+    },
+    {
+     "what": "duration declarations walked",
+     "value": "37",
+     "tag": "all classified",
+     "ok": true
+    },
+    {
+     "what": "referencing var(--d-step)",
+     "value": "22",
+     "tag": "the rule",
+     "ok": true
+    },
+    {
+     "what": "none — the contract’s own stop states",
+     "value": "10",
+     "tag": "required by the contract",
+     "ok": true
+    },
+    {
+     "what": "the declared 0.01ms snap under reduce",
+     "value": "4",
+     "tag": "exception 1",
+     "ok": true
+    },
+    {
+     "what": "naming no duration at all (scroll-driven, or inheriting)",
+     "value": "1",
+     "tag": "exception 2",
+     "ok": true
+    },
+    {
+     "what": "ad-hoc numbers in stylesheets",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "literal durations in scripts",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "call sites naming a step, in scripts",
+     "value": "6",
+     "tag": "steps 2 · 5",
+     "ok": true
+    },
+    {
+     "what": "keyframes defined / each mapped to a leg",
+     "value": "8 / 8",
+     "tag": "no orphans",
+     "ok": true
+    }
+   ],
    "contrast": {
-    "checked": 192,
+    "checked": 405,
     "min": 5.54,
-    "p10": 6.61,
+    "p10": 6.57,
     "median": 6.61,
     "fails": [],
     "failCount": 0,
@@ -8408,7 +8347,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779481,
+    "t": 1792790916,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -8417,7 +8356,7 @@
     "frames": 70,
     "moving": 24,
     "longest": 24,
-    "ms": 384,
+    "ms": 381,
     "anims": [
      "price-tick"
     ]
@@ -8437,7 +8376,7 @@
    },
    "live": true,
    "lang": "en",
-   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2 · Seer",
+   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2025? · Seer",
    "survival": {
     "bars": 1,
     "h1": 1,
@@ -8495,16 +8434,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779484,
+    "t": 1792790919,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 232,
+    "moving": 17,
+    "longest": 17,
+    "ms": 249,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8588,7 +8527,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779498,
+    "t": 1792790932,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -8597,7 +8536,7 @@
     "frames": 70,
     "moving": 17,
     "longest": 17,
-    "ms": 253,
+    "ms": 252,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8664,7 +8603,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 167,
+    "checked": 166,
     "min": 5.54,
     "p10": 6.18,
     "median": 6.61,
@@ -8680,21 +8619,22 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779499,
+    "t": 1792790933,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 15,
-    "longest": 15,
-    "ms": 231,
+    "moving": 16,
+    "longest": 16,
+    "ms": 239,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
      "-ua-view-transition-fade-out",
      "-ua-view-transition-group-anim-chrome",
+     "-ua-view-transition-group-anim-mkt-name",
      "-ua-view-transition-group-anim-root",
      "slide-in",
      "slide-out"
@@ -8757,9 +8697,9 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 152,
+    "checked": 153,
     "min": 5.54,
-    "p10": 6.61,
+    "p10": 6.18,
     "median": 7.03,
     "fails": [],
     "failCount": 0,
@@ -8773,16 +8713,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779500,
+    "t": 1792790934,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 244,
+    "moving": 16,
+    "longest": 16,
+    "ms": 232,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8829,7 +8769,7 @@
      "why": "the risk ladder",
      "present": true,
      "visible": true,
-     "text": "The ladder 1 Settled29 markets · verified, pooled, and either resolved or a long way from ",
+     "text": "The ladder 1 Settled52 markets · verified, pooled, and either resolved or a long way from ",
      "page": "risk"
     },
     {
@@ -8851,7 +8791,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 303,
+    "checked": 290,
     "min": 5.54,
     "p10": 6.18,
     "median": 17.75,
@@ -8867,7 +8807,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779502,
+    "t": 1792790936,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -8876,7 +8816,7 @@
     "frames": 70,
     "moving": 25,
     "longest": 25,
-    "ms": 388,
+    "ms": 395,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8949,13 +8889,13 @@
     },
     {
      "what": "duration declarations walked",
-     "value": "36",
+     "value": "37",
      "tag": "all classified",
      "ok": true
     },
     {
      "what": "referencing var(--d-step)",
-     "value": "21",
+     "value": "22",
      "tag": "the rule",
      "ok": true
     },
@@ -9003,7 +8943,7 @@
     }
    ],
    "contrast": {
-    "checked": 457,
+    "checked": 456,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -9019,7 +8959,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779503,
+    "t": 1792790937,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -9028,7 +8968,7 @@
     "frames": 70,
     "moving": 21,
     "longest": 21,
-    "ms": 319,
+    "ms": 315,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -9092,7 +9032,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 131,
+    "checked": 130,
     "min": 5.54,
     "p10": 6.18,
     "median": 6.61,
@@ -9108,7 +9048,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779504,
+    "t": 1792790938,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -9117,7 +9057,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 522,
+    "ms": 517,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -9182,7 +9122,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 2329,
+    "checked": 2372,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -9198,16 +9138,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792779505,
+    "t": 1792790939,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 26,
-    "longest": 26,
-    "ms": 400,
+    "moving": 25,
+    "longest": 25,
+    "ms": 393,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -9236,7 +9176,7 @@
    },
    "live": true,
    "lang": "en",
-   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2 · Seer",
+   "title": "Will legislation become law that eliminates the Consumer Financial Protection Bureau (CFPB) in 2025? · Seer",
    "survival": {
     "bars": 1,
     "h1": 1,
@@ -9278,7 +9218,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 76,
+    "checked": 74,
     "min": 5.54,
     "p10": 6.61,
     "median": 6.61,
@@ -9391,7 +9331,7 @@
    "page": "contract",
    "viewport": "1440",
    "motion": "full",
-   "passes": 22,
+   "passes": 23,
    "violations": []
   },
   {
@@ -9455,7 +9395,7 @@
   },
   {
    "page": "risk",
-   "focusables": 76,
+   "focusables": 65,
    "reached": 48,
    "monotonic": true,
    "barLinksReached": 9,
@@ -9535,7 +9475,7 @@
   },
   {
    "page": "risk",
-   "focusables": 76,
+   "focusables": 65,
    "reached": 48,
    "monotonic": true,
    "barLinksReached": 9,
@@ -9615,7 +9555,7 @@
   },
   {
    "page": "risk",
-   "focusables": 76,
+   "focusables": 65,
    "reached": 48,
    "monotonic": true,
    "barLinksReached": 9,
@@ -9695,7 +9635,7 @@
   },
   {
    "page": "risk",
-   "focusables": 76,
+   "focusables": 65,
    "reached": 48,
    "monotonic": true,
    "barLinksReached": 9,
@@ -9775,7 +9715,7 @@
   },
   {
    "page": "risk",
-   "focusables": 76,
+   "focusables": 65,
    "reached": 48,
    "monotonic": true,
    "barLinksReached": 9,
@@ -9855,7 +9795,7 @@
   },
   {
    "page": "risk",
-   "focusables": 76,
+   "focusables": 65,
    "reached": 48,
    "monotonic": true,
    "barLinksReached": 9,
@@ -9899,7 +9839,7 @@
   {
    "page": "app",
    "theme": "dark",
-   "checked": 2329,
+   "checked": 2373,
    "min": 5.45,
    "p10": 5.45,
    "median": 7.1,
@@ -9932,7 +9872,7 @@
   {
    "page": "opportunity",
    "theme": "dark",
-   "checked": 152,
+   "checked": 154,
    "min": 5.45,
    "p10": 6.55,
    "median": 7.1,
@@ -9943,7 +9883,7 @@
   {
    "page": "risk",
    "theme": "dark",
-   "checked": 303,
+   "checked": 291,
    "min": 5.04,
    "p10": 6.55,
    "median": 16.41,
@@ -9954,7 +9894,7 @@
   {
    "page": "contract",
    "theme": "dark",
-   "checked": 369,
+   "checked": 375,
    "min": 5.04,
    "p10": 5.54,
    "median": 7.1,
@@ -9974,166 +9914,5 @@
    "skippedOverImage": 0
   }
  ],
- "shots": [
-  {
-   "page": "home",
-   "width": 390,
-   "file": "evidence/shots/home-390.png"
-  },
-  {
-   "page": "home",
-   "width": 768,
-   "file": "evidence/shots/home-768.png"
-  },
-  {
-   "page": "home",
-   "width": 1100,
-   "file": "evidence/shots/home-1100.png"
-  },
-  {
-   "page": "home",
-   "width": 1440,
-   "file": "evidence/shots/home-1440.png"
-  },
-  {
-   "page": "app",
-   "width": 390,
-   "file": "evidence/shots/app-390.png"
-  },
-  {
-   "page": "app",
-   "width": 768,
-   "file": "evidence/shots/app-768.png"
-  },
-  {
-   "page": "app",
-   "width": 1100,
-   "file": "evidence/shots/app-1100.png"
-  },
-  {
-   "page": "app",
-   "width": 1440,
-   "file": "evidence/shots/app-1440.png"
-  },
-  {
-   "page": "deep",
-   "width": 390,
-   "file": "evidence/shots/deep-390.png"
-  },
-  {
-   "page": "deep",
-   "width": 768,
-   "file": "evidence/shots/deep-768.png"
-  },
-  {
-   "page": "deep",
-   "width": 1100,
-   "file": "evidence/shots/deep-1100.png"
-  },
-  {
-   "page": "deep",
-   "width": 1440,
-   "file": "evidence/shots/deep-1440.png"
-  },
-  {
-   "page": "futarchy",
-   "width": 390,
-   "file": "evidence/shots/futarchy-390.png"
-  },
-  {
-   "page": "futarchy",
-   "width": 768,
-   "file": "evidence/shots/futarchy-768.png"
-  },
-  {
-   "page": "futarchy",
-   "width": 1100,
-   "file": "evidence/shots/futarchy-1100.png"
-  },
-  {
-   "page": "futarchy",
-   "width": 1440,
-   "file": "evidence/shots/futarchy-1440.png"
-  },
-  {
-   "page": "opportunity",
-   "width": 390,
-   "file": "evidence/shots/opportunity-390.png"
-  },
-  {
-   "page": "opportunity",
-   "width": 768,
-   "file": "evidence/shots/opportunity-768.png"
-  },
-  {
-   "page": "opportunity",
-   "width": 1100,
-   "file": "evidence/shots/opportunity-1100.png"
-  },
-  {
-   "page": "opportunity",
-   "width": 1440,
-   "file": "evidence/shots/opportunity-1440.png"
-  },
-  {
-   "page": "risk",
-   "width": 390,
-   "file": "evidence/shots/risk-390.png"
-  },
-  {
-   "page": "risk",
-   "width": 768,
-   "file": "evidence/shots/risk-768.png"
-  },
-  {
-   "page": "risk",
-   "width": 1100,
-   "file": "evidence/shots/risk-1100.png"
-  },
-  {
-   "page": "risk",
-   "width": 1440,
-   "file": "evidence/shots/risk-1440.png"
-  },
-  {
-   "page": "contract",
-   "width": 390,
-   "file": "evidence/shots/contract-390.png"
-  },
-  {
-   "page": "contract",
-   "width": 768,
-   "file": "evidence/shots/contract-768.png"
-  },
-  {
-   "page": "contract",
-   "width": 1100,
-   "file": "evidence/shots/contract-1100.png"
-  },
-  {
-   "page": "contract",
-   "width": 1440,
-   "file": "evidence/shots/contract-1440.png"
-  },
-  {
-   "page": "m",
-   "width": 390,
-   "file": "evidence/shots/m-390.png"
-  },
-  {
-   "page": "m",
-   "width": 768,
-   "file": "evidence/shots/m-768.png"
-  },
-  {
-   "page": "m",
-   "width": 1100,
-   "file": "evidence/shots/m-1100.png"
-  },
-  {
-   "page": "m",
-   "width": 1440,
-   "file": "evidence/shots/m-1440.png"
-  }
- ]
+ "shots": []
 }

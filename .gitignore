@@ -21,3 +21,4 @@ evidence/shots/
 *.m4a
 *.wav
 *.ogg
+.vercel
