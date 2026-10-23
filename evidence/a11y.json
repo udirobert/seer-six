@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-23T15:10:30.826Z",
- "duration_s": 301,
+ "generated": "2026-10-23T15:29:02.406Z",
+ "duration_s": 395,
  "url": "https://udirobert.github.io/seer-six",
  "engine": "chrome 155.0.8059.86",
  "os": "darwin 25.6.0 arm64",
@@ -32,22 +32,22 @@
    "anyMoving": true,
    "fullMotionComparator": {
     "maxFrames": 33,
-    "maxMs": 529
+    "maxMs": 528
    }
   },
   "motionRuns": {
    "claim": "with motion on, the same arrivals are visibly running for the leg’s whole interval",
    "arrivals": 24,
-   "minLongestRunFrames": 15,
+   "minLongestRunFrames": 16,
    "maxLongestRunFrames": 33,
    "legs": {
-    "deep": "lateral:16f",
-    "futarchy": "lateral:16f",
-    "opportunity": "lateral:16f",
-    "risk": "lateral:17f",
-    "contract": "lateral:25f",
-    "home": "back:20f",
-    "app": "fan:33f",
+    "deep": "lateral:17f",
+    "futarchy": "lateral:17f",
+    "opportunity": "lateral:17f",
+    "risk": "lateral:16f",
+    "contract": "lateral:24f",
+    "home": "back:21f",
+    "app": "fan:32f",
     "m": "morph:25f"
    }
   },
@@ -59,79 +59,15 @@
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 229,
-     "ratio": 1.04
-    },
-    {
-     "page": "futarchy",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 237,
-     "ratio": 1.08
-    },
-    {
-     "page": "opportunity",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 239,
-     "ratio": 1.09
-    },
-    {
-     "page": "risk",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 247,
-     "ratio": 1.12
-    },
-    {
-     "page": "contract",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 389,
-     "ratio": 1.77
-    },
-    {
-     "page": "home",
-     "leg": "back",
-     "step": 3,
-     "declaredMs": 320,
-     "measuredMs": 315,
-     "ratio": 0.98
-    },
-    {
-     "page": "app",
-     "leg": "fan",
-     "step": 5,
-     "declaredMs": 520,
-     "measuredMs": 529,
-     "ratio": 1.02
-    },
-    {
-     "page": "m",
-     "leg": "morph",
-     "step": 3,
-     "declaredMs": 320,
-     "measuredMs": 383,
-     "ratio": 1.2
-    },
-    {
-     "page": "deep",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 232,
-     "ratio": 1.05
-    },
-    {
-     "page": "futarchy",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
      "measuredMs": 242,
+     "ratio": 1.1
+    },
+    {
+     "page": "futarchy",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 243,
      "ratio": 1.1
     },
     {
@@ -139,55 +75,55 @@
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 234,
-     "ratio": 1.06
+     "measuredMs": 240,
+     "ratio": 1.09
     },
     {
      "page": "risk",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 235,
-     "ratio": 1.07
+     "measuredMs": 252,
+     "ratio": 1.15
     },
     {
      "page": "contract",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 402,
-     "ratio": 1.83
+     "measuredMs": 390,
+     "ratio": 1.77
     },
     {
      "page": "home",
      "leg": "back",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 321,
-     "ratio": 1
+     "measuredMs": 314,
+     "ratio": 0.98
     },
     {
      "page": "app",
      "leg": "fan",
      "step": 5,
      "declaredMs": 520,
-     "measuredMs": 519,
-     "ratio": 1
+     "measuredMs": 514,
+     "ratio": 0.99
     },
     {
      "page": "m",
      "leg": "morph",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 392,
-     "ratio": 1.23
+     "measuredMs": 402,
+     "ratio": 1.26
     },
     {
      "page": "deep",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 231,
+     "measuredMs": 232,
      "ratio": 1.05
     },
     {
@@ -211,40 +147,104 @@
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 246,
-     "ratio": 1.12
+     "measuredMs": 228,
+     "ratio": 1.04
     },
     {
      "page": "contract",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 389,
-     "ratio": 1.77
+     "measuredMs": 379,
+     "ratio": 1.72
     },
     {
      "page": "home",
      "leg": "back",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 307,
-     "ratio": 0.96
+     "measuredMs": 309,
+     "ratio": 0.97
     },
     {
      "page": "app",
      "leg": "fan",
      "step": 5,
      "declaredMs": 520,
-     "measuredMs": 525,
-     "ratio": 1.01
+     "measuredMs": 528,
+     "ratio": 1.02
     },
     {
      "page": "m",
      "leg": "morph",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 396,
-     "ratio": 1.24
+     "measuredMs": 372,
+     "ratio": 1.16
+    },
+    {
+     "page": "deep",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 244,
+     "ratio": 1.11
+    },
+    {
+     "page": "futarchy",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 246,
+     "ratio": 1.12
+    },
+    {
+     "page": "opportunity",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 246,
+     "ratio": 1.12
+    },
+    {
+     "page": "risk",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 236,
+     "ratio": 1.07
+    },
+    {
+     "page": "contract",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 379,
+     "ratio": 1.72
+    },
+    {
+     "page": "home",
+     "leg": "back",
+     "step": 3,
+     "declaredMs": 320,
+     "measuredMs": 321,
+     "ratio": 1
+    },
+    {
+     "page": "app",
+     "leg": "fan",
+     "step": 5,
+     "declaredMs": 520,
+     "measuredMs": 513,
+     "ratio": 0.99
+    },
+    {
+     "page": "m",
+     "leg": "morph",
+     "step": 3,
+     "declaredMs": 320,
+     "measuredMs": 390,
+     "ratio": 1.22
     }
    ],
    "atOrAboveHalf": "24/24"
@@ -290,7 +290,7 @@
      ]
     }
    },
-   "arrivalsPairingAnObject": "11/48",
+   "arrivalsPairingAnObject": "12/48",
    "coldArrivalsPairingAnObject": "0/48",
    "byLeg": {
     "lateral": [
@@ -341,7 +341,7 @@
     "slide-in",
     "slide-out"
    ],
-   "maxLongestRunFrames": 34,
+   "maxLongestRunFrames": 33,
    "cuesVisibleAnyway": 48
   },
   "structureSurvives": {
@@ -376,13 +376,13 @@
   },
   "contrast": {
    "claim": "text contrast computed from rendered getComputedStyle values, in both themes, not eyeballed",
-   "readings": 41765,
+   "readings": 41453,
    "minRatio": 5.54,
    "failReadings": 0,
    "failPages": [],
    "worst": [],
    "dark": {
-    "readings": 3717,
+    "readings": 3710,
     "minRatio": 4.75,
     "failReadings": 0,
     "failPages": [],
@@ -421,7 +421,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768234,
+    "t": 1792769346,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -430,7 +430,7 @@
     "frames": 70,
     "moving": 2,
     "longest": 2,
-    "ms": 20,
+    "ms": 16,
     "anims": [
      "waapi"
     ]
@@ -505,7 +505,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768236,
+    "t": 1792769348,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -587,7 +587,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768237,
+    "t": 1792769349,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -656,7 +656,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 180,
+    "checked": 177,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -672,7 +672,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768239,
+    "t": 1792769351,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -755,7 +755,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768240,
+    "t": 1792769352,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -842,7 +842,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768241,
+    "t": 1792769353,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -926,7 +926,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768243,
+    "t": 1792769355,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -1053,7 +1053,7 @@
     }
    ],
    "contrast": {
-    "checked": 329,
+    "checked": 334,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -1069,7 +1069,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768244,
+    "t": 1792769356,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -1138,7 +1138,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 72,
+    "checked": 68,
     "min": 6.18,
     "p10": 6.61,
     "median": 6.61,
@@ -1154,7 +1154,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768247,
+    "t": 1792769359,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -1223,7 +1223,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 180,
+    "checked": 177,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -1239,7 +1239,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768260,
+    "t": 1792769372,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -1322,7 +1322,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768261,
+    "t": 1792769374,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -1409,7 +1409,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768263,
+    "t": 1792769375,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -1493,7 +1493,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768264,
+    "t": 1792769376,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -1506,16 +1506,16 @@
     "anims": []
    },
    "depth": {
-    "text": "",
+    "text": "Contractthe rules the six obey · not a surface",
     "visible": true
    },
    "bar": {
-    "links": 0,
-    "current": 0,
-    "labelled": null
+    "links": 7,
+    "current": 1,
+    "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "",
+    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: risk",
     "visible": false
    },
    "live": false,
@@ -1545,7 +1545,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "auditing…",
+     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
      "page": "contract"
     },
     {
@@ -1557,12 +1557,73 @@
      "page": "contract"
     }
    ],
-   "audit": [],
+   "audit": [
+    {
+     "what": "stylesheets parsed",
+     "value": "12",
+     "tag": "of 12",
+     "ok": true
+    },
+    {
+     "what": "duration declarations walked",
+     "value": "36",
+     "tag": "all classified",
+     "ok": true
+    },
+    {
+     "what": "referencing var(--d-step)",
+     "value": "21",
+     "tag": "the rule",
+     "ok": true
+    },
+    {
+     "what": "none — the contract’s own stop states",
+     "value": "10",
+     "tag": "required by the contract",
+     "ok": true
+    },
+    {
+     "what": "the declared 0.01ms snap under reduce",
+     "value": "4",
+     "tag": "exception 1",
+     "ok": true
+    },
+    {
+     "what": "naming no duration at all (scroll-driven, or inheriting)",
+     "value": "1",
+     "tag": "exception 2",
+     "ok": true
+    },
+    {
+     "what": "ad-hoc numbers in stylesheets",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "literal durations in scripts",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "call sites naming a step, in scripts",
+     "value": "6",
+     "tag": "steps 2 · 5",
+     "ok": true
+    },
+    {
+     "what": "keyframes defined / each mapped to a leg",
+     "value": "8 / 8",
+     "tag": "no orphans",
+     "ok": true
+    }
+   ],
    "contrast": {
-    "checked": 187,
+    "checked": 420,
     "min": 5.54,
     "p10": 6.61,
-    "median": 6.61,
+    "median": 7.03,
     "fails": [],
     "failCount": 0,
     "skippedOverImage": 0
@@ -1575,7 +1636,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768268,
+    "t": 1792769378,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -1657,7 +1718,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768269,
+    "t": 1792769379,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -1739,7 +1800,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792768270,
+    "t": 1792769380,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -1808,7 +1869,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 72,
+    "checked": 68,
     "min": 6.18,
     "p10": 6.61,
     "median": 6.61,
@@ -1824,16 +1885,16 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768280,
+    "t": 1792769393,
     "path": "/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": true,
     "frames": 70,
-    "moving": 3,
-    "longest": 3,
-    "ms": 36,
+    "moving": 1,
+    "longest": 1,
+    "ms": 0,
     "anims": [
      "waapi"
     ]
@@ -1908,7 +1969,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768282,
+    "t": 1792769395,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -1990,7 +2051,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768283,
+    "t": 1792769396,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -2059,7 +2120,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 181,
+    "checked": 178,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -2075,7 +2136,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768284,
+    "t": 1792769397,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -2158,7 +2219,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768285,
+    "t": 1792769398,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -2245,7 +2306,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768286,
+    "t": 1792769400,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -2329,7 +2390,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768288,
+    "t": 1792769401,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -2456,7 +2517,7 @@
     }
    ],
    "contrast": {
-    "checked": 388,
+    "checked": 387,
     "min": 5.54,
     "p10": 6.57,
     "median": 7.03,
@@ -2472,7 +2533,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768289,
+    "t": 1792769402,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -2541,7 +2602,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 73,
+    "checked": 69,
     "min": 6.18,
     "p10": 6.61,
     "median": 6.61,
@@ -2557,7 +2618,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768291,
+    "t": 1792769405,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -2626,7 +2687,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 181,
+    "checked": 178,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -2642,7 +2703,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768305,
+    "t": 1792769420,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -2725,7 +2786,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768306,
+    "t": 1792769421,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -2812,7 +2873,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768307,
+    "t": 1792769422,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -2896,7 +2957,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768309,
+    "t": 1792769423,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -2909,16 +2970,16 @@
     "anims": []
    },
    "depth": {
-    "text": "",
+    "text": "Contractthe rules the six obey · not a surface",
     "visible": true
    },
    "bar": {
-    "links": 0,
-    "current": 0,
-    "labelled": null
+    "links": 7,
+    "current": 1,
+    "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "",
+    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: risk",
     "visible": false
    },
    "live": false,
@@ -2948,7 +3009,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "auditing…",
+     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
      "page": "contract"
     },
     {
@@ -2960,12 +3021,73 @@
      "page": "contract"
     }
    ],
-   "audit": [],
+   "audit": [
+    {
+     "what": "stylesheets parsed",
+     "value": "12",
+     "tag": "of 12",
+     "ok": true
+    },
+    {
+     "what": "duration declarations walked",
+     "value": "36",
+     "tag": "all classified",
+     "ok": true
+    },
+    {
+     "what": "referencing var(--d-step)",
+     "value": "21",
+     "tag": "the rule",
+     "ok": true
+    },
+    {
+     "what": "none — the contract’s own stop states",
+     "value": "10",
+     "tag": "required by the contract",
+     "ok": true
+    },
+    {
+     "what": "the declared 0.01ms snap under reduce",
+     "value": "4",
+     "tag": "exception 1",
+     "ok": true
+    },
+    {
+     "what": "naming no duration at all (scroll-driven, or inheriting)",
+     "value": "1",
+     "tag": "exception 2",
+     "ok": true
+    },
+    {
+     "what": "ad-hoc numbers in stylesheets",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "literal durations in scripts",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "call sites naming a step, in scripts",
+     "value": "6",
+     "tag": "steps 2 · 5",
+     "ok": true
+    },
+    {
+     "what": "keyframes defined / each mapped to a leg",
+     "value": "8 / 8",
+     "tag": "no orphans",
+     "ok": true
+    }
+   ],
    "contrast": {
-    "checked": 188,
+    "checked": 426,
     "min": 5.54,
     "p10": 6.61,
-    "median": 6.61,
+    "median": 7.03,
     "fails": [],
     "failCount": 0,
     "skippedOverImage": 0
@@ -2978,7 +3100,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768311,
+    "t": 1792769425,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -3060,7 +3182,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768312,
+    "t": 1792769426,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -3142,7 +3264,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792768313,
+    "t": 1792769428,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -3211,7 +3333,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 73,
+    "checked": 69,
     "min": 6.18,
     "p10": 6.61,
     "median": 6.61,
@@ -3227,16 +3349,16 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768319,
+    "t": 1792769443,
     "path": "/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": true,
     "frames": 70,
-    "moving": 1,
-    "longest": 1,
-    "ms": 0,
+    "moving": 3,
+    "longest": 3,
+    "ms": 31,
     "anims": [
      "waapi"
     ]
@@ -3311,7 +3433,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768320,
+    "t": 1792769446,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -3393,7 +3515,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768322,
+    "t": 1792769449,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -3462,7 +3584,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 188,
+    "checked": 185,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -3478,7 +3600,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768324,
+    "t": 1792769450,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -3561,7 +3683,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768325,
+    "t": 1792769452,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -3648,7 +3770,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768326,
+    "t": 1792769453,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -3732,7 +3854,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768328,
+    "t": 1792769455,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -3859,7 +3981,7 @@
     }
    ],
    "contrast": {
-    "checked": 400,
+    "checked": 401,
     "min": 5.54,
     "p10": 6.57,
     "median": 6.61,
@@ -3875,7 +3997,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768329,
+    "t": 1792769457,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -3944,7 +4066,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 80,
+    "checked": 76,
     "min": 5.54,
     "p10": 6.61,
     "median": 6.61,
@@ -3960,7 +4082,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768332,
+    "t": 1792769460,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -4029,7 +4151,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 188,
+    "checked": 185,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -4045,7 +4167,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768345,
+    "t": 1792769474,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -4128,7 +4250,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768346,
+    "t": 1792769476,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -4215,7 +4337,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768347,
+    "t": 1792769477,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -4299,7 +4421,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768349,
+    "t": 1792769478,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -4426,7 +4548,7 @@
     }
    ],
    "contrast": {
-    "checked": 446,
+    "checked": 447,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -4442,7 +4564,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768350,
+    "t": 1792769480,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -4524,7 +4646,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768351,
+    "t": 1792769481,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -4606,7 +4728,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792768352,
+    "t": 1792769483,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -4675,7 +4797,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 80,
+    "checked": 76,
     "min": 5.54,
     "p10": 6.61,
     "median": 6.61,
@@ -4691,16 +4813,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768357,
+    "t": 1792769496,
     "path": "/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 32,
-    "longest": 32,
-    "ms": 507,
+    "moving": 33,
+    "longest": 33,
+    "ms": 514,
     "anims": [
      "waapi"
     ]
@@ -4775,7 +4897,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768358,
+    "t": 1792769497,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -4857,7 +4979,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768359,
+    "t": 1792769499,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -4926,7 +5048,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 180,
+    "checked": 177,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -4942,7 +5064,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768360,
+    "t": 1792769500,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -5025,7 +5147,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768361,
+    "t": 1792769502,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -5110,7 +5232,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768363,
+    "t": 1792769503,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -5194,31 +5316,31 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768364,
+    "t": 1792769505,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 24,
-    "longest": 24,
-    "ms": 383,
+    "moving": 23,
+    "longest": 23,
+    "ms": 367,
     "anims": [
      "waapi"
     ]
    },
    "depth": {
-    "text": "Contractthe rules the six obey · not a surface",
+    "text": "",
     "visible": true
    },
    "bar": {
-    "links": 7,
-    "current": 1,
-    "labelled": "Seer surfaces"
+    "links": 0,
+    "current": 0,
+    "labelled": null
    },
    "badge": {
-    "text": "leg · cold arrivalreduced: offfrom: direct",
+    "text": "",
     "visible": false
    },
    "live": false,
@@ -5248,7 +5370,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
+     "text": "auditing…",
      "page": "contract"
     },
     {
@@ -5260,73 +5382,12 @@
      "page": "contract"
     }
    ],
-   "audit": [
-    {
-     "what": "stylesheets parsed",
-     "value": "12",
-     "tag": "of 12",
-     "ok": true
-    },
-    {
-     "what": "duration declarations walked",
-     "value": "36",
-     "tag": "all classified",
-     "ok": true
-    },
-    {
-     "what": "referencing var(--d-step)",
-     "value": "21",
-     "tag": "the rule",
-     "ok": true
-    },
-    {
-     "what": "none — the contract’s own stop states",
-     "value": "10",
-     "tag": "required by the contract",
-     "ok": true
-    },
-    {
-     "what": "the declared 0.01ms snap under reduce",
-     "value": "4",
-     "tag": "exception 1",
-     "ok": true
-    },
-    {
-     "what": "naming no duration at all (scroll-driven, or inheriting)",
-     "value": "1",
-     "tag": "exception 2",
-     "ok": true
-    },
-    {
-     "what": "ad-hoc numbers in stylesheets",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "literal durations in scripts",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "call sites naming a step, in scripts",
-     "value": "6",
-     "tag": "steps 2 · 5",
-     "ok": true
-    },
-    {
-     "what": "keyframes defined / each mapped to a leg",
-     "value": "8 / 8",
-     "tag": "no orphans",
-     "ok": true
-    }
-   ],
+   "audit": [],
    "contrast": {
-    "checked": 385,
+    "checked": 190,
     "min": 5.54,
-    "p10": 6.57,
-    "median": 7.03,
+    "p10": 6.61,
+    "median": 6.61,
     "fails": [],
     "failCount": 0,
     "skippedOverImage": 0
@@ -5339,7 +5400,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768365,
+    "t": 1792769506,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -5348,7 +5409,7 @@
     "frames": 70,
     "moving": 24,
     "longest": 24,
-    "ms": 383,
+    "ms": 379,
     "anims": [
      "price-tick"
     ]
@@ -5410,7 +5471,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 72,
+    "checked": 68,
     "min": 6.18,
     "p10": 6.61,
     "median": 6.61,
@@ -5426,16 +5487,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768368,
+    "t": 1792769510,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 15,
-    "longest": 15,
-    "ms": 229,
+    "moving": 16,
+    "longest": 16,
+    "ms": 242,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5503,7 +5564,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 180,
+    "checked": 177,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -5519,21 +5580,22 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768381,
+    "t": 1792769524,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 237,
+    "moving": 17,
+    "longest": 17,
+    "ms": 243,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
      "-ua-view-transition-fade-out",
      "-ua-view-transition-group-anim-chrome",
+     "-ua-view-transition-group-anim-mkt-name",
      "-ua-view-transition-group-anim-root",
      "slide-in",
      "slide-out"
@@ -5610,7 +5672,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768383,
+    "t": 1792769525,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -5619,7 +5681,7 @@
     "frames": 70,
     "moving": 16,
     "longest": 16,
-    "ms": 239,
+    "ms": 240,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5704,16 +5766,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768384,
+    "t": 1792769527,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 247,
+    "moving": 17,
+    "longest": 17,
+    "ms": 252,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5798,7 +5860,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768386,
+    "t": 1792769528,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -5807,7 +5869,7 @@
     "frames": 70,
     "moving": 25,
     "longest": 25,
-    "ms": 389,
+    "ms": 390,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5950,16 +6012,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768387,
+    "t": 1792769530,
     "path": "/",
     "leg": "back",
     "from": "contract",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 20,
-    "longest": 20,
-    "ms": 315,
+    "moving": 21,
+    "longest": 21,
+    "ms": 314,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6039,7 +6101,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768388,
+    "t": 1792769531,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -6048,7 +6110,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 529,
+    "ms": 514,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6129,16 +6191,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792768390,
+    "t": 1792769532,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 25,
-    "longest": 25,
-    "ms": 383,
+    "moving": 26,
+    "longest": 26,
+    "ms": 402,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6208,7 +6270,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 72,
+    "checked": 68,
     "min": 6.18,
     "p10": 6.61,
     "median": 6.61,
@@ -6224,16 +6286,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768393,
+    "t": 1792769538,
     "path": "/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 34,
-    "longest": 34,
-    "ms": 521,
+    "moving": 33,
+    "longest": 33,
+    "ms": 525,
     "anims": [
      "waapi"
     ]
@@ -6308,7 +6370,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768395,
+    "t": 1792769540,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -6390,7 +6452,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768396,
+    "t": 1792769541,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -6459,7 +6521,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 181,
+    "checked": 178,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -6475,7 +6537,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768397,
+    "t": 1792769543,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -6558,7 +6620,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768398,
+    "t": 1792769544,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -6643,7 +6705,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768399,
+    "t": 1792769546,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -6727,7 +6789,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768401,
+    "t": 1792769547,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -6736,7 +6798,7 @@
     "frames": 70,
     "moving": 23,
     "longest": 23,
-    "ms": 364,
+    "ms": 366,
     "anims": [
      "waapi"
     ]
@@ -6872,7 +6934,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768402,
+    "t": 1792769548,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -6881,7 +6943,7 @@
     "frames": 70,
     "moving": 25,
     "longest": 25,
-    "ms": 399,
+    "ms": 397,
     "anims": [
      "price-tick"
     ]
@@ -6943,7 +7005,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 73,
+    "checked": 69,
     "min": 6.18,
     "p10": 6.61,
     "median": 6.61,
@@ -6959,7 +7021,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768405,
+    "t": 1792769551,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -7036,7 +7098,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 181,
+    "checked": 178,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -7052,16 +7114,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768418,
+    "t": 1792769565,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 242,
+    "moving": 16,
+    "longest": 16,
+    "ms": 233,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7144,16 +7206,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768419,
+    "t": 1792769566,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 234,
+    "moving": 17,
+    "longest": 17,
+    "ms": 244,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7238,7 +7300,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768421,
+    "t": 1792769568,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -7247,7 +7309,7 @@
     "frames": 70,
     "moving": 16,
     "longest": 16,
-    "ms": 235,
+    "ms": 228,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7332,16 +7394,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768422,
+    "t": 1792769569,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 26,
-    "longest": 26,
-    "ms": 402,
+    "moving": 24,
+    "longest": 24,
+    "ms": 379,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7354,16 +7416,16 @@
     ]
    },
    "depth": {
-    "text": "Contractthe rules the six obey · not a surface",
+    "text": "",
     "visible": true
    },
    "bar": {
-    "links": 7,
-    "current": 1,
-    "labelled": "Seer surfaces"
+    "links": 0,
+    "current": 0,
+    "labelled": null
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: risk",
+    "text": "",
     "visible": false
    },
    "live": false,
@@ -7393,7 +7455,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
+     "text": "auditing…",
      "page": "contract"
     },
     {
@@ -7405,73 +7467,12 @@
      "page": "contract"
     }
    ],
-   "audit": [
-    {
-     "what": "stylesheets parsed",
-     "value": "12",
-     "tag": "of 12",
-     "ok": true
-    },
-    {
-     "what": "duration declarations walked",
-     "value": "36",
-     "tag": "all classified",
-     "ok": true
-    },
-    {
-     "what": "referencing var(--d-step)",
-     "value": "21",
-     "tag": "the rule",
-     "ok": true
-    },
-    {
-     "what": "none — the contract’s own stop states",
-     "value": "10",
-     "tag": "required by the contract",
-     "ok": true
-    },
-    {
-     "what": "the declared 0.01ms snap under reduce",
-     "value": "4",
-     "tag": "exception 1",
-     "ok": true
-    },
-    {
-     "what": "naming no duration at all (scroll-driven, or inheriting)",
-     "value": "1",
-     "tag": "exception 2",
-     "ok": true
-    },
-    {
-     "what": "ad-hoc numbers in stylesheets",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "literal durations in scripts",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "call sites naming a step, in scripts",
-     "value": "6",
-     "tag": "steps 2 · 5",
-     "ok": true
-    },
-    {
-     "what": "keyframes defined / each mapped to a leg",
-     "value": "8 / 8",
-     "tag": "no orphans",
-     "ok": true
-    }
-   ],
+   "audit": [],
    "contrast": {
-    "checked": 436,
+    "checked": 191,
     "min": 5.54,
     "p10": 6.61,
-    "median": 7.03,
+    "median": 6.61,
     "fails": [],
     "failCount": 0,
     "skippedOverImage": 0
@@ -7484,16 +7485,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768423,
+    "t": 1792769572,
     "path": "/",
     "leg": "back",
     "from": "contract",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 21,
-    "longest": 21,
-    "ms": 321,
+    "moving": 20,
+    "longest": 20,
+    "ms": 309,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7573,7 +7574,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768424,
+    "t": 1792769573,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -7582,7 +7583,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 519,
+    "ms": 528,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7663,16 +7664,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792768425,
+    "t": 1792769575,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 25,
-    "longest": 25,
-    "ms": 392,
+    "moving": 24,
+    "longest": 24,
+    "ms": 372,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7742,7 +7743,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 73,
+    "checked": 69,
     "min": 6.18,
     "p10": 6.61,
     "median": 6.61,
@@ -7758,7 +7759,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768427,
+    "t": 1792769578,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -7767,7 +7768,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 518,
+    "ms": 512,
     "anims": [
      "waapi"
     ]
@@ -7842,7 +7843,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768428,
+    "t": 1792769580,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -7924,7 +7925,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768431,
+    "t": 1792769582,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -7993,7 +7994,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 188,
+    "checked": 185,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -8009,7 +8010,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768432,
+    "t": 1792769584,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -8092,7 +8093,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768433,
+    "t": 1792769586,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -8177,7 +8178,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768435,
+    "t": 1792769587,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -8261,16 +8262,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768436,
+    "t": 1792769589,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 24,
-    "longest": 24,
-    "ms": 378,
+    "moving": 13,
+    "longest": 13,
+    "ms": 200,
     "anims": [
      "waapi"
     ]
@@ -8406,16 +8407,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768438,
+    "t": 1792769591,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 24,
-    "longest": 24,
-    "ms": 382,
+    "moving": 25,
+    "longest": 25,
+    "ms": 393,
     "anims": [
      "price-tick"
     ]
@@ -8477,7 +8478,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 80,
+    "checked": 76,
     "min": 5.54,
     "p10": 6.61,
     "median": 6.61,
@@ -8493,16 +8494,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768440,
+    "t": 1792769595,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 231,
+    "moving": 17,
+    "longest": 17,
+    "ms": 244,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8570,7 +8571,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 188,
+    "checked": 185,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -8586,16 +8587,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768454,
+    "t": 1792769609,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 233,
+    "moving": 17,
+    "longest": 17,
+    "ms": 246,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8678,16 +8679,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768455,
+    "t": 1792769611,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 244,
+    "moving": 17,
+    "longest": 17,
+    "ms": 246,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8772,16 +8773,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768456,
+    "t": 1792769612,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 246,
+    "moving": 16,
+    "longest": 16,
+    "ms": 236,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8866,16 +8867,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768457,
+    "t": 1792769613,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 25,
-    "longest": 25,
-    "ms": 389,
+    "moving": 24,
+    "longest": 24,
+    "ms": 379,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8888,16 +8889,16 @@
     ]
    },
    "depth": {
-    "text": "Contractthe rules the six obey · not a surface",
+    "text": "",
     "visible": true
    },
    "bar": {
-    "links": 7,
-    "current": 1,
-    "labelled": "Seer surfaces"
+    "links": 0,
+    "current": 0,
+    "labelled": null
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: risk",
+    "text": "",
     "visible": true
    },
    "live": false,
@@ -8927,7 +8928,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
+     "text": "auditing…",
      "page": "contract"
     },
     {
@@ -8939,73 +8940,12 @@
      "page": "contract"
     }
    ],
-   "audit": [
-    {
-     "what": "stylesheets parsed",
-     "value": "12",
-     "tag": "of 12",
-     "ok": true
-    },
-    {
-     "what": "duration declarations walked",
-     "value": "36",
-     "tag": "all classified",
-     "ok": true
-    },
-    {
-     "what": "referencing var(--d-step)",
-     "value": "21",
-     "tag": "the rule",
-     "ok": true
-    },
-    {
-     "what": "none — the contract’s own stop states",
-     "value": "10",
-     "tag": "required by the contract",
-     "ok": true
-    },
-    {
-     "what": "the declared 0.01ms snap under reduce",
-     "value": "4",
-     "tag": "exception 1",
-     "ok": true
-    },
-    {
-     "what": "naming no duration at all (scroll-driven, or inheriting)",
-     "value": "1",
-     "tag": "exception 2",
-     "ok": true
-    },
-    {
-     "what": "ad-hoc numbers in stylesheets",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "literal durations in scripts",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "call sites naming a step, in scripts",
-     "value": "6",
-     "tag": "steps 2 · 5",
-     "ok": true
-    },
-    {
-     "what": "keyframes defined / each mapped to a leg",
-     "value": "8 / 8",
-     "tag": "no orphans",
-     "ok": true
-    }
-   ],
+   "audit": [],
    "contrast": {
-    "checked": 456,
+    "checked": 191,
     "min": 5.54,
     "p10": 6.61,
-    "median": 7.03,
+    "median": 6.61,
     "fails": [],
     "failCount": 0,
     "skippedOverImage": 0
@@ -9018,16 +8958,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768459,
+    "t": 1792769616,
     "path": "/",
     "leg": "back",
     "from": "contract",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 20,
-    "longest": 20,
-    "ms": 307,
+    "moving": 21,
+    "longest": 21,
+    "ms": 321,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -9107,16 +9047,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768460,
+    "t": 1792769617,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 33,
-    "longest": 33,
-    "ms": 525,
+    "moving": 32,
+    "longest": 32,
+    "ms": 513,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -9197,7 +9137,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792768461,
+    "t": 1792769619,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -9206,7 +9146,7 @@
     "frames": 70,
     "moving": 25,
     "longest": 25,
-    "ms": 396,
+    "ms": 390,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -9277,7 +9217,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 80,
+    "checked": 76,
     "min": 5.54,
     "p10": 6.61,
     "median": 6.61,
@@ -9909,7 +9849,7 @@
   {
    "page": "deep",
    "theme": "dark",
-   "checked": 188,
+   "checked": 185,
    "min": 4.75,
    "p10": 5.45,
    "median": 7.1,
@@ -9964,7 +9904,7 @@
   {
    "page": "m",
    "theme": "dark",
-   "checked": 80,
+   "checked": 76,
    "min": 5.45,
    "p10": 7.1,
    "median": 7.1,
