@@ -59,6 +59,10 @@
   --r-lg: 8px;   --r-sm: 4px;
   --rule: 1px solid var(--ink-150);
   --rule-strong: 1px solid var(--ink-900);
+  /* Elevation is a colour decision — a shadow is a hue with an alpha — so it is
+     specified here with the rest of them rather than in the component that
+     happens to float. The only element that does is the leg badge. */
+  --shadow-float: 0 8px 28px rgba(16, 16, 19, .18);
 
   /* ----------------------------------------------------------
      4. MOTION CONTRACT — five durations, no ad-hoc numbers
@@ -119,5 +123,8 @@ html[data-theme="dark"] {
   --ink-300: #55555F;
   --ink-500: #8B8B96;
   --ink-700: #C6C6CE;
+  /* Ink at 18% is invisible on an ink ground; a float on dark is a hole cut in
+     the page instead, so the same shape re-derives with black as the substrate. */
+  --shadow-float: 0 8px 28px rgba(0, 0, 0, .55);
   color-scheme: dark;
 }

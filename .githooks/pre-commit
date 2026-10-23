@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+# Commit gate for seer-six. Two assertions, both of which the entry makes
+# publicly and neither of which has anything else enforcing it:
+#
+#   1. no credential is ever staged — gitleaks over the staged blobs, with the
+#      project's own rules in .gitleaks.toml;
+#   2. the motion contract still holds — tools/lint.mjs, which is the static
+#      twin of the audit /contract/ runs in the browser after deploy.
+#
+# Both run against a materialised copy of the index — the tree this commit
+# creates — not the working tree, so a half-staged edit cannot pass a gate that
+# the committed result would fail.
+#
+# Install (git config is left alone on purpose — this is a copy, not a setting):
+#   cp .githooks/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+# Bypass, for the rare commit that is only a hook change: git commit --no-verify
+
+set -euo pipefail
+
+root=$(git rev-parse --show-toplevel)
+staged=$(git diff --cached --name-only --diff-filter=ACM)
+[ -z "$staged" ] && exit 0
+
+tmp=$(mktemp -d "${TMPDIR:-/tmp}/seer-six-gate.XXXXXX")
+trap 'rm -rf "$tmp"' EXIT INT TERM
+
+# Materialise the *index*, not the diff. The question a gate answers is "is the
+# tree this commit creates sound", and a tree of only the files that changed
+# looks, to anything that follows a link, like a site with seven pages missing.
+while IFS= read -r f; do
+  [ -n "$f" ] || continue
+  mkdir -p "$tmp/$(dirname "$f")"
+  git show ":$f" > "$tmp/$f" 2>/dev/null || true
+done <<< "$(git ls-files)"
+
+fail=0
+
+# ---------------------------------------------------------------- 1. secrets
+if command -v gitleaks >/dev/null 2>&1; then
+  echo "gate · gitleaks over the index ($(printf '%s\n' "$staged" | wc -l | tr -d ' ') file(s) staged)"
+  if ! gitleaks dir "$tmp" --config "$root/.gitleaks.toml" --exit-code 1 -l warn; then
+    echo "  ✗ a staged blob contains something shaped like a credential."
+    echo "    Values belong in the environment. See .env.example; never paste a key into a page."
+    fail=1
+  fi
+else
+  echo "gate · gitleaks not found — refusing to skip the secret check" >&2
+  echo "  install it: brew install gitleaks   (or: cargo install gitleaks)" >&2
+  exit 1
+fi
+
+# ------------------------------------------------------------------ 2. lint
+if command -v node >/dev/null 2>&1 && [ -f "$tmp/tools/lint.mjs" ]; then
+  echo "gate · tools/lint.mjs"
+  if ! node "$tmp/tools/lint.mjs"; then
+    echo "  ✗ the contract that /contract/ publishes is not what these files say."
+    fail=1
+  fi
+fi
+
+if [ "$fail" -ne 0 ]; then
+  echo
+  echo "not committed. The entry's whole claim is that no number and no colour is"
+  echo "accidental — fix the finding, or --no-verify if you mean it."
+  exit 1
+fi
+echo "gate · clean"

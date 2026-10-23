@@ -101,7 +101,7 @@ button.ghost[aria-pressed="true"] { background: var(--ef-violet); color: var(--f
   display: grid; gap: 2px; padding: var(--s-3) var(--s-4);
   background: var(--ink-900); color: var(--ef-paper);
   border-radius: var(--r-lg); font-size: var(--t-micro); line-height: 1.35;
-  box-shadow: 0 8px 28px rgba(16, 16, 19, .18);
+  box-shadow: var(--shadow-float);
 }
 html[data-theme="dark"] .leg-badge { background: var(--ef-violet-soft); color: var(--ef-ink); }
 .leg-badge b { font-size: var(--t-small); font-weight: 500; }

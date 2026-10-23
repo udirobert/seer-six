@@ -64,6 +64,15 @@ const log = (...a) => console.log(...a);
    published file, and the contract's audit — which reads the entry's source
    list, not the live document — has nothing to say about it. */
 const CURSOR = () => {
+  /* The overlay is per-document, and addInitScript gives every document a fresh
+     one — so on arrival it sits parked off-screen and the pointer vanishes for
+     the whole crossing, which is precisely the moment the film exists to show.
+     The last position therefore travels in sessionStorage, the same place the
+     leg travels: the cursor crosses the boundary with the object. */
+  const KEY = 'film-cursor';
+  const at = () => {
+    try { return JSON.parse(sessionStorage.getItem(KEY)) || null; } catch (e) { return null; }
+  };
   const paint = () => {
     if (document.getElementById('film-cursor')) return;
     const st = document.createElement('style');
@@ -81,9 +90,13 @@ const CURSOR = () => {
     const root = document.documentElement || document.body;
     root.appendChild(st);
     root.appendChild(d);
-    window.addEventListener('pointermove', (e) => {
-      d.style.transform = `translate3d(${e.clientX}px,${e.clientY}px,0)`;
-    }, { passive: true });
+    const move = (x, y) => {
+      d.style.transform = `translate3d(${x}px,${y}px,0)`;
+      try { sessionStorage.setItem(KEY, JSON.stringify([x, y])); } catch (e) { /* private mode */ }
+    };
+    const p = at();
+    if (p) move(p[0], p[1]);
+    window.addEventListener('pointermove', (e) => move(e.clientX, e.clientY), { passive: true });
     window.addEventListener('pointerdown', () => {
       d.classList.remove('hit');
       void d.offsetWidth;

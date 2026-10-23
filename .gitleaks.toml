@@ -1,0 +1,80 @@
+title = "seer-six — commit-time secret gate"
+
+# gitleaks' own ruleset ships hundreds of real-world key formats and is updated
+# far more often than this file will be, so it is the base. Everything added
+# below is local context: the shapes a credential takes in *this* workspace, and
+# the shapes public on-chain data takes that look identical to one.
+#
+# Note on syntax: gitleaks compiles Go RE2, which has no lookaheads. Exclusions
+# are therefore allowlists on the matched line, not `(?!)` inside the pattern.
+[extend]
+useDefault = true
+
+# ---------------------------------------------------------------------------
+# Rules
+# ---------------------------------------------------------------------------
+
+[[rules]]
+id = "credential-shaped-assignment"
+description = "An identifier naming a credential, bound to a quoted literal"
+# The credential word is matched *inside* the identifier, on both sides, because
+# the real names here are AWS_ACCESS_KEY_ID and tavilyApiKey — a `\b(word)\b`
+# anchor misses both (underscore is a word character, so `_ID` is not a boundary).
+regex = '''(?i)\b[a-z0-9_]*(api_?key|apikey|client_?secret|secret|access_?token|refresh_?token|auth_?token|session_?token|access_?key|private_?key|password|passwd|credential|seed_?phrase|mnemonic)[a-z0-9_]*["']?\s*[:=]\s*["'][^"'\s]{11,}["']'''
+keywords = ["key", "secret", "token", "password", "passwd", "credential", "seed", "mnemonic"]
+
+  [[rules.allowlists]]
+  # A reference is not a value. These are the forms this codebase uses to reach
+  # for a credential without containing one.
+  description = "reads from the environment or a token, does not embed a secret"
+  regexTarget = "line"
+  regexes = [
+    '''process\.env''',
+    '''import\.meta''',
+    '''var\(--''',
+    '''\$\{''',
+    '''\bgetComputedStyle\b''',
+  ]
+
+[[rules]]
+id = "dotenv-style-credential"
+description = "An UPPER_SNAKE credential name assigned a value, quoted or not"
+regex = '''(?m)^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*_(API_?KEY|SECRET|TOKEN|PASSWORD|PASSWD|PRIVATE_?KEY|ACCESS_?KEY|SESSION_?KEY|SIGNING_?KEY|SALT|CREDENTIALS)[A-Z0-9]*\s*[=:]\s*["']?[^\s"']{8,}'''
+keywords = ["API_KEY", "APIKEY", "SECRET", "TOKEN", "PASSWORD", "PRIVATE_KEY", "ACCESS_KEY", "CREDENTIALS"]
+
+[[rules]]
+id = "url-with-inline-credentials"
+description = "scheme://user:password@host — credentials inside a URL"
+regex = '''[a-zA-Z][a-zA-Z0-9+.-]*://[^/\s:@]{1,64}:[^/\s@]{3,64}@'''
+keywords = ["://"]
+
+[[rules]]
+id = "pem-key-block"
+description = "PEM private or encrypted key material"
+regex = '''-----BEGIN\s+(RSA\s+|EC\s+|OPENSSH\s+|PGP\s+|DSA\s+)?(PRIVATE|ENCRYPTED)\s+KEY-----'''
+keywords = ["-----BEGIN"]
+
+[[rules]]
+id = "bare-256-bit-scalar"
+description = "A bare 64-hex scalar — the shape of an unencrypted EVM private key"
+regex = '''\b(?:0x)?[0-9a-fA-F]{64}\b'''
+keywords = ["0x"]
+
+  [[rules.allowlists]]
+  # data/*.js is a prebaked snapshot of Seer's public API. Its collectionId and
+  # positionId fields are 256-bit CTF hashes, which are byte-for-byte the same
+  # shape as a private key. They are public by construction — the harness reads
+  # them back from the live endpoint, so anyone can confirm none of it is secret.
+  description = "public CTF hashes from the baked Seer snapshot"
+  paths = ['''^data/.*\.js$''', '''^evidence/.*\.json$''']
+
+# ---------------------------------------------------------------------------
+# Allowlist
+# ---------------------------------------------------------------------------
+
+[allowlist]
+description = "Third-party and binary files that are not ours to keep clean"
+paths = [
+  '''^vendor/axe.min.js$''',
+  '''^fonts/.*\.ttf$''',
+]

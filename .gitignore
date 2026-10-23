@@ -1,4 +1,23 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# Host CLIs drop state next to the files they serve. It is machine-local and it
+# is not part of the submission.
+.netlify/
+.vercel/
+
+# Media is linked, never committed — see tools/upload-grove.mjs and the
+# `media-in-repo` rule in tools/lint.mjs. The reel lives on the storage layer and
+# the entry carries its gateway URL.
 evidence/shots/
+*.mp4
+*.m4v
+*.mov
+*.mkv
+*.avi
+*.webm
+*.mp3
+*.m4a
+*.wav
+*.ogg
