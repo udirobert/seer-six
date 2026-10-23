@@ -1,1 +1,278 @@
-<!doctype html><meta charset=utf-8><title>probe risk</title><body style="font:16px ui-monospace;padding:4rem"><p>PROBE :: risk<p><a href="/">root</a>
+<!DOCTYPE html>
+<html lang="en" data-surface="risk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Risk — the ladder and its arithmetic · Seer, six interfaces</title>
+<meta name="description" content="A risk reading built only from fields Seer's API already publishes: verification status, pool depth, turnover, settlement distance, conditional parentage and arbitration. Every rung shows its arithmetic, and the fourteen markets with a pool show their price history.">
+<script src="../leg.js"></script>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../motion.css">
+<link rel="stylesheet" href="../ui.css">
+<link rel="stylesheet" href="risk.css">
+</head>
+<body>
+<div id="surface-bar" class="vt-chrome"></div>
+
+<main class="wrap">
+  <div id="surface-depth"></div>
+
+  <header class="masthead">
+    <p class="eyebrow">Surface 6 of 6 · one protocol, read for what can go wrong</p>
+    <h1>Risk</h1>
+    <p class="lede">A prediction market is a claim about the future priced by people who will not have to
+      defend it. Risk is the reading that asks what could still break: whether anyone verified the
+      question, whether a pool exists to exit through, how far the settlement date has already slipped,
+      and whether the answer depends on another market resolving first.</p>
+  </header>
+
+  <div class="riskcard">
+    <section class="ladder" id="ladder" aria-labelledby="ladder-h">
+      <h2 id="ladder-h" class="visually-hidden">The ladder</h2>
+    </section>
+    <aside class="detail" id="detail" aria-live="polite"></aside>
+  </div>
+
+  <section class="block" aria-labelledby="model-h">
+    <h2 id="model-h">The whole model, on one screen</h2>
+    <p class="blocknote">Seven factors, all of them fields the API already returns, none of them
+      proprietary. The weights are the only judgement call on this page, and they are printed so they can
+      be argued with. A factor that contributes nothing to a market is shown at zero rather than hidden —
+      that is what makes the score checkable.</p>
+    <table class="model">
+      <thead><tr><th>Factor</th><th>Points</th><th>Field read</th><th>Why it is on the ladder</th></tr></thead>
+      <tbody id="model"></tbody>
+    </table>
+    <p class="blocknote" id="negatives"></p>
+  </section>
+
+  <section class="block" aria-labelledby="hist-h">
+    <h2 id="hist-h">The only fourteen markets with a history</h2>
+    <p class="blocknote">A price series is the one risk evidence you cannot argue with, and in this snapshot
+      the API has one for fourteen markets out of <b id="n-all">—</b>. Each line is indexed to 100 at its own
+      first print: the pool quotes the outcome against savings xDAI, so the <i>level</i> would need an FX
+      assumption while the <i>shape</i> and the <i>range</i> are the API's own. The dashed rule is 100 — the
+      first print — so a line ending above its own beginning is a market that got more expensive, in its own
+      units. Nothing here is smoothed, and no line is drawn where there is no pool.</p>
+    <ul class="multiples" id="multiples"></ul>
+  </section>
+
+  <section class="block">
+    <h2>Read the same risk somewhere else</h2>
+    <p class="blocknote">The rung a market sits on is a reading, not a property of the market. Crossing to
+      another surface with the same market is a lateral leg — the object keeps its identity, only the job
+      changes.</p>
+    <ul class="lateral" id="lateral"></ul>
+  </section>
+
+  <footer id="snapshot"></footer>
+</main>
+
+<aside class="leg-badge" id="leg-badge" aria-hidden="true"></aside>
+
+<script type="module">
+import { load, boot, index, esc, money, stateOf, ago, spine, tagTravellers, disarm, animate,
+         legBadge, ROOT, announce, SURFACES } from '../shell.js';
+
+const d = await load('markets', 'tree', 'charts', 'links', 'meta');
+const [markets, tree, charts, links, meta] = [d.markets, d.tree, d.charts, d.links, d.meta];
+const ix = index(markets, tree);
+const DAY = 86400, now = Date.now() / 1000;
+
+const RUNGS = [
+  ['Settled', 'verified, pooled, and either resolved or a long way from a deadline'],
+  ['Priced', 'a real book with one open question about it'],
+  ['Watch', 'pooled but unverified, or turning over faster than it is capitalised'],
+  ['Thin', 'no pool, or a dollar that has moved more than its liquidity can absorb'],
+  ['Unverifiable', 'nothing on this row is checked, and the answer may depend on another market']
+];
+
+/* The score is a pure function of the record plus one local action, so the
+   ladder can be recomputed in front of the reader. */
+function factors(m, challenged) {
+  const to = m.vol / Math.max(m.liq, 1);
+  const dset = (m.f - now) / DAY;
+  return [
+    ['verification', m.v === 'verified' ? 0 : m.v === 'not_verified' ? 2 : 3,
+     m.v ? m.v.replace('_', ' ') : 'no verification field', 'verification.status'],
+    ['pool', m.hl ? 0 : 2, m.hl ? 'Swapr pool present' : 'hasLiquidity false', 'hasLiquidity'],
+    ['depth', !m.hl ? 0 : m.liq < 100 ? 1.5 : m.liq < 1000 ? 0.75 : 0,
+     `${money(m.liq)} locked`, 'liquidityUSD'],
+    ['turnover', to > 5 ? 2 : to > 1 ? 1 : 0, `${to.toFixed(1)}× volume over liquidity`, 'volumeUSD ÷ liquidityUSD'],
+    ['settlement', dset < 0 ? 1 : dset < 3 ? 0.5 : dset < 30 ? 1 : 2,
+     `${ago(m.f)} · finalizes`, 'finalizesAt'],
+    ['conditional', m.pm ? 1 : 0, m.pm ? `child of 0x${m.pm}…` : 'root question', 'parentMarketId'],
+    ['arbitration', (m.arb || m.pa) ? 3 : 0,
+     (m.arb || m.pa) ? `${m.arb} question(s) in arbitration` : 'none recorded', 'questionsInArbitration'],
+    ['resolved', m.rep ? -1 : 0, m.rep ? 'resolved on chain' : 'still open', 'resolved']
+  ].concat(challenged ? [['challenge', 3, 'challenged here, by hand', 'local action']] : []);
+}
+const scoreOf = (m, c) => factors(m, c).reduce((a, f) => a + f[1], 0);
+const rungOf = (s) => (s >= 6.5 ? 4 : s >= 5 ? 3 : s >= 3.5 ? 2 : s >= 2 ? 1 : 0);
+
+const challenged = new Set();
+const wanted = new URLSearchParams(location.search).get('m');
+let cur = ix.byId.get(wanted) || markets.slice().sort((a, b) => b.liq - a.liq)[0];
+
+function rungList() {
+  const buckets = [[], [], [], [], []];
+  markets.forEach((m) => buckets[rungOf(scoreOf(m, challenged.has(m.id)))].push(m));
+  buckets.forEach((b) => b.sort((a, b2) => scoreOf(b2, challenged.has(b2.id)) -
+    scoreOf(a, challenged.has(a.id)) || b2.liq - a.liq));
+  return buckets;
+}
+
+function ladderHTML(buckets) {
+  return buckets.map((b, r) => `<div class="rung" data-r="${r}">
+    <span class="rung-n num">${r + 1}</span>
+    <span class="rung-h"><b>${RUNGS[r][0]}</b><span>${b.length} markets · ${RUNGS[r][1]}</span></span>
+    <span class="chips">${b.slice(0, 12).map((m) =>
+      `<button type="button" class="chip" data-id="${m.id}" aria-current="${m.id === cur.id}"
+        title="${esc(m.name)} — score ${scoreOf(m, challenged.has(m.id)).toFixed(1)}">${esc(m.name)}</button>`
+    ).join('')}${b.length > 12 ? `<span class="chip more">+${b.length - 12} on this rung</span>` : ''}</span>
+  </div>`).join('');
+}
+
+function detailHTML() {
+  const c = challenged.has(cur.id);
+  const s = scoreOf(cur, c);
+  const st = stateOf(cur);
+  return `<p class="eyebrow">Score, with its arithmetic</p>
+    <h2 class="mkt-name" data-vt="name">${esc(cur.name)}</h2>
+    <p class="score num" data-vt="odds">${s.toFixed(1)}</p>
+    <p class="blocknote">Rung ${rungOf(s) + 1} — ${RUNGS[rungOf(s)][0]}. ${st.t},
+      ${money(cur.liq)} liquidity, ${money(cur.vol)} volume, chain ${cur.ch}.</p>
+    <ul class="fac">${factors(cur, c).map(([k, p, v, field]) =>
+      `<li data-zero="${p === 0 ? 1 : 0}"><span class="fk">${k}</span>
+        <span class="fv" title="${esc(field)}">${esc(v)}</span>
+        <span class="fp">${p > 0 ? '+' : ''}${p}</span></li>`).join('')}</ul>
+    <button type="button" class="act ${c ? 'ghost' : ''}" id="chal">
+      ${c ? 'Withdraw the challenge' : 'Challenge this verification'}</button>
+    <p class="note">The challenge is a local action on a reading, not a transaction: Seer's
+      <code>verification.status</code> only changes when someone stakes on Kleros. It is here because the
+      200&nbsp;ms one-shot it triggers is the shortest interval in the motion contract, and because a risk
+      reading that cannot be disagreed with is a badge, not a model.</p>
+    <p class="num" style="margin-top:var(--s-4)">${spine(charts, cur.id)}</p>`;
+}
+
+function paintLadder() {
+  $('ladder').innerHTML = `<h2 class="visually-hidden">The ladder</h2>` + ladderHTML(rungList());
+}
+function paintDetail() {
+  $('detail').innerHTML = detailHTML();
+  disarm();
+  tagTravellers($('detail'));
+}
+function $(id) { return document.getElementById(id); }
+
+/* A market that climbs the ladder has to be seen to climb it: the chip is
+   repainted in its new rung and translated back to where it was, so the
+   transition shows the relation that changed. Same 220 ms as a lateral leg —
+   nothing about the market moved, only its place in this reading. */
+function challenge() {
+  const id = cur.id;
+  const before = $('ladder').querySelector(`.chip[data-id="${id}"]`)?.getBoundingClientRect();
+  if (challenged.has(id)) challenged.delete(id); else challenged.add(id);
+  const from = rungOf(scoreOf({ ...cur }, false));
+  paintLadder(); paintDetail();
+  const chip = $('ladder').querySelector(`.chip[data-id="${id}"]`);
+  const to = rungOf(scoreOf(cur, challenged.has(id)));
+  if (chip && before && from !== to) {
+    const after = chip.getBoundingClientRect();
+    chip.scrollIntoView({ block: 'nearest' });
+    animate(chip, [
+      { transform: `translate(${before.left - after.left}px, ${before.top - after.top}px)` },
+      { transform: 'none' }
+    ], { step: 2, easing: 'std' });
+  }
+  const box = $('detail');
+  box.classList.remove('verify-hit');
+  void box.offsetWidth;
+  box.classList.add('verify-hit');
+  announce(challenged.has(id)
+    ? `${cur.name}: challenged. Score ${scoreOf(cur, true).toFixed(1)}, rung ${rungOf(scoreOf(cur, true)) + 1}.`
+    : `${cur.name}: challenge withdrawn. Score ${scoreOf(cur, false).toFixed(1)}.`);
+}
+
+$('ladder').addEventListener('click', (e) => {
+  const b = e.target.closest('.chip[data-id]');
+  if (!b || b.dataset.id === cur.id) return;
+  cur = ix.byId.get(b.dataset.id);
+  document.querySelectorAll('.chip').forEach((n) =>
+    n.setAttribute('aria-current', String(n.dataset.id === cur.id)));
+  paintDetail();
+});
+$('detail').addEventListener('click', (e) => { if (e.target.closest('#chal')) challenge(); });
+
+/* ---------- the fourteen ---------- */
+$('n-all').textContent = String(markets.length);
+$('multiples').innerHTML = Object.entries(charts).map(([id, ser]) => {
+  const m = ix.byId.get(id); if (!m) return '';
+  const pts = ser[0]?.s || []; if (pts.length < 2) return '';
+  const w = 240, h = 64, pad = 5;
+  const idx = pts.map((p) => (p[1] / pts[0][1]) * 100);
+  const lo = Math.min(...idx, 100), hi = Math.max(...idx, 100), rg = hi - lo || 1;
+  const t0 = pts[0][0], t1 = pts[pts.length - 1][0], tr = t1 - t0 || 1;
+  const X = (t) => ((t - t0) / tr) * (w - pad * 2) + pad;
+  const Y = (v) => h - pad - ((v - lo) / rg) * (h - pad * 2);
+  const path = idx.map((v, i) => `${i ? 'L' : 'M'}${X(pts[i][0]).toFixed(1)} ${Y(v).toFixed(1)}`).join(' ');
+  const last = idx[idx.length - 1];
+  const s = scoreOf(m, challenged.has(m.id));
+  return `<li>
+    <span class="mt" title="${esc(m.name)}">${esc(m.name)}</span>
+    <svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img"
+      aria-label="${esc(m.name)}: ${pts.length} prints, from index 100 to ${last.toFixed(1)}">
+      <line class="mbase" x1="0" x2="${w}" y1="${Y(100).toFixed(1)}" y2="${Y(100).toFixed(1)}"/>
+      <path class="mline" d="${path}"/><circle class="mdot" cx="${X(t1).toFixed(1)}" cy="${Y(last).toFixed(1)}" r="2.5"/>
+    </svg>
+    <span class="mf num"><span>${ago(t0).replace(' ago', '')} → ${ago(t1)}</span>
+      <span>idx <b>${last.toFixed(1)}</b></span></span>
+    <span class="mf num"><span>${pts.length} prints · range ${(hi - lo).toFixed(1)} pts</span>
+      <span>rung <b>${rungOf(s) + 1}</b></span></span>
+  </li>`;
+}).join('');
+
+/* ---------- the model, stated ---------- */
+$('model').innerHTML = [
+  ['verification', '0 – 3', 'verification.status', 'A question nobody checked can resolve to something the question did not ask.'],
+  ['pool', '0 – 2', 'hasLiquidity', 'Without a Swapr pool the only exit is waiting for resolution or being the maker.'],
+  ['depth', '0 – 1.5', 'liquidityUSD', 'Size you can actually leave through, in dollars, at this snapshot.'],
+  ['turnover', '0 – 2', 'volumeUSD ÷ liquidityUSD', 'Volume far above locked liquidity is trading against a thin book, not depth.'],
+  ['settlement', '0 – 2', 'finalizesAt', 'How long the money is unavailable, and whether the date has already passed.'],
+  ['conditional', '0 – 1', 'parentMarketId', 'A child inherits its parent’s resolution risk on top of its own.'],
+  ['arbitration', '0 – 3', 'questionsInArbitration', 'A disputed question is not a price, it is an opinion about a court.'],
+  ['resolved', '−1 – 0', 'resolved', 'A settled market has no forward risk left, only a redemption to collect.']
+].map(([k, p, f, w]) => `<tr><td><b>${k}</b></td><td>${p}</td><td><code>${f}</code></td><td>${w}</td></tr>`).join('');
+
+const vCounts = markets.reduce((a, m) => (a[String(m.v)] = (a[String(m.v)] || 0) + 1, a), {});
+const arbN = markets.filter((m) => m.arb || m.pa).length;
+const noPoolN = markets.filter((m) => !m.hl).length;
+$('negatives').innerHTML = `Two factors are present in the API and empty in practice, and this page says so
+  instead of quietly dropping them: <b>${arbN}</b> markets have a question in arbitration in this snapshot,
+  so that column contributes nothing to any score today — it is the column that would matter most if a
+  dispute ever landed. Verification is the load-bearing one: ${vCounts.verified || 0} markets are
+  <code>verified</code>, ${vCounts.not_verified || 0} are <code>not_verified</code>, and
+  ${vCounts.null || 0} carry no verification field at all. ${noPoolN} markets have no pool, which is why
+  most of this page has no line to draw.`;
+
+$('lateral').innerHTML = SURFACES.filter((s) => s.key !== 'risk').map((s) => {
+  const u = new URL(`${ROOT}/${s.href}`, location.href);
+  u.searchParams.set('m', cur.id); u.searchParams.set('leg', 'lateral'); u.searchParams.set('from', 'risk');
+  const slow = new URLSearchParams(location.search).get('slow');
+  if (slow) u.searchParams.set('slow', slow);
+  return `<li><a href="${u.pathname}${u.search}"><span class="slot-n">${s.n}</span>${esc(s.label)}<span class="arrow">→</span></a></li>`;
+}).join('');
+
+$('snapshot').innerHTML =
+  `Snapshot <b>${esc(meta.iso)}</b> · every factor read from <code>markets-search</code>, weights chosen ` +
+  `here and printed above · <a href="${ROOT}/contract/?leg=lateral&from=risk">why this page moves the way it does</a> · ` +
+  `press <span class="kbd">R</span> to remove the motion and keep the meaning.`;
+legBadge();
+
+paintLadder();
+paintDetail();
+boot({ surface: 'risk', marketDepth: ix.depthOf(cur.id) });
+</script>
+</body>
+</html>

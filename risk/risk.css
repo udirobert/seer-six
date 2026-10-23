@@ -1,0 +1,79 @@
+/* risk.css — a ladder, not a badge. Every rung is a sentence about the API
+   fields that put a market there, so the reader can disagree with the score
+   without having to trust it. */
+
+.riskcard {
+  display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(300px, .5fr);
+  gap: var(--s-6); align-items: start; padding: var(--s-6) 0 var(--s-7);
+  border-bottom: var(--rule-strong);
+}
+@media (max-width: 980px) { .riskcard { grid-template-columns: 1fr; } }
+
+.ladder { display: grid; gap: var(--s-2); }
+.rung {
+  display: grid; grid-template-columns: 34px minmax(120px, 168px) minmax(0, 1fr);
+  gap: var(--s-4); align-items: start;
+  border: var(--rule); border-radius: var(--r-sm); padding: var(--s-3) var(--s-4);
+  background: var(--bg-raise);
+}
+.rung[data-r="4"], .rung[data-r="3"] { border-left: 3px solid var(--ef-warn); }
+.rung[data-r="0"], .rung[data-r="1"] { border-left: 3px solid var(--ef-up); }
+.rung-n { font-family: var(--font-num); font-size: var(--t-h3); color: var(--fg-signal); }
+.rung-h b { display: block; font-size: var(--t-small); }
+.rung-h span { font-size: var(--t-micro); color: var(--fg-mute); }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.chip {
+  appearance: none; -webkit-appearance: none; margin: 0; padding: 4px 8px; font: inherit;
+  font-size: var(--t-micro); cursor: pointer; text-align: left;
+  border: 1px solid var(--ink-150); border-radius: 999px; background: var(--bg); color: var(--fg);
+  max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.chip:hover { border-color: var(--ef-violet); }
+.chip[aria-current="true"] { background: var(--ef-violet); border-color: var(--ef-violet); color: #fff; }
+.chip.more { border-style: dashed; color: var(--fg-mute); cursor: default; }
+
+.detail { border: var(--rule-strong); border-radius: var(--r-lg); padding: var(--s-5); background: var(--bg); }
+.detail .eyebrow { margin-bottom: var(--s-2); }
+.detail h2 { font-size: var(--t-h3); margin-bottom: var(--s-3); }
+.score {
+  font-family: var(--font-num); font-size: 2.5rem; font-weight: 500; line-height: 1;
+  letter-spacing: -.03em; color: var(--fg-signal); margin: var(--s-3) 0;
+}
+.fac { list-style: none; margin: 0; padding: 0; }
+.fac li {
+  display: grid; grid-template-columns: 84px minmax(0, 1fr) 28px; gap: var(--s-2);
+  align-items: baseline; padding: var(--s-2) 0; border-bottom: var(--rule); font-size: var(--t-micro);
+}
+.fac .fk { letter-spacing: .06em; text-transform: uppercase; color: var(--fg-mute); }
+.fac .fv { color: var(--fg); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right; }
+.fac .fp { font-family: var(--font-num); text-align: right; color: var(--fg-signal); }
+.fac li[data-zero="1"] .fp { color: var(--ink-300); }
+.detail .act { margin-top: var(--s-4); width: 100%; }
+.detail .note { font-size: var(--t-micro); color: var(--fg-mute); margin-top: var(--s-3); }
+
+.multiples {
+  list-style: none; margin: var(--s-4) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(248px, 1fr)); gap: var(--s-4);
+}
+.multiples li { border: var(--rule); border-radius: var(--r-sm); padding: var(--s-4); background: var(--bg-raise); }
+.multiples .mt { font-size: var(--t-small); display: block; margin-bottom: var(--s-3);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.multiples svg { width: 100%; height: 64px; display: block; }
+.multiples .mline { fill: none; stroke: var(--ef-violet); stroke-width: 1.5; }
+.multiples .mbase { stroke: var(--ink-150); stroke-width: 1; stroke-dasharray: 3 3; }
+.multiples .mdot { fill: var(--ef-violet); }
+html[data-theme="dark"] .multiples .mline, html[data-theme="dark"] .multiples .mdot {
+  stroke: var(--ef-violet-alt); fill: var(--ef-violet-alt); }
+.multiples .mf {
+  display: flex; justify-content: space-between; gap: var(--s-2);
+  font-family: var(--font-num); font-size: var(--t-micro); color: var(--fg-mute); margin-top: var(--s-2);
+}
+.multiples .mf b { color: var(--fg); font-weight: 500; }
+
+.model { width: 100%; border-collapse: collapse; font-size: var(--t-small); margin-top: var(--s-4); }
+.model th, .model td { text-align: left; padding: var(--s-2) var(--s-3) var(--s-2) 0;
+  border-bottom: var(--rule); vertical-align: top; }
+.model th { font-size: var(--t-micro); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--fg-mute); font-weight: 500; border-bottom: var(--rule-strong); }
+.model td:nth-child(2) { font-family: var(--font-num); white-space: nowrap; }
+.model code { font-size: var(--t-micro); }
