@@ -22,7 +22,7 @@
   max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .chip:hover { border-color: var(--ef-violet); }
-.chip[aria-current="true"] { background: var(--ef-violet); border-color: var(--ef-violet); color: #fff; }
+.chip[aria-current="true"] { background: var(--ef-violet); border-color: var(--ef-violet); color: var(--ef-paper); }
 .chip.more { border-style: dashed; color: var(--fg-mute); cursor: default; }
 
 .score {

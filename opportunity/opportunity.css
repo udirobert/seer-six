@@ -21,9 +21,9 @@
 }
 /* Only the legs that are wide enough to hold a label get the solid fill, so
    the art cannot put light text on a light ground. */
-.seg[data-lead="1"] { background: var(--ef-violet); color: #fff; }
-html[data-theme="dark"] .seg { background: #2A1B40; color: var(--fg); }
-html[data-theme="dark"] .seg[data-lead="1"] { background: var(--ef-violet-alt); color: #fff; }
+.seg[data-lead="1"] { background: var(--ef-violet); color: var(--ef-paper); }
+html[data-theme="dark"] .seg { background: var(--bg-signal); color: var(--fg); }
+html[data-theme="dark"] .seg[data-lead="1"] { background: var(--ef-violet-alt); color: var(--ef-paper); }
 .seg b {
   font-size: var(--t-micro); font-weight: 500; line-height: 1.2;
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
