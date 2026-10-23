@@ -106,8 +106,10 @@ button.ghost[aria-pressed="true"] { background: var(--ef-violet); color: var(--f
   font-size: var(--t-micro); line-height: 1; white-space: nowrap;
 }
 .leg-badge b { font-size: var(--t-micro); font-weight: 500; color: var(--fg); }
-.leg-badge .faded { opacity: .66; }
-html[data-theme="dark"] .leg-badge { color: var(--fg-mute); }
+/* No opacity here. As a floating chip this readout sat on ink-900, where 66% of
+   paper still cleared 4.5:1; docked into the bar it is mute-on-paper, and the same
+   fade measured as two axe colour-contrast violations on all eight documents. The
+   hierarchy is weight and colour, not transparency. */
 
 /* ---------- market rows ---------- */
 
