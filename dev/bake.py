@@ -108,10 +108,14 @@ def market_row(m):
 
 
 def norm_series(mid, raw):
-    """markets-charts → [{oi, yes-name, no-name, series:[[unixSec, price], ...]}].
+    """markets-charts → [{oi, t0, t1, s:[[unixSec, pricePerOutcomeToken], ...]}].
 
     Each entry in raw is one Swapr pool, i.e. one outcome-token pair, so a market
-    carries a separate real price history per outcome.
+    carries a separate real price history per outcome. token0Price is a raw pool
+    ratio, not a dollar: the direction of the pair is unknown until it is matched
+    against the market's wrappedTokens, and an empty pool prints absurd ratios.
+    So a series is kept only when the outcome is identified and the price sits
+    inside the no-arbitrage band for a share that pays $1.
     """
     tokens = WRAPPED.get(mid) or []
     out = []
@@ -136,6 +140,15 @@ def norm_series(mid, raw):
         t1 = ((pool_series[0].get("pool") or {}).get("token1") or {})
         addr = t0.get("id")
         oi = tokens.index(addr) if addr in tokens else None
+        if oi is None and t1.get("id") in tokens:
+            oi = tokens.index(t1.get("id"))
+            pts = [[t, round(1.0 / p, 5) if p else None] for t, p in pts]
+            pts = [p for p in pts if p[1] is not None]
+        if oi is None or not pts:
+            continue
+        vals = [p[1] for p in pts]
+        if not all(0.0005 <= v <= 1.6 for v in vals):
+            continue
         out.append({"oi": oi, "t0": str(t0.get("name") or "")[:16],
                     "t1": str(t1.get("name") or "")[:16], "s": pts})
     return out

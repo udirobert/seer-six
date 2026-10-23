@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" data-surface="app">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>One market, six readings · Seer</title>
+<meta name="description" content="A single conditional-token market as its own document: the same object the explorer listed, the same object Deep, Risk and Opportunity read.">
+<script src="../leg.js"></script>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../motion.css">
+<link rel="stylesheet" href="../ui.css">
+<link rel="stylesheet" href="market.css">
+</head>
+<body>
+<div id="surface-bar" class="vt-chrome"></div>
+
+<main class="wrap" id="stage">
+  <div id="surface-depth"></div>
+  <p class="loading num">reading the book…</p>
+</main>
+
+<aside class="leg-badge" id="leg-badge" aria-hidden="true"></aside>
+
+<script type="module">
+/* Static imports, on purpose. A cross-document view transition snapshots the
+   incoming document once it is ready to paint; if the market arrived by an
+   awaited fetch, the first paint would be an empty shell and the object would
+   visibly fail to survive the boundary. The module graph is part of loading. */
+import { MARKETS } from '../data/markets.js';
+import { TREE } from '../data/tree.js';
+import { CHARTS } from '../data/charts.js';
+import { EVENTS } from '../data/events.js';
+import { LINKS } from '../data/links.js';
+import { META } from '../data/meta.js';
+import { boot, index, esc, money, pct, stateOf, ago, seerURL, ROOT, dur, ease,
+         reduced, announce, tagTravellers, SURFACES } from '../shell.js';
+
+const ix = index(MARKETS, TREE);
+const id = new URLSearchParams(location.search).get('m');
+const m = ix.byId.get(id) || MARKETS[0];
+document.title = `${m.name} · Seer`;
+
+const st = stateOf(m), depth = ix.depthOf(m.id), parent = ix.parentOf(m.id);
+const kids = ix.kids.get(m.id) || [];
+const series = CHARTS?.[m.id];
+const lead = (m.odds || []).findIndex((v) => v != null);
+const events = (EVENTS || []).filter((e) => e.mid === m.id);
+const shown = (m.outs || []).length;
+
+function priceBlock() {
+  const legs = (m.outs || []).map((o, i) => {
+    const v = m.odds ? m.odds[i] : null;
+    return `<li class="leg${i === lead ? ' lead' : ''}">
+      <span class="leg-o">${esc(o)}</span>
+      <span class="leg-p num">${v == null ? '—' : '$' + (v / 100).toFixed(2)}</span>
+      <span class="leg-bar"><i style="width:${v || 0}%"></i></span>
+      <span class="leg-s num">${pct(v)}</span></li>`;
+  }).join('');
+  return `<div class="pricecard">
+    <p class="eyebrow">Outcome price · one share pays $1 if it happens</p>
+    <p class="bigprice num" data-vt="spine">${m.odds?.[lead] != null ? '$' + (m.odds[lead] / 100).toFixed(2) : 'no price yet'}</p>
+    <ul class="legs" data-vt="odds">${legs}</ul>
+    <p class="sumcheck num">basket Σ ${((m.odds || []).reduce((a, v) => a + (v || 0), 0) / 100).toFixed(3)} dollars
+      ${m.no ? `· ${shown} of ${m.no} outcomes shown` : ''}</p>
+  </div>`;
+}
+
+function treeBlock() {
+  const up = parent
+    ? `<a class="edge up" href="${ROOT}/m/?m=${parent.id}&leg=back&from=m">
+        <span class="lbl">parent question · d${ix.depthOf(parent.id)}</span>
+        <span class="nm">${esc(parent.name)}</span>
+        <span class="num">${pct(parent.odds?.find((v) => v != null))} · ${money(parent.liq)}</span></a>`
+    : `<div class="edge up root"><span class="lbl">protocol root</span>
+        <span class="nm">Not conditional on another question. This market is a stem of the tree.</span></div>`;
+  const out = kids.length
+    ? `<ol class="fan">${kids.map((k) => {
+        const c = ix.byId.get(k);
+        if (!c) return '';
+        return `<li><a href="${ROOT}/m/?m=${k}&leg=split&from=m">
+          <span class="co num">outcome ${esc(String(c.po))}</span>
+          <span class="nm">${esc(c.name)}</span>
+          <span class="num">${pct(c.odds?.find((v) => v != null))} · ${money(c.liq)}</span></a></li>`;
+      }).join('')}</ol>`
+    : `<p class="empty">No conditional children in this snapshot. The tree ends here.</p>`;
+  return `<section class="block"><h2>Where this sits in the tree</h2>
+    <p class="blocknote">Depth ${depth} of the conditional-token tree. A child's collateral is split against one
+      outcome of its parent, which is why parent→child takes the fan interval and child→parent takes the
+      collapse. The indentation and the outcome index are here whether or not the motion runs.</p>${up}${out}</section>`;
+}
+
+function mini(w, h, pad, s) {
+  const pts = s.s || [];
+  if (pts.length < 2) return '';
+  const vals = pts.map((p) => p[1]);
+  const lo = Math.min(...vals), hi = Math.max(...vals), rg = hi - lo || 1;
+  const X = (i) => pad + (i / (pts.length - 1)) * (w - pad * 2);
+  const Y = (v) => h - pad - ((v - lo) / rg) * (h - pad * 2);
+  const d = pts.map((p, i) => `${i ? 'L' : 'M'}${X(i).toFixed(1)} ${Y(p[1]).toFixed(1)}`).join(' ');
+  const name = (m.outs || [])[s.oi ?? 0] || s.t0;
+  const idx = pts.map((p) => (p[1] / pts[0][1]) * 100);
+  const chg = ((pts[pts.length - 1][1] / pts[0][1]) - 1) * 100;
+  return `<svg viewBox="0 0 ${w} ${h}" class="chart" role="img"
+    aria-label="${esc(name)} price moved ${chg.toFixed(1)} percent across ${pts.length} hourly prints">
+    <line x1="${pad}" y1="${h - pad}" x2="${w - pad}" y2="${h - pad}" class="ax"/>
+    <text x="${pad}" y="16" class="ct">${esc(name)} · outcome ${s.oi ?? '?'}</text>
+    <text x="${w - pad}" y="16" class="cr num" text-anchor="end">index 100 → ${idx[idx.length - 1].toFixed(1)} (${chg >= 0 ? '+' : ''}${chg.toFixed(1)}%)</text>
+    <path class="line" d="${d}"/>
+    <circle cx="${X(pts.length - 1)}" cy="${Y(pts[pts.length - 1][1])}" r="3"/></svg>`;
+}
+
+function chartBlock() {
+  if (!series) return `<section class="block"><h2>Price history</h2>
+    <p class="empty">No Swapr pool in this snapshot, so there is no history to draw. Every market in this
+    entry that shows a line has one; none of the lines are invented.</p></section>`;
+  const w = 760, h = 170, pad = 26;
+  return `<section class="block"><h2>Price history · ${series.length} outcome pool${series.length > 1 ? 's' : ''}</h2>
+    <p class="blocknote">Hourly prints read from <code>markets-charts</code>, indexed to 100 at the first
+    print: the pool quotes the outcome against savings xDAI, so the level would need an FX assumption while the
+    shape and the sign are the API's own. Motion on a line like this is the price moving, never an accent.</p>
+    <div class="chartwrap">${series.map((s) => mini(w, h, pad, s)).join('')}</div>
+    <p class="axis num">${series[0] ? `${ago(series[0].s[0][0])} → now · ${series[0].s.length} prints` : ''}</p></section>`;
+}
+
+const link = seerURL(m, LINKS);
+document.getElementById('stage').innerHTML = `
+  <div id="surface-depth"></div>
+  <div class="mktcard">
+    <header class="mhead">
+      <p class="eyebrow">Market document · arrived by leg <b data-legname>lateral</b></p>
+      <h1 class="mkt-name" data-vt="name">${esc(m.name)}</h1>
+      <div class="metastrip">
+        <span class="pill" data-k="${st.k}">${st.t}</span>
+        <span class="num">${money(m.liq)} liquidity</span><span class="dot">·</span>
+        <span class="num">${money(m.vol)} volume</span><span class="dot">·</span>
+        <span class="num">chain ${m.ch}</span><span class="dot">·</span>
+        <span class="num">verification ${esc(m.v || 'none')}</span><span class="dot">·</span>
+        <span class="num">finalizes ${ago(m.f)}</span>
+        <span class="num" title="market id is truncated to 10 hex characters in this snapshot">id 0x${esc(m.id)}…</span>
+        ${link ? `<a class="out" href="${link}">open this market on Seer ↗</a>` : ''}
+      </div>
+    </header>
+    <div class="col-a">${priceBlock()}</div>
+  </div>
+
+  <div class="grid">
+    <div class="col-b">
+      <section class="block">
+        <h2>Read the same market somewhere else</h2>
+        <p class="blocknote">These links are the argument. The object keeps its name, its outcome prices and its
+          identity across the document boundary; only the reading changes. That is the lateral leg — the shortest
+          interval, horizontal only, because nothing about the market moved.</p>
+        <ul class="lateral">
+          ${SURFACES.filter((s) => !['home', 'app'].includes(s.key)).map((s) =>
+            `<li><a href="${ROOT}/${s.href.split('/')[0]}/?m=${encodeURIComponent(m.id)}&leg=lateral&from=m">
+              <span class="slot-n">${s.n}</span>${esc(s.label)}<span class="arrow">→</span></a></li>`).join('')}
+          <li><a href="${ROOT}/app/?leg=back&from=m"><span class="slot-n">2</span>Back to the book<span class="arrow">→</span></a></li>
+        </ul>
+      </section>
+      ${treeBlock()}
+    </div>
+  </div>
+
+  ${chartBlock()}
+
+  ${events.length ? `<section class="block"><h2>Contract events on this market</h2>
+    <p class="blocknote">Conditional Tokens Framework calls read from <code>get-transactions</code>. Split is the
+      fan in the motion contract; merge and redeem are the collapse.</p>
+    <ul class="events">${events.slice(0, 12).map((e) =>
+      `<li><span class="ek num" data-k="${e.k}">${e.k}</span>
+        <span class="num">${e.amt != null ? money(e.amt) : '—'}</span>
+        <span class="num">${esc(ago(e.t))}</span>
+        <span class="who num" title="account and transaction hash truncated in this snapshot">0x${esc(e.who)}… · tx 0x${esc(e.tx)}…</span></li>`).join('')}</ul></section>` : ''}
+
+  <footer id="snapshot"></footer>`;
+
+document.getElementById('snapshot').innerHTML =
+  `Snapshot <b>${esc(META.iso)}</b> · market <code>${esc(m.id)}</code> · ` +
+  `<a href="${ROOT}/contract/?leg=lateral&from=m">why this page moves the way it does</a> · ` +
+  `press <span class="kbd">R</span> to remove the motion and keep the meaning.`;
+
+/* One element per name, or the transition is discarded. tagTravellers assigns
+   the four names the explorer armed on the row that just moved. */
+tagTravellers(document.querySelector('.mktcard'));
+
+boot({ surface: 'app', marketDepth: depth });
+document.querySelector('[data-legname]').textContent = document.documentElement.dataset.leg;
+
+const badge = document.getElementById('leg-badge');
+function drawBadge() {
+  const leg = document.documentElement.dataset.leg || 'direct';
+  const step = { morph: 3, fan: 5, lateral: 2, back: 3, split: 5, redeem: 3, verify: 1 }[leg];
+  badge.innerHTML = `<b>leg · ${esc(step ? leg : 'cold arrival')}</b>` +
+    (step ? `<span>${dur(step)}ms · --d-${step}</span><span class="faded">${esc(ease('out'))}</span>` : '') +
+    `<span class="faded">reduced: ${reduced() ? 'on (snap)' : 'off'}</span>` +
+    `<span class="faded">0x${esc(m.id)} travels</span>`;
+}
+drawBadge();
+new MutationObserver(drawBadge).observe(document.documentElement,
+  { attributes: true, attributeFilter: ['data-reduced', 'data-leg'] });
+
+/* The one animation allowed inside the object: vertical, signed by the delta,
+   displaced by its magnitude. */
+if (series && !reduced()) {
+  const el = document.querySelector('.bigprice');
+  const pts = series[0]?.s || [];
+  if (el && pts.length > 1) {
+    const d = (pts[pts.length - 1][1] - pts[pts.length - 2][1]) / pts[pts.length - 2][1];
+    el.classList.add('price-tick');
+    el.style.setProperty('--tick-from', `${(d >= 0 ? 1 : -1) * Math.min(Math.abs(d) * 8, 0.85)}em`);
+  }
+}
+announce(`${m.name}. Depth ${depth} of the conditional tree. ${kids.length} children.`);
+</script>
+</body>
+</html>

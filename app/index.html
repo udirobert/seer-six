@@ -1,1 +1,217 @@
-<!doctype html><meta charset=utf-8><title>probe app</title><body style="font:16px ui-monospace;padding:4rem"><p>PROBE :: app<p><a href="/">root</a>
+<!DOCTYPE html>
+<html lang="en" data-surface="app">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>App — one market book · Seer, six interfaces</title>
+<meta name="description" content="The explorer. 284 markets from Seer's live book, with the conditional-token tree visible as depth, and a row that crosses into its own document without becoming a different object.">
+<script src="../leg.js"></script>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../motion.css">
+<link rel="stylesheet" href="../ui.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="surface-bar" class="vt-chrome"></div>
+
+<main class="wrap">
+  <div id="surface-depth"></div>
+
+  <header class="masthead">
+    <p class="eyebrow">Seer App · the explorer</p>
+    <h1>One market book,<br>six ways to read it.</h1>
+    <p class="lede">This is the same set of conditional tokens every other surface is built on. A row here is
+      not a link to a picture of a market — it is the market, and it keeps its identity when it becomes
+      <a href="../m/?leg=morph&amp;from=app">its own document</a>.</p>
+  </header>
+
+  <section class="controls" aria-label="Filters">
+    <div class="ctl">
+      <label for="q">Search</label>
+      <input id="q" type="search" placeholder="question, outcome, category" autocomplete="off">
+    </div>
+    <div class="ctl">
+      <label for="state">State</label>
+      <select id="state">
+        <option value="all">All</option>
+        <option value="live">Open</option>
+        <option value="finalizing">Finalizing</option>
+        <option value="arb">In arbitration</option>
+        <option value="resolved">Resolved</option>
+        <option value="noliquidity">No pool</option>
+      </select>
+    </div>
+    <div class="ctl">
+      <label for="shape">Tree</label>
+      <select id="shape">
+        <option value="all">Everything</option>
+        <option value="root">Protocol roots only</option>
+        <option value="cond">Conditional children only</option>
+        <option value="multi">Many-outcome only</option>
+      </select>
+    </div>
+    <div class="ctl">
+      <label for="sort">Order</label>
+      <select id="sort">
+        <option value="liq">Liquidity</option>
+        <option value="close">Closing soonest</option>
+        <option value="spread">Widest spread</option>
+        <option value="fan">Fan-out</option>
+      </select>
+    </div>
+    <p class="count num" id="count" aria-live="polite"></p>
+  </section>
+
+  <section aria-labelledby="tbl-h">
+    <h2 id="tbl-h" class="visually-hidden">Markets</h2>
+    <div class="thead" aria-hidden="true">
+      <span>Depth</span><span>Question</span><span>Price</span><span>History</span>
+      <span class="num">Liquidity</span><span>State</span>
+    </div>
+    <div id="rows" class="rows"></div>
+    <p class="fineprint" id="fineprint"></p>
+  </section>
+
+  <footer id="snapshot" class="wrap"></footer>
+</main>
+
+<aside class="leg-badge" id="leg-badge" aria-hidden="true"></aside>
+
+<script type="module">
+import { load, boot, index, esc, money, pct, stateOf, ago, marketURL, armTravellers,
+         sameDoc, reduced, dur, ease, ROOT, announce } from '../shell.js';
+
+const d = await load('markets', 'tree', 'charts', 'links', 'meta');
+const [markets, tree, charts, links, meta] = [d.markets, d.tree, d.charts, d.links, d.meta];
+
+const ix = index(markets, tree);
+const rowsEl = document.getElementById('rows');
+const kidsOf = (id) => ix.kids.get(id) || [];
+const spread = (r) => {
+  const o = (r.odds || []).filter((v) => v != null);
+  return o.length > 1 ? Math.max(...o) - Math.min(...o) : 0;
+};
+const hist = (id) => charts?.[id];
+
+/* Price history exists for 14 markets in this snapshot. The other rows say so
+   instead of drawing an invented line. */
+function spineSVG(id) {
+  const s = hist(id);
+  if (!s) return '<span class="nohist">no pool history</span>';
+  const pts = s[0]?.s || [];
+  const w = 120, h = 26, pad = 2;
+  if (pts.length < 2) return '<span class="nohist">too few prints</span>';
+  const vals = pts.map((p) => p[1]);
+  const lo = Math.min(...vals), hi = Math.max(...vals), rg = hi - lo || 1;
+  const X = (i) => (i / (pts.length - 1)) * (w - pad * 2) + pad;
+  const Y = (v) => h - pad - ((v - lo) / rg) * (h - pad * 2);
+  const d = pts.map((p, i) => `${i ? 'L' : 'M'}${X(i).toFixed(1)} ${Y(p[1]).toFixed(1)}`).join(' ');
+  const last = pts[pts.length - 1][1], first = pts[0][1];
+  const dir = last > first ? 'up' : last < first ? 'down' : 'flat';
+  const chg = first > 0 ? ((last - first) / first) * 100 : 0;
+  return `<svg class="spine" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}" aria-hidden="true">
+    <path class="area" d="${d} L${X(pts.length - 1)} ${h} L${X(0)} ${h} Z" data-hist="${dir}"/>
+    <path class="line" d="${d}"/><circle cx="${X(pts.length - 1)}" cy="${Y(last)}" r="2"/>
+  </svg><span class="delta" data-dir="${dir}">${dir === 'flat' ? '±' : dir === 'up' ? '▲' : '▼'}${pct(Math.abs(chg), 1)}<em>idx</em></span>`;
+}
+
+function rowHTML(m) {
+  const st = stateOf(m), d = ix.depthOf(m.id), fan = kidsOf(m.id).length;
+  const parent = ix.parentOf(m.id);
+  const top = (m.odds || []).map((v, i) => `<i style="flex:${Math.max(v || 0, 0.5)}" title="${esc(m.outs[i] || '')}"></i>`).join('');
+  return `<a class="row" data-market="${m.id}" href="${marketURL(m.id, 'morph', 'app')}">
+  <span class="c-depth num">
+    ${d ? `<span class="indent" style="--i:${d}">└</span>` : '<span class="rootdot">●</span>'}
+    <span class="dl">d${d}</span>${fan ? `<span class="fan num">×${fan}</span>` : ''}
+  </span>
+  <span class="c-name">
+    <span class="mkt-name" data-vt="name">${esc(m.name)}</span>
+    ${parent ? `<span class="under">conditional on <b>${esc(parent.name)}</b> · outcome ${esc(m.po)}</span>` : ''}
+  </span>
+  <span class="c-price" data-vt="odds">
+    <span class="oddsbar">${top}</span>
+    <span class="odds-val num">${pct((m.odds || []).filter((v) => v != null)[0] ?? null)}</span>
+  </span>
+  <span class="c-spine" data-vt="spine">${spineSVG(m.id)}</span>
+  <span class="c-liq num">${money(m.liq)}</span>
+  <span class="c-state"><span class="pill" data-k="${st.k}">${st.t}</span></span>
+</a>`;
+}
+
+let view = markets.slice();
+function render() {
+  rowsEl.innerHTML = view.map(rowHTML).join('');
+  document.getElementById('count').textContent =
+    `${view.length} of ${markets.length} markets`;
+  armTravellers(rowsEl);
+}
+
+function applyFilters() {
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const s = document.getElementById('state').value;
+  const sh = document.getElementById('shape').value;
+  const so = document.getElementById('sort').value;
+  view = markets.filter((m) => {
+    if (q && !((m.name || '') + ' ' + (m.outs || []).join(' ') + ' ' + (m.cat || '')).toLowerCase().includes(q)) return false;
+    if (s !== 'all' && stateOf(m).k !== s) return false;
+    if (sh === 'root' && m.pm) return false;
+    if (sh === 'cond' && !m.pm) return false;
+    if (sh === 'multi' && (m.outs || []).length < 3) return false;
+    return true;
+  });
+  const by = { liq: (a, b) => b.liq - a.liq, close: (a, b) => (a.f || 9e17) - (b.f || 9e17),
+               spread: (a, b) => spread(b) - spread(a), fan: (a, b) => kidsOf(b.id).length - kidsOf(a.id).length };
+  view.sort(by[so]);
+  sameDoc(render);
+}
+
+['q', 'state', 'shape', 'sort'].forEach((id) => {
+  const el = document.getElementById(id);
+  el.addEventListener(id === 'q' ? 'input' : 'change', applyFilters);
+});
+
+render();
+
+document.getElementById('fineprint').innerHTML =
+  `${Object.keys(charts).length} of ${markets.length} markets in this snapshot have a Swapr pool, so only ` +
+  `those rows draw a history line; the rest say <i>no pool history</i>. The line is indexed to its own first
+  print, because the Swapr pool quotes the outcome against savings xDAI — the shape and the sign of the move are
+  real, the level would need an FX assumption. Depth is the conditional-token tree: ` +
+  `d0 is a question the protocol asks, d1 is a question asked only if one of its outcomes happens. ` +
+  `<span class="num">${ix.kids.size}</span> parents, <span class="num">${markets.filter((m) => m.pm).length}</span> children.`;
+
+const snap = document.getElementById('snapshot');
+snap.dataset.iso = meta.iso;
+snap.dataset.counts = `${meta.counts.markets} markets · ${meta.counts.chartMarkets} price histories · ${meta.counts.events} CTF events`;
+snap.innerHTML = `Snapshot <b>${esc(meta.iso)}</b> from <code>${esc(meta.source)}</code> · ` +
+  `${meta.counts.markets} of ${meta.counts ? meta.universe : ''} markets, ${meta.universe} in the book · ` +
+  `<a href="${ROOT}/contract/?leg=lateral&amp;from=app">the motion contract this page obeys</a> · ` +
+  `<a href="${ROOT}/m/?m=${encodeURIComponent(markets[0].id)}&amp;leg=morph&amp;from=app">try the boundary</a> · ` +
+  `press <span class="kbd">R</span> to reduce motion, <span class="kbd">D</span> to invert the surface.`;
+
+boot({ surface: 'app' });
+
+const badge = document.getElementById('leg-badge');
+function drawBadge() {
+  const leg = document.documentElement.dataset.leg || 'lateral';
+  const step = { morph: 3, fan: 5, lateral: 2, back: 3, split: 5, redeem: 3, verify: 1 }[leg];
+  badge.innerHTML = `<b>leg · ${esc(step ? leg : 'cold arrival')}</b>` +
+    (step ? `<span>${dur(step)}ms · --d-${step}</span><span class="faded">${esc(ease('out'))}</span>` : '') +
+    `<span class="faded">reduced: ${reduced() ? 'on (snap)' : 'off'}</span>` +
+    `<span class="faded">from: ${esc(document.documentElement.dataset.from || 'direct')}</span>`;
+}
+drawBadge();
+matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', drawBadge);
+new MutationObserver(drawBadge).observe(document.documentElement,
+  { attributes: true, attributeFilter: ['data-reduced', 'data-leg', 'data-theme'] });
+document.getElementById('surface-bar').addEventListener('click', (e) => {
+  if (e.target.closest('a[data-leg]')) {
+    setTimeout(() => {
+      if (document.documentElement.dataset.leg === 'morph') announce('Travelling to the market document.');
+    }, 400);
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+/* ============================================================
+   motion.css — the motion contract, in code
+   ------------------------------------------------------------
+   Nothing here is decoration. Each transition is keyed to a relation in
+   Seer's data (a parent market and its conditional children, a price delta,
+   a verification state) and each duration is one of five steps in tokens.css.
+
+   The leg is named on the DESTINATION document by leg.js, which reads ?leg=
+   before the first paint: a cross-document transition takes its timing from
+   the incoming document, so the origin can only hand over intent through
+   the URL. That hand-over is itself the protocol's model — a condition
+   travels, the reading changes.
+
+   Three parts of a market travel: mkt-name, mkt-odds, mkt-spine. No container
+   is named, because a named ancestor would snapshot its named descendants
+   twice and the object would smear.
+   ============================================================ */
+
+@view-transition {
+  navigation: auto;
+}
+
+.vt-mkt-name  { view-transition-name: mkt-name; }
+.vt-mkt-odds  { view-transition-name: mkt-odds; }
+.vt-mkt-spine { view-transition-name: mkt-spine; }
+.vt-chrome    { view-transition-name: chrome; }
+
+/* Every leg that carries a market keeps the chrome continuous: the bar is the
+   same element on all seven documents, so it never animates at all. */
+html[data-leg]::view-transition-group(chrome) {
+  animation-duration: var(--d-2);
+  animation-timing-function: var(--e-std);
+}
+
+/* ----------------------------------------------------------
+   LEG: morph — row → market document. 320ms, and no opacity fade on the
+   travelling nodes: fading them would say "a new thing appeared", which is
+   the opposite of the claim being made.
+   ---------------------------------------------------------- */
+html[data-leg="morph"]::view-transition-group(mkt-name),
+html[data-leg="morph"]::view-transition-group(mkt-odds),
+html[data-leg="morph"]::view-transition-group(mkt-spine) {
+  animation-duration: var(--d-3);
+  animation-timing-function: var(--e-out);
+}
+html[data-leg="morph"]::view-transition-old(mkt-name),
+html[data-leg="morph"]::view-transition-new(mkt-name),
+html[data-leg="morph"]::view-transition-old(mkt-odds),
+html[data-leg="morph"]::view-transition-new(mkt-odds),
+html[data-leg="morph"]::view-transition-old(mkt-spine),
+html[data-leg="morph"]::view-transition-new(mkt-spine) {
+  animation: none;
+  opacity: 1;
+  mix-blend-mode: normal;
+}
+html[data-leg="morph"]::view-transition-old(root) { animation: none; }
+html[data-leg="morph"]::view-transition-new(root) {
+  animation: root-arrive var(--d-3) var(--e-out) both;
+}
+
+/* ----------------------------------------------------------
+   LEG: lateral — sibling surface → sibling surface, same market. Shortest
+   interval, horizontal only: nothing about the market changed, only the job.
+   ---------------------------------------------------------- */
+html[data-leg="lateral"]::view-transition-group(mkt-name),
+html[data-leg="lateral"]::view-transition-group(mkt-odds),
+html[data-leg="lateral"]::view-transition-group(mkt-spine),
+html[data-leg="lateral"]::view-transition-group(chrome) {
+  animation-duration: var(--d-2);
+  animation-timing-function: var(--e-std);
+}
+html[data-leg="lateral"]::view-transition-old(mkt-name),
+html[data-leg="lateral"]::view-transition-new(mkt-name),
+html[data-leg="lateral"]::view-transition-old(mkt-odds),
+html[data-leg="lateral"]::view-transition-new(mkt-odds),
+html[data-leg="lateral"]::view-transition-old(mkt-spine),
+html[data-leg="lateral"]::view-transition-new(mkt-spine) {
+  animation: none;
+  opacity: 1;
+}
+html[data-leg="lateral"]::view-transition-old(root) { animation: slide-out var(--d-2) var(--e-in) both; }
+html[data-leg="lateral"]::view-transition-new(root) { animation: slide-in  var(--d-2) var(--e-out) both; }
+
+/* ----------------------------------------------------------
+   LEG: fan — protocol root → an app. The widest interval, moving outward,
+   because the relation is one-to-many.
+   LEG: split — parent → conditional child. Same outward motion, because a
+   split is the same tree edge taken with collateral.
+   ---------------------------------------------------------- */
+html[data-leg="fan"]::view-transition-group(mkt-name),
+html[data-leg="fan"]::view-transition-group(mkt-odds),
+html[data-leg="fan"]::view-transition-group(mkt-spine),
+html[data-leg="split"]::view-transition-group(mkt-name),
+html[data-leg="split"]::view-transition-group(mkt-odds),
+html[data-leg="split"]::view-transition-group(mkt-spine) {
+  animation-duration: var(--d-5);
+  animation-timing-function: var(--e-out);
+}
+html[data-leg="fan"]::view-transition-old(mkt-name),
+html[data-leg="fan"]::view-transition-new(mkt-name),
+html[data-leg="fan"]::view-transition-old(mkt-odds),
+html[data-leg="fan"]::view-transition-new(mkt-odds),
+html[data-leg="fan"]::view-transition-old(mkt-spine),
+html[data-leg="fan"]::view-transition-new(mkt-spine),
+html[data-leg="split"]::view-transition-old(mkt-name),
+html[data-leg="split"]::view-transition-new(mkt-name),
+html[data-leg="split"]::view-transition-old(mkt-odds),
+html[data-leg="split"]::view-transition-new(mkt-odds),
+html[data-leg="split"]::view-transition-old(mkt-spine),
+html[data-leg="split"]::view-transition-new(mkt-spine) {
+  animation: none;
+  opacity: 1;
+}
+html[data-leg="fan"]::view-transition-old(root)   { animation: fan-out var(--d-5) var(--e-in) both; }
+html[data-leg="fan"]::view-transition-new(root)   { animation: fan-in  var(--d-5) var(--e-out) both; }
+html[data-leg="split"]::view-transition-old(root) { animation: none; }
+html[data-leg="split"]::view-transition-new(root) { animation: root-arrive var(--d-5) var(--e-out) both; }
+
+/* ----------------------------------------------------------
+   LEG: back / redeem — a return to the book, or a merge of legs into
+   collateral. Both are collapses, so both use the merge interval.
+   ---------------------------------------------------------- */
+html[data-leg="back"]::view-transition-group(mkt-name),
+html[data-leg="back"]::view-transition-group(mkt-odds),
+html[data-leg="back"]::view-transition-group(mkt-spine),
+html[data-leg="redeem"]::view-transition-group(mkt-name),
+html[data-leg="redeem"]::view-transition-group(mkt-odds),
+html[data-leg="redeem"]::view-transition-group(mkt-spine) {
+  animation-duration: var(--d-3);
+  animation-timing-function: var(--e-std);
+}
+html[data-leg="back"]::view-transition-old(mkt-name),
+html[data-leg="back"]::view-transition-new(mkt-name),
+html[data-leg="back"]::view-transition-old(mkt-odds),
+html[data-leg="back"]::view-transition-new(mkt-odds),
+html[data-leg="back"]::view-transition-old(mkt-spine),
+html[data-leg="back"]::view-transition-new(mkt-spine) {
+  animation: none;
+  opacity: 1;
+}
+html[data-leg="back"]::view-transition-old(root)   { animation: none; }
+html[data-leg="back"]::view-transition-new(root)   { animation: root-arrive var(--d-3) var(--e-out) both; }
+html[data-leg="redeem"]::view-transition-old(root) { animation: fan-out var(--d-3) var(--e-in) reverse both; }
+html[data-leg="redeem"]::view-transition-new(root) { animation: fan-in  var(--d-3) var(--e-out) reverse both; }
+
+/* ----------------------------------------------------------
+   LEG: verify — a verification state change. One shot, never a loop, and
+   never longer than the reader needs to notice a state is not a story.
+   LEG: direct — a cold arrival. There is nothing to transition from.
+   ---------------------------------------------------------- */
+html[data-leg="verify"]::view-transition-old(root),
+html[data-leg="verify"]::view-transition-new(root) { animation-duration: var(--d-1); }
+html[data-leg="direct"]::view-transition-group(*),
+html[data-leg="direct"]::view-transition-old(*),
+html[data-leg="direct"]::view-transition-new(*) { animation: none; }
+
+@keyframes root-arrive { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slide-out   { from { opacity: 1; transform: none; }
+                         to   { opacity: 0; transform: translateX(-2.5%); } }
+@keyframes slide-in    { from { opacity: 0; transform: translateX(2.5%); }
+                         to   { opacity: 1; transform: none; } }
+@keyframes fan-out     { from { transform: scale(1);    opacity: 1; }
+                         to   { transform: scale(.965); opacity: 0; } }
+@keyframes fan-in      { from { transform: scale(1.035); opacity: 0; }
+                         to   { transform: none;         opacity: 1; } }
+
+/* ----------------------------------------------------------
+   IN-PAGE MOTION
+   ---------------------------------------------------------- */
+
+/* Price change: vertical only. Direction is the sign of the delta and the
+   displacement is proportional to its magnitude, so the animation is a
+   reading of the number rather than an accent on it. */
+.price-tick { animation: price-tick var(--d-4) var(--e-out) both; }
+@keyframes price-tick {
+  from { transform: translateY(var(--tick-from, 0.5em)); opacity: .35; }
+  to   { transform: none; opacity: 1; }
+}
+
+.verify-hit { animation: verify-hit var(--d-1) var(--e-std); }
+@keyframes verify-hit {
+  from { background: var(--bg-signal); }
+  to   { background: transparent; }
+}
+
+/* Scroll reveals are progressive: unsupported, or reduced, and the block is
+   never applied, so the content is simply present. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 26%;
+    }
+  }
+}
+@keyframes reveal { from { opacity: 0; transform: translateY(10px); }
+                    to   { opacity: 1; transform: none; } }
+
+:where(a, button, input, select, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--fg-signal);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* ----------------------------------------------------------
+   REDUCED MOTION — snap, don't pause.
+   Everything resolves to its end state at zero duration, and the meaning the
+   motion carried stays on screen as structure: the depth rail, the outcome
+   index, the signed price delta. This block is what /contract/ is arguing.
+   ---------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+}
+
+/* The same state, switchable by hand, so a reader can verify the claim
+   without changing their operating system. */
+html[data-reduced="1"] *, html[data-reduced="1"] *::before, html[data-reduced="1"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+html[data-reduced="1"]::view-transition-group(*),
+html[data-reduced="1"]::view-transition-old(*),
+html[data-reduced="1"]::view-transition-new(*) { animation: none !important; }
