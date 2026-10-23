@@ -215,6 +215,13 @@ html[data-leg="direct"]::view-transition-new(*) { animation: none; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    /* A scroll-driven animation ignores duration: its progress is the timeline,
+       not the clock. Setting 0.01ms on `.reveal` would therefore leave content
+       at the animation's *current* scroll position — invisible until you scroll
+       — and call that the reduced state. Putting the timeline back to `auto` is
+       what makes the snap real: the animation runs once, in 0.01ms, and holds
+       its end state. */
+    animation-timeline: auto !important;
   }
   ::view-transition-group(*),
   ::view-transition-old(*),
@@ -228,6 +235,7 @@ html[data-reduced="1"] *, html[data-reduced="1"] *::before, html[data-reduced="1
   animation-iteration-count: 1 !important;
   transition-duration: 0.01ms !important;
   scroll-behavior: auto !important;
+  animation-timeline: auto !important;
 }
 html[data-reduced="1"]::view-transition-group(*),
 html[data-reduced="1"]::view-transition-old(*),
