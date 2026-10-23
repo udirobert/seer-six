@@ -1,0 +1,88 @@
+/* futarchy.css — a surface built on an absence. Nothing here draws a number
+   the API does not have; the layout that would hold a price is drawn instead,
+   empty, and labelled as empty. */
+
+.pair {
+  display: grid; grid-template-columns: 108px repeat(2, minmax(0, 1fr));
+  gap: var(--s-3); align-items: stretch; margin-top: var(--s-5);
+}
+.pair .corner, .pair .head {
+  font-size: var(--t-micro); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--fg-mute); align-self: end; padding-bottom: var(--s-2);
+}
+.pair .side {
+  font-size: var(--t-micro); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--fg-mute); display: grid; gap: 3px; align-content: center;
+}
+.pair .side .tok { font-family: var(--font-num); letter-spacing: 0; text-transform: none; }
+.cell {
+  border: var(--rule); border-radius: var(--r-sm); background: var(--bg-raise);
+  padding: var(--s-4); display: grid; gap: var(--s-1); min-height: 108px;
+  align-content: start;
+}
+.cell .tok { font-family: var(--font-num); font-size: var(--t-micro); color: var(--fg-mute); }
+.cell .pr {
+  font-family: var(--font-num); font-size: 1.6rem; font-weight: 500; letter-spacing: -.02em;
+  color: var(--fg-signal); line-height: 1.1;
+}
+.cell .pr[data-null="1"] { color: var(--ink-300); }
+.cell .why { font-size: var(--t-micro); color: var(--fg-mute); }
+.stem {
+  grid-column: 1 / -1; border: var(--rule-strong); border-radius: var(--r-sm);
+  padding: var(--s-4); background: var(--bg); display: flex; flex-wrap: wrap;
+  gap: var(--s-2) var(--s-4); align-items: baseline;
+}
+.stem .q { font-weight: 500; }
+.stem .meta { font-size: var(--t-micro); color: var(--fg-mute); font-family: var(--font-num); }
+
+.ev { list-style: none; margin: var(--s-4) 0 0; padding: 0; display: grid; gap: var(--s-1); }
+.ev li {
+  display: grid; grid-template-columns: 78px minmax(0, 1fr) 62px; gap: var(--s-4);
+  align-items: center; padding: var(--s-3) 0; border-bottom: var(--rule); font-size: var(--t-small);
+}
+.ev .n { font-family: var(--font-num); font-size: var(--t-h3); text-align: right; letter-spacing: -.02em; }
+.ev .n[data-zero="1"] { color: var(--ef-warn); }
+.ev .n[data-all="1"] { color: var(--ef-up); }
+.ev .f { font-family: var(--font-num); font-size: var(--t-micro); color: var(--fg-mute); }
+.ev .t { color: var(--fg-mute); font-size: var(--t-micro); }
+
+.props { list-style: none; margin: var(--s-4) 0 0; padding: 0; display: grid; gap: var(--s-2); }
+.props li { display: grid; }
+.props button {
+  appearance: none; -webkit-appearance: none; margin: 0; padding: var(--s-3) var(--s-4);
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s-3); align-items: baseline;
+  font: inherit; text-align: left; color: inherit; cursor: pointer; width: 100%;
+  background: var(--bg-raise); border: var(--rule); border-radius: var(--r-sm);
+}
+.props button:hover { border-color: var(--ef-violet); }
+.props button[aria-current="true"] { border-color: var(--ef-violet); background: var(--bg-signal); }
+.props .pp { font-size: var(--t-small); }
+.props .pm { font-family: var(--font-num); font-size: var(--t-micro); color: var(--fg-mute); white-space: nowrap; }
+.props a { font-size: var(--t-micro); color: var(--fg-signal); text-decoration: none; margin-top: 2px; }
+.props a:hover { text-decoration: underline; }
+
+.calc { width: 100%; border-collapse: collapse; font-size: var(--t-small); margin-top: var(--s-4); }
+.calc th, .calc td { text-align: left; padding: var(--s-3) var(--s-3) var(--s-3) 0;
+  border-bottom: var(--rule); vertical-align: top; }
+.calc th { font-size: var(--t-micro); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--fg-mute); font-weight: 500; border-bottom: var(--rule-strong); }
+.calc td.n { font-family: var(--font-num); white-space: nowrap; }
+.scenario {
+  border: 1px dashed var(--ef-warn); border-radius: var(--r-sm); padding: var(--s-4);
+  margin-top: var(--s-5); font-size: var(--t-micro); color: var(--fg); background: var(--bg-raise);
+}
+.scenario b { letter-spacing: .1em; text-transform: uppercase; color: var(--ef-warn); }
+
+@media (max-width: 720px) {
+  .pair { grid-template-columns: 84px minmax(0, 1fr); }
+  .pair .head:nth-child(3) { display: none; }
+  .ev li { grid-template-columns: 64px minmax(0, 1fr); }
+  .ev .f { grid-column: 2; }
+}
+
+.formula {
+  font-family: var(--font-num); font-size: var(--t-small); line-height: 1.65;
+  white-space: pre; overflow-x: auto; color: var(--fg);
+  border: var(--rule-strong); border-radius: var(--r-lg); padding: var(--s-5);
+  background: var(--bg); margin-top: var(--s-4);
+}

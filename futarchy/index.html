@@ -1,1 +1,239 @@
-<!doctype html><meta charset=utf-8><title>probe futarchy</title><body style="font:16px ui-monospace;padding:4rem"><p>PROBE :: futarchy<p><a href="/">root</a>
+<!DOCTYPE html>
+<html lang="en" data-surface="futarchy">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Futarchy — the surface with no price to draw · Seer, six interfaces</title>
+<meta name="description" content="Seer ships a Futarchy market type: one governance question priced in two numéraires at once. All 398 of them have null odds, zero liquidity and a two-slot pool balance with nothing in either slot. This page draws the structure the price would occupy and refuses to invent one.">
+<script src="../leg.js"></script>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../motion.css">
+<link rel="stylesheet" href="../ui.css">
+<link rel="stylesheet" href="futarchy.css">
+</head>
+<body>
+<div id="surface-bar" class="vt-chrome"></div>
+
+<main class="wrap">
+  <div id="surface-depth"></div>
+
+  <header class="masthead">
+    <p class="eyebrow">Surface 4 of 6 · the decision it has not priced</p>
+    <h1>Futarchy</h1>
+    <p class="lede">Futarchy is the proposal that a community should vote on what to do by asking what it is
+      worth, not what people say. Seer builds the type: <b id="n-fut">—</b> markets on Gnosis chain, every one
+      of them a single governance question priced in two numéraires at once — GNO and wxDAI — because the
+      quantity a futarchy needs is not “will this pass” but “how much more valuable is the token if it
+      does”. Not one of them has a price. So this surface draws the shape the price would occupy, empty, and
+      names every field that is standing in for a number.</p>
+  </header>
+
+  <div class="mktcard">
+    <section class="block" style="border-top:0;padding-top:0" aria-labelledby="pair-h">
+      <h2 id="pair-h">One question, four tokens</h2>
+      <p class="blocknote">The Conditional Tokens Framework mints a complete set per outcome, so a futarchy
+        row is a two-by-two: the same Yes/No asked twice, once collateralised in each numéraire. Splitting
+        the question is the widest interval in the motion contract, because the relation genuinely is
+        one-to-many — and with motion removed the same four cells are already on screen as a grid, which is
+        the claim this whole entry is built on.</p>
+      <div class="pair" id="pair"></div>
+      <div class="proj" style="margin-top:var(--s-5)">
+        <button type="button" class="act" id="do-split">Split the question</button>
+        <span class="hint" style="font-size:var(--t-micro);color:var(--fg-mute)">
+          <code>splitPosition</code> · one complete set · four outcome tokens · no pool on any of them</span>
+      </div>
+
+      <h2 style="margin-top:var(--s-8)">The vote, computed from the live fields</h2>
+      <p class="blocknote">A futarchy decision rule needs one number: the ratio of the same claim’s price in
+        one numéraire to its price in the other. Here is that expression evaluated against this market
+        record exactly as the API returns it.</p>
+      <pre class="formula" id="formula"></pre>
+      <p class="blocknote" id="formulanote"></p>
+    </section>
+
+    <aside class="detail" aria-labelledby="props-h">
+      <p class="eyebrow">Real proposals, unpriced</p>
+      <h2 id="props-h">The rows</h2>
+      <p class="blocknote" style="margin-bottom:var(--s-3)">Twelve of the most recent non-test markets of
+        this type, straight from <code>markets-search?type=Futarchy</code>. Each name links to the market on
+        Seer, where it is also empty.</p>
+      <ul class="props" id="props"></ul>
+    </aside>
+  </div>
+
+  <section class="block" aria-labelledby="ev-h">
+    <h2 id="ev-h">The evidence, for all three hundred and ninety-eight</h2>
+    <p class="blocknote">Aggregated over every row of the type in one API call, not sampled. This is the part
+      a protocol team should read, because it says exactly which fields a priced futarchy would need to
+      populate and which already work.</p>
+    <ul class="ev" id="ev"></ul>
+    <p class="blocknote" id="evnote"></p>
+  </section>
+
+  <section class="block">
+    <h2>Read the same absence somewhere else</h2>
+    <p class="blocknote">The other five surfaces all read <code>odds</code>, <code>liquidityUSD</code> and a
+      pool. A futarchy row has all three fields and none of the contents, which is why it needs its own
+      surface rather than a filter on someone else’s.</p>
+    <ul class="lateral" id="lateral"></ul>
+  </section>
+
+  <footer id="snapshot"></footer>
+</main>
+
+<aside class="leg-badge" id="leg-badge" aria-hidden="true"></aside>
+
+<script type="module">
+import { load, boot, esc, money, ago, tagTravellers, disarm, animate, reduced,
+         legBadge, ROOT, announce, SURFACES } from '../shell.js';
+
+const d = await load('futarchy', 'markets', 'meta');
+const [FUT, markets, meta] = [d.futarchy, d.markets, d.meta];
+const rows = FUT.sample;
+const now = Date.now() / 1000;
+
+const $ = (id) => document.getElementById(id);
+let cur = rows[0];
+$('n-fut').textContent = String(FUT.count);
+
+function pairHTML() {
+  const heads = ['Yes', 'No'];
+  const sides = [['GNO', cur.c1], ['wxDAI', cur.c2]];
+  const cells = sides.flatMap(([nm, tok], r) => [
+    `<span class="side">${esc(nm)}<span class="tok num">0x${tok}…</span></span>`,
+    ...heads.map((h, c) => {
+      const i = r * 2 + c;
+      return `<span class="cell" data-i="${i}">
+        <span class="tok num">${esc(cur.out[i] || `${h}-${nm}`)}</span>
+        <span class="pr num" data-null="1">null</span>
+        <span class="why">odds[${i}] · poolBalance[${r}] = ${JSON.stringify(cur.pb[r])}</span></span>`;
+    })
+  ]);
+  return `<span class="corner">collateral ↓ · outcome →</span>
+    <span class="head">Yes</span><span class="head">No</span>${cells.join('')}
+    <span class="stem" id="stem">
+      <span class="q mkt-name" data-vt="name">${esc(cur.nm)}</span>
+      <span class="meta">market 0x${esc(cur.id)}… · arbitrator 0x${esc(cur.ar)}… ·
+        timeout ${(cur.to / 86400).toFixed(1)} d · opens ${ago(cur.o)} · finalizes ${ago(cur.f)}</span>
+    </span>`;
+}
+
+function formulaText() {
+  const g = cur.od?.[0] ?? null, s = cur.od?.[2] ?? null;
+  return [
+    `// what a futarchy vote needs, from this record as returned`,
+    `price("Yes" | collateral = GNO)    = ${g}      // odds[0]`,
+    `price("Yes" | collateral = wxDAI)  = ${s}      // odds[2]`,
+    ``,
+    `relative_value = price(Yes|GNO) / price(Yes|wxDAI)`,
+    `               = ${g} / ${s}`,
+    `               = undefined`,
+    ``,
+    `// the decision rule is not the missing part.`,
+    `// ${FUT.fields.twoCollaterals} of ${FUT.count} rows name both collaterals.`,
+    `// ${FUT.fields.priced} of ${FUT.count} rows have a price to divide.`
+  ].join('\n');
+}
+
+function propsHTML() {
+  return rows.map((r) => `<li>
+    <button type="button" data-id="${r.id}" aria-current="${r.id === cur.id}">
+      <span class="pp">${esc(r.nm)}</span>
+      <span class="pm num">${r.sup ? 'set minted' : 'no supply'}</span></button>
+    <a href="https://app.seer.pm/markets/${r.ch}/${encodeURIComponent(r.slug)}"
+       rel="noopener">open 0x${r.id}… on Seer ↗</a></li>`).join('');
+}
+
+const COUNTS = [
+  ['priced', 'rows with any non-null entry in <code>odds</code>'],
+  ['withLiquidity', 'rows where <code>hasLiquidity</code> is true'],
+  ['twoCollaterals', 'rows naming <em>both</em> <code>collateralToken1</code> and <code>collateralToken2</code>'],
+  ['withSupply', 'rows with a non-zero <code>outcomesSupply</code> — tokens really were minted'],
+  ['reported', 'rows with <code>payoutReported</code> true — the oracle really did resolve them'],
+  ['nonzeroParentMarket', 'rows pointing at a <code>parentMarket</code>'],
+  ['nonzeroParentCollection', 'rows pointing at a <code>parentCollectionId</code>'],
+  ['verified', 'rows with <code>verification.status = verified</code>'],
+  ['testNamed', 'rows whose name begins “test”']
+];
+$('ev').innerHTML = COUNTS.map(([k, t]) => {
+  const v = FUT.fields[k];
+  return `<li><span class="n num" data-zero="${v === 0 ? 1 : 0}"
+      data-all="${v === FUT.count ? 1 : 0}">${v}</span>
+    <span class="t">${t}</span>
+    <span class="f">of ${FUT.count}</span></li>`;
+}).join('') +
+  `<li><span class="n num">${money(FUT.fields.liquidityUSD)}</span>
+     <span class="t">total <code>liquidityUSD</code> across every futarchy row in the snapshot</span>
+     <span class="f">of ${FUT.count}</span></li>
+   <li><span class="n num">${money(FUT.fields.volumeUSD)}</span>
+     <span class="t">total <code>volumeUSD</code> across the same rows</span>
+     <span class="f">of ${FUT.count}</span></li>`;
+
+$('evnote').innerHTML = `Read the top of that list before the bottom: the machinery works —
+  ${FUT.fields.withSupply} rows have outcome tokens actually minted and ${FUT.fields.reported} have a payout
+  reported on chain — and the market layer is what is absent. Zero rows carry a parent market or a parent
+  collection, which is the field every other surface in this entry uses to draw a tree, and zero rows are
+  verified. A futarchy that mints tokens nobody can price and resolves them without a check is not broken
+  software; it is an unlaunched product. This page is the design for the state it is actually in.`;
+
+function paint() {
+  $('pair').innerHTML = pairHTML();
+  $('formula').textContent = formulaText();
+  $('formulanote').innerHTML = `Nothing above is a placeholder. <code>undefined</code> is what the live
+    record evaluates to, and the two counts under it are the whole diagnosis: the collateral pair exists on
+    every row, the price exists on none.`;
+  disarm();
+  tagTravellers($('pair'));
+}
+
+/* One question → four tokens, from the stem outward, all at once: the widest
+   interval in the contract because the relation genuinely is one-to-many. */
+function split() {
+  const stem = $('stem'), cells = [...document.querySelectorAll('#pair .cell')];
+  if (reduced()) { announce('Split into four outcome tokens.'); return; }
+  const c = stem.getBoundingClientRect();
+  cells.forEach((n) => {
+    const b = n.getBoundingClientRect();
+    animate(n, [
+      { transform: `translate(${c.left + c.width / 2 - (b.left + b.width / 2)}px, ${c.top + c.height / 2 - (b.top + b.height / 2)}px) scale(.35)`, opacity: 0 },
+      { transform: 'none', opacity: 1 }
+    ], { step: 5 });
+  });
+  animate(stem, [{ transform: 'none', opacity: 1 }, { transform: 'scale(.94)', opacity: .5 },
+    { transform: 'none', opacity: 1 }], { step: 5 });
+  announce('splitPosition: one question minted four outcome tokens, none of them priced.');
+}
+
+$('props').innerHTML = propsHTML();
+$('props').addEventListener('click', (e) => {
+  const b = e.target.closest('button[data-id]');
+  if (!b || b.dataset.id === cur.id) return;
+  cur = rows.find((r) => r.id === b.dataset.id);
+  document.querySelectorAll('#props button').forEach((n) =>
+    n.setAttribute('aria-current', String(n.dataset.id === cur.id)));
+  paint();
+  announce(`${cur.nm}: the pair is still empty.`);
+});
+$('do-split').addEventListener('click', split);
+
+$('lateral').innerHTML = SURFACES.filter((s) => s.key !== 'futarchy').map((s) => {
+  const u = new URL(`${ROOT}/${s.href}`, location.href);
+  u.searchParams.set('leg', 'lateral'); u.searchParams.set('from', 'futarchy');
+  const slow = new URLSearchParams(location.search).get('slow');
+  if (slow) u.searchParams.set('slow', slow);
+  return `<li><a href="${u.pathname}${u.search}"><span class="slot-n">${s.n}</span>${esc(s.label)}<span class="arrow">→</span></a></li>`;
+}).join('');
+
+$('snapshot').innerHTML =
+  `Snapshot <b>${esc(meta.iso)}</b> · <code>markets-search?type=Futarchy</code>, all ${FUT.count} rows, ` +
+  `aggregated in <code>dev/bake_futarchy.py</code> · ` +
+  `<a href="${ROOT}/contract/?leg=lateral&from=futarchy">why this page moves the way it does</a> · ` +
+  `press <span class="kbd">R</span> to remove the motion and keep the meaning.`;
+legBadge();
+
+paint();
+boot({ surface: 'futarchy', marketDepth: 0 });
+</script>
+</body>
+</html>

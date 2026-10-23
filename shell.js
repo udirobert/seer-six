@@ -18,7 +18,8 @@ export const SURFACES = [
 
 const MODULES = {
   markets: 'markets.js', tree: 'tree.js', cats: 'cats.js', charts: 'charts.js',
-  events: 'events.js', people: 'people.js', links: 'links.js', meta: 'meta.js'
+  events: 'events.js', people: 'people.js', links: 'links.js', meta: 'meta.js',
+  futarchy: 'futarchy.js'
 };
 
 export async function load(...keys) {
