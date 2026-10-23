@@ -38,9 +38,17 @@ fail=0
 # ---------------------------------------------------------------- 1. secrets
 if command -v gitleaks >/dev/null 2>&1; then
   echo "gate · gitleaks over the index ($(printf '%s\n' "$staged" | wc -l | tr -d ' ') file(s) staged)"
-  if ! gitleaks dir "$tmp" --config "$root/.gitleaks.toml" --exit-code 1 -l warn; then
+  # Scan from *inside* the materialised tree. gitleaks anchors a `paths`
+  # allowlist to what it is given, so an absolute scan root turns `^data/.*\.js$`
+  # into a regex no reported path can match — the exceptions would silently stop
+  # applying, and a gate that quietly over-reports is one someone deletes.
+  # Findings are written outside the temp dir so the failing commit can be read.
+  report="${TMPDIR:-/tmp}/seer-six-gate-leaks.json"
+  if ! (cd "$tmp" && gitleaks dir . --config "$root/.gitleaks.toml" --exit-code 1 -l warn \
+        --report-format json --report-path "$report"); then
     echo "  ✗ a staged blob contains something shaped like a credential."
     echo "    Values belong in the environment. See .env.example; never paste a key into a page."
+    grep -o '"File": *"[^"]*"\|"RuleID": *"[^"]*"\|"StartLine": *[0-9]*' "$report" 2>/dev/null | head -12 || true
     fail=1
   fi
 else

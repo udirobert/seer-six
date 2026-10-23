@@ -65,7 +65,9 @@ keywords = ["0x"]
   # positionId fields are 256-bit CTF hashes, which are byte-for-byte the same
   # shape as a private key. They are public by construction — the harness reads
   # them back from the live endpoint, so anyone can confirm none of it is secret.
-  description = "public CTF hashes from the baked Seer snapshot"
+  # evidence/*.json carries the same shape twice over: the fields the harness
+  # measured, and the content hash of the reel, which is a public URL.
+  description = "public CTF hashes from the baked Seer snapshot, and public content hashes in the evidence"
   paths = ['''^data/.*\.js$''', '''^evidence/.*\.json$''']
 
 # ---------------------------------------------------------------------------
@@ -73,8 +75,15 @@ keywords = ["0x"]
 # ---------------------------------------------------------------------------
 
 [allowlist]
-description = "Third-party and binary files that are not ours to keep clean"
+description = "Files that are not ours to keep clean, and the one record that is public by construction"
 paths = [
   '''^vendor/axe.min.js$''',
   '''^fonts/.*\.ttf$''',
+  # evidence/film/cdn.json is the receipt for the reel's public upload. The field
+  # the default generic-api-key rule flags is `storage_key`, and the value is the
+  # content address the public gateway URL is made of — the same 64 hex characters
+  # printed in SUBMISSION.md, fetchable by anyone who reads it. A content hash is
+  # not a credential, and renaming the field to slip past a scanner would be the
+  # actual smell, so the exception is written where the finding is.
+  '''^evidence/film/cdn\.json$''',
 ]

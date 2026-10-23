@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-23T15:29:02.406Z",
- "duration_s": 395,
+ "generated": "2026-10-23T16:15:44.794Z",
+ "duration_s": 308,
  "url": "https://udirobert.github.io/seer-six",
  "engine": "chrome 155.0.8059.86",
  "os": "darwin 25.6.0 arm64",
@@ -32,23 +32,23 @@
    "anyMoving": true,
    "fullMotionComparator": {
     "maxFrames": 33,
-    "maxMs": 528
+    "maxMs": 518
    }
   },
   "motionRuns": {
    "claim": "with motion on, the same arrivals are visibly running for the leg’s whole interval",
    "arrivals": 24,
-   "minLongestRunFrames": 16,
+   "minLongestRunFrames": 14,
    "maxLongestRunFrames": 33,
    "legs": {
-    "deep": "lateral:17f",
-    "futarchy": "lateral:17f",
+    "deep": "lateral:16f",
+    "futarchy": "lateral:14f",
     "opportunity": "lateral:17f",
-    "risk": "lateral:16f",
-    "contract": "lateral:24f",
+    "risk": "lateral:17f",
+    "contract": "lateral:26f",
     "home": "back:21f",
     "app": "fan:32f",
-    "m": "morph:25f"
+    "m": "morph:24f"
    }
   },
   "intervalHonesty": {
@@ -59,75 +59,67 @@
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 242,
-     "ratio": 1.1
+     "measuredMs": 234,
+     "ratio": 1.06
     },
     {
      "page": "futarchy",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 243,
-     "ratio": 1.1
+     "measuredMs": 227,
+     "ratio": 1.03
     },
     {
      "page": "opportunity",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 240,
-     "ratio": 1.09
+     "measuredMs": 221,
+     "ratio": 1
     },
     {
      "page": "risk",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 252,
-     "ratio": 1.15
+     "measuredMs": 245,
+     "ratio": 1.11
     },
     {
      "page": "contract",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 390,
-     "ratio": 1.77
+     "measuredMs": 404,
+     "ratio": 1.84
     },
     {
      "page": "home",
      "leg": "back",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 314,
-     "ratio": 0.98
+     "measuredMs": 305,
+     "ratio": 0.95
     },
     {
      "page": "app",
      "leg": "fan",
      "step": 5,
      "declaredMs": 520,
-     "measuredMs": 514,
-     "ratio": 0.99
+     "measuredMs": 518,
+     "ratio": 1
     },
     {
      "page": "m",
      "leg": "morph",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 402,
-     "ratio": 1.26
+     "measuredMs": 401,
+     "ratio": 1.25
     },
     {
      "page": "deep",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 232,
-     "ratio": 1.05
-    },
-    {
-     "page": "futarchy",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
@@ -135,92 +127,36 @@
      "ratio": 1.06
     },
     {
-     "page": "opportunity",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 244,
-     "ratio": 1.11
-    },
-    {
-     "page": "risk",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 228,
-     "ratio": 1.04
-    },
-    {
-     "page": "contract",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 379,
-     "ratio": 1.72
-    },
-    {
-     "page": "home",
-     "leg": "back",
-     "step": 3,
-     "declaredMs": 320,
-     "measuredMs": 309,
-     "ratio": 0.97
-    },
-    {
-     "page": "app",
-     "leg": "fan",
-     "step": 5,
-     "declaredMs": 520,
-     "measuredMs": 528,
-     "ratio": 1.02
-    },
-    {
-     "page": "m",
-     "leg": "morph",
-     "step": 3,
-     "declaredMs": 320,
-     "measuredMs": 372,
-     "ratio": 1.16
-    },
-    {
-     "page": "deep",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 244,
-     "ratio": 1.11
-    },
-    {
      "page": "futarchy",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 246,
-     "ratio": 1.12
+     "measuredMs": 252,
+     "ratio": 1.15
     },
     {
      "page": "opportunity",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 246,
-     "ratio": 1.12
+     "measuredMs": 252,
+     "ratio": 1.15
     },
     {
      "page": "risk",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 236,
-     "ratio": 1.07
+     "measuredMs": 245,
+     "ratio": 1.11
     },
     {
      "page": "contract",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 379,
-     "ratio": 1.72
+     "measuredMs": 401,
+     "ratio": 1.82
     },
     {
      "page": "home",
@@ -235,7 +171,71 @@
      "leg": "fan",
      "step": 5,
      "declaredMs": 520,
-     "measuredMs": 513,
+     "measuredMs": 510,
+     "ratio": 0.98
+    },
+    {
+     "page": "m",
+     "leg": "morph",
+     "step": 3,
+     "declaredMs": 320,
+     "measuredMs": 385,
+     "ratio": 1.2
+    },
+    {
+     "page": "deep",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 227,
+     "ratio": 1.03
+    },
+    {
+     "page": "futarchy",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 224,
+     "ratio": 1.02
+    },
+    {
+     "page": "opportunity",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 244,
+     "ratio": 1.11
+    },
+    {
+     "page": "risk",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 252,
+     "ratio": 1.15
+    },
+    {
+     "page": "contract",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 403,
+     "ratio": 1.83
+    },
+    {
+     "page": "home",
+     "leg": "back",
+     "step": 3,
+     "declaredMs": 320,
+     "measuredMs": 319,
+     "ratio": 1
+    },
+    {
+     "page": "app",
+     "leg": "fan",
+     "step": 5,
+     "declaredMs": 520,
+     "measuredMs": 514,
      "ratio": 0.99
     },
     {
@@ -243,8 +243,8 @@
      "leg": "morph",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 390,
-     "ratio": 1.22
+     "measuredMs": 373,
+     "ratio": 1.17
     }
    ],
    "atOrAboveHalf": "24/24"
@@ -290,7 +290,7 @@
      ]
     }
    },
-   "arrivalsPairingAnObject": "12/48",
+   "arrivalsPairingAnObject": "11/48",
    "coldArrivalsPairingAnObject": "0/48",
    "byLeg": {
     "lateral": [
@@ -376,7 +376,7 @@
   },
   "contrast": {
    "claim": "text contrast computed from rendered getComputedStyle values, in both themes, not eyeballed",
-   "readings": 41453,
+   "readings": 42152,
    "minRatio": 5.54,
    "failReadings": 0,
    "failPages": [],
@@ -421,7 +421,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769346,
+    "t": 1792772155,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -429,8 +429,8 @@
     "reduced": true,
     "frames": 70,
     "moving": 2,
-    "longest": 2,
-    "ms": 16,
+    "longest": 1,
+    "ms": 0,
     "anims": [
      "waapi"
     ]
@@ -505,7 +505,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769348,
+    "t": 1792772156,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -587,7 +587,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769349,
+    "t": 1792772157,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -672,7 +672,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769351,
+    "t": 1792772159,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -755,7 +755,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769352,
+    "t": 1792772160,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -842,7 +842,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769353,
+    "t": 1792772161,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -926,7 +926,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769355,
+    "t": 1792772163,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -1053,7 +1053,7 @@
     }
    ],
    "contrast": {
-    "checked": 334,
+    "checked": 328,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -1069,7 +1069,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769356,
+    "t": 1792772164,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -1154,7 +1154,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769359,
+    "t": 1792772167,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -1239,7 +1239,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769372,
+    "t": 1792772180,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -1322,7 +1322,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769374,
+    "t": 1792772181,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -1409,7 +1409,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769375,
+    "t": 1792772182,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -1493,7 +1493,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769376,
+    "t": 1792772184,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -1636,7 +1636,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769378,
+    "t": 1792772185,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -1718,7 +1718,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769379,
+    "t": 1792772186,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -1800,7 +1800,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792769380,
+    "t": 1792772187,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -1885,7 +1885,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769393,
+    "t": 1792772195,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -1969,7 +1969,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769395,
+    "t": 1792772196,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -2051,7 +2051,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769396,
+    "t": 1792772198,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -2136,7 +2136,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769397,
+    "t": 1792772199,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -2219,7 +2219,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769398,
+    "t": 1792772200,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -2306,7 +2306,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769400,
+    "t": 1792772201,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -2390,7 +2390,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769401,
+    "t": 1792772202,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -2533,7 +2533,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769402,
+    "t": 1792772203,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -2618,7 +2618,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769405,
+    "t": 1792772206,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -2703,7 +2703,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769420,
+    "t": 1792772219,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -2786,7 +2786,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769421,
+    "t": 1792772220,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -2873,7 +2873,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769422,
+    "t": 1792772222,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -2957,7 +2957,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769423,
+    "t": 1792772223,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -3100,7 +3100,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769425,
+    "t": 1792772224,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -3182,7 +3182,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769426,
+    "t": 1792772225,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -3264,7 +3264,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792769428,
+    "t": 1792772227,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -3349,16 +3349,16 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769443,
+    "t": 1792772233,
     "path": "/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": true,
     "frames": 70,
-    "moving": 3,
-    "longest": 3,
-    "ms": 31,
+    "moving": 2,
+    "longest": 2,
+    "ms": 19,
     "anims": [
      "waapi"
     ]
@@ -3433,7 +3433,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769446,
+    "t": 1792772234,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -3515,7 +3515,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769449,
+    "t": 1792772236,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -3600,7 +3600,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769450,
+    "t": 1792772238,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -3683,7 +3683,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769452,
+    "t": 1792772239,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -3770,7 +3770,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769453,
+    "t": 1792772240,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -3854,7 +3854,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769455,
+    "t": 1792772242,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -3997,7 +3997,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769457,
+    "t": 1792772243,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -4082,7 +4082,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769460,
+    "t": 1792772246,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -4167,7 +4167,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769474,
+    "t": 1792772259,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -4250,7 +4250,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769476,
+    "t": 1792772260,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -4337,7 +4337,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769477,
+    "t": 1792772261,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -4421,7 +4421,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769478,
+    "t": 1792772263,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -4564,7 +4564,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769480,
+    "t": 1792772264,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -4646,7 +4646,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769481,
+    "t": 1792772265,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -4728,7 +4728,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792769483,
+    "t": 1792772266,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -4813,16 +4813,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769496,
+    "t": 1792772272,
     "path": "/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 33,
-    "longest": 33,
-    "ms": 514,
+    "moving": 32,
+    "longest": 32,
+    "ms": 511,
     "anims": [
      "waapi"
     ]
@@ -4897,7 +4897,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769497,
+    "t": 1792772273,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -4979,7 +4979,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769499,
+    "t": 1792772274,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -5064,7 +5064,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769500,
+    "t": 1792772275,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -5147,7 +5147,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769502,
+    "t": 1792772277,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -5232,7 +5232,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769503,
+    "t": 1792772278,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -5316,7 +5316,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769505,
+    "t": 1792772279,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -5325,22 +5325,22 @@
     "frames": 70,
     "moving": 23,
     "longest": 23,
-    "ms": 367,
+    "ms": 366,
     "anims": [
      "waapi"
     ]
    },
    "depth": {
-    "text": "",
+    "text": "Contractthe rules the six obey · not a surface",
     "visible": true
    },
    "bar": {
-    "links": 0,
-    "current": 0,
-    "labelled": null
+    "links": 7,
+    "current": 1,
+    "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "",
+    "text": "leg · cold arrivalreduced: offfrom: direct",
     "visible": false
    },
    "live": false,
@@ -5370,7 +5370,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "auditing…",
+     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
      "page": "contract"
     },
     {
@@ -5382,12 +5382,73 @@
      "page": "contract"
     }
    ],
-   "audit": [],
+   "audit": [
+    {
+     "what": "stylesheets parsed",
+     "value": "12",
+     "tag": "of 12",
+     "ok": true
+    },
+    {
+     "what": "duration declarations walked",
+     "value": "36",
+     "tag": "all classified",
+     "ok": true
+    },
+    {
+     "what": "referencing var(--d-step)",
+     "value": "21",
+     "tag": "the rule",
+     "ok": true
+    },
+    {
+     "what": "none — the contract’s own stop states",
+     "value": "10",
+     "tag": "required by the contract",
+     "ok": true
+    },
+    {
+     "what": "the declared 0.01ms snap under reduce",
+     "value": "4",
+     "tag": "exception 1",
+     "ok": true
+    },
+    {
+     "what": "naming no duration at all (scroll-driven, or inheriting)",
+     "value": "1",
+     "tag": "exception 2",
+     "ok": true
+    },
+    {
+     "what": "ad-hoc numbers in stylesheets",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "literal durations in scripts",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "call sites naming a step, in scripts",
+     "value": "6",
+     "tag": "steps 2 · 5",
+     "ok": true
+    },
+    {
+     "what": "keyframes defined / each mapped to a leg",
+     "value": "8 / 8",
+     "tag": "no orphans",
+     "ok": true
+    }
+   ],
    "contrast": {
-    "checked": 190,
+    "checked": 385,
     "min": 5.54,
-    "p10": 6.61,
-    "median": 6.61,
+    "p10": 6.57,
+    "median": 7.03,
     "fails": [],
     "failCount": 0,
     "skippedOverImage": 0
@@ -5400,16 +5461,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769506,
+    "t": 1792772280,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 24,
-    "longest": 24,
-    "ms": 379,
+    "moving": 25,
+    "longest": 25,
+    "ms": 400,
     "anims": [
      "price-tick"
     ]
@@ -5487,7 +5548,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769510,
+    "t": 1792772283,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -5496,7 +5557,7 @@
     "frames": 70,
     "moving": 16,
     "longest": 16,
-    "ms": 242,
+    "ms": 234,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5580,16 +5641,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769524,
+    "t": 1792772296,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 243,
+    "moving": 15,
+    "longest": 15,
+    "ms": 227,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5672,16 +5733,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769525,
+    "t": 1792772297,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 240,
+    "moving": 15,
+    "longest": 15,
+    "ms": 221,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5766,16 +5827,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769527,
+    "t": 1792772299,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 252,
+    "moving": 16,
+    "longest": 16,
+    "ms": 245,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5860,16 +5921,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769528,
+    "t": 1792772300,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 25,
-    "longest": 25,
-    "ms": 390,
+    "moving": 26,
+    "longest": 26,
+    "ms": 404,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6012,16 +6073,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769530,
+    "t": 1792772301,
     "path": "/",
     "leg": "back",
     "from": "contract",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 21,
-    "longest": 21,
-    "ms": 314,
+    "moving": 20,
+    "longest": 20,
+    "ms": 305,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6101,7 +6162,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769531,
+    "t": 1792772302,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -6110,7 +6171,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 514,
+    "ms": 518,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6191,7 +6252,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792769532,
+    "t": 1792772303,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -6200,7 +6261,7 @@
     "frames": 70,
     "moving": 26,
     "longest": 26,
-    "ms": 402,
+    "ms": 401,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6286,7 +6347,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769538,
+    "t": 1792772306,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -6295,7 +6356,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 525,
+    "ms": 515,
     "anims": [
      "waapi"
     ]
@@ -6370,7 +6431,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769540,
+    "t": 1792772307,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -6452,7 +6513,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769541,
+    "t": 1792772308,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -6537,7 +6598,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769543,
+    "t": 1792772310,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -6620,7 +6681,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769544,
+    "t": 1792772311,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -6705,7 +6766,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769546,
+    "t": 1792772312,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -6789,7 +6850,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769547,
+    "t": 1792772313,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -6934,7 +6995,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769548,
+    "t": 1792772314,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -6943,7 +7004,7 @@
     "frames": 70,
     "moving": 25,
     "longest": 25,
-    "ms": 397,
+    "ms": 399,
     "anims": [
      "price-tick"
     ]
@@ -7021,7 +7082,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769551,
+    "t": 1792772317,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -7030,7 +7091,7 @@
     "frames": 70,
     "moving": 16,
     "longest": 16,
-    "ms": 232,
+    "ms": 233,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7114,16 +7175,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769565,
+    "t": 1792772331,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 233,
+    "moving": 17,
+    "longest": 17,
+    "ms": 252,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7206,7 +7267,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769566,
+    "t": 1792772332,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -7215,7 +7276,7 @@
     "frames": 70,
     "moving": 17,
     "longest": 17,
-    "ms": 244,
+    "ms": 252,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7300,16 +7361,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769568,
+    "t": 1792772333,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 228,
+    "moving": 17,
+    "longest": 17,
+    "ms": 245,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7394,16 +7455,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769569,
+    "t": 1792772335,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 24,
-    "longest": 24,
-    "ms": 379,
+    "moving": 26,
+    "longest": 26,
+    "ms": 401,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7416,16 +7477,16 @@
     ]
    },
    "depth": {
-    "text": "",
+    "text": "Contractthe rules the six obey · not a surface",
     "visible": true
    },
    "bar": {
-    "links": 0,
-    "current": 0,
-    "labelled": null
+    "links": 7,
+    "current": 1,
+    "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "",
+    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: risk",
     "visible": false
    },
    "live": false,
@@ -7455,7 +7516,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "auditing…",
+     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
      "page": "contract"
     },
     {
@@ -7467,12 +7528,73 @@
      "page": "contract"
     }
    ],
-   "audit": [],
+   "audit": [
+    {
+     "what": "stylesheets parsed",
+     "value": "12",
+     "tag": "of 12",
+     "ok": true
+    },
+    {
+     "what": "duration declarations walked",
+     "value": "36",
+     "tag": "all classified",
+     "ok": true
+    },
+    {
+     "what": "referencing var(--d-step)",
+     "value": "21",
+     "tag": "the rule",
+     "ok": true
+    },
+    {
+     "what": "none — the contract’s own stop states",
+     "value": "10",
+     "tag": "required by the contract",
+     "ok": true
+    },
+    {
+     "what": "the declared 0.01ms snap under reduce",
+     "value": "4",
+     "tag": "exception 1",
+     "ok": true
+    },
+    {
+     "what": "naming no duration at all (scroll-driven, or inheriting)",
+     "value": "1",
+     "tag": "exception 2",
+     "ok": true
+    },
+    {
+     "what": "ad-hoc numbers in stylesheets",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "literal durations in scripts",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "call sites naming a step, in scripts",
+     "value": "6",
+     "tag": "steps 2 · 5",
+     "ok": true
+    },
+    {
+     "what": "keyframes defined / each mapped to a leg",
+     "value": "8 / 8",
+     "tag": "no orphans",
+     "ok": true
+    }
+   ],
    "contrast": {
-    "checked": 191,
+    "checked": 436,
     "min": 5.54,
     "p10": 6.61,
-    "median": 6.61,
+    "median": 7.03,
     "fails": [],
     "failCount": 0,
     "skippedOverImage": 0
@@ -7485,16 +7607,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769572,
+    "t": 1792772336,
     "path": "/",
     "leg": "back",
     "from": "contract",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 20,
-    "longest": 20,
-    "ms": 309,
+    "moving": 21,
+    "longest": 21,
+    "ms": 321,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7574,7 +7696,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769573,
+    "t": 1792772337,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -7583,7 +7705,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 528,
+    "ms": 510,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7664,16 +7786,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792769575,
+    "t": 1792772338,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 24,
-    "longest": 24,
-    "ms": 372,
+    "moving": 25,
+    "longest": 25,
+    "ms": 385,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7759,7 +7881,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769578,
+    "t": 1792772340,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -7768,7 +7890,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 512,
+    "ms": 515,
     "anims": [
      "waapi"
     ]
@@ -7843,7 +7965,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769580,
+    "t": 1792772341,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -7925,7 +8047,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769582,
+    "t": 1792772344,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -8010,7 +8132,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769584,
+    "t": 1792772345,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -8093,7 +8215,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769586,
+    "t": 1792772346,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -8178,7 +8300,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769587,
+    "t": 1792772348,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -8262,16 +8384,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769589,
+    "t": 1792772349,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 13,
-    "longest": 13,
-    "ms": 200,
+    "moving": 23,
+    "longest": 23,
+    "ms": 366,
     "anims": [
      "waapi"
     ]
@@ -8407,7 +8529,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769591,
+    "t": 1792772350,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -8416,7 +8538,7 @@
     "frames": 70,
     "moving": 25,
     "longest": 25,
-    "ms": 393,
+    "ms": 397,
     "anims": [
      "price-tick"
     ]
@@ -8494,16 +8616,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769595,
+    "t": 1792772353,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 244,
+    "moving": 16,
+    "longest": 16,
+    "ms": 227,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8587,22 +8709,21 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769609,
+    "t": 1792772367,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 246,
+    "moving": 14,
+    "longest": 14,
+    "ms": 224,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
      "-ua-view-transition-fade-out",
      "-ua-view-transition-group-anim-chrome",
-     "-ua-view-transition-group-anim-mkt-name",
      "-ua-view-transition-group-anim-root",
      "slide-in",
      "slide-out"
@@ -8679,7 +8800,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769611,
+    "t": 1792772368,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -8688,7 +8809,7 @@
     "frames": 70,
     "moving": 17,
     "longest": 17,
-    "ms": 246,
+    "ms": 244,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8773,16 +8894,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769612,
+    "t": 1792772369,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 236,
+    "moving": 17,
+    "longest": 17,
+    "ms": 252,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8867,16 +8988,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769613,
+    "t": 1792772371,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 24,
-    "longest": 24,
-    "ms": 379,
+    "moving": 26,
+    "longest": 26,
+    "ms": 403,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8889,16 +9010,16 @@
     ]
    },
    "depth": {
-    "text": "",
+    "text": "Contractthe rules the six obey · not a surface",
     "visible": true
    },
    "bar": {
-    "links": 0,
-    "current": 0,
-    "labelled": null
+    "links": 7,
+    "current": 1,
+    "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "",
+    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: risk",
     "visible": true
    },
    "live": false,
@@ -8928,7 +9049,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "auditing…",
+     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
      "page": "contract"
     },
     {
@@ -8940,12 +9061,73 @@
      "page": "contract"
     }
    ],
-   "audit": [],
+   "audit": [
+    {
+     "what": "stylesheets parsed",
+     "value": "12",
+     "tag": "of 12",
+     "ok": true
+    },
+    {
+     "what": "duration declarations walked",
+     "value": "36",
+     "tag": "all classified",
+     "ok": true
+    },
+    {
+     "what": "referencing var(--d-step)",
+     "value": "21",
+     "tag": "the rule",
+     "ok": true
+    },
+    {
+     "what": "none — the contract’s own stop states",
+     "value": "10",
+     "tag": "required by the contract",
+     "ok": true
+    },
+    {
+     "what": "the declared 0.01ms snap under reduce",
+     "value": "4",
+     "tag": "exception 1",
+     "ok": true
+    },
+    {
+     "what": "naming no duration at all (scroll-driven, or inheriting)",
+     "value": "1",
+     "tag": "exception 2",
+     "ok": true
+    },
+    {
+     "what": "ad-hoc numbers in stylesheets",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "literal durations in scripts",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "call sites naming a step, in scripts",
+     "value": "6",
+     "tag": "steps 2 · 5",
+     "ok": true
+    },
+    {
+     "what": "keyframes defined / each mapped to a leg",
+     "value": "8 / 8",
+     "tag": "no orphans",
+     "ok": true
+    }
+   ],
    "contrast": {
-    "checked": 191,
+    "checked": 456,
     "min": 5.54,
     "p10": 6.61,
-    "median": 6.61,
+    "median": 7.03,
     "fails": [],
     "failCount": 0,
     "skippedOverImage": 0
@@ -8958,7 +9140,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769616,
+    "t": 1792772372,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -8967,7 +9149,7 @@
     "frames": 70,
     "moving": 21,
     "longest": 21,
-    "ms": 321,
+    "ms": 319,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -9047,7 +9229,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769617,
+    "t": 1792772373,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -9056,7 +9238,7 @@
     "frames": 70,
     "moving": 32,
     "longest": 32,
-    "ms": 513,
+    "ms": 514,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -9137,16 +9319,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792769619,
+    "t": 1792772374,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 25,
-    "longest": 25,
-    "ms": 390,
+    "moving": 24,
+    "longest": 24,
+    "ms": 373,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",

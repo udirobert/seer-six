@@ -1,0 +1,79 @@
+[
+ {
+  "scene": 1,
+  "name": "01-root-board",
+  "note": "the root: five surfaces, one interval out of it, and the gesture each is made of",
+  "seconds": 11.231,
+  "webm": "/Users/udingethe/Dev/winfactory/entries/poidh-seer-six/evidence/film/raw/01-root-board.webm"
+ },
+ {
+  "scene": 2,
+  "name": "02-fan-root-to-explorer",
+  "note": "fan: leaving the root is the widest relation, so it is one interval for all five",
+  "seconds": 19.992,
+  "webm": "/Users/udingethe/Dev/winfactory/entries/poidh-seer-six/evidence/film/raw/02-fan-root-to-explorer.webm"
+ },
+ {
+  "scene": 3,
+  "name": "03-morph-row-to-market",
+  "note": "the claim: a row in the book becomes its own document as one object",
+  "seconds": 14.288,
+  "webm": "/Users/udingethe/Dev/winfactory/entries/poidh-seer-six/evidence/film/raw/03-morph-row-to-market.webm"
+ },
+ {
+  "scene": 4,
+  "name": "04-lateral-market-to-risk",
+  "note": "lateral: a sibling reading of the same market — sideways, and the shortest interval",
+  "seconds": 10.089,
+  "webm": "/Users/udingethe/Dev/winfactory/entries/poidh-seer-six/evidence/film/raw/04-lateral-market-to-risk.webm"
+ },
+ {
+  "scene": 5,
+  "name": "05-split-parent-to-child",
+  "note": "splitPosition: one outcome of the parent becomes the child’s collateral",
+  "seconds": 8.786,
+  "webm": "/Users/udingethe/Dev/winfactory/entries/poidh-seer-six/evidence/film/raw/05-split-parent-to-child.webm"
+ },
+ {
+  "scene": 6,
+  "name": "06-price-leg-switch",
+  "note": "a price moved: vertical only, distance from the delta, sign from the direction",
+  "seconds": 11.439,
+  "webm": "/Users/udingethe/Dev/winfactory/entries/poidh-seer-six/evidence/film/raw/06-price-leg-switch.webm"
+ },
+ {
+  "scene": 7,
+  "name": "07-redeem-split-then-merge",
+  "note": "mint the legs, then merge them back: the widest geometry and its exact reverse",
+  "seconds": 8.79,
+  "webm": "/Users/udingethe/Dev/winfactory/entries/poidh-seer-six/evidence/film/raw/07-redeem-split-then-merge.webm"
+ },
+ {
+  "scene": 8,
+  "name": "08-verify-one-shot",
+  "note": "verification.status challenged: 200 ms, once, and the market moves up a rung",
+  "seconds": 13.648,
+  "webm": "/Users/udingethe/Dev/winfactory/entries/poidh-seer-six/evidence/film/raw/08-verify-one-shot.webm"
+ },
+ {
+  "scene": 9,
+  "name": "09-back-to-the-root",
+  "note": "back: shallower than here, so the interval is the reverse of the morph and the rail says so",
+  "seconds": 13.942,
+  "webm": "/Users/udingethe/Dev/winfactory/entries/poidh-seer-six/evidence/film/raw/09-back-to-the-root.webm"
+ },
+ {
+  "scene": 10,
+  "name": "10-reduced-snaps",
+  "note": "the same arrival with motion off: it snaps to its end state and means the same thing",
+  "seconds": 8.357,
+  "webm": "/Users/udingethe/Dev/winfactory/entries/poidh-seer-six/evidence/film/raw/10-reduced-snaps.webm"
+ },
+ {
+  "scene": 11,
+  "name": "11-contract-ledger",
+  "note": "the contract, and the ledger filling with what the browser actually did",
+  "seconds": 14.621,
+  "webm": "/Users/udingethe/Dev/winfactory/entries/poidh-seer-six/evidence/film/raw/11-contract-ledger.webm"
+ }
+]
