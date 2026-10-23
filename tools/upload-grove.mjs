@@ -54,7 +54,7 @@ if (size > MAX_BYTES) { console.error(`${basename(abs)} is ${(size / 1048576).to
 
 const chain = flag('chain', '232');
 console.log(`${basename(abs)} · ${(size / 1048576).toFixed(2)} MB · ${type} · chain_id=${chain}`);
-console.log('  immutable and public from the moment it lands. Ctrl-C now if that is not what you meant.');
+console.log('  uploading now — this is the irreversible step: public, immutable, not deletable by you.');
 
 const buf = readFileSync(abs);
 const t0 = Date.now();
@@ -68,21 +68,35 @@ if (!res.ok && res.status !== 201 && res.status !== 202) {
 }
 let out;
 try { out = JSON.parse(body); } catch { console.error(`✗ unreadable response:\n${body.slice(0, 400)}`); process.exit(1); }
+/* The docs show the one-step response as an object and the multipart one as an
+   array. The API returns an array for both; reading `.uri` off it yields
+   undefined and prints a confident link to nothing. */
+if (Array.isArray(out)) out = out[0];
+if (!out || !out.gateway_url) { console.error(`✗ no gateway_url in the response:\n${body.slice(0, 400)}`); process.exit(1); }
 
 /* 201 means it is already on the storage layer; 202 means the edge accepted it
    and propagation is asynchronous. Both are documented as immediately
-   downloadable, and a link you have not fetched is not a link — so re-GET the
-   gateway URL and compare the byte count before reporting success. */
-let status = null;
-for (let i = 0; i < 12; i++) {
+   downloadable, and a link you have not fetched is not a link — so wait on the
+   status endpoint and then re-GET the gateway URL and compare the byte count
+   before reporting success. */
+let ready = null;
+for (let i = 0; i < 20; i++) {
   try {
-    const head = await fetch(out.gateway_url, { method: 'GET', headers: { range: 'bytes=0-0' } });
-    if (head.ok || head.status === 206) { status = head; break; }
+    const s = await (await fetch(out.status_url)).json();
+    if (s.status === 'available') { ready = s; break; }
   } catch { /* retry */ }
   await new Promise((r) => setTimeout(r, 1500));
 }
-const served = status ? `${status.status} ${(status.headers.get('content-length') || '?')} bytes` : 'NOT FETCHED';
-console.log(`  ${((Date.now() - t0) / 1000).toFixed(1)}s · readback ${served}`);
+let served = 'NOT FETCHED';
+if (ready) {
+  try {
+    const back = await fetch(out.gateway_url);
+    const n = Number(back.headers.get('content-length') || 0);
+    served = `${back.status}${n ? ` ${n} bytes` : ''}${n === size ? ' · byte-for-byte' : n ? ` ≠ ${size} sent` : ''}`;
+    if (n && n !== size) served = `MISMATCH ${n} of ${size}`;
+  } catch { /* leave NOT FETCHED */ }
+}
+console.log(`  ${((Date.now() - t0) / 1000).toFixed(1)}s · status ${ready ? ready.status : 'unknown'} · readback ${served}`);
 console.log(`\nlens://    ${out.uri}`);
 console.log(`gateway    ${out.gateway_url}`);
 console.log(`storageKey ${out.storage_key}`);
