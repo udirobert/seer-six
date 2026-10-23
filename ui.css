@@ -193,8 +193,12 @@ html[data-theme="dark"] .spine path.line { stroke: var(--ef-violet-alt); }
   display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-3);
   font-size: var(--t-small); color: var(--fg-mute);
 }
-.metastrip .dot { color: var(--fg-mute); }
-.metastrip .out { margin-left: var(--s-3); white-space: nowrap; }
+/* The separator belongs to the item it precedes. Written as a sibling element it
+   is its own flex item, and at phone width a line can start with a bare dot. */
+.metastrip > :not(:first-child)::before {
+  content: '·'; margin-right: var(--s-3); color: var(--fg-mute);
+}
+.metastrip .out { white-space: nowrap; }
 
 
 .grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-6); padding: var(--s-6) 0; }

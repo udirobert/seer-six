@@ -106,9 +106,9 @@ function stageHTML(m) {
       <h2 class="mkt-name" data-vt="name">${esc(m.name)}</h2>
       <div class="metastrip">
         <span class="pill" data-k="${st.k}">${st.t}</span>
-        <span class="num">${(m.outs || []).length} outcomes</span><span class="dot">·</span>
-        <span class="num">${money(m.liq)} liquidity</span><span class="dot">·</span>
-        <span class="num">chain ${m.ch}</span><span class="dot">·</span>
+        <span class="num">${(m.outs || []).length} outcomes</span>
+        <span class="num">${money(m.liq)} liquidity</span>
+        <span class="num">chain ${m.ch}</span>
         <span class="num">verification ${esc(m.v || 'none')}</span>
         <span class="num" title="market id is truncated to 10 hex characters in this snapshot">id 0x${esc(m.id)}…</span>
         ${links?.[m.id] ? `<a class="out" href="${link}">open on Seer ↗</a>` : ''}
