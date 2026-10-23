@@ -45,8 +45,20 @@ function token(name, parse) {
   }
   return numCache.get(name);
 }
+/* A duration is only a number once the browser has resolved it: --d-* are
+   calc() expressions now that ?slow scales the whole scale, so read the used
+   value off a probe rather than parsing the token's text. */
+const probe = document.createElement('span');
+probe.style.display = 'none';
 export function dur(step) {
-  return token(`--d-${step}`, (v) => (v.endsWith('ms') ? parseFloat(v) : parseFloat(v) * 1000));
+  const name = `--d-${step}`;
+  if (!numCache.has(name)) {
+    document.documentElement.appendChild(probe);
+    probe.style.animationDuration = `var(${name})`;
+    numCache.set(name, Math.round(parseFloat(getComputedStyle(probe).animationDuration) * 1000));
+    probe.remove();
+  }
+  return numCache.get(name);
 }
 export function ease(which = 'out') {
   return token(`--e-${which}`, (v) => v || 'ease-out');
@@ -138,8 +150,16 @@ export function armTravellers(container) {
   }, { passive: true });
 }
 
+/* ?slow has to ride every leg or a film pass loses its mid-morph the moment
+   the page navigates. Theme and reduced state already travel in localStorage. */
+function keepFilm(url) {
+  const s = new URLSearchParams(location.search).get('slow');
+  if (s && !url.searchParams.has('slow')) url.searchParams.set('slow', s);
+  return url;
+}
+
 export function marketURL(id, leg, from) {
-  return `${ROOT}/m/?m=${encodeURIComponent(id)}&leg=${leg}&from=${encodeURIComponent(from || 'app')}`;
+  return keepFilm(new URL(`${ROOT}/m/?m=${encodeURIComponent(id)}&leg=${leg}&from=${encodeURIComponent(from || 'app')}`)).href;
 }
 export function seerURL(market, links) {
   const slug = links?.[market.id];
@@ -186,12 +206,10 @@ function toggles(nav, here) {
   nav.addEventListener('click', (e) => {
     const link = e.target.closest('a[data-leg]');
     if (link) {
-      e.preventDefault();
-      const url = new URL(link.href);
-      url.searchParams.set('leg', link.dataset.leg);
-      url.searchParams.set('from', here.key);
+      /* The leg is already in the href, so the browser performs the
+         navigation: intercepting it to call location.assign would take the
+         transition off the link-click path it was designed for. */
       announce(`${link.textContent.trim()}, surface ${link.querySelector('.slot-n').textContent} of six.`);
-      location.assign(url.href);
       return;
     }
     const btn = e.target.closest('button[data-act]');
@@ -228,7 +246,10 @@ export function boot(opts) {
     nav.innerHTML = SURFACES.map((s) => {
       const on = s.key === here.key;
       const leg = s.depth === here.depth ? 'lateral' : s.depth < here.depth ? 'back' : 'fan';
-      return `<a href="${ROOT}/${s.href}" data-leg="${leg}"${on ? ' aria-current="page"' : ''}>` +
+      const href = keepFilm(new URL(`${ROOT}/${s.href}`, location.href));
+      href.searchParams.set('leg', leg);
+      href.searchParams.set('from', here.key);
+      return `<a href="${href.pathname}${href.search}" data-leg="${leg}"${on ? ' aria-current="page"' : ''}>` +
         `<span class="slot-n">${s.n}</span>${esc(s.label)}</a>`;
     }).join('') +
       `<span class="bar-tail">` +
@@ -260,7 +281,12 @@ export function boot(opts) {
     }
   });
 
+  /* Only links that leave the site get a new tab. A same-origin link stamped
+     with target="_blank" opens a second browsing context, and a
+     cross-document view transition cannot happen across one — the morph dies
+     silently and the whole claim with it. */
   document.querySelectorAll('a[href^="http"]').forEach((a) => {
+    if (a.host === location.host) return;
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
     if (!a.getAttribute('aria-label')) {
@@ -268,5 +294,30 @@ export function boot(opts) {
     }
   });
 
+  vtProbe();
   return { here };
+}
+
+/* A cross-document transition lives for a few frames and then disappears, so
+   nothing can assert on it after the fact. Sample what is animating across the
+   first second of every arrival and leave the record where a harness can read
+   it — this is also the reduced-motion proof: the list must be empty there. */
+function vtProbe() {
+  const h = document.documentElement;
+  const seen = new Set();
+  let frame = 0;
+  (function sample() {
+    for (const a of document.getAnimations()) seen.add(a.animationName || 'waapi');
+    if (++frame < 70) { requestAnimationFrame(sample); return; }
+    const rec = {
+      path: location.pathname,
+      leg: h.dataset.leg,
+      from: h.dataset.from,
+      slow: getComputedStyle(h).getPropertyValue('--slow').trim(),
+      reduced: reduced(),
+      anims: [...seen].sort()
+    };
+    try { sessionStorage.setItem('seer.vt', JSON.stringify(rec)); } catch (e) {}
+    window.__vt = rec;
+  })();
 }

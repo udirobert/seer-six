@@ -69,8 +69,14 @@
        d3  object keeps identity, merge/redeem 320ms
        d4  price moves, vertical only         400ms
        d5  fan-out: protocol→app, split       520ms
+     --slow exists for filming and for the harness: catching a 320 ms morph
+     mid-flight needs frames a screenshot loop can actually hit. It scales the
+     whole contract uniformly, so it cannot introduce an ad-hoc number.
      ---------------------------------------------------------- */
-  --d-1: 200ms;  --d-2: 220ms;  --d-3: 320ms;  --d-4: 400ms;  --d-5: 520ms;
+  --slow: 1;
+  --d-1: calc(200ms * var(--slow));  --d-2: calc(220ms * var(--slow));
+  --d-3: calc(320ms * var(--slow));  --d-4: calc(400ms * var(--slow));
+  --d-5: calc(520ms * var(--slow));
   --e-out:  cubic-bezier(0.05, 0.7, 0.1, 1);    /* arriving, decelerating */
   --e-in:   cubic-bezier(0.3, 0, 0.8, 0.15);    /* leaving, accelerating  */
   --e-std:  cubic-bezier(0.2, 0, 0, 1);         /* lateral / no drama     */

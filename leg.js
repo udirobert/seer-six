@@ -9,6 +9,8 @@
   var LEGS = { morph: 1, fan: 1, lateral: 1, back: 1, split: 1, redeem: 1, verify: 1 };
   h.dataset.leg = LEGS[q.get('leg')] ? q.get('leg') : 'direct';
   h.dataset.from = /^[a-z]{2,10}$/.test(q.get('from') || '') ? q.get('from') : '';
+  var slow = parseFloat(q.get('slow') || '1');
+  if (slow > 1 && slow <= 8) h.style.setProperty('--slow', String(slow));
   var s = {};
   try { s = JSON.parse(localStorage.getItem('seer.pref') || '{}'); } catch (e) { s = {}; }
   if (q.get('theme') === 'dark' || q.get('theme') === 'light') s.theme = q.get('theme');
