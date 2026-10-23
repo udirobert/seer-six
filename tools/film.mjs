@@ -60,12 +60,13 @@ const log = (...a) => console.log(...a);
 /* One beat per scene, and the beat is a leg. Timings are the contract's, scaled
    by ?slow, so the film is the evidence rather than a dramatisation of it. */
 const SCENES = [
-  { name: '01-fan-home-to-app', note: 'root → app: the fan interval, one becoming many',
+  { name: '01-card-declares-its-interval', note: 'the root: six cards, each naming the step it leaves by',
     run: async (p) => {
       await p.goto(`${BASE}/?slow=${SLOW}`, { waitUntil: 'load' });
-      await p.waitForTimeout(2400);
-      await p.click('#fancards a[data-leg="fan"]');
-      await p.waitForTimeout(3000);
+      await p.waitForTimeout(2600);
+      await p.evaluate(() => document.getElementById('fancards')
+        .scrollIntoView({ block: 'center' }));
+      await p.waitForTimeout(1600);
     } },
   { name: '02-morph-row-to-market', note: 'row → document: the same market, its identity intact',
     run: async (p) => {
@@ -76,21 +77,35 @@ const SCENES = [
       await p.click('[data-market]');
       await p.waitForTimeout(3200);
     } },
-  { name: '03-lateral-market-to-risk', note: 'lateral: a sibling reading, the shortest interval, sideways only',
+  { name: '03-morph-card-to-row', note: 'the explorer card promises the morph and performs it',
+    run: async (p) => {
+      await p.goto(`${BASE}/?slow=${SLOW}`, { waitUntil: 'load' });
+      await p.waitForTimeout(2400);
+      await p.click('#fancards a[href$="/app/"], #fancards a[href*="/app/?"]');
+      await p.waitForTimeout(3000);
+    } },
+  { name: '04-fan-root-to-many', note: 'fan: one becoming many, radial outward, the widest interval',
+    run: async (p) => {
+      await p.goto(`${BASE}/?slow=${SLOW}`, { waitUntil: 'load' });
+      await p.waitForTimeout(2400);
+      await p.click('#fancards a[href*="/futarchy/"]');
+      await p.waitForTimeout(3200);
+    } },
+  { name: '05-lateral-market-to-risk', note: 'lateral: a sibling reading, the shortest interval, sideways only',
     run: async (p) => {
       await p.goto(`${BASE}/m/?slow=${SLOW}&m=17340bafcb`, { waitUntil: 'load' });
       await p.waitForTimeout(2400);
       await p.click('.lateral a');
       await p.waitForTimeout(2600);
     } },
-  { name: '04-split-parent-to-child', note: 'splitPosition: one outcome of the parent becomes the child’s collateral',
+  { name: '06-split-parent-to-child', note: 'splitPosition: one outcome of the parent becomes the child’s collateral',
     run: async (p) => {
       await p.goto(`${BASE}/m/?slow=${SLOW}&m=17340bafcb`, { waitUntil: 'load' });
       await p.waitForTimeout(2200);
       await p.click('.fan a');
       await p.waitForTimeout(3000);
     } },
-  { name: '05-price-leg-switch', note: 'a price moved: vertical only, distance from the delta, sign from the direction',
+  { name: '07-price-leg-switch', note: 'a price moved: vertical only, distance from the delta, sign from the direction',
     run: async (p) => {
       await p.goto(`${BASE}/m/?slow=${SLOW}&m=17340bafcb`, { waitUntil: 'load' });
       await p.waitForTimeout(2400);
@@ -99,7 +114,7 @@ const SCENES = [
       await p.click('.legs .leg[data-i="2"]');
       await p.waitForTimeout(1800);
     } },
-  { name: '06-redeem-split-then-merge', note: 'mint the legs, then merge them back: the widest geometry and its exact reverse',
+  { name: '08-redeem-split-then-merge', note: 'mint the legs, then merge them back: the widest geometry and its exact reverse',
     run: async (p) => {
       await p.goto(`${BASE}/deep/?slow=${SLOW}`, { waitUntil: 'load' });
       await p.waitForTimeout(2600);
@@ -108,7 +123,7 @@ const SCENES = [
       await p.click('#do-merge');
       await p.waitForTimeout(2200);
     } },
-  { name: '07-reduced-snaps', note: 'the same arrival with motion off: it snaps to its end state and means the same thing',
+  { name: '09-reduced-snaps', note: 'the same arrival with motion off: it snaps to its end state and means the same thing',
     run: async (p) => {
       await p.goto(`${BASE}/app/?slow=${SLOW}`, { waitUntil: 'load' });
       await p.waitForTimeout(1800);
@@ -117,7 +132,7 @@ const SCENES = [
       await p.click('[data-market]');
       await p.waitForTimeout(1800);
     } },
-  { name: '08-contract-ledger', note: 'the contract, and the ledger filling with what the browser actually did',
+  { name: '10-contract-ledger', note: 'the contract, and the ledger filling with what the browser actually did',
     run: async (p) => {
       await p.goto(`${BASE}/contract/?slow=${SLOW}`, { waitUntil: 'load' });
       await p.waitForTimeout(2000);
@@ -130,7 +145,7 @@ const SCENES = [
 
 mkdirSync(OUT, { recursive: true });
 log(`film · ${BASE} · slow=${SLOW} · ${new Date().toISOString()}`);
-const browser = await chromium.launch({ channel: process.env.CHANNEL || 'chrome' });
+const browser = await chromium.launch(launchOpts());
 const takes = [];
 
 for (const [i, s] of SCENES.entries()) {
