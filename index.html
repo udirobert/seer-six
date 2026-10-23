@@ -1,1 +1,179 @@
-<!doctype html><meta charset=utf-8><title>probe home</title><body style="font:16px ui-monospace;padding:4rem"><p>PROBE :: home<p><a href="/app/">app</a>
+<!DOCTYPE html>
+<html lang="en" data-surface="home">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seer, six interfaces — motion that carries the protocol</title>
+<meta name="description" content="Six interactive readings of Seer's product surfaces on the Electric Foundation kit, where every transition is keyed to a relation in the protocol's own data and still communicates after the motion is removed.">
+<script src="leg.js"></script>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="motion.css">
+<link rel="stylesheet" href="ui.css">
+<link rel="stylesheet" href="home.css">
+</head>
+<body>
+<div id="surface-bar" class="vt-chrome"></div>
+
+<main class="wrap">
+  <div id="surface-depth"></div>
+
+  <header class="masthead">
+    <p class="eyebrow">Surface 1 of 6 · the root every other surface hangs off</p>
+    <h1>One protocol, six readings</h1>
+    <p class="lede">Seer is a prediction market protocol built on Reality.eth and the Conditional Tokens
+      Framework, which is a polite way of saying its data is a tree: a protocol root, five applications,
+      parent markets that split into conditional children, and a dollar of collateral that becomes four
+      outcome tokens. This entry takes that structure seriously as an interface. Every transition between
+      these six pages is keyed to a relation that already exists in the API, and every one of them is
+      documented, timed from a five-step scale, and — the part worth testing — still true with the motion
+      switched off.</p>
+  </header>
+
+  <section class="root" aria-labelledby="fan-h">
+    <h2 id="fan-h" class="visually-hidden">The six surfaces</h2>
+    <div class="node" id="rootnode">
+      <p class="eyebrow">Protocol root</p>
+      <b>Seer</b> <span class="num" style="color:var(--fg-mute)">· chain 100 Gnosis, 1 mainnet, 10, 8453</span>
+    </div>
+    <div class="trunk" aria-hidden="true"></div>
+    <ul class="fancards" id="fancards"></ul>
+  </section>
+
+  <ul class="stats" id="stats"></ul>
+
+  <section class="block" aria-labelledby="th-h">
+    <h2 id="th-h">The argument, in three sentences</h2>
+    <div class="thesis">
+      <div>
+        <p>Animated transitions between two views of changing data measurably improve a reader's ability to
+          track <i>which</i> object changed and by how much, compared with a static cut — that is Heer and
+          Robertson's 2007 result, and it is the whole reason a market's price belongs in a transition rather
+          than in a table cell. The same literature is equally clear about the boundary: animation that is
+          decorative splits attention and stops helping, which is Kim, Tversky and Morrison's finding and the
+          reason this entry publishes a contract instead of a style guide.</p>
+        <p>So the rule every page obeys is narrow and checkable: <b>no animation runs here unless the
+          relation it expresses exists in Seer's data or in a Conditional Tokens Framework call.</b> A row
+          becoming a market document is the same object crossing a boundary. A document fanning outward is a
+          parent collection resolving into its children. A collapse downward is <code>redeemPositions</code>.
+          A 200&nbsp;ms one-shot is a verification state, and it never loops, because a state is not a story.</p>
+        <p>The third claim is the one to attack: press <span class="kbd">R</span> on any page, or turn on
+          reduce-motion in your operating system, and every transition resolves to its end state at zero
+          duration rather than pausing halfway — while the depth rail, the outcome index, the signed price
+          delta and the parent indentation stay on screen carrying the same meaning. That is a falsifiable
+          statement, and the harness that checks it is linked below.</p>
+      </div>
+      <ul class="cites">
+        <li>Heer, J. &amp; Robertson, G. G. <i>Animated Transitions in Statistical Data Graphics.</i>
+          IEEE Trans. Visualization &amp; Computer Graphics 13(6), 1240–1247. <span class="src">The
+          comprehension result this entry is built on.</span></li>
+        <li>Kim, S., Yoon, C., Whang, S. &amp; Tversky, B. <i>The effect of animation on comprehension.</i>
+          Int. J. Human-Computer Studies 65. <span class="src">The boundary condition: decorative animation
+          splits attention. Every duration here is paid for by a relation.</span></li>
+        <li>Willenskomer, I. <i>UX in Motion Manifesto.</i> <span class="src">Continuity, relationship and
+          expectation named as usability functions rather than taste.</span></li>
+        <li>Seer protocol documentation and public API, <code>app.seer.pm/.netlify/functions</code>, plus the
+          Conditional Tokens Framework event log. <span class="src">Every field name on every page is
+          quoted from that surface, not paraphrased.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="dep-h">
+    <h2 id="dep-h">Departures, stated</h2>
+    <p class="blocknote" id="departures">The Electric Foundation kit specifies PP Neue Montreal for display
+      and Inter Tight for numerals. Both are commercial faces that cannot be web-delivered from a static
+      folder without a licence, so this entry ships self-hosted <b>IBM Plex Sans</b> and <b>IBM Plex Mono</b>
+      under the SIL Open Font License, with the licensed names kept first in every stack so the substitution
+      is the only thing a reader without the licence can see. Colours, radii, spacing and the five-step
+      duration scale are in one file, <code>tokens.css</code>, and no stylesheet outside it names a hue.</p>
+  </section>
+
+  <footer id="snapshot"></footer>
+</main>
+
+<aside class="leg-badge" id="leg-badge" aria-hidden="true"></aside>
+
+<script type="module">
+import { load, boot, esc, legBadge, animate, reduced, dur, ROOT, SURFACES } from './shell.js';
+
+const $ = (id) => document.getElementById(id);
+
+const d = await load('markets', 'meta', 'futarchy');
+const [markets, meta, FUT] = [d.markets, d.meta, d.futarchy];
+
+const CARDS = [
+  ['app', 'The explorer', 'Two hundred and eighty-four markets as a book you can read down. The row you ' +
+    'press is the object that arrives on the other side of the boundary, carrying its name, its prices and ' +
+    'its history.', 'morph', 3],
+  ['deep', 'Deep', 'A market with six outcomes is a wider branch, not a longer list. The legs are counted, ' +
+    'a dollar of collateral splits into them, and two different questions refuse to morph into each other.',
+    'split', 5],
+  ['futarchy', 'Futarchy', 'Three hundred and ninety-eight governance questions priced in two numéraires at ' +
+    'once — GNO and wxDAI — and not one of them priced. The surface draws the shape the number would ' +
+    'occupy and leaves it empty.', 'fan', 5],
+  ['opportunity', 'Opportunity', 'An outcome price is the width of one piece of a dollar. The partition is ' +
+    'drawn as one rail, the residual stays hatched, and projecting a resolution is the collapse the payout ' +
+    'function actually is.', 'redeem', 3],
+  ['risk', 'Risk', 'A ladder where every rung names the API fields that built it, including the two that are ' +
+    'empty in practice. Challenging a verification is a 200 ms one-shot that moves the market up a rung.',
+    'verify', 1],
+  ['contract', 'The motion contract', 'Not a seventh surface — the document the other six are evidence for. ' +
+    'Every leg, its relation, its source field, its duration, and the reduced-motion claim with the harness ' +
+    'that checks it.', 'direct', 2]
+];
+const HREF = { app: 'app/', deep: 'deep/', futarchy: 'futarchy/', opportunity: 'opportunity/',
+               risk: 'risk/', contract: 'contract/' };
+
+$('fancards').innerHTML = CARDS.map(([key, title, claim, leg, step]) => {
+  const s = SURFACES.find((x) => x.key === key);
+  const href = s ? `${ROOT}/${s.href}` : `${ROOT}/${HREF[key]}/`;
+  const u = new URL(href, location.href);
+  u.searchParams.set('leg', leg); u.searchParams.set('from', 'home');
+  const slow = new URLSearchParams(location.search).get('slow');
+  if (slow) u.searchParams.set('slow', slow);
+  return `<li><a href="${u.pathname}${u.search}"${s ? '' : ' data-contract="1"'}>
+    <span class="hd">${s ? `<span class="slot-n">${s.n}</span>` : '<span class="slot-n">§</span>'}<b>${esc(title)}</b></span>
+    <span class="claim">${esc(claim)}</span>
+    <span class="moves num">leaves here by <em>${leg}</em> · ${dur(step)} ms</span></span>
+  </a></li>`;
+}).join('');
+
+const STATS = [
+  [meta.universe, 'markets in the protocol'],
+  [markets.length, 'baked into this snapshot'],
+  [meta.counts.conditional, 'conditional children'],
+  [meta.counts.trees, 'parent collections'],
+  [meta.counts.chartMarkets, 'markets with a price history'],
+  [FUT.count, 'futarchy rows, none priced'],
+  [meta.counts.events, 'contract events'],
+  [meta.counts.traders, 'distinct traders in the log']
+];
+$('stats').innerHTML = STATS.map(([k, l]) =>
+  `<li><span class="k">${Number(k).toLocaleString('en-US')}</span><span class="l">${esc(l)}</span></li>`).join('');
+
+$('snapshot').innerHTML =
+  `Snapshot <b>${esc(meta.iso)}</b> · baked from <code>markets-search</code>, <code>markets-charts</code> ` +
+  `and <code>get-transactions</code> by <code>dev/bake.py</code> · <a href="${ROOT}/contract/?leg=fan&from=home">read the motion contract</a> · ` +
+  `press <span class="kbd">R</span> to remove the motion and keep the meaning.`;
+legBadge();
+
+/* The homepage's own structure is the root of the tree, so arriving here is
+   the fan relation: one node, six children, moving outward. */
+function fanIn() {
+  if (reduced() || document.documentElement.dataset.leg !== 'direct') return;
+  const root = $('rootnode').getBoundingClientRect();
+  document.querySelectorAll('.fancards a').forEach((n) => {
+    const b = n.getBoundingClientRect();
+    animate(n, [
+      { transform: `translate(${root.left + root.width / 2 - (b.left + b.width / 2)}px, ${root.top + root.height / 2 - (b.top + b.height / 2)}px) scale(.5)`, opacity: 0 },
+      { transform: 'none', opacity: 1 }
+    ], { step: 5 });
+  });
+}
+
+boot({ surface: 'home', marketDepth: null });
+fanIn();
+</script>
+</body>
+</html>

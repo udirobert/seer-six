@@ -1,0 +1,50 @@
+/* home.css — the root of the same tree every other surface is a branch of.
+   The six cards are laid out as children of one node, and the only motion here
+   is the fan that relation implies. */
+
+.root {
+  display: grid; gap: var(--s-5); margin-top: var(--s-6);
+}
+.node {
+  justify-self: start; border: var(--rule-strong); border-radius: var(--r-lg);
+  padding: var(--s-4) var(--s-5); background: var(--bg-signal);
+}
+.node .eyebrow { margin-bottom: 2px; }
+.node b { font-family: var(--font-num); font-size: var(--t-h3); letter-spacing: -.02em; }
+.trunk { justify-self: start; width: 2px; height: var(--s-6); background: var(--ef-violet); }
+
+.fancards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
+  gap: var(--s-4); list-style: none; margin: 0; padding: 0;
+}
+.fancards li { display: grid; }
+.fancards a {
+  display: grid; gap: var(--s-2); align-content: start; height: 100%;
+  padding: var(--s-5); border: var(--rule); border-radius: var(--r-lg);
+  background: var(--bg-raise); text-decoration: none; color: inherit;
+}
+.fancards a:hover { border-color: var(--ef-violet); background: var(--bg-signal); }
+.fancards .hd { display: flex; align-items: baseline; gap: var(--s-3); }
+.fancards .hd b { font-size: var(--t-h3); letter-spacing: -.01em; }
+.fancards .claim { font-size: var(--t-small); }
+.fancards .moves {
+  font-size: var(--t-micro); color: var(--fg-mute); border-top: var(--rule);
+  padding-top: var(--s-3); margin-top: var(--s-1);
+}
+.fancards .moves em { font-style: normal; color: var(--fg-signal); font-family: var(--font-num); }
+
+.stats {
+  list-style: none; margin: var(--s-6) 0 0; padding: var(--s-5) 0;
+  border-top: var(--rule-strong); border-bottom: var(--rule-strong);
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: var(--s-4);
+}
+.stats .k { font-family: var(--font-num); font-size: var(--t-h2); letter-spacing: -.03em;
+  color: var(--fg-signal); display: block; line-height: 1; }
+.stats .l { font-size: var(--t-micro); color: var(--fg-mute); display: block; margin-top: 5px; }
+
+.thesis { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 34%); gap: var(--s-6); }
+.thesis p { max-width: 68ch; }
+.cites { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s-3); font-size: var(--t-micro); }
+.cites li { border-top: var(--rule); padding-top: var(--s-3); }
+.cites .src { color: var(--fg-mute); }
+@media (max-width: 900px) { .thesis { grid-template-columns: 1fr; } }
