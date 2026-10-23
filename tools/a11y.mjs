@@ -13,6 +13,7 @@
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { platform, release, arch } from 'node:os';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
@@ -26,9 +27,13 @@ const SHOTS = resolve(ENTRY, '..', 'evidence', 'shots');
 const AXE = join(ENTRY, 'vendor', 'axe.min.js');
 
 /* Playwright is already on this machine in the npx cache; no install step, and
-   nothing here writes to the published site. */
+   nothing here writes to the published site. playwright-core is the variant on
+   the Linux box that runs the long pass — it drives a system Chrome instead of
+   a downloaded build, which is the only reason it is acceptable there. */
 function loadPlaywright() {
-  try { return require('playwright'); } catch (e) { /* fall through */ }
+  for (const m of ['playwright', 'playwright-core']) {
+    try { return require(m); } catch (e) { /* fall through */ }
+  }
   const cache = join(process.env.HOME, '.npm', '_npx');
   const hit = existsSync(cache) && require('fs').readdirSync(cache)
     .map((d) => join(cache, d, 'node_modules', 'playwright'))
@@ -38,10 +43,28 @@ function loadPlaywright() {
 }
 const { chromium } = loadPlaywright();
 
+/* The engine this ran on is part of the measurement, so it is recorded rather
+   than assumed: same page, different Chrome, different frame counts. */
+function launchOpts() {
+  const o = {};
+  if (process.env.CHROME_PATH) o.executablePath = process.env.CHROME_PATH;
+  else o.channel = process.env.CHANNEL || 'chrome';
+  /* Chrome refuses to sandbox as root, and a container's /dev/shm is often
+     smaller than a page load wants. */
+  const root = typeof process.getuid === 'function' && process.getuid() === 0;
+  if (root) o.args = ['--no-sandbox', '--disable-dev-shm-usage'];
+  return o;
+}
+const ENGINE = process.env.CHROME_PATH ? `chrome@${process.env.CHROME_PATH}`
+  : (process.env.CHANNEL || 'chrome');
+
 const argv = process.argv.slice(2);
 const BASE = (argv.find((a) => a.startsWith('--url=')) || '--url=https://udirobert.github.io/seer-six')
   .slice(6).replace(/\/$/, '');
 const wantShots = !argv.includes('--no-shots');
+/* --only=dark|shots|matrix: run one pass and stop. The long pass costs ~15 min
+   of Chromium, and a CSS fix should not have to pay for it to see one number. */
+const ONLY = (argv.find((a) => a.startsWith('--only=')) || '').slice(7);
 
 /* Bar order is the contract's own: 1 Seer, 2 App, 3 Deep, 4 Futarchy,
    5 Opportunity, 6 Risk, § Contract. /m/ is reached from a market row. */
@@ -93,6 +116,35 @@ const VIEWPORTS = [['phone', 390, 844], ['tablet', 768, 1024], ['desktop', 1440,
 const WALK_WIDTH = 'desktop';
 
 const log = (...a) => console.log(...a);
+
+/* A CDN hiccup must not cost the whole evidence set: navigate through a retry,
+   and if it still fails, record the failure and write what was measured. */
+async function nav(p, url, tries = 3) {
+  for (let i = 1; ; i++) {
+    try {
+      await p.goto(url, { waitUntil: 'load', timeout: 20000 });
+      return;
+    } catch (e) {
+      if (i >= tries) throw e;
+      log(`   retry ${i} ${url} — ${String(e.message).split('\n')[0]}`);
+      await p.waitForTimeout(1200 * i);
+    }
+  }
+}
+
+/* A page that never answers must not take the whole evidence file with it.
+   Without a timer, a stalled evaluate drains the event loop and Node exits on
+   an unsettled top-level await — mid-run, fourteen minutes in, with nothing
+   written. That is how the 14:11 pass died. */
+function withTimeout(ms, what, promise) {
+  let t;
+  return Promise.race([
+    promise.finally(() => clearTimeout(t)),
+    new Promise((_, rej) => {
+      t = setTimeout(() => rej(new Error(`${what}: no answer in ${ms}ms`)), ms);
+    }),
+  ]);
+}
 
 /* ---------- in-page collectors ---------- */
 
@@ -281,7 +333,7 @@ async function axeRun(p, page) {
 }
 
 async function focusWalk(p, page) {
-  await p.goto(`${BASE}${page.path}`, { waitUntil: 'load' });
+  await nav(p, `${BASE}${page.path}`);
   /* The rail is built by shell.js at module evaluation. Numbering the tab stops
      before it exists measures a page that nobody ever reads. */
   await p.waitForFunction(() => document.querySelector('#surface-bar a'),
@@ -310,7 +362,7 @@ async function shots(browser) {
     for (const [w, h] of widths) {
       const p = await ctx.newPage();
       await p.setViewportSize({ width: w, height: h });
-      await p.goto(`${BASE}${page.path}`, { waitUntil: 'load' });
+      await nav(p, `${BASE}${page.path}`);
       await p.waitForTimeout(1500);
       const file = join(SHOTS, `${page.key}-${w}.png`);
       await p.screenshot({ path: file, fullPage: w >= 1440 });
@@ -332,16 +384,23 @@ async function darkPass(browser) {
   const out = [];
   for (const page of PAGES) {
     const p = await ctx.newPage();
-    await p.goto(`${BASE}${page.path}`, { waitUntil: 'load' });
-    await p.waitForFunction(() => window.__vt, null, { timeout: 8000 }).catch(() => {});
-    await p.evaluate(() => { document.documentElement.dataset.theme = 'dark'; });
-    await p.waitForTimeout(250);
-    const c = await p.evaluate(CONTRAST);
-    out.push({ page: page.key, theme: 'dark', ...c });
-    log(`   dark ${page.key.padEnd(11)} min ${c.min}  fails ${c.failCount}`);
-    await p.close();
+    try {
+      await nav(p, `${BASE}${page.path}`);
+      /* Same readiness discipline as collect(): the dark numbers have to be
+         comparable with the light ones, and a page sampled before its rows are
+         in the DOM reports a smaller, easier world. */
+      await p.waitForFunction(() => window.__vt, null, { timeout: 8000 }).catch(() => {});
+      await p.evaluate(() => { document.documentElement.dataset.theme = 'dark'; });
+      await p.waitForTimeout(250);
+      const c = await withTimeout(45000, `contrast ${page.key}`, p.evaluate(CONTRAST));
+      out.push({ page: page.key, theme: 'dark', ...c });
+      log(`   dark ${page.key.padEnd(11)} min ${c.min}  fails ${c.failCount}` +
+        (ONLY === 'dark' && c.fails.length ? `\n      ${c.fails.map((f) =>
+          `${f.ratio}(${f.need}) ${f.sel} "${f.text.slice(0, 24)}" ${f.px}px a${f.alpha} ${f.fg} on ${f.bg}`).join('\n      ')}` : ''));
+    } catch (e) { note(`dark ${page.key}`, e); }
+    await p.close().catch(() => {});
   }
-  await ctx.close();
+  await ctx.close().catch(() => {});
   return out;
 }
 
@@ -350,6 +409,9 @@ function summarise(rows, axe, focus, dark) {
   const cold = rows.filter((r) => r.load === 'cold' && r.probe);
   const by = (m) => warm.filter((r) => r.motion === m);
   const namesOf = (rs) => [...new Set(rs.flatMap((r) => r.probe.anims || []))].sort();
+  /* Math.min() of an empty list is Infinity, which is a worse way to report a
+     skipped pass than saying so. */
+  const lo = (a) => (a.length ? Math.round(Math.min(...a) * 100) / 100 : null);
   const cues = rows.flatMap((r) => r.cues);
   const contrast = rows.map((r) => r.contrast);
   return {
@@ -370,7 +432,7 @@ function summarise(rows, axe, focus, dark) {
       claim: 'with motion on, the same arrivals are visibly running for the leg’s whole interval',
       arrivals: by('full').length,
       minLongestRunFrames: by('full').length ? Math.min(...by('full').map((r) => r.probe.longest)) : null,
-      maxLongestRunFrames: Math.max(...by('full').map((r) => r.probe.longest)),
+      maxLongestRunFrames: Math.max(0, ...by('full').map((r) => r.probe.longest)),
       legs: Object.fromEntries(by('full').map((r) => [r.page, `${r.probe.leg}:${r.probe.longest}f`]))
     },
     intervalHonesty: {
@@ -424,7 +486,7 @@ function summarise(rows, axe, focus, dark) {
       claim: 'the same transitions are reachable without a pointer, in DOM order, with a visible ring',
       walks: focus.length,
       monotonic: focus.filter((f) => f.monotonic).length,
-      minBarLinksReached: Math.min(...focus.map((f) => f.barLinksReached)),
+      minBarLinksReached: lo(focus.map((f) => f.barLinksReached)),
       ringsMissing: [...new Set(focus.flatMap((f) => f.ringsMissing))].slice(0, 8),
       positiveTabindex: Math.max(0, ...rows.map((r) => r.positiveTabindex))
     },
@@ -433,14 +495,14 @@ function summarise(rows, axe, focus, dark) {
       /* Counts are readings, not unique elements: the same node is measured at
          three widths and in two motion states, which is the point of the matrix. */
       readings: contrast.reduce((s, c) => s + c.checked, 0),
-      minRatio: Math.min(...contrast.map((c) => c.min ?? 99)),
+      minRatio: lo(contrast.map((c) => c.min).filter((x) => x != null)),
       failReadings: contrast.reduce((s, c) => s + c.failCount, 0),
       failPages: [...new Set(rows.filter((r) => r.contrast.failCount).map((r) => `${r.page}/${r.viewport}`))],
       worst: rows.flatMap((r) => r.contrast.fails.map((f) => ({ ...f, page: r.page })))
         .sort((a, b) => a.ratio - b.ratio).slice(0, 10),
       dark: {
         readings: dark.reduce((s, c) => s + c.checked, 0),
-        minRatio: Math.min(...dark.map((c) => c.min ?? 99)),
+        minRatio: lo(dark.map((c) => c.min).filter((x) => x != null)),
         failReadings: dark.reduce((s, c) => s + c.failCount, 0),
         failPages: dark.filter((c) => c.failCount).map((c) => c.page),
         worst: dark.flatMap((c) => c.fails.map((f) => ({ ...f, page: c.page })))
@@ -470,10 +532,24 @@ mkdirSync(OUT, { recursive: true });
 if (wantShots) mkdirSync(SHOTS, { recursive: true });
 log(`a11y evidence · ${BASE} · ${started.toISOString()}`);
 
-const browser = await chromium.launch({ channel: process.env.CHANNEL || 'chrome' });
+const browser = await chromium.launch(launchOpts());
 const version = await browser.version();
-log(`engine: ${process.env.CHANNEL || 'chrome'} ${version}`);
-const rows = []; const axe = []; const focusRows = [];
+const OS = `${platform()} ${release()} ${arch()}`;
+log(`engine: ${version} · ${OS}`);
+const rows = []; const axe = []; const focusRows = []; const failures = [];
+const note = (what, e) => {
+  const msg = String(e && e.message || e).split('\n')[0];
+  failures.push(`${what}: ${msg}`);
+  log(`   ! ${what} — ${msg}`);
+};
+
+/* One pass, printed, nothing written: the loop a CSS fix needs. */
+if (ONLY === 'dark') { await darkPass(browser); await browser.close(); process.exit(0); }
+if (ONLY === 'shots') {
+  const s = await shots(browser);
+  log(`\n${s.length} screenshots → ${SHOTS}`);
+  await browser.close(); process.exit(0);
+}
 
 for (const [mkey, mval] of MOTION) {
   for (const [vkey, w, h] of VIEWPORTS) {
@@ -483,37 +559,41 @@ for (const [mkey, mval] of MOTION) {
     p._motion = mkey;
 
     for (const page of PAGES) {
-      /* through about:blank so the previous document cannot opt in: this pass
-         is the degradation case, arriving from somewhere that is not us. */
-      await p.goto('about:blank');
-      await p.goto(`${BASE}${page.path}`, { waitUntil: 'load' });
-      rows.push(await collect(page, p, 'cold'));
-      if (vkey === WALK_WIDTH) {
-        const a = await axeRun(p, page);
-        axe.push(a);
-        if (a.violations.length) log(`   axe ${page.key}: ${a.violations.map((v) => `${v.id}×${v.n}`).join(' ')}`);
-      }
+      try {
+        /* through about:blank so the previous document cannot opt in: this pass
+           is the degradation case, arriving from somewhere that is not us. */
+        await p.goto('about:blank');
+        await nav(p, `${BASE}${page.path}`);
+        rows.push(await collect(page, p, 'cold'));
+        if (vkey === WALK_WIDTH) {
+          const a = await axeRun(p, page);
+          axe.push(a);
+          if (a.violations.length) log(`   axe ${page.key}: ${a.violations.map((v) => `${v.id}×${v.n}`).join(' ')}`);
+        }
+      } catch (e) { note(`cold ${page.key}/${vkey}`, e); }
     }
 
     /* the walk: the rail is the product’s own path between documents, so the
        transition under test is the one a reader would get. */
-    const first = PAGES.find((x) => x.key === 'app');
-    await p.goto(`${BASE}${first.path}`, { waitUntil: 'load' });
-    await p.waitForTimeout(1400);
-    const order = ['deep', 'futarchy', 'opportunity', 'risk', 'contract', 'home', 'app', 'm'];
-    for (const key of order) {
-      const page = PAGES.find((x) => x.key === key);
-      /* The rail is the product's own path between documents. /m/ has no rail
-         entry, so it is reached the way a reader reaches it: by a market row. */
-      const sel = key === 'contract' ? '#surface-bar .bar-rules'
-        : page.market ? `[data-market="${page.market}"]`
-          : `#surface-bar a:nth-of-type(${page.nth})`;
-      const hit = await p.locator(sel).first().isVisible().catch(() => false);
-      if (!hit && page.market) log(`   ! ${sel} absent — falling back to any row`);
-      await p.click(hit || !page.market ? sel : '[data-market]');
-      await p.waitForFunction(() => window.__vt, null, { timeout: 8000 }).catch(() => {});
-      rows.push(await collect(page, p, 'warm'));
-    }
+    try {
+      const first = PAGES.find((x) => x.key === 'app');
+      await nav(p, `${BASE}${first.path}`);
+      await p.waitForTimeout(1400);
+      const order = ['deep', 'futarchy', 'opportunity', 'risk', 'contract', 'home', 'app', 'm'];
+      for (const key of order) {
+        const page = PAGES.find((x) => x.key === key);
+        /* The rail is the product's own path between documents. /m/ has no rail
+           entry, so it is reached the way a reader reaches it: by a market row. */
+        const sel = key === 'contract' ? '#surface-bar .bar-rules'
+          : page.market ? `[data-market="${page.market}"]`
+            : `#surface-bar a:nth-of-type(${page.nth})`;
+        const hit = await p.locator(sel).first().isVisible().catch(() => false);
+        if (!hit && page.market) log(`   ! ${sel} absent — falling back to any row`);
+        await p.click(hit || !page.market ? sel : '[data-market]');
+        await p.waitForFunction(() => window.__vt, null, { timeout: 8000 }).catch(() => {});
+        rows.push(await collect(page, p, 'warm'));
+      }
+    } catch (e) { note(`walk/${vkey}`, e); }
     await p.close();
     await ctx.close();
 
@@ -523,10 +603,12 @@ for (const [mkey, mval] of MOTION) {
           viewport: { width: fv === 'desktop' ? 1440 : 390, height: fv === 'desktop' ? 900 : 844 } });
         const p2 = await c2.newPage();
         for (const page of PAGES) {
-          const r = await focusWalk(p2, page);
-          r.viewport = fv; r.motion = mkey;
-          focusRows.push(r);
-          if (!r.monotonic || r.ringsMissing.length) log(`   focus ${page.key}/${fv}: ${JSON.stringify(r)}`);
+          try {
+            const r = await focusWalk(p2, page);
+            r.viewport = fv; r.motion = mkey;
+            focusRows.push(r);
+            if (!r.monotonic || r.ringsMissing.length) log(`   focus ${page.key}/${fv}: ${JSON.stringify(r)}`);
+          } catch (e) { note(`focus ${page.key}/${fv}`, e); }
         }
         await p2.close(); await c2.close();
       }
@@ -534,22 +616,31 @@ for (const [mkey, mval] of MOTION) {
   }
 }
 
-const darkRows = await darkPass(browser);
-const shotList = wantShots ? await shots(browser) : [];
-await browser.close();
+const darkRows = await darkPass(browser).catch((e) => { note('dark pass', e); return []; });
+const shotList = wantShots
+  ? await shots(browser).catch((e) => { note('shots', e); return []; }) : [];
+await browser.close().catch(() => {});
+
+if (!rows.length) {
+  log('\nnothing was measured — refusing to write an evidence file full of zeroes.');
+  process.exit(2);
+}
 
 const doc = {
   generated: started.toISOString(),
   duration_s: Math.round((Date.now() - started.getTime()) / 1000),
   url: BASE,
-  engine: `${process.env.CHANNEL || 'chrome'} ${version}`,
+  engine: `${ENGINE} ${version}`,
+  os: OS,
   axe: readFileSync(AXE, 'utf8').match(/axe v[\d.]+/)[0],
   tool: `${BASE}/tools/a11y.mjs — the harness that produced this JSON, published beside it`,
   matrix: { pages: PAGES.length, viewports: VIEWPORTS.map((v) => v[1]),
     motion: MOTION.map((m) => m[0]), themes: ['light (3 viewports × 2 motion states)', 'dark (desktop)'] },
   summary: summarise(rows, axe, focusRows, darkRows),
+  failures,
   rows, axe, focus: focusRows, dark: darkRows, shots: shotList
 };
 writeFileSync(join(OUT, 'a11y.json'), JSON.stringify(doc, null, 1));
 log(`\nwrote evidence/a11y.json (${Math.round(JSON.stringify(doc).length / 1024)} KB) in ${doc.duration_s}s`);
+if (failures.length) log(`incomplete in ${failures.length} place(s):\n  ${failures.join('\n  ')}`);
 log(JSON.stringify(doc.summary, null, 1).slice(0, 3000));

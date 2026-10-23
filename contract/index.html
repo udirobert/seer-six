@@ -672,7 +672,10 @@ try {
       s.objectSurvives.maxBars === 1 && s.objectSurvives.maxH1 === 1),
     kv('the audit above, run inside the harness', s.selfAudit ? (s.selfAudit.allChecksPass ? 'clean' : 'flags') : '—',
       'self-audit agrees', !!s.selfAudit && s.selfAudit.allChecksPass)
-  ].join('') + (s.contrast.failReadings || s.axe.violations ? `<p class="blocknote"><b>What is still failing</b><br>${
+  ].join('') + (ev.failures && ev.failures.length
+    ? `<p class="blocknote"><b>Where this run was incomplete</b><br>${
+        ev.failures.map((f) => `<code>${esc(f)}</code>`).join('<br>')}</p>` : '')
+    + (s.contrast.failReadings || s.axe.violations ? `<p class="blocknote"><b>What is still failing</b><br>${
     [...s.contrast.worst, ...s.contrast.dark.worst].slice(0, 6)
       .map((f) => `<code>${esc(f.page)} ${esc(f.sel)} — ${f.ratio}:1 needs ${f.need}</code>`).join('<br>')
     }</p>` : '');
