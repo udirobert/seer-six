@@ -398,7 +398,7 @@ function vtProbe() {
     if (++frame < FRAMES) { requestAnimationFrame(sample); return; }
     const rec = {
       t: Math.round(Date.now() / 1000),
-      path: location.pathname.replace(ROOT, '') || '/',
+      path: (location.pathname.replace(ROOT, '').replace(/index\.html$/, '')) || '/',
       leg: h.dataset.leg,
       from: h.dataset.from || '—',
       slow: getComputedStyle(h).getPropertyValue('--slow').trim() || '1',
