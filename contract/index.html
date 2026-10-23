@@ -109,9 +109,14 @@
     <h2 id="s5">5 · The ledger, measured in your browser this session</h2>
     <p class="blocknote">Every arrival at every one of the seven documents samples <code>document.getAnimations()</code>
       for seventy frames — roughly the first 1.2 seconds — and writes what it saw into this browser’s session storage.
-      What matters is the longest unbroken run of frames in which something was animating: with motion on, a leg’s run
-      is the leg’s duration; with motion reduced, it is <b>zero</b>. That is the difference between snapping and
-      pausing, in numbers, and it is the only way to observe a cross-document transition at all — it lives for a few
+      What matters is the longest unbroken run of frames in which something was <em>running</em>: with motion on, a
+      leg’s run is the leg’s duration; with motion reduced it is <b>at most one frame</b> — a 0.01&nbsp;ms snap can
+      still be caught alive by a single sample, so the milliseconds rather than the frame count are what separate a
+      snap from a pause. The table prints the declared interval
+      beside the measured one, and where the measurement runs longer than the leg it is because an in-page arrival
+      animation — the root settling, the price ticking to its new value — is inside the same window. That is the
+      difference between snapping and pausing, in numbers, and it is the only way to observe a cross-document
+      transition at all — it lives for a few
       frames and then is gone, so the instrument has to run inside the document being transitioned into. Click around
       the six surfaces, come back here, and the table fills. Press <span class="kbd">R</span>, do the same, and
       compare the two runs.</p>
@@ -132,7 +137,22 @@
   </section>
 
   <section class="block" aria-labelledby="s6">
-    <h2 id="s6">6 · What this does not claim</h2>
+    <h2 id="s6">6 · The whole matrix, measured off this URL and published</h2>
+    <p class="blocknote">The ledger above is <em>your</em> session. What follows is <em>someone else’s</em>, taken by
+      <code>tools/a11y.mjs</code> in Chromium against the deployed address: eight documents × three viewports ×
+      {reduce, no-preference}, a cold pass routed through <code>about:blank</code> so nothing could transition from
+      it, a dark-theme contrast pass, and axe-core on every page at WCAG 2.x. The JSON is served beside this page and
+      the harness is in the same commit, so the claim, the numbers and the instrument are three clicks apart — and the
+      instrument is the one that has to be believed, not the prose.</p>
+    <div class="audit" id="matrix"><p class="blocknote">reading <code>evidence/a11y.json</code>…</p></div>
+    <p class="ledgerbar">
+      <a class="act" href="../evidence/a11y.json">the measurements as JSON</a>
+      <a class="act ghost" href="https://github.com/udirobert/seer-six/blob/main/tools/a11y.mjs">the harness that took them ↗</a>
+    </p>
+  </section>
+
+  <section class="block" aria-labelledby="s7">
+    <h2 id="s7">7 · What this does not claim</h2>
     <div class="limits">
       <div>
         <p class="eyebrow">Reach</p>
@@ -548,10 +568,10 @@ function ledger() {
   $('ledger-body').innerHTML = rows.length ? rows.map((r) => `
     <tr data-state="${r.reduced ? 'reduced' : r.longest ? 'moved' : 'cut'}">
       <td>${esc(r.path)}</td>
-      <td class="num">${esc(r.leg)}${LEG_STEP[r.leg] ? ` <span class="mute">--d-${LEG_STEP[r.leg]}</span>` : ''}</td>
+      <td class="num">${esc(r.leg)}${LEG_STEP[r.leg] ? ` <span class="mute">--d-${LEG_STEP[r.leg]} · ${dur(LEG_STEP[r.leg])} ms</span>` : ''}</td>
       <td class="num">${esc(r.from)}</td>
       <td class="num">${r.moving}/${r.frames}</td>
-      <td class="num">${r.longest}</td>
+      <td class="num">${r.longest}${r.ms ? ` <span class="mute">· ${r.ms} ms</span>` : ''}</td>
       <td class="anims">${esc(r.anims.map((a) => a.replace(/^-ua-view-transition-/, 'ua:')).join(' · ') || '—')}</td>
     </tr>`).join('')
     : `<tr><td colspan="6">Nothing recorded yet — the arrival that put this page here should appear within about a
@@ -591,6 +611,76 @@ $('snapshot').innerHTML =
   `and 1 · audit read ${A.sheets} stylesheets and ${A.jsFiles} scripts at runtime · press
    <span class="kbd">R</span> to take the motion away and keep the meaning · <code>?slow=4</code> scales the whole
    contract uniformly for filming, which is why it cannot introduce a number.`;
+
+/* ---------- 6. the published matrix ---------- */
+
+/* Fetched rather than baked into this page, so the numbers below cannot drift
+   away from the file that is actually being served one directory up. */
+try {
+  const res = await fetch('../evidence/a11y.json');
+  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const ev = await res.json();
+  const s = ev.summary;
+  const kv = (t, v, tag, ok) =>
+    `<div class="kv"${ok === undefined ? '' : ` data-ok="${ok ? 1 : 0}"`}>` +
+    `<span>${t}</span><span class="v num">${v}</span><span class="tag">${tag}</span></div>`;
+  const frac = (a, b) => `${a}/${b}`;
+
+  $('matrix').innerHTML = [
+    `<p class="blocknote">Run <b>${esc(ev.generated.replace('T', ' ').slice(0, 16))} UTC</b> against
+      <code>${esc(ev.url)}</code> in ${esc(ev.engine)} · ${esc(ev.axe)} · ${ev.matrix.pages} documents ×
+      ${ev.matrix.viewports.length} viewports × both motion states · ${ev.duration_s} s ·
+      ${ev.rows.length} arrivals recorded.</p>`,
+    kv('arrivals, motion reduced — longest unbroken run',
+      `${s.reduceSnaps.maxLongestRunFrames} f · ${s.reduceSnaps.maxLongestRunMs} ms`,
+      s.reduceSnaps.maxLongestRunFrames <= 1 ? 'snaps' : 'does not snap',
+      s.reduceSnaps.maxLongestRunFrames <= 1),
+    kv('the same arrivals, motion on',
+      `${s.motionRuns.minLongestRunFrames}–${s.motionRuns.maxLongestRunFrames} f`,
+      s.motionRuns.arrivals ? 'runs' : 'nothing measured', s.motionRuns.arrivals > 0),
+    kv('measured window lands on the declared step', s.intervalHonesty.atOrAboveHalf,
+      'per leg, at slow=1', /^(\d+)\/\1$/.test(s.intervalHonesty.atOrAboveHalf)),
+    kv('cold arrivals, routed through about:blank',
+      `${s.coldCuts.arrivals} · leg ${esc(s.coldCuts.legs.join(', '))}`,
+      `${s.coldCuts.warmOnlyAnimationNames.length} names appear only on a warm arrival`,
+      s.coldCuts.legs.every((l) => l === 'direct')),
+    kv('static cues the motion stands for, on screen',
+      frac(s.structureSurvives.visible, s.structureSurvives.checked),
+      s.structureSurvives.missing.length ? `missing ${s.structureSurvives.missing.join(', ')}` : 'all, everywhere',
+      s.structureSurvives.visible === s.structureSurvives.checked),
+    kv('documents naming their surface and root depth',
+      frac(s.depthLabels.present, s.depthLabels.of), 'in words',
+      s.depthLabels.present === s.depthLabels.of),
+    kv('tab walks in DOM order, ring visible',
+      frac(s.keyboard.monotonic, s.keyboard.walks),
+      s.keyboard.ringsMissing.length ? `${s.keyboard.ringsMissing.length} without a ring` : 'no positive tabindex',
+      s.keyboard.monotonic === s.keyboard.walks && !s.keyboard.ringsMissing.length),
+    kv('text contrast readings, light',
+      `${s.contrast.readings} · min ${s.contrast.minRatio}:1`,
+      s.contrast.failReadings ? `${s.contrast.failReadings} below` : 'none below',
+      s.contrast.failReadings === 0),
+    kv('text contrast readings, dark',
+      `${s.contrast.dark.readings} · min ${s.contrast.dark.minRatio}:1`,
+      s.contrast.dark.failReadings ? `${s.contrast.dark.failReadings} below` : 'none below',
+      s.contrast.dark.failReadings === 0),
+    kv('axe-core WCAG 2.x violations', `${s.axe.violations} in ${s.axe.runs} runs`,
+      s.axe.byRule.length ? s.axe.byRule.map(([id, n]) => `${id}×${n}`).join(' ') : 'clean',
+      s.axe.violations === 0),
+    kv('one chrome bar, one h1, after a warm arrival',
+      `${s.objectSurvives.maxBars} · ${s.objectSurvives.maxH1} · ${s.objectSurvives.minTravellers} named`,
+      s.objectSurvives.maxBars === 1 && s.objectSurvives.maxH1 === 1 ? 'the object survived' : 'duplicated',
+      s.objectSurvives.maxBars === 1 && s.objectSurvives.maxH1 === 1),
+    kv('the audit above, run inside the harness', s.selfAudit ? (s.selfAudit.allChecksPass ? 'clean' : 'flags') : '—',
+      'self-audit agrees', !!s.selfAudit && s.selfAudit.allChecksPass)
+  ].join('') + (s.contrast.failReadings || s.axe.violations ? `<p class="blocknote"><b>What is still failing</b><br>${
+    [...s.contrast.worst, ...s.contrast.dark.worst].slice(0, 6)
+      .map((f) => `<code>${esc(f.page)} ${esc(f.sel)} — ${f.ratio}:1 needs ${f.need}</code>`).join('<br>')
+    }</p>` : '');
+} catch (e) {
+  $('matrix').innerHTML = `<p class="blocknote"><code>evidence/a11y.json</code> is not beside this page
+    (${esc(String(e.message))}). The harness that writes it is <code>tools/a11y.mjs</code> in the same
+    repository; until it has been run against this URL, this section claims nothing.</p>`;
+}
 
 legBadge();
 boot({ surface: 'contract' });

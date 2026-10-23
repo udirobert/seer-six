@@ -374,46 +374,5 @@ export function boot(opts) {
     }
   });
 
-  vtProbe();
   return { here };
-}
-
-/* A cross-document transition lives for a few frames and then disappears, so
-   nothing can assert on it after the fact. Sample what is animating across the
-   first second of every arrival and leave the record where a harness can read
-   it. The frame count is the reduced-motion proof in numbers: with motion on an
-   arrival spends a visible run of frames animating, with motion off it reaches
-   its end state in one, because the contract snaps rather than pausing. */
-function vtProbe() {
-  const h = document.documentElement;
-  const seen = new Set();
-  const FRAMES = 70;
-  let frame = 0, moving = 0, longest = 0, run = 0;
-  (function sample() {
-    const list = document.getAnimations();
-    if (list.length) {
-      moving++; run++; longest = Math.max(longest, run);
-      for (const a of list) seen.add(a.animationName || 'waapi');
-    } else run = 0;
-    if (++frame < FRAMES) { requestAnimationFrame(sample); return; }
-    const rec = {
-      t: Math.round(Date.now() / 1000),
-      path: (location.pathname.replace(ROOT, '').replace(/index\.html$/, '')) || '/',
-      leg: h.dataset.leg,
-      from: h.dataset.from || '—',
-      slow: getComputedStyle(h).getPropertyValue('--slow').trim() || '1',
-      reduced: reduced(),
-      frames: FRAMES,
-      moving,
-      longest,
-      anims: [...seen].sort()
-    };
-    try {
-      const log = JSON.parse(sessionStorage.getItem('seer.vt.log') || '[]');
-      log.push(rec);
-      sessionStorage.setItem('seer.vt.log', JSON.stringify(log.slice(-30)));
-      sessionStorage.setItem('seer.vt', JSON.stringify(rec));
-    } catch (e) {}
-    window.__vt = rec;
-  })();
 }

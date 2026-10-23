@@ -24,7 +24,7 @@
   /* ink ramp, derived from the two kit neutrals — not new hues */
   --ink-900: var(--ef-ink);
   --ink-700: #3A3A42;
-  --ink-500: #6B6B76;
+  --ink-500: #5C5C66;
   --ink-300: #A6A6B1;
   --ink-150: #DADAE1;
   --ink-100: #ECECEF;
@@ -89,6 +89,12 @@
   --fg-mute: var(--ink-500);
   --fg-signal: var(--ef-violet-ink);
   --fg-on-signal: var(--ef-paper);
+  /* The kit’s semantic hues are specified for fills, rules and marks. Set as
+     type on a light ground they measure under 2:1, so text carries an ink of
+     the same hue instead. The bright value stays the signal; only the
+     substrate changes. Measured, not eyeballed: 6.06 and 6.85 on paper. */
+  --fg-up: #136F5F;
+  --fg-warn: #7A5300;
 }
 
 html[data-theme="dark"] {
@@ -99,6 +105,8 @@ html[data-theme="dark"] {
   --fg-mute: #9B9BA6;
   --fg-signal: var(--ef-violet-alt);
   --fg-on-signal: #0C0C0F;
+  --fg-up: var(--ef-up);
+  --fg-warn: var(--ef-warn);
   --ink-150: #2C2C34;
   --ink-100: #232329;
   --ink-300: #55555F;

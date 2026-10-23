@@ -15,7 +15,9 @@
   font: inherit; font-size: var(--t-small); color: var(--fg); background: var(--bg);
   border: var(--rule); border-radius: var(--r-sm); padding: 8px 10px; min-width: 170px;
 }
-.ctl input:focus, .ctl select:focus { border-color: var(--ef-violet); outline: none; }
+/* No outline:none here. The ring comes from motion.css's :focus-visible rule;
+   suppressing it on :focus would also suppress it on keyboard focus. */
+.ctl input:focus-visible, .ctl select:focus-visible { border-color: var(--ef-violet); }
 #q { min-width: 260px; }
 .count { margin: 0 0 0 auto; font-size: var(--t-small); color: var(--fg-mute); }
 
@@ -42,7 +44,7 @@
 
 .c-depth { display: flex; align-items: center; gap: 6px; font-size: var(--t-micro); color: var(--fg-mute); }
 .c-depth .rootdot { color: var(--ef-violet); font-size: 9px; }
-.c-depth .indent { color: var(--ink-300); margin-left: calc(var(--i) * 6px); }
+.c-depth .indent { color: var(--fg-mute); margin-left: calc(var(--i) * 6px); }
 .c-depth .fan { color: var(--fg-signal); }
 
 .c-name { display: grid; gap: 3px; }
@@ -52,7 +54,7 @@
 
 .c-price { display: grid; gap: 5px; }
 .c-spine { display: flex; align-items: center; gap: var(--s-2); }
-.nohist { font-size: var(--t-micro); color: var(--ink-300); border-bottom: 1px dashed var(--ink-150); padding-bottom: 2px; }
+.nohist { font-size: var(--t-micro); color: var(--fg-mute); border-bottom: 1px dashed var(--ink-150); padding-bottom: 2px; }
 .c-liq { text-align: right; font-size: var(--t-small); }
 .thead span:nth-child(5) { text-align: right; }
 

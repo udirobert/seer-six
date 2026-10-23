@@ -12,7 +12,7 @@
   padding: var(--s-3) var(--s-4); cursor: pointer;
 }
 .rail button:hover { border-color: var(--ef-violet); }
-.rail button[aria-current="true"] {
+.rail button[aria-selected="true"] {
   border-color: var(--ef-violet); background: var(--bg-signal);
   box-shadow: inset 2px 0 0 var(--ef-violet);
 }

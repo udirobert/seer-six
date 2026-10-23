@@ -37,7 +37,7 @@
 .fac .fk { letter-spacing: .06em; text-transform: uppercase; color: var(--fg-mute); }
 .fac .fv { color: var(--fg); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right; }
 .fac .fp { font-family: var(--font-num); text-align: right; color: var(--fg-signal); }
-.fac li[data-zero="1"] .fp { color: var(--ink-300); }
+.fac li[data-zero="1"] .fp { color: var(--fg-mute); }
 .detail .act { margin-top: var(--s-4); width: 100%; }
 .detail .note { font-size: var(--t-micro); color: var(--fg-mute); margin-top: var(--s-3); }
 

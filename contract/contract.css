@@ -27,7 +27,7 @@ html[data-theme="dark"] .srow .fill {
               color-mix(in srgb, var(--ef-violet-alt) 62%, transparent) 6px 10px);
 }
 .srow .ms { text-align: right; }
-.srow[data-step="5"] .tok { color: var(--ef-warn); }
+.srow[data-step="5"] .tok { color: var(--fg-warn); }
 .srow[data-note="price"] .fill {
   background: repeating-linear-gradient(90deg, var(--ef-up) 0 6px,
               color-mix(in srgb, var(--ef-up) 62%, transparent) 6px 10px);
@@ -61,12 +61,17 @@ html[data-theme="dark"] .srow .fill {
 }
 .legrow .rel { margin: 0; font-size: var(--t-small); max-width: 74ch; }
 .legrow .mrule {
-  margin: 0; font-size: var(--t-micro); color: var(--ink-500); max-width: 74ch;
+  margin: 0; font-size: var(--t-micro); color: var(--fg-mute); max-width: 74ch;
   border-left: 1px solid var(--ink-150); padding-left: var(--s-3);
 }
 .legrow .take { display: flex; flex-wrap: wrap; gap: var(--s-2); justify-content: flex-end; }
 .legrow .take a.act { text-decoration: none; }
-.legrow[data-cold="1"] { opacity: .78; }
+/* "cold" is a fact about the row, not a reason to make it harder to read.
+   An opacity dim multiplies every text colour in the row — axe measured the
+   violet button at 3.82:1 and the muted rule text at 3.91:1 because of it — so
+   the dim is a token swap and a dashed rule instead, and the contrast holds. */
+.legrow[data-cold="1"] { border-top-style: dashed; }
+.legrow[data-cold="1"] .lg { color: var(--fg-mute); }
 
 /* ---------- the rehearsal stage ---------- */
 
@@ -82,7 +87,7 @@ html[data-theme="dark"] .srow .fill {
 .pane[hidden] { display: none; }
 .pane .q { font-weight: 500; font-size: var(--t-h3); line-height: var(--lh-tight); }
 .pane .big { font-family: var(--font-num); font-size: clamp(2rem, 1.4rem + 2.6vw, 3rem); line-height: 1; }
-.pane .big[data-null="1"] { color: var(--ink-300); }
+.pane .big[data-null="1"] { color: var(--fg-mute); }
 .pane.old { border-style: dashed; color: var(--fg-mute); }
 .pane .lbl {
   font-family: var(--font-num); font-size: var(--t-micro); letter-spacing: .12em;
@@ -108,8 +113,8 @@ html[data-theme="dark"] .srow .fill {
   text-transform: uppercase; padding: 2px 6px; border-radius: var(--r-sm);
   border: 1px solid currentColor; white-space: nowrap;
 }
-.kv[data-ok="1"] .tag { color: var(--ef-up); }
-.kv[data-ok="0"] .tag { color: var(--ef-warn); }
+.kv[data-ok="1"] .tag { color: var(--fg-up); }
+.kv[data-ok="0"] .tag { color: var(--fg-warn); }
 .kv .v { color: var(--fg); }
 .kflist { list-style: none; margin: var(--s-4) 0 0; padding: 0; display: grid; gap: 3px; }
 .kflist li {
@@ -117,7 +122,7 @@ html[data-theme="dark"] .srow .fill {
   font-size: var(--t-micro); color: var(--fg-mute); align-items: baseline;
 }
 .kflist .nm { font-family: var(--font-num); color: var(--fg); }
-.kflist li[data-orphan="1"] .nm { color: var(--ef-warn); }
+.kflist li[data-orphan="1"] .nm { color: var(--fg-warn); }
 
 /* ---------- 4. what survives ---------- */
 
@@ -140,7 +145,7 @@ html[data-theme="dark"] .srow .fill {
 .ledger td.num, .ledger th.num { font-family: var(--font-num); text-align: right; }
 .ledger tr[data-state="reduced"] td:first-child::after { content: " ○"; color: var(--fg-mute); }
 .ledger tr[data-state="moved"] td:first-child::after { content: " ●"; color: var(--ef-violet); }
-.ledger tr[data-state="cut"] td:first-child::after { content: " ∅"; color: var(--ink-300); }
+.ledger tr[data-state="cut"] td:first-child::after { content: " ∅"; color: var(--fg-mute); }
 .ledger .anims { color: var(--fg-mute); font-size: var(--t-micro); }
 .ledgerbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); margin-top: var(--s-4); }
 .ledgerbar .stat { font-family: var(--font-num); font-size: var(--t-small); color: var(--fg-mute); }

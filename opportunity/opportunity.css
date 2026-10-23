@@ -54,7 +54,7 @@ html[data-theme="dark"] .seg[data-lead="1"] { background: var(--ef-violet-alt); 
 }
 .sumlab { font-size: var(--t-small); color: var(--fg-mute); max-width: 52ch; }
 .resid { font-size: var(--t-small); color: var(--fg-mute); font-family: var(--font-num); }
-.closed .sum { color: var(--ef-up); }
+.closed .sum { color: var(--fg-up); }
 
 .picks {
   list-style: none; margin: var(--s-5) 0 0; padding: 0;
@@ -82,7 +82,7 @@ html[data-theme="dark"] .seg[data-lead="1"] { background: var(--ef-violet-alt); 
 .pay .pl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .pay .pv, .pay .pp { text-align: right; font-family: var(--font-num); }
 .pay .pp { color: var(--fg-mute); }
-.pay li[data-win="1"] .pp { color: var(--ef-up); font-weight: 500; }
+.pay li[data-win="1"] .pp { color: var(--fg-up); font-weight: 500; }
 .pay .tick { width: 12px; height: 12px; border: 0; background: none; padding: 0; cursor: pointer;
   border-radius: 50%; border: 1px solid var(--ink-300); }
 .pay li[data-win="1"] .tick { background: var(--ef-up); border-color: var(--ef-up); }

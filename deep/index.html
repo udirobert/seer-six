@@ -35,7 +35,7 @@
     <div class="rail" id="rail" role="tablist" aria-label="Markets with four or more outcomes"></div>
   </section>
 
-  <section class="deep" id="stage"></section>
+  <section class="deep" id="stage" role="tabpanel" tabindex="0"></section>
 
   <footer id="snapshot"></footer>
 </main>
@@ -56,8 +56,11 @@ let cur = ix.byId.get(wanted) || wide[0];
 document.getElementById('rail-count').textContent = String(wide.length);
 
 function railHTML() {
-  return wide.slice(0, 24).map((m) => `<button type="button" data-id="${m.id}"
-    aria-current="${m.id === cur.id}">
+  /* A real tablist, because that is what it is: one tab focus stop, arrows to
+     move, and the stage below named by whichever tab is selected. */
+  return wide.slice(0, 24).map((m) => `<button type="button" role="tab" id="tab-${m.id}"
+    aria-controls="stage" tabindex="${m.id === cur.id ? 0 : -1}"
+    data-id="${m.id}" aria-selected="${m.id === cur.id}">
       <span class="num oc">${(m.outs || []).length}${m.no ? '+' : ''}</span>
       <span class="rn">${esc(m.name)}</span>
       <span class="num rl">${money(m.liq)}</span></button>`).join('');
@@ -177,6 +180,9 @@ function paint(carry) {
   const stage = document.getElementById('stage');
   if (!carry) disarm();
   stage.innerHTML = stageHTML(cur);
+  const tab = document.getElementById(`tab-${cur.id}`);
+  if (tab) stage.setAttribute('aria-labelledby', tab.id);
+  else stage.removeAttribute('aria-labelledby');
   document.querySelector('[data-legname]').textContent =
     document.documentElement.dataset.leg === 'direct' ? 'a rail pick (no leg)' : document.documentElement.dataset.leg;
   tagTravellers(stage);
@@ -226,6 +232,19 @@ document.getElementById('rail').addEventListener('click', (e) => {
      transition rather than pretending one question turns into another. */
   paint(false);
   this.innerHTML = railHTML();
+  /* The button that was just pressed no longer exists. Hand focus to its twin
+     in the repaint, or a keyboard reader is left at the top of the document. */
+  this.querySelector(`button[data-id="${CSS.escape(cur.id)}"]`)?.focus();
+});
+document.getElementById('rail').addEventListener('keydown', (e) => {
+  const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+  if (step === undefined && e.key !== 'Home' && e.key !== 'End') return;
+  e.preventDefault();
+  const tabs = [...e.currentTarget.querySelectorAll('[role="tab"]')];
+  const at = Math.max(0, tabs.findIndex((t) => t.dataset.id === cur.id));
+  const to = e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1
+    : (at + step + tabs.length) % tabs.length;
+  tabs[to].click();
 });
 
 paint(true);
