@@ -667,9 +667,13 @@ try {
       s.axe.byRule.length ? s.axe.byRule.map(([id, n]) => `${id}×${n}`).join(' ') : 'clean',
       s.axe.violations === 0),
     kv('one chrome bar, one h1, after a warm arrival',
-      `${s.objectSurvives.maxBars} · ${s.objectSurvives.maxH1} · ${s.objectSurvives.minTravellers} named`,
-      s.objectSurvives.maxBars === 1 && s.objectSurvives.maxH1 === 1 ? 'the object survived' : 'duplicated',
+      `${s.objectSurvives.maxBars} · ${s.objectSurvives.maxH1}`,
+      s.objectSurvives.maxBars === 1 && s.objectSurvives.maxH1 === 1 ? 'nothing duplicated' : 'duplicated',
       s.objectSurvives.maxBars === 1 && s.objectSurvives.maxH1 === 1),
+    kv('arrivals carrying a name that left the previous document',
+      s.objectSurvives.arrivalsSharingAName,
+      (s.objectSurvives.legsSharing || []).slice(0, 3).join(' · ') || '—',
+      Number(String(s.objectSurvives.arrivalsSharingAName).split('/')[0]) > 0),
     kv('the audit above, run inside the harness', s.selfAudit ? (s.selfAudit.allChecksPass ? 'clean' : 'flags') : '—',
       'self-audit agrees', !!s.selfAudit && s.selfAudit.allChecksPass)
   ].join('') + (ev.failures && ev.failures.length

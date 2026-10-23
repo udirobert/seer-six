@@ -32,7 +32,7 @@
       the contract only carries identity across a boundary when the same market is on both sides of it.
       Arriving from the market document is different: that leg does morph, and the three parts of the
       object that travel are named on this page too.</p>
-    <div class="rail" id="rail" role="tablist" aria-label="Markets with four or more outcomes"></div>
+    <div class="rail" id="rail"></div>
   </section>
 
   <section class="deep" id="stage" role="tabpanel" tabindex="0"></section>
@@ -223,8 +223,18 @@ function fan(m, dir) {
     : 'mergePositions: the legs are collateral again.');
 }
 
-document.getElementById('rail').innerHTML = railHTML();
-document.getElementById('rail').addEventListener('click', (e) => {
+const rail = document.getElementById('rail');
+rail.innerHTML = railHTML();
+/* The role arrives with the tabs, not before them. A div authored as
+   role="tablist" and filled by a module is, for a moment on a slow line, a
+   tablist with no tabs — axe read that moment and called it critical, which is
+   fair: an empty widget that promises arrow-key behaviour is worse than a plain
+   list that has not arrived yet. */
+if (rail.children.length) {
+  rail.setAttribute('role', 'tablist');
+  rail.setAttribute('aria-label', 'Markets with four or more outcomes');
+}
+rail.addEventListener('click', (e) => {
   const b = e.target.closest('button[data-id]');
   if (!b || b.dataset.id === cur.id) return;
   cur = ix.byId.get(b.dataset.id);

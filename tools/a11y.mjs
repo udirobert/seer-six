@@ -130,6 +130,27 @@ async function nav(p, url, tries = 3) {
       await p.waitForTimeout(1200 * i);
     }
   }
+  await quiet(p);
+}
+
+/* A document is not finished when the transition is. The modules fill the
+   tables after first paint, so a widget sampled half-built is measured as a
+   broken one — that is how an empty role="tablist" earned a critical
+   aria-required-children in a run that was otherwise clean. Watch for
+   mutations and wait for the DOM to go quiet before reading anything. */
+const INITED = new WeakSet();
+async function quiet(p, ms = 350) {
+  if (!INITED.has(p)) {
+    INITED.add(p);
+    await p.addInitScript(() => {
+      window.__mut = Date.now();
+      new MutationObserver(() => { window.__mut = Date.now(); }).observe(
+        document.documentElement, { subtree: true, childList: true,
+          attributes: true, characterData: true });
+    });
+  }
+  await p.waitForFunction(([ms]) => window.__mut && Date.now() - window.__mut > ms,
+    [ms], { timeout: 12000, polling: 120 }).catch(() => {});
 }
 
 /* A page that never answers must not take the whole evidence file with it.
@@ -170,13 +191,16 @@ const STATIC = (cues) => {
     title: document.title,
     /* The claim under test is that ONE object crosses the boundary. A cold
        document has the same single bar and single h1; if the transition had
-       left the outgoing view behind, these counts would double. */
+       left the outgoing view behind, these counts would double. The names are
+       read from computed style, because the name IS the identity: two documents
+       that both name an element mkt-name are describing the same object. */
     survival: {
       bars: document.querySelectorAll('#surface-bar').length,
       h1: document.querySelectorAll('h1').length,
       travellers: document.querySelectorAll('[data-vt]').length,
-      named: [...document.querySelectorAll('[data-vt]')]
-        .map((e) => e.getAttribute('data-vt')).sort().join(',')
+      vtNames: [...new Set([...document.querySelectorAll('*')]
+        .map((e) => getComputedStyle(e).viewTransitionName)
+        .filter((n) => n && n !== 'none' && !n.startsWith('-ua-')))].sort()
     },
     positiveTabindex: [...document.querySelectorAll('[tabindex]')]
       .filter((e) => parseInt(e.getAttribute('tabindex'), 10) > 0).length,
@@ -304,6 +328,13 @@ const FOCUS_READ = () => {
 };
 
 /* ---------- the run ---------- */
+
+/* Every view-transition-name in the document as it is right now. The browser
+   prefixes its own group animations "-ua-"; those are bookkeeping, not identity,
+   so they are dropped and only the names this code chose are compared. */
+const NAMED = () => [...new Set([...document.querySelectorAll('*')]
+  .map((e) => getComputedStyle(e).viewTransitionName)
+  .filter((n) => n && n !== 'none' && !n.startsWith('-ua-')))].sort();
 
 async function collect(page, p, label) {
   await p.waitForFunction(() => window.__vt, null, { timeout: 8000 }).catch(() => {});
@@ -452,12 +483,19 @@ function summarise(rows, axe, focus, dark) {
       })()
     },
     objectSurvives: {
-      claim: 'after a warm arrival exactly one chrome bar and one h1 exist, carrying the travelling names — the outgoing document did not persist beside the incoming one',
+      claim: 'after a warm arrival exactly one chrome bar and one h1 exist, and at least one view-transition-name is the same one that left the previous document',
       arrivals: warm.length,
-      minTravellers: warm.length ? Math.min(...warm.map((r) => r.survival.travellers)) : null,
       maxBars: Math.max(0, ...rows.map((r) => r.survival.bars)),
       maxH1: Math.max(0, ...rows.map((r) => r.survival.h1)),
-      namedAcrossBoundary: [...new Set(rows.map((r) => r.survival.named))].slice(0, 8)
+      /* Not every leg carries an object: home is the root and contract is the
+         rules, so they name nothing and should. Counting those as failures
+         would be the harness arguing with the design instead of with itself. */
+      arrivalsSharingAName: `${warm.filter((r) => (r.shared || []).length).length}/${warm.length}`,
+      namedAcrossBoundary: [...new Set(warm.flatMap((r) => r.shared || []))].sort(),
+      legsSharing: [...new Set(warm.filter((r) => (r.shared || []).length)
+        .map((r) => `${r.probe.from || 'cold'}→${r.page}:${r.shared.join('+')}`))].sort(),
+      documentsNamingNothing: [...new Set(warm.filter((r) => !r.survival.travellers)
+        .map((r) => r.page))].sort()
     },
     coldCuts: {
       /* Genuinely cold: each page is reached from about:blank, so no document
@@ -589,9 +627,16 @@ for (const [mkey, mval] of MOTION) {
             : `#surface-bar a:nth-of-type(${page.nth})`;
         const hit = await p.locator(sel).first().isVisible().catch(() => false);
         if (!hit && page.market) log(`   ! ${sel} absent — falling back to any row`);
+        /* Names on the far side, taken before the click: the outgoing document
+           is gone the moment the arrival lands, and an identity that cannot be
+           seen leaving cannot be proven arriving. */
+        const leaving = await p.evaluate(NAMED);
         await p.click(hit || !page.market ? sel : '[data-market]');
         await p.waitForFunction(() => window.__vt, null, { timeout: 8000 }).catch(() => {});
-        rows.push(await collect(page, p, 'warm'));
+        await quiet(p);
+        const rec = await collect(page, p, 'warm');
+        rec.shared = leaving.filter((n) => rec.survival.vtNames.includes(n));
+        rows.push(rec);
       }
     } catch (e) { note(`walk/${vkey}`, e); }
     await p.close();
