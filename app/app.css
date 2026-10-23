@@ -43,7 +43,7 @@
 .row:hover::before, .row:focus-visible::before { opacity: 1; }
 
 .c-depth { display: flex; align-items: center; gap: 6px; font-size: var(--t-micro); color: var(--fg-mute); }
-.c-depth .rootdot { color: var(--ef-violet); font-size: 9px; }
+.c-depth .rootdot { color: var(--fg-signal); font-size: 9px; }
 .c-depth .indent { color: var(--fg-mute); margin-left: calc(var(--i) * 6px); }
 .c-depth .fan { color: var(--fg-signal); }
 
