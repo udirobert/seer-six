@@ -1,1 +1,331 @@
-<!doctype html><meta charset=utf-8><title>probe opportunity</title><body style="font:16px ui-monospace;padding:4rem"><p>PROBE :: opportunity<p><a href="/">root</a>
+<!DOCTYPE html>
+<html lang="en" data-surface="opportunity">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Opportunity — one dollar, partitioned · Seer, six interfaces</title>
+<meta name="description" content="Outcome prices are not percentages of opinion, they are the widths of the pieces of one dollar of collateral. Opportunity keeps the accounting identity of the Conditional Tokens Framework on screen and shows the residual when the live book does not close.">
+<script src="../leg.js"></script>
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../fonts.css">
+<link rel="stylesheet" href="../motion.css">
+<link rel="stylesheet" href="../ui.css">
+<link rel="stylesheet" href="opportunity.css">
+</head>
+<body>
+<div id="surface-bar" class="vt-chrome"></div>
+
+<main class="wrap">
+  <div id="surface-depth"></div>
+
+  <header class="masthead">
+    <p class="eyebrow">Surface 5 of 6 · one protocol, read for the dollar</p>
+    <h1>Opportunity</h1>
+    <p class="lede">An outcome price is not a percentage of opinion. It is the width of one piece of a
+      dollar. The Conditional Tokens Framework mints a complete set of outcome tokens from exactly
+      $1.00 of collateral and redeems a winning token for exactly $1.00, so the partition has to
+      close — and on this page the arithmetic stays visible whether it closes or not.</p>
+  </header>
+
+  <section class="block" aria-labelledby="part-h">
+    <h2 id="part-h">One dollar, partitioned</h2>
+    <p class="blocknote">Markets where every outcome leg has a print, so the sum is testable rather than
+      assumed. Picking a different market changes the object, so nothing morphs — the boundary contract
+      only carries identity when the same market is on both sides of it.</p>
+    <ul class="picks" id="picks"></ul>
+
+    <div class="dollarwrap">
+      <div class="dollar" id="dollar" role="img"></div>
+      <div class="ruler num"><span>$0.00</span><span id="ruler-right">$1.00</span></div>
+    </div>
+
+    <div class="sumline" id="sumline">
+      <span class="sum num" data-vt="odds" id="sum">$0.000</span>
+      <span class="sumlab" id="sumlab"></span>
+      <span class="resid num" id="resid"></span>
+    </div>
+
+    <div class="metastrip" style="margin-top:var(--s-5)">
+      <span class="pill" id="state"></span>
+      <span class="mkt-name" data-vt="name" id="who">—</span>
+      <span class="num" id="spinebox" data-vt="spine"></span>
+      <span class="num" id="mid"></span>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="pay-h">
+    <h2 id="pay-h">The payout function</h2>
+    <p class="blocknote">Resolution is the only moment the identity becomes literal: one leg is worth
+      $1.00 and every other leg is worth $0.00. Projecting it is the <code>redeemPositions</code>
+      collapse — the same 320&nbsp;ms interval the motion contract spends on a merge, because it is the
+      same operation run forward. It is a projection of the payout, not a forecast: nothing here claims
+      which leg wins.</p>
+    <ul class="pay" id="pay"></ul>
+    <div class="proj">
+      <button type="button" class="act" id="do-redeem">Project this resolution</button>
+      <button type="button" class="act ghost" id="do-live" hidden>Back to live prices</button>
+      <span class="hint" id="projhint">click a leg to change which one resolves</span>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="res-h">
+    <h2 id="res-h">Where the cents went</h2>
+    <p class="blocknote">Nothing on this page was normalised to make the bar close. The residual is the
+      reading, and this is how it distributes across the snapshot.</p>
+    <ul class="audit" id="audit"></ul>
+    <p class="blocknote" id="why"></p>
+  </section>
+
+  <section class="block">
+    <h2>Read the same dollar somewhere else</h2>
+    <p class="blocknote">The partition is the same object the explorer lists and the market document
+      opens. Crossing to those readings is a lateral leg — the shortest interval, horizontal only —
+      because the dollar did not change, only the question being asked of it.</p>
+    <ul class="lateral" id="lateral"></ul>
+  </section>
+
+  <footer id="snapshot"></footer>
+</main>
+
+<aside class="leg-badge" id="leg-badge" aria-hidden="true"></aside>
+
+<script type="module">
+import { load, boot, index, esc, money, stateOf, spine, tagTravellers, disarm,
+         legBadge, ROOT, announce, SURFACES } from '../shell.js';
+
+const d = await load('markets', 'tree', 'charts', 'links', 'meta');
+const [markets, tree, charts, links, meta] = [d.markets, d.tree, d.charts, d.links, d.meta];
+const ix = index(markets, tree);
+
+const TOL = 0.5;                       /* half a cent, in percentage points of one dollar */
+const sumOf = (m) => m.odds.reduce((a, b) => a + b, 0);
+const complete = markets
+  .filter((m) => m.outs?.length > 1 && m.odds?.length === m.outs.length &&
+                 m.odds.every((v) => typeof v === 'number'))
+  .map((m) => ({ m, sum: sumOf(m) }))
+  .sort((a, b) => Math.abs(a.sum - 100) - Math.abs(b.sum - 100) ||
+                  b.m.outs.length - a.m.outs.length || b.m.liq - a.m.liq);
+const thin = complete.slice().sort((a, b) => b.m.liq - a.m.liq)[0];
+
+const wanted = new URLSearchParams(location.search).get('m');
+/* One sentence of selection rule, computed: the most liquid market in the
+   snapshot that has a print on every leg. It is open, it has sixteen legs, and
+   three quarters of its dollar is unquoted — which is the whole argument of
+   this surface, so it is the market the surface opens on. */
+let rec = complete.find((r) => r.m.id === wanted) || thin || complete[0];
+let cur = rec.m;
+let lead = cur.odds.indexOf(Math.max(...cur.odds));
+let win = lead;
+let mode = 'live';
+
+const usd = (v) => `$${(v / 100).toFixed(3)}`;
+const usd2 = (v) => `$${(v / 100).toFixed(2)}`;
+const $ = (id) => document.getElementById(id);
+
+$('picks').innerHTML = complete.slice(0, 12).map((r) => `<li>
+  <button type="button" data-id="${r.m.id}" aria-current="${r.m.id === cur.id}">
+    <span class="pn">${esc(r.m.name)}</span>
+    <span class="pm">Σ ${usd(r.sum)} · ${money(r.m.liq)} liq</span>
+  </button></li>`).join('');
+
+function dollarHTML() {
+  const sum = mode === 'payout' ? 100 : rec.sum;
+  const kk = Math.max(sum, 100);
+  const scale = (v) => (v / kk) * 100;
+  const parts = cur.outs.map((o, i) => {
+    const v = mode === 'payout' ? (i === win ? 100 : 0) : cur.odds[i];
+    return `<span class="seg" style="--l:${scale(parts0(i)).toFixed(3)}%;--w:${scale(v).toFixed(3)}%"
+      data-lead="${v >= 9 ? 1 : 0}">
+      <span class="v num">${v >= 4 ? usd2(v) : ''}</span>
+      <b>${v >= 9 ? esc(o) : ''}</b></span>`;
+  });
+  function parts0(i) {
+    return cur.outs.slice(0, i).reduce((a, _, j) =>
+      a + (mode === 'payout' ? (j === win ? 100 : 0) : cur.odds[j]), 0);
+  }
+  const gap = mode === 'payout' || sum >= 100 ? '' :
+    `<span class="gap" style="--l:${scale(sum).toFixed(3)}%;--w:${scale(100 - sum).toFixed(3)}%"
+       title="${usd(100 - sum)} of the dollar has no print"></span>`;
+  const mark = kk > 100 ? `<span class="mark" style="left:${scale(100).toFixed(3)}%"
+       title="$1.00 — the partition over-fills the dollar by ${usd(sum - 100)}"></span>` : '';
+  return parts.join('') + gap + mark;
+}
+
+function payHTML() {
+  const head = `<li class="head"><span>Outcome leg</span><span class="pv">Live price</span>
+    <span class="pp">At resolution</span><span></span></li>`;
+  return head + cur.outs.map((o, i) => `<li data-win="${i === win ? 1 : 0}">
+    <span class="pl">${esc(o)}</span>
+    <span class="pv">${usd(cur.odds[i])}</span>
+    <span class="pp">${i === win ? '$1.000' : '$0.000'}</span>
+    <button type="button" class="tick" data-i="${i}"
+      aria-label="Project ${esc(o)} as the resolving leg"></button></li>`).join('');
+}
+
+function paint() {
+  const sum = mode === 'payout' ? 100 : rec.sum;
+  const close = Math.abs(rec.sum - 100) <= TOL;
+  $('dollar').setAttribute('aria-label',
+    `${cur.name}: ${cur.outs.map((o, i) => `${o} ${usd(cur.odds[i])}`).join(', ')}; ` +
+    `sums to ${usd(rec.sum)} of one dollar.`);
+  $('sum').textContent = usd(sum);
+  $('sumlab').textContent = mode === 'payout'
+    ? 'the partition after resolution — by construction it is exactly one dollar.'
+    : close ? 'the partition closes: this book is consistent with one dollar of collateral.'
+             : 'what the outcome legs of this market actually add up to in the live book.';
+  $('resid').textContent = mode === 'payout' ? '' :
+    (close ? 'within half a cent' : `${rec.sum > 100 ? 'over' : 'under'} by ${usd(Math.abs(100 - rec.sum))}`);
+  $('sumline').classList.toggle('closed', mode === 'payout' || close);
+  $('ruler-right').textContent = mode === 'payout' || rec.sum <= 100 ? '$1.00' : usd(rec.sum);
+  $('who').textContent = cur.name;
+  $('mid').textContent = `id 0x${cur.id}… · Σ over ${cur.outs.length} legs`;
+  const st = stateOf(cur);
+  $('state').textContent = st.t;
+  $('state').dataset.k = st.k;
+  $('spinebox').innerHTML = spine(charts, cur.id);
+  $('pay').innerHTML = payHTML();
+  $('do-live').hidden = mode !== 'payout';
+  $('do-redeem').hidden = mode === 'payout';
+  $('projhint').textContent = mode === 'payout'
+    ? 'this is the payout schedule, not a prediction'
+    : 'click a leg to change which one resolves';
+
+  $('dollar').innerHTML = dollarHTML();
+}
+
+/* Repaint the rail in place rather than replacing it, so the browser has a
+   from-value to animate away from; a replaced node simply appears at its new
+   width, which would turn a collapse into a cut. */
+function relayout() {
+  const sum = mode === 'payout' ? 100 : rec.sum;
+  const kk = Math.max(sum, 100);
+  const scale = (v) => (v / kk) * 100;
+  let acc = 0;
+  const segs = $('dollar').querySelectorAll('.seg');
+  segs.forEach((s, i) => {
+    const v = mode === 'payout' ? (i === win ? 100 : 0) : cur.odds[i];
+    s.style.setProperty('--l', `${scale(acc).toFixed(3)}%`);
+    s.style.setProperty('--w', `${scale(v).toFixed(3)}%`);
+    s.dataset.lead = v >= 9 ? 1 : 0;
+    s.querySelector('.v').textContent = v >= 4 ? usd2(v) : '';
+    s.querySelector('b').textContent = v >= 4 ? cur.outs[i] : '';
+    acc += v;
+  });
+  const gap = $('dollar').querySelector('.gap');
+  if (gap) {
+    gap.style.setProperty('--l', `${scale(sum).toFixed(3)}%`);
+    gap.style.setProperty('--w', `${scale(Math.max(100 - sum, 0)).toFixed(3)}%`);
+  }
+  const mark = $('dollar').querySelector('.mark');
+  if (mark) { if (mode === 'payout') mark.remove(); else mark.style.left = `${scale(100).toFixed(3)}%`; }
+}
+
+function setMode(next) {
+  if (next === mode) return;
+  const sameShape = next === 'payout' ||
+    ($('dollar').querySelectorAll('.seg').length === cur.outs.length);
+  mode = next;
+  if (!sameShape) { paint(); } else { relayout(); }
+  const sum = mode === 'payout' ? 100 : rec.sum;
+  $('sum').textContent = usd(sum);
+  $('sumlab').textContent = mode === 'payout'
+    ? 'the partition after resolution — by construction it is exactly one dollar.'
+    : Math.abs(rec.sum - 100) <= TOL
+      ? 'the partition closes: this book is consistent with one dollar of collateral.'
+      : 'what the outcome legs of this market actually add up to in the live book.';
+  $('resid').textContent = mode === 'payout' ? '' :
+    (Math.abs(rec.sum - 100) <= TOL ? 'within half a cent'
+      : `${rec.sum > 100 ? 'over' : 'under'} by ${usd(Math.abs(100 - rec.sum))}`);
+  $('sumline').classList.toggle('closed', mode === 'payout' || Math.abs(rec.sum - 100) <= TOL);
+  $('ruler-right').textContent = mode === 'payout' || rec.sum <= 100 ? '$1.00' : usd(rec.sum);
+  $('pay').innerHTML = payHTML();
+  $('do-live').hidden = mode !== 'payout';
+  $('do-redeem').hidden = mode === 'payout';
+  $('projhint').textContent = mode === 'payout'
+    ? 'this is the payout schedule, not a prediction'
+    : 'click a leg to change which one resolves';
+  announce(mode === 'payout'
+    ? `redeemPositions: ${cur.outs[win]} pays $1.000, the other ${cur.outs.length - 1} legs pay $0.000.`
+    : 'Live outcome prices restored.');
+}
+
+function pick(r) {
+  rec = r; cur = r.m;
+  lead = cur.odds.indexOf(Math.max(...cur.odds));
+  win = lead; mode = 'live';
+  disarm();
+  document.querySelectorAll('#picks button').forEach((b) =>
+    b.setAttribute('aria-current', String(b.dataset.id === cur.id)));
+  paint();
+  tagTravellers(document.querySelector('.block'));
+  $('lateral').innerHTML = lateralHTML();
+}
+
+function lateralHTML() {
+  return SURFACES.filter((s) => !['home', 'app'].includes(s.key) || s.key === 'app')
+    .filter((s) => s.key !== 'opportunity').map((s) => {
+    const u = new URL(`${ROOT}/${s.href}`, location.href);
+    u.searchParams.set('m', cur.id); u.searchParams.set('leg', 'lateral');
+    u.searchParams.set('from', 'opportunity');
+    const slow = new URLSearchParams(location.search).get('slow');
+    if (slow) u.searchParams.set('slow', slow);
+    return `<li><a href="${u.pathname}${u.search}"><span class="slot-n">${s.n}</span>${esc(s.label)}<span class="arrow">→</span></a></li>`;
+  }).join('');
+}
+
+$('picks').addEventListener('click', (e) => {
+  const b = e.target.closest('button[data-id]');
+  if (!b || b.dataset.id === cur.id) return;
+  pick(complete.find((r) => r.m.id === b.dataset.id));
+  announce(`${cur.name}: partition redrawn.`);
+});
+$('pay').addEventListener('click', (e) => {
+  const t = e.target.closest('.tick');
+  if (!t) return;
+  win = Number(t.dataset.i);
+  $('pay').innerHTML = payHTML();
+  relayout();
+  announce(`${cur.outs[win]} is now the resolving leg.`);
+});
+$('do-redeem').addEventListener('click', () => setMode('payout'));
+$('do-live').addEventListener('click', () => setMode('live'));
+
+/* The audit is computed from the snapshot, not asserted. */
+const under = complete.filter((r) => r.sum < 100 - TOL);
+const over = complete.filter((r) => r.sum > 100 + TOL);
+const closed = complete.filter((r) => Math.abs(r.sum - 100) <= TOL);
+const worst = complete.reduce((a, b) =>
+  Math.abs(b.sum - 100) > Math.abs(a.sum - 100) ? b : a, complete[0]);
+const richest = markets.reduce((a, b) => (b.liq > a.liq ? b : a), markets[0]).liq;
+const noPool = markets.filter((m) => m.outs?.length && m.odds &&
+  m.odds.some((v) => v == null) && m.odds.some((v) => typeof v === 'number'));
+$('audit').innerHTML = [
+  ['markets', `${markets.length} markets in the snapshot; ${markets.filter((m) => (m.outs || []).length >= 4).length} of them carry four outcome legs or more.`],
+  ['testable', `${complete.length} have a print on every leg, so the partition can be added up rather than estimated.`],
+  ['closed', `${closed.length} of those close to within half a cent of $1.00 — the surface opens on one of them.`],
+  ['under', `${under.length} sum to less than $1.00: legs quoted by no pool at all, not a rounding error.`],
+  ['over', `${over.length} sum to more than $1.00; the widest is “${esc(worst.m.name)}” at ${usd(worst.sum)}.`],
+  ['open', `${complete.filter((r) => !r.m.rep).length} of the ${complete.length} still have an open book; the rest are settled and their partition is a receipt, not an opportunity.`],
+  ['thin', `the most liquid market with a complete partition holds ${money(thin.m.liq)} of liquidity — ` +
+           `the most liquid market in the snapshot holds ${money(richest)}. A book that quotes every ` +
+           `leg and a book people are trading in are, in this snapshot, almost disjoint sets.`]
+].map(([k, v]) => `<li><span class="k num">${k}</span><span>${v}</span></li>`).join('');
+$('why').innerHTML = `A partial book is the honest state of a young market: <b>${noPool.length}</b>
+  multi-outcome markets in this snapshot price some legs and leave others blank, and a dashboard that
+  printed those blanks as <code>0%</code> would draw a partition that looks closed and is not. The
+  hatched band on the rail above is the part of the dollar nobody has quoted — it is the reason this
+  surface exists, because an unquoted cent is exactly the room an opportunity is made of.`;
+
+$('lateral').innerHTML = lateralHTML();
+$('snapshot').innerHTML =
+  `Snapshot <b>${esc(meta.iso)}</b> · odds read from <code>markets-search</code> as percentages of one ` +
+  `dollar · <a href="${ROOT}/contract/?leg=lateral&from=opportunity">why this page moves the way it does</a> · ` +
+  `press <span class="kbd">R</span> to remove the motion and keep the meaning.`;
+legBadge();
+
+paint();
+boot({ surface: 'opportunity', marketDepth: ix.depthOf(cur.id) });
+tagTravellers(document.querySelector('.block'));
+</script>
+</body>
+</html>

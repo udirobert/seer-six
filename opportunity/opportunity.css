@@ -1,0 +1,105 @@
+/* opportunity.css — the accounting identity of the Conditional Tokens
+   Framework, drawn as one object: the outcome legs are not a list of prices,
+   they are the partitions of a single dollar. Everything here is a width
+   transition on the same rail, so the collapse to a payout and the return to
+   live prices are the same gesture run in opposite directions. */
+
+.dollarwrap { margin-top: var(--s-6); }
+
+.dollar {
+  position: relative; height: 84px; width: 100%;
+  border: var(--rule-strong); border-radius: var(--r-sm);
+  background: var(--bg-raise); overflow: hidden;
+}
+.seg {
+  position: absolute; top: 0; bottom: 0; left: var(--l, 0%); width: var(--w, 0%);
+  display: flex; align-items: flex-end; padding: 6px 8px; overflow: hidden;
+  background: var(--ef-violet-soft); color: var(--fg);
+  border-right: 1px solid var(--bg);
+  transition: left var(--d-3) var(--e-std), width var(--d-3) var(--e-std),
+              opacity var(--d-3) var(--e-std);
+}
+/* Only the legs that are wide enough to hold a label get the solid fill, so
+   the art cannot put light text on a light ground. */
+.seg[data-lead="1"] { background: var(--ef-violet); color: #fff; }
+html[data-theme="dark"] .seg { background: #2A1B40; color: var(--fg); }
+html[data-theme="dark"] .seg[data-lead="1"] { background: var(--ef-violet-alt); color: #fff; }
+.seg b {
+  font-size: var(--t-micro); font-weight: 500; line-height: 1.2;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  display: block; max-width: 100%;
+}
+.seg .v {
+  position: absolute; top: 6px; left: 8px;
+  font-family: var(--font-num); font-size: var(--t-micro);
+}
+
+.gap {
+  position: absolute; top: 0; bottom: 0; left: var(--l, 100%); width: var(--w, 0%);
+  background: repeating-linear-gradient(135deg, transparent 0 5px, var(--ink-150) 5px 6px);
+  transition: left var(--d-3) var(--e-std), width var(--d-3) var(--e-std);
+}
+.ruler {
+  display: flex; justify-content: space-between; font-size: var(--t-micro);
+  color: var(--fg-mute); margin-top: var(--s-2); letter-spacing: .04em;
+}
+
+.sumline {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-3) var(--s-5);
+  margin-top: var(--s-5); padding-top: var(--s-4); border-top: var(--rule);
+}
+.sum {
+  font-family: var(--font-num); font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+  font-weight: 500; letter-spacing: -.02em; color: var(--fg-signal); line-height: 1;
+}
+.sumlab { font-size: var(--t-small); color: var(--fg-mute); max-width: 52ch; }
+.resid { font-size: var(--t-small); color: var(--fg-mute); font-family: var(--font-num); }
+.closed .sum { color: var(--ef-up); }
+
+.picks {
+  list-style: none; margin: var(--s-5) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: var(--s-3);
+}
+.picks button {
+  appearance: none; -webkit-appearance: none; margin: 0; padding: var(--s-3) var(--s-4);
+  display: grid; gap: 3px; width: 100%; text-align: left; font: inherit; color: inherit;
+  background: var(--bg-raise); border: var(--rule); border-radius: var(--r-sm); cursor: pointer;
+}
+.picks button:hover { border-color: var(--ef-violet); }
+.picks button[aria-current="true"] { border-color: var(--ef-violet); background: var(--bg-signal); }
+.picks .pn { font-size: var(--t-small); font-weight: 500; }
+.picks .pm { font-size: var(--t-micro); color: var(--fg-mute); font-family: var(--font-num); }
+
+.proj { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); margin-top: var(--s-5); }
+.proj .hint { font-size: var(--t-micro); color: var(--fg-mute); letter-spacing: .1em; text-transform: uppercase; }
+
+.pay { list-style: none; margin: var(--s-4) 0 0; padding: 0; }
+.pay li {
+  display: grid; grid-template-columns: minmax(0, 1fr) 88px 96px 12px;
+  gap: var(--s-3); align-items: baseline; padding: var(--s-3) 0; border-bottom: var(--rule);
+  font-size: var(--t-small);
+}
+.pay .pl { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pay .pv, .pay .pp { text-align: right; font-family: var(--font-num); }
+.pay .pp { color: var(--fg-mute); }
+.pay li[data-win="1"] .pp { color: var(--ef-up); font-weight: 500; }
+.pay .tick { width: 12px; height: 12px; border: 0; background: none; padding: 0; cursor: pointer;
+  border-radius: 50%; border: 1px solid var(--ink-300); }
+.pay li[data-win="1"] .tick { background: var(--ef-up); border-color: var(--ef-up); }
+.pay .head { font-size: var(--t-micro); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--fg-mute); border-bottom: var(--rule-strong); }
+.pay .head span { text-align: left; }
+.pay .head .pv, .pay .head .pp { text-align: right; }
+
+.audit { list-style: none; margin: var(--s-4) 0 0; padding: 0; display: grid; gap: var(--s-2); }
+.audit li { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: var(--s-3);
+  font-size: var(--t-small); align-items: baseline; }
+.audit .k { font-family: var(--font-num); font-size: var(--t-micro); letter-spacing: .08em;
+  text-transform: uppercase; color: var(--fg-signal); }
+
+@media (max-width: 640px) {
+  .dollar { height: 64px; }
+  .pay li { grid-template-columns: minmax(0, 1fr) 74px 82px 12px; }
+}
+/* The $1.00 reference line, only drawn when the partition over-fills it. */
+.mark { position: absolute; top: -4px; bottom: -4px; width: 2px; background: var(--ef-warn); }

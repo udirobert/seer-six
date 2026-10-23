@@ -166,8 +166,8 @@ html[data-theme="dark"] .spine path.line { stroke: var(--ef-violet-alt); }
    stay continuous while the reading changes. */
 .masthead {
   display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
-  gap: var(--s-6); align-items: end;
-  padding: var(--s-6) 0 var(--s-6);
+  gap: var(--s-6); align-items: baseline;
+  padding: var(--s-6) 0 var(--s-7);
 }
 .masthead .eyebrow { grid-column: 1; grid-row: 1; }
 .masthead h1 { grid-column: 1; grid-row: 2; margin-bottom: 0; max-width: 13ch; }
@@ -259,3 +259,14 @@ html[data-theme="dark"] .chart .line, html[data-theme="dark"] .chart circle { st
   .fan a { grid-template-columns: 1fr; }
   .events li { grid-template-columns: 74px 1fr; }
 }
+
+
+/* ----------------------------------------------------------
+   SHARED BUTTON — every surface that asks the reader to do something.
+   ---------------------------------------------------------- */
+.act {
+  justify-self: start; font: inherit; font-size: var(--t-small); cursor: pointer;
+  padding: 7px 14px; border-radius: var(--r-sm); border: 1px solid var(--ef-violet);
+  background: var(--ef-violet); color: #fff;
+}
+.act.ghost { background: none; color: var(--fg-signal); }
