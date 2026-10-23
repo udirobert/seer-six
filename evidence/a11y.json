@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-23T16:15:44.794Z",
- "duration_s": 308,
+ "generated": "2026-10-23T18:14:32.930Z",
+ "duration_s": 304,
  "url": "https://udirobert.github.io/seer-six",
  "engine": "chrome 155.0.8059.86",
  "os": "darwin 25.6.0 arm64",
@@ -32,23 +32,23 @@
    "anyMoving": true,
    "fullMotionComparator": {
     "maxFrames": 33,
-    "maxMs": 518
+    "maxMs": 523
    }
   },
   "motionRuns": {
    "claim": "with motion on, the same arrivals are visibly running for the leg’s whole interval",
    "arrivals": 24,
-   "minLongestRunFrames": 14,
+   "minLongestRunFrames": 15,
    "maxLongestRunFrames": 33,
    "legs": {
     "deep": "lateral:16f",
-    "futarchy": "lateral:14f",
-    "opportunity": "lateral:17f",
+    "futarchy": "lateral:17f",
+    "opportunity": "lateral:15f",
     "risk": "lateral:17f",
-    "contract": "lateral:26f",
+    "contract": "lateral:25f",
     "home": "back:21f",
-    "app": "fan:32f",
-    "m": "morph:24f"
+    "app": "fan:33f",
+    "m": "morph:26f"
    }
   },
   "intervalHonesty": {
@@ -59,63 +59,63 @@
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 234,
-     "ratio": 1.06
+     "measuredMs": 247,
+     "ratio": 1.12
     },
     {
      "page": "futarchy",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 227,
-     "ratio": 1.03
+     "measuredMs": 251,
+     "ratio": 1.14
     },
     {
      "page": "opportunity",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 221,
-     "ratio": 1
+     "measuredMs": 249,
+     "ratio": 1.13
     },
     {
      "page": "risk",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 245,
-     "ratio": 1.11
+     "measuredMs": 223,
+     "ratio": 1.01
     },
     {
      "page": "contract",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 404,
-     "ratio": 1.84
+     "measuredMs": 388,
+     "ratio": 1.76
     },
     {
      "page": "home",
      "leg": "back",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 305,
-     "ratio": 0.95
+     "measuredMs": 316,
+     "ratio": 0.99
     },
     {
      "page": "app",
      "leg": "fan",
      "step": 5,
      "declaredMs": 520,
-     "measuredMs": 518,
-     "ratio": 1
+     "measuredMs": 523,
+     "ratio": 1.01
     },
     {
      "page": "m",
      "leg": "morph",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 401,
+     "measuredMs": 399,
      "ratio": 1.25
     },
     {
@@ -131,75 +131,83 @@
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 252,
-     "ratio": 1.15
+     "measuredMs": 235,
+     "ratio": 1.07
     },
     {
      "page": "opportunity",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 252,
-     "ratio": 1.15
+     "measuredMs": 234,
+     "ratio": 1.06
     },
     {
      "page": "risk",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 245,
-     "ratio": 1.11
+     "measuredMs": 239,
+     "ratio": 1.09
     },
     {
      "page": "contract",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 401,
-     "ratio": 1.82
+     "measuredMs": 391,
+     "ratio": 1.78
     },
     {
      "page": "home",
      "leg": "back",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 321,
-     "ratio": 1
+     "measuredMs": 304,
+     "ratio": 0.95
     },
     {
      "page": "app",
      "leg": "fan",
      "step": 5,
      "declaredMs": 520,
-     "measuredMs": 510,
-     "ratio": 0.98
+     "measuredMs": 522,
+     "ratio": 1
     },
     {
      "page": "m",
      "leg": "morph",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 385,
-     "ratio": 1.2
+     "measuredMs": 388,
+     "ratio": 1.21
     },
     {
      "page": "deep",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 227,
-     "ratio": 1.03
+     "measuredMs": 232,
+     "ratio": 1.05
     },
     {
      "page": "futarchy",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 224,
-     "ratio": 1.02
+     "measuredMs": 253,
+     "ratio": 1.15
     },
     {
      "page": "opportunity",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 231,
+     "ratio": 1.05
+    },
+    {
+     "page": "risk",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
@@ -207,20 +215,12 @@
      "ratio": 1.11
     },
     {
-     "page": "risk",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 252,
-     "ratio": 1.15
-    },
-    {
      "page": "contract",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 403,
-     "ratio": 1.83
+     "measuredMs": 388,
+     "ratio": 1.76
     },
     {
      "page": "home",
@@ -235,16 +235,16 @@
      "leg": "fan",
      "step": 5,
      "declaredMs": 520,
-     "measuredMs": 514,
-     "ratio": 0.99
+     "measuredMs": 522,
+     "ratio": 1
     },
     {
      "page": "m",
      "leg": "morph",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 373,
-     "ratio": 1.17
+     "measuredMs": 400,
+     "ratio": 1.25
     }
    ],
    "atOrAboveHalf": "24/24"
@@ -290,7 +290,7 @@
      ]
     }
    },
-   "arrivalsPairingAnObject": "11/48",
+   "arrivalsPairingAnObject": "10/48",
    "coldArrivalsPairingAnObject": "0/48",
    "byLeg": {
     "lateral": [
@@ -376,13 +376,13 @@
   },
   "contrast": {
    "claim": "text contrast computed from rendered getComputedStyle values, in both themes, not eyeballed",
-   "readings": 42152,
+   "readings": 41769,
    "minRatio": 5.54,
    "failReadings": 0,
    "failPages": [],
    "worst": [],
    "dark": {
-    "readings": 3710,
+    "readings": 3712,
     "minRatio": 4.75,
     "failReadings": 0,
     "failPages": [],
@@ -409,6 +409,9 @@
     "call sites naming a step, in scripts": "6",
     "keyframes defined / each mapped to a leg": "8 / 8"
    },
+   "checks": 10,
+   "sampledFrom": "reduce/390x844/cold",
+   "emptySamples": 2,
    "allChecksPass": true
   }
  },
@@ -421,7 +424,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772155,
+    "t": 1792779277,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -429,8 +432,8 @@
     "reduced": true,
     "frames": 70,
     "moving": 2,
-    "longest": 1,
-    "ms": 0,
+    "longest": 2,
+    "ms": 13,
     "anims": [
      "waapi"
     ]
@@ -489,7 +492,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 122,
+    "checked": 123,
     "min": 5.58,
     "p10": 6.18,
     "median": 6.61,
@@ -505,7 +508,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772156,
+    "t": 1792779279,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -565,7 +568,7 @@
      "why": "the per-dataset snapshot stamp",
      "present": true,
      "visible": true,
-     "text": "14 of 284 markets in this snapshot have a Swapr pool, so only those rows draw a history li",
+     "text": "14 of 284 markets in this view have a Swapr pool, so only those rows draw a history line; ",
      "page": "app"
     }
    ],
@@ -587,7 +590,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772157,
+    "t": 1792779280,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -672,7 +675,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772159,
+    "t": 1792779282,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -755,7 +758,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772160,
+    "t": 1792779283,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -842,7 +845,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772161,
+    "t": 1792779285,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -926,7 +929,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772163,
+    "t": 1792779286,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -1053,7 +1056,7 @@
     }
    ],
    "contrast": {
-    "checked": 328,
+    "checked": 335,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -1069,7 +1072,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772164,
+    "t": 1792779287,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -1154,7 +1157,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772167,
+    "t": 1792779290,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -1239,7 +1242,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772180,
+    "t": 1792779304,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -1322,7 +1325,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772181,
+    "t": 1792779305,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -1409,7 +1412,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772182,
+    "t": 1792779306,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -1493,7 +1496,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772184,
+    "t": 1792779308,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -1620,7 +1623,7 @@
     }
    ],
    "contrast": {
-    "checked": 420,
+    "checked": 421,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -1636,7 +1639,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772185,
+    "t": 1792779309,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -1702,7 +1705,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 122,
+    "checked": 123,
     "min": 5.58,
     "p10": 6.18,
     "median": 6.61,
@@ -1718,7 +1721,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772186,
+    "t": 1792779310,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -1778,7 +1781,7 @@
      "why": "the per-dataset snapshot stamp",
      "present": true,
      "visible": true,
-     "text": "14 of 284 markets in this snapshot have a Swapr pool, so only those rows draw a history li",
+     "text": "14 of 284 markets in this view have a Swapr pool, so only those rows draw a history line; ",
      "page": "app"
     }
    ],
@@ -1800,7 +1803,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792772187,
+    "t": 1792779312,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -1885,7 +1888,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772195,
+    "t": 1792779325,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -1953,7 +1956,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 123,
+    "checked": 124,
     "min": 5.58,
     "p10": 6.18,
     "median": 6.61,
@@ -1969,7 +1972,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772196,
+    "t": 1792779326,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -2029,7 +2032,7 @@
      "why": "the per-dataset snapshot stamp",
      "present": true,
      "visible": true,
-     "text": "14 of 284 markets in this snapshot have a Swapr pool, so only those rows draw a history li",
+     "text": "14 of 284 markets in this view have a Swapr pool, so only those rows draw a history line; ",
      "page": "app"
     }
    ],
@@ -2051,7 +2054,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772198,
+    "t": 1792779328,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -2136,7 +2139,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772199,
+    "t": 1792779329,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -2219,7 +2222,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772200,
+    "t": 1792779330,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -2306,7 +2309,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772201,
+    "t": 1792779331,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -2390,7 +2393,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772202,
+    "t": 1792779333,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -2517,7 +2520,7 @@
     }
    ],
    "contrast": {
-    "checked": 387,
+    "checked": 388,
     "min": 5.54,
     "p10": 6.57,
     "median": 7.03,
@@ -2533,7 +2536,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772203,
+    "t": 1792779334,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -2618,7 +2621,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772206,
+    "t": 1792779336,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -2703,7 +2706,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772219,
+    "t": 1792779350,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -2786,7 +2789,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772220,
+    "t": 1792779351,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -2873,7 +2876,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772222,
+    "t": 1792779352,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -2957,7 +2960,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772223,
+    "t": 1792779353,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -3084,7 +3087,7 @@
     }
    ],
    "contrast": {
-    "checked": 426,
+    "checked": 427,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -3100,7 +3103,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772224,
+    "t": 1792779355,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -3166,7 +3169,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 123,
+    "checked": 124,
     "min": 5.58,
     "p10": 6.18,
     "median": 6.61,
@@ -3182,7 +3185,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772225,
+    "t": 1792779356,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -3242,7 +3245,7 @@
      "why": "the per-dataset snapshot stamp",
      "present": true,
      "visible": true,
-     "text": "14 of 284 markets in this snapshot have a Swapr pool, so only those rows draw a history li",
+     "text": "14 of 284 markets in this view have a Swapr pool, so only those rows draw a history line; ",
      "page": "app"
     }
    ],
@@ -3264,7 +3267,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792772227,
+    "t": 1792779357,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -3349,16 +3352,16 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772233,
+    "t": 1792779362,
     "path": "/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": true,
     "frames": 70,
-    "moving": 2,
+    "moving": 3,
     "longest": 2,
-    "ms": 19,
+    "ms": 16,
     "anims": [
      "waapi"
     ]
@@ -3417,7 +3420,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 130,
+    "checked": 131,
     "min": 5.54,
     "p10": 6.18,
     "median": 6.61,
@@ -3433,7 +3436,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772234,
+    "t": 1792779363,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -3493,7 +3496,7 @@
      "why": "the per-dataset snapshot stamp",
      "present": true,
      "visible": true,
-     "text": "14 of 284 markets in this snapshot have a Swapr pool, so only those rows draw a history li",
+     "text": "14 of 284 markets in this view have a Swapr pool, so only those rows draw a history line; ",
      "page": "app"
     }
    ],
@@ -3515,7 +3518,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772236,
+    "t": 1792779366,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -3600,7 +3603,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772238,
+    "t": 1792779367,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -3683,7 +3686,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772239,
+    "t": 1792779369,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -3770,7 +3773,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772240,
+    "t": 1792779370,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -3854,7 +3857,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772242,
+    "t": 1792779371,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -3981,7 +3984,7 @@
     }
    ],
    "contrast": {
-    "checked": 401,
+    "checked": 402,
     "min": 5.54,
     "p10": 6.57,
     "median": 6.61,
@@ -3997,7 +4000,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772243,
+    "t": 1792779373,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -4082,7 +4085,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772246,
+    "t": 1792779376,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -4167,7 +4170,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772259,
+    "t": 1792779389,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -4250,7 +4253,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772260,
+    "t": 1792779390,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -4337,7 +4340,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772261,
+    "t": 1792779391,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -4421,7 +4424,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772263,
+    "t": 1792779393,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -4548,7 +4551,7 @@
     }
    ],
    "contrast": {
-    "checked": 447,
+    "checked": 448,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -4564,7 +4567,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772264,
+    "t": 1792779394,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -4630,7 +4633,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 130,
+    "checked": 131,
     "min": 5.54,
     "p10": 6.18,
     "median": 6.61,
@@ -4646,7 +4649,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772265,
+    "t": 1792779395,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -4706,7 +4709,7 @@
      "why": "the per-dataset snapshot stamp",
      "present": true,
      "visible": true,
-     "text": "14 of 284 markets in this snapshot have a Swapr pool, so only those rows draw a history li",
+     "text": "14 of 284 markets in this view have a Swapr pool, so only those rows draw a history line; ",
      "page": "app"
     }
    ],
@@ -4728,7 +4731,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792772266,
+    "t": 1792779396,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -4813,16 +4816,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772272,
+    "t": 1792779401,
     "path": "/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 32,
-    "longest": 32,
-    "ms": 511,
+    "moving": 33,
+    "longest": 33,
+    "ms": 516,
     "anims": [
      "waapi"
     ]
@@ -4881,7 +4884,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 122,
+    "checked": 123,
     "min": 5.58,
     "p10": 6.18,
     "median": 6.61,
@@ -4897,7 +4900,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772273,
+    "t": 1792779402,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -4957,7 +4960,7 @@
      "why": "the per-dataset snapshot stamp",
      "present": true,
      "visible": true,
-     "text": "14 of 284 markets in this snapshot have a Swapr pool, so only those rows draw a history li",
+     "text": "14 of 284 markets in this view have a Swapr pool, so only those rows draw a history line; ",
      "page": "app"
     }
    ],
@@ -4979,7 +4982,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772274,
+    "t": 1792779403,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -5064,7 +5067,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772275,
+    "t": 1792779405,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -5147,7 +5150,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772277,
+    "t": 1792779406,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -5232,7 +5235,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772278,
+    "t": 1792779407,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -5316,7 +5319,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772279,
+    "t": 1792779408,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -5325,7 +5328,7 @@
     "frames": 70,
     "moving": 23,
     "longest": 23,
-    "ms": 366,
+    "ms": 368,
     "anims": [
      "waapi"
     ]
@@ -5445,7 +5448,7 @@
     }
    ],
    "contrast": {
-    "checked": 385,
+    "checked": 386,
     "min": 5.54,
     "p10": 6.57,
     "median": 7.03,
@@ -5461,7 +5464,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772280,
+    "t": 1792779409,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -5548,16 +5551,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772283,
+    "t": 1792779412,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 234,
+    "moving": 17,
+    "longest": 17,
+    "ms": 247,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5641,16 +5644,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772296,
+    "t": 1792779425,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 15,
-    "longest": 15,
-    "ms": 227,
+    "moving": 17,
+    "longest": 17,
+    "ms": 251,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5733,16 +5736,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772297,
+    "t": 1792779426,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 15,
-    "longest": 15,
-    "ms": 221,
+    "moving": 17,
+    "longest": 17,
+    "ms": 249,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5827,7 +5830,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772299,
+    "t": 1792779428,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -5836,7 +5839,7 @@
     "frames": 70,
     "moving": 16,
     "longest": 16,
-    "ms": 245,
+    "ms": 223,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5921,16 +5924,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772300,
+    "t": 1792779429,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 26,
-    "longest": 26,
-    "ms": 404,
+    "moving": 25,
+    "longest": 25,
+    "ms": 388,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6057,7 +6060,7 @@
     }
    ],
    "contrast": {
-    "checked": 423,
+    "checked": 424,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -6073,16 +6076,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772301,
+    "t": 1792779430,
     "path": "/",
     "leg": "back",
     "from": "contract",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 20,
-    "longest": 20,
-    "ms": 305,
+    "moving": 21,
+    "longest": 21,
+    "ms": 316,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6146,7 +6149,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 122,
+    "checked": 123,
     "min": 5.58,
     "p10": 6.18,
     "median": 6.61,
@@ -6162,7 +6165,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772302,
+    "t": 1792779431,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -6171,7 +6174,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 518,
+    "ms": 523,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6230,7 +6233,7 @@
      "why": "the per-dataset snapshot stamp",
      "present": true,
      "visible": true,
-     "text": "14 of 284 markets in this snapshot have a Swapr pool, so only those rows draw a history li",
+     "text": "14 of 284 markets in this view have a Swapr pool, so only those rows draw a history line; ",
      "page": "app"
     }
    ],
@@ -6252,16 +6255,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792772303,
+    "t": 1792779433,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 26,
-    "longest": 26,
-    "ms": 401,
+    "moving": 25,
+    "longest": 25,
+    "ms": 399,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6347,16 +6350,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772306,
+    "t": 1792779434,
     "path": "/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 33,
-    "longest": 33,
-    "ms": 515,
+    "moving": 32,
+    "longest": 32,
+    "ms": 512,
     "anims": [
      "waapi"
     ]
@@ -6415,7 +6418,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 123,
+    "checked": 124,
     "min": 5.58,
     "p10": 6.18,
     "median": 6.61,
@@ -6431,7 +6434,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772307,
+    "t": 1792779436,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -6491,7 +6494,7 @@
      "why": "the per-dataset snapshot stamp",
      "present": true,
      "visible": true,
-     "text": "14 of 284 markets in this snapshot have a Swapr pool, so only those rows draw a history li",
+     "text": "14 of 284 markets in this view have a Swapr pool, so only those rows draw a history line; ",
      "page": "app"
     }
    ],
@@ -6513,7 +6516,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772308,
+    "t": 1792779437,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -6598,7 +6601,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772310,
+    "t": 1792779438,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -6681,7 +6684,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772311,
+    "t": 1792779440,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -6766,7 +6769,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772312,
+    "t": 1792779441,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -6850,7 +6853,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772313,
+    "t": 1792779443,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -6865,16 +6868,16 @@
     ]
    },
    "depth": {
-    "text": "Contractthe rules the six obey · not a surface",
+    "text": "",
     "visible": true
    },
    "bar": {
-    "links": 7,
-    "current": 1,
-    "labelled": "Seer surfaces"
+    "links": 0,
+    "current": 0,
+    "labelled": null
    },
    "badge": {
-    "text": "leg · cold arrivalreduced: offfrom: direct",
+    "text": "",
     "visible": false
    },
    "live": false,
@@ -6904,7 +6907,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
+     "text": "auditing…",
      "page": "contract"
     },
     {
@@ -6916,73 +6919,12 @@
      "page": "contract"
     }
    ],
-   "audit": [
-    {
-     "what": "stylesheets parsed",
-     "value": "12",
-     "tag": "of 12",
-     "ok": true
-    },
-    {
-     "what": "duration declarations walked",
-     "value": "36",
-     "tag": "all classified",
-     "ok": true
-    },
-    {
-     "what": "referencing var(--d-step)",
-     "value": "21",
-     "tag": "the rule",
-     "ok": true
-    },
-    {
-     "what": "none — the contract’s own stop states",
-     "value": "10",
-     "tag": "required by the contract",
-     "ok": true
-    },
-    {
-     "what": "the declared 0.01ms snap under reduce",
-     "value": "4",
-     "tag": "exception 1",
-     "ok": true
-    },
-    {
-     "what": "naming no duration at all (scroll-driven, or inheriting)",
-     "value": "1",
-     "tag": "exception 2",
-     "ok": true
-    },
-    {
-     "what": "ad-hoc numbers in stylesheets",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "literal durations in scripts",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "call sites naming a step, in scripts",
-     "value": "6",
-     "tag": "steps 2 · 5",
-     "ok": true
-    },
-    {
-     "what": "keyframes defined / each mapped to a leg",
-     "value": "8 / 8",
-     "tag": "no orphans",
-     "ok": true
-    }
-   ],
+   "audit": [],
    "contrast": {
-    "checked": 391,
+    "checked": 192,
     "min": 5.54,
-    "p10": 6.57,
-    "median": 7.03,
+    "p10": 6.61,
+    "median": 6.61,
     "fails": [],
     "failCount": 0,
     "skippedOverImage": 0
@@ -6995,7 +6937,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772314,
+    "t": 1792779444,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -7004,7 +6946,7 @@
     "frames": 70,
     "moving": 25,
     "longest": 25,
-    "ms": 399,
+    "ms": 394,
     "anims": [
      "price-tick"
     ]
@@ -7082,7 +7024,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772317,
+    "t": 1792779446,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -7175,16 +7117,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772331,
+    "t": 1792779460,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 252,
+    "moving": 16,
+    "longest": 16,
+    "ms": 235,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7267,16 +7209,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772332,
+    "t": 1792779461,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 252,
+    "moving": 16,
+    "longest": 16,
+    "ms": 234,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7361,23 +7303,21 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772333,
+    "t": 1792779462,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 245,
+    "moving": 16,
+    "longest": 16,
+    "ms": 239,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
      "-ua-view-transition-fade-out",
      "-ua-view-transition-group-anim-chrome",
-     "-ua-view-transition-group-anim-mkt-name",
-     "-ua-view-transition-group-anim-mkt-odds",
      "-ua-view-transition-group-anim-root",
      "slide-in",
      "slide-out"
@@ -7455,16 +7395,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772335,
+    "t": 1792779464,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 26,
-    "longest": 26,
-    "ms": 401,
+    "moving": 25,
+    "longest": 25,
+    "ms": 391,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7591,7 +7531,7 @@
     }
    ],
    "contrast": {
-    "checked": 436,
+    "checked": 437,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -7607,16 +7547,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772336,
+    "t": 1792779465,
     "path": "/",
     "leg": "back",
     "from": "contract",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 21,
-    "longest": 21,
-    "ms": 321,
+    "moving": 20,
+    "longest": 20,
+    "ms": 304,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7680,7 +7620,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 123,
+    "checked": 124,
     "min": 5.58,
     "p10": 6.18,
     "median": 6.61,
@@ -7696,7 +7636,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772337,
+    "t": 1792779466,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -7705,7 +7645,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 510,
+    "ms": 522,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7764,7 +7704,7 @@
      "why": "the per-dataset snapshot stamp",
      "present": true,
      "visible": true,
-     "text": "14 of 284 markets in this snapshot have a Swapr pool, so only those rows draw a history li",
+     "text": "14 of 284 markets in this view have a Swapr pool, so only those rows draw a history line; ",
      "page": "app"
     }
    ],
@@ -7786,7 +7726,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792772338,
+    "t": 1792779468,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -7795,7 +7735,7 @@
     "frames": 70,
     "moving": 25,
     "longest": 25,
-    "ms": 385,
+    "ms": 388,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7881,7 +7821,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772340,
+    "t": 1792779469,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -7890,7 +7830,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 515,
+    "ms": 519,
     "anims": [
      "waapi"
     ]
@@ -7949,7 +7889,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 130,
+    "checked": 131,
     "min": 5.54,
     "p10": 6.18,
     "median": 6.61,
@@ -7965,7 +7905,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772341,
+    "t": 1792779471,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -8025,7 +7965,7 @@
      "why": "the per-dataset snapshot stamp",
      "present": true,
      "visible": true,
-     "text": "14 of 284 markets in this snapshot have a Swapr pool, so only those rows draw a history li",
+     "text": "14 of 284 markets in this view have a Swapr pool, so only those rows draw a history line; ",
      "page": "app"
     }
    ],
@@ -8047,7 +7987,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772344,
+    "t": 1792779474,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -8132,7 +8072,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772345,
+    "t": 1792779475,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -8215,7 +8155,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772346,
+    "t": 1792779477,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -8300,7 +8240,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772348,
+    "t": 1792779478,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -8384,7 +8324,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772349,
+    "t": 1792779480,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -8399,16 +8339,16 @@
     ]
    },
    "depth": {
-    "text": "Contractthe rules the six obey · not a surface",
+    "text": "",
     "visible": true
    },
    "bar": {
-    "links": 7,
-    "current": 1,
-    "labelled": "Seer surfaces"
+    "links": 0,
+    "current": 0,
+    "labelled": null
    },
    "badge": {
-    "text": "leg · cold arrivalreduced: offfrom: direct",
+    "text": "",
     "visible": true
    },
    "live": false,
@@ -8438,7 +8378,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
+     "text": "auditing…",
      "page": "contract"
     },
     {
@@ -8450,72 +8390,11 @@
      "page": "contract"
     }
    ],
-   "audit": [
-    {
-     "what": "stylesheets parsed",
-     "value": "12",
-     "tag": "of 12",
-     "ok": true
-    },
-    {
-     "what": "duration declarations walked",
-     "value": "36",
-     "tag": "all classified",
-     "ok": true
-    },
-    {
-     "what": "referencing var(--d-step)",
-     "value": "21",
-     "tag": "the rule",
-     "ok": true
-    },
-    {
-     "what": "none — the contract’s own stop states",
-     "value": "10",
-     "tag": "required by the contract",
-     "ok": true
-    },
-    {
-     "what": "the declared 0.01ms snap under reduce",
-     "value": "4",
-     "tag": "exception 1",
-     "ok": true
-    },
-    {
-     "what": "naming no duration at all (scroll-driven, or inheriting)",
-     "value": "1",
-     "tag": "exception 2",
-     "ok": true
-    },
-    {
-     "what": "ad-hoc numbers in stylesheets",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "literal durations in scripts",
-     "value": "0",
-     "tag": "clean",
-     "ok": true
-    },
-    {
-     "what": "call sites naming a step, in scripts",
-     "value": "6",
-     "tag": "steps 2 · 5",
-     "ok": true
-    },
-    {
-     "what": "keyframes defined / each mapped to a leg",
-     "value": "8 / 8",
-     "tag": "no orphans",
-     "ok": true
-    }
-   ],
+   "audit": [],
    "contrast": {
-    "checked": 404,
+    "checked": 192,
     "min": 5.54,
-    "p10": 6.57,
+    "p10": 6.61,
     "median": 6.61,
     "fails": [],
     "failCount": 0,
@@ -8529,16 +8408,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772350,
+    "t": 1792779481,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 25,
-    "longest": 25,
-    "ms": 397,
+    "moving": 24,
+    "longest": 24,
+    "ms": 384,
     "anims": [
      "price-tick"
     ]
@@ -8616,7 +8495,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772353,
+    "t": 1792779484,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -8625,7 +8504,7 @@
     "frames": 70,
     "moving": 16,
     "longest": 16,
-    "ms": 227,
+    "ms": 232,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8709,21 +8588,22 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772367,
+    "t": 1792779498,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 14,
-    "longest": 14,
-    "ms": 224,
+    "moving": 17,
+    "longest": 17,
+    "ms": 253,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
      "-ua-view-transition-fade-out",
      "-ua-view-transition-group-anim-chrome",
+     "-ua-view-transition-group-anim-mkt-name",
      "-ua-view-transition-group-anim-root",
      "slide-in",
      "slide-out"
@@ -8800,22 +8680,21 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772368,
+    "t": 1792779499,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 244,
+    "moving": 15,
+    "longest": 15,
+    "ms": 231,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
      "-ua-view-transition-fade-out",
      "-ua-view-transition-group-anim-chrome",
-     "-ua-view-transition-group-anim-mkt-name",
      "-ua-view-transition-group-anim-root",
      "slide-in",
      "slide-out"
@@ -8894,7 +8773,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772369,
+    "t": 1792779500,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -8903,7 +8782,7 @@
     "frames": 70,
     "moving": 17,
     "longest": 17,
-    "ms": 252,
+    "ms": 244,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8988,16 +8867,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772371,
+    "t": 1792779502,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 26,
-    "longest": 26,
-    "ms": 403,
+    "moving": 25,
+    "longest": 25,
+    "ms": 388,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -9124,7 +9003,7 @@
     }
    ],
    "contrast": {
-    "checked": 456,
+    "checked": 457,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -9140,7 +9019,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772372,
+    "t": 1792779503,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -9213,7 +9092,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 130,
+    "checked": 131,
     "min": 5.54,
     "p10": 6.18,
     "median": 6.61,
@@ -9229,16 +9108,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772373,
+    "t": 1792779504,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 32,
-    "longest": 32,
-    "ms": 514,
+    "moving": 33,
+    "longest": 33,
+    "ms": 522,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -9297,7 +9176,7 @@
      "why": "the per-dataset snapshot stamp",
      "present": true,
      "visible": true,
-     "text": "14 of 284 markets in this snapshot have a Swapr pool, so only those rows draw a history li",
+     "text": "14 of 284 markets in this view have a Swapr pool, so only those rows draw a history line; ",
      "page": "app"
     }
    ],
@@ -9319,16 +9198,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792772374,
+    "t": 1792779505,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 24,
-    "longest": 24,
-    "ms": 373,
+    "moving": 26,
+    "longest": 26,
+    "ms": 400,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -9512,7 +9391,7 @@
    "page": "contract",
    "viewport": "1440",
    "motion": "full",
-   "passes": 23,
+   "passes": 22,
    "violations": []
   },
   {
@@ -10009,7 +9888,7 @@
   {
    "page": "home",
    "theme": "dark",
-   "checked": 130,
+   "checked": 131,
    "min": 5.04,
    "p10": 5.45,
    "median": 7.1,
@@ -10075,7 +9954,7 @@
   {
    "page": "contract",
    "theme": "dark",
-   "checked": 368,
+   "checked": 369,
    "min": 5.04,
    "p10": 5.54,
    "median": 7.1,
