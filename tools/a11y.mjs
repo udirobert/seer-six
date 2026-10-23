@@ -684,7 +684,7 @@ const doc = {
   url: BASE,
   engine: `${ENGINE} ${version}`,
   os: OS,
-  axe: readFileSync(AXE, 'utf8').match(/axe v[\d.]+/)[0],
+  axeVersion: readFileSync(AXE, 'utf8').match(/axe v[\d.]+/)[0],
   tool: `${BASE}/tools/a11y.mjs — the harness that produced this JSON, published beside it`,
   matrix: { pages: PAGES.length, viewports: VIEWPORTS.map((v) => v[1]),
     motion: MOTION.map((m) => m[0]), themes: ['light (3 viewports × 2 motion states)', 'dark (desktop)'] },

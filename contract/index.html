@@ -6,6 +6,7 @@
 <title>The motion contract — every interval this site uses, and what it is for · Seer, six interfaces</title>
 <meta name="description" content="The seventh document: the rules the six surfaces obey. Five durations, nine legs, each keyed to a relation in Seer's data or an operation in the Conditional Tokens Framework — plus a runtime audit that reads every stylesheet and script in the entry and prints every number it finds.">
 <script src="../leg.js"></script>
+<link rel="icon" href="../favicon.svg" sizes="any" type="image/svg+xml">
 <link rel="stylesheet" href="../tokens.css">
 <link rel="stylesheet" href="../fonts.css">
 <link rel="stylesheet" href="../motion.css">
@@ -628,7 +629,7 @@ try {
 
   $('matrix').innerHTML = [
     `<p class="blocknote">Run <b>${esc(ev.generated.replace('T', ' ').slice(0, 16))} UTC</b> against
-      <code>${esc(ev.url)}</code> in ${esc(ev.engine)} · ${esc(ev.axe)} · ${ev.matrix.pages} documents ×
+      <code>${esc(ev.url)}</code> in ${esc(ev.engine)} · ${esc(ev.axeVersion || ev.axe)} · ${ev.matrix.pages} documents ×
       ${ev.matrix.viewports.length} viewports × both motion states · ${ev.duration_s} s ·
       ${ev.rows.length} arrivals recorded.</p>`,
     kv('arrivals, motion reduced — longest unbroken run',

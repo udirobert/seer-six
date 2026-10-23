@@ -6,6 +6,7 @@
 <title>Seer, six interfaces — motion that carries the protocol</title>
 <meta name="description" content="Six interactive readings of Seer's product surfaces on the Electric Foundation kit, where every transition is keyed to a relation in the protocol's own data and still communicates after the motion is removed.">
 <script src="leg.js"></script>
+<link rel="icon" href="favicon.svg" sizes="any" type="image/svg+xml">
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="motion.css">
@@ -122,7 +123,7 @@ const CARDS = [
     'split', 5],
   ['futarchy', 'Futarchy', 'Three hundred and ninety-eight governance questions priced in two numéraires at ' +
     'once — GNO and wxDAI — and not one of them priced. The surface draws the shape the number would ' +
-    'occupy and leaves it empty.', 'fan', 5],
+    'occupy and leaves it empty.', 'split', 5],
   ['opportunity', 'Opportunity', 'An outcome price is the width of one piece of a dollar. The partition is ' +
     'drawn as one rail, the residual stays hatched, and projecting a resolution is the collapse the payout ' +
     'function actually is.', 'redeem', 3],
@@ -136,17 +137,25 @@ const CARDS = [
 const HREF = { app: 'app/', deep: 'deep/', futarchy: 'futarchy/', opportunity: 'opportunity/',
                risk: 'risk/', contract: 'contract/' };
 
-$('fancards').innerHTML = CARDS.map(([key, title, claim, leg, step]) => {
+$('fancards').innerHTML = CARDS.map(([key, title, claim, sig, step]) => {
   const s = SURFACES.find((x) => x.key === key);
-  const href = s ? `${ROOT}/${s.href}` : `${ROOT}/${HREF[key]}/`;
+  const href = s ? `${ROOT}/${s.href}` : `${ROOT}/${HREF[key]}`;
   const u = new URL(href, location.href);
+  /* Leaving the root is the widest relation in the tree, so it takes the widest
+     interval whichever card you press — the fan cannot mean five different
+     things from one place. The gesture printed after it is what each surface is
+     *about*; naming it here is a description, performing it here would be a
+     decoration. The rules document is not a branch, so it is approached direct. */
+  const [leg, legStep] = s ? ['fan', 5] : ['direct', 2];
   u.searchParams.set('leg', leg); u.searchParams.set('from', 'home');
   const slow = new URLSearchParams(location.search).get('slow');
   if (slow) u.searchParams.set('slow', slow);
   return `<li><a href="${u.pathname}${u.search}"${s ? '' : ' data-contract="1"'}>
     <span class="hd">${s ? `<span class="slot-n">${s.n}</span>` : '<span class="slot-n">§</span>'}<b>${esc(title)}</b></span>
     <span class="claim">${esc(claim)}</span>
-    <span class="moves num">leaves here by <em>${leg}</em> · ${dur(step)} ms</span></span>
+    <span class="moves num">out of the root by <em>${leg}</em> · ${dur(legStep)} ms
+      ${sig === leg && step === legStep ? ''
+        : `<span class="sig">${s ? 'its surface moves by' : 'its audit runs on'} <em>${sig}</em> · ${dur(step)} ms</span>`}</span>
   </a></li>`;
 }).join('');
 

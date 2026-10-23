@@ -32,6 +32,11 @@
   padding-top: var(--s-3); margin-top: var(--s-1);
 }
 .fancards .moves em { font-style: normal; color: var(--fg-signal); font-family: var(--font-num); }
+/* Two different claims, so two lines: what this click does, and what the
+   surface it opens is built out of. No opacity here — muted already sits at the
+   floor of the contrast budget, and dimming it would fail the harness. */
+.fancards .moves .sig { display: block; padding-top: var(--s-1); }
+.fancards .moves .sig::before { content: '— '; }
 
 .stats {
   list-style: none; margin: var(--s-6) 0 0; padding: var(--s-5) 0;
