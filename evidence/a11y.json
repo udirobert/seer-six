@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-23T21:24:56.243Z",
- "duration_s": 258,
+ "generated": "2026-10-23T22:48:13.845Z",
+ "duration_s": 255,
  "url": "https://udirobert.github.io/seer-six",
  "engine": "chrome 155.0.8059.86",
  "os": "darwin 25.6.0 arm64",
@@ -32,23 +32,23 @@
    "anyMoving": true,
    "fullMotionComparator": {
     "maxFrames": 33,
-    "maxMs": 527
+    "maxMs": 525
    }
   },
   "motionRuns": {
    "claim": "with motion on, the same arrivals are visibly running for the leg’s whole interval",
    "arrivals": 24,
-   "minLongestRunFrames": 15,
+   "minLongestRunFrames": 16,
    "maxLongestRunFrames": 33,
    "legs": {
-    "deep": "lateral:17f",
+    "deep": "lateral:16f",
     "futarchy": "lateral:17f",
-    "opportunity": "lateral:16f",
+    "opportunity": "lateral:17f",
     "risk": "lateral:16f",
     "contract": "lateral:25f",
-    "home": "back:21f",
+    "home": "back:20f",
     "app": "fan:33f",
-    "m": "morph:25f"
+    "m": "morph:26f"
    }
   },
   "intervalHonesty": {
@@ -59,16 +59,80 @@
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 232,
-     "ratio": 1.05
+     "measuredMs": 228,
+     "ratio": 1.04
     },
     {
      "page": "futarchy",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 242,
-     "ratio": 1.1
+     "measuredMs": 231,
+     "ratio": 1.05
+    },
+    {
+     "page": "opportunity",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 251,
+     "ratio": 1.14
+    },
+    {
+     "page": "risk",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 232,
+     "ratio": 1.05
+    },
+    {
+     "page": "contract",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 403,
+     "ratio": 1.83
+    },
+    {
+     "page": "home",
+     "leg": "back",
+     "step": 3,
+     "declaredMs": 320,
+     "measuredMs": 308,
+     "ratio": 0.96
+    },
+    {
+     "page": "app",
+     "leg": "fan",
+     "step": 5,
+     "declaredMs": 520,
+     "measuredMs": 525,
+     "ratio": 1.01
+    },
+    {
+     "page": "m",
+     "leg": "morph",
+     "step": 3,
+     "declaredMs": 320,
+     "measuredMs": 389,
+     "ratio": 1.22
+    },
+    {
+     "page": "deep",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 236,
+     "ratio": 1.07
+    },
+    {
+     "page": "futarchy",
+     "leg": "lateral",
+     "step": 2,
+     "declaredMs": 220,
+     "measuredMs": 238,
+     "ratio": 1.08
     },
     {
      "page": "opportunity",
@@ -83,31 +147,31 @@
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 232,
-     "ratio": 1.05
+     "measuredMs": 235,
+     "ratio": 1.07
     },
     {
      "page": "contract",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 401,
-     "ratio": 1.82
+     "measuredMs": 381,
+     "ratio": 1.73
     },
     {
      "page": "home",
      "leg": "back",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 315,
-     "ratio": 0.98
+     "measuredMs": 316,
+     "ratio": 0.99
     },
     {
      "page": "app",
      "leg": "fan",
      "step": 5,
      "declaredMs": 520,
-     "measuredMs": 518,
+     "measuredMs": 521,
      "ratio": 1
     },
     {
@@ -115,35 +179,19 @@
      "leg": "morph",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 402,
-     "ratio": 1.26
+     "measuredMs": 396,
+     "ratio": 1.24
     },
     {
      "page": "deep",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 230,
+     "measuredMs": 231,
      "ratio": 1.05
     },
     {
      "page": "futarchy",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 237,
-     "ratio": 1.08
-    },
-    {
-     "page": "opportunity",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 222,
-     "ratio": 1.01
-    },
-    {
-     "page": "risk",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
@@ -151,39 +199,7 @@
      "ratio": 1.15
     },
     {
-     "page": "contract",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 404,
-     "ratio": 1.84
-    },
-    {
-     "page": "home",
-     "leg": "back",
-     "step": 3,
-     "declaredMs": 320,
-     "measuredMs": 307,
-     "ratio": 0.96
-    },
-    {
-     "page": "app",
-     "leg": "fan",
-     "step": 5,
-     "declaredMs": 520,
-     "measuredMs": 527,
-     "ratio": 1.01
-    },
-    {
-     "page": "m",
-     "leg": "morph",
-     "step": 3,
-     "declaredMs": 320,
-     "measuredMs": 374,
-     "ratio": 1.17
-    },
-    {
-     "page": "deep",
+     "page": "opportunity",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
@@ -191,44 +207,28 @@
      "ratio": 1.13
     },
     {
-     "page": "futarchy",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 252,
-     "ratio": 1.15
-    },
-    {
-     "page": "opportunity",
-     "leg": "lateral",
-     "step": 2,
-     "declaredMs": 220,
-     "measuredMs": 239,
-     "ratio": 1.09
-    },
-    {
      "page": "risk",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 232,
-     "ratio": 1.05
+     "measuredMs": 234,
+     "ratio": 1.06
     },
     {
      "page": "contract",
      "leg": "lateral",
      "step": 2,
      "declaredMs": 220,
-     "measuredMs": 395,
-     "ratio": 1.8
+     "measuredMs": 378,
+     "ratio": 1.72
     },
     {
      "page": "home",
      "leg": "back",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 315,
-     "ratio": 0.98
+     "measuredMs": 308,
+     "ratio": 0.96
     },
     {
      "page": "app",
@@ -243,8 +243,8 @@
      "leg": "morph",
      "step": 3,
      "declaredMs": 320,
-     "measuredMs": 393,
-     "ratio": 1.23
+     "measuredMs": 396,
+     "ratio": 1.24
     }
    ],
    "atOrAboveHalf": "24/24"
@@ -376,13 +376,13 @@
   },
   "contrast": {
    "claim": "text contrast computed from rendered getComputedStyle values, in both themes, not eyeballed",
-   "readings": 41948,
+   "readings": 42352,
    "minRatio": 5.54,
    "failReadings": 0,
    "failPages": [],
    "worst": [],
    "dark": {
-    "readings": 3752,
+    "readings": 3746,
     "minRatio": 4.75,
     "failReadings": 0,
     "failPages": [],
@@ -410,8 +410,8 @@
     "keyframes defined / each mapped to a leg": "8 / 8"
    },
    "checks": 10,
-   "sampledFrom": "reduce/390x844/warm",
-   "emptySamples": 3,
+   "sampledFrom": "reduce/390x844/cold",
+   "emptySamples": 1,
    "allChecksPass": true
   }
  },
@@ -424,7 +424,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790700,
+    "t": 1792795697,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -432,8 +432,8 @@
     "reduced": true,
     "frames": 70,
     "moving": 2,
-    "longest": 1,
-    "ms": 0,
+    "longest": 2,
+    "ms": 16,
     "anims": [
      "waapi"
     ]
@@ -508,7 +508,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790702,
+    "t": 1792795698,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -590,7 +590,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790703,
+    "t": 1792795700,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -675,7 +675,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790704,
+    "t": 1792795701,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -758,7 +758,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790706,
+    "t": 1792795702,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -845,7 +845,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790707,
+    "t": 1792795704,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -929,7 +929,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790709,
+    "t": 1792795705,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -981,7 +981,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "auditing…",
+     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
      "page": "contract"
     },
     {
@@ -993,12 +993,73 @@
      "page": "contract"
     }
    ],
-   "audit": [],
+   "audit": [
+    {
+     "what": "stylesheets parsed",
+     "value": "12",
+     "tag": "of 12",
+     "ok": true
+    },
+    {
+     "what": "duration declarations walked",
+     "value": "37",
+     "tag": "all classified",
+     "ok": true
+    },
+    {
+     "what": "referencing var(--d-step)",
+     "value": "22",
+     "tag": "the rule",
+     "ok": true
+    },
+    {
+     "what": "none — the contract’s own stop states",
+     "value": "10",
+     "tag": "required by the contract",
+     "ok": true
+    },
+    {
+     "what": "the declared 0.01ms snap under reduce",
+     "value": "4",
+     "tag": "exception 1",
+     "ok": true
+    },
+    {
+     "what": "naming no duration at all (scroll-driven, or inheriting)",
+     "value": "1",
+     "tag": "exception 2",
+     "ok": true
+    },
+    {
+     "what": "ad-hoc numbers in stylesheets",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "literal durations in scripts",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "call sites naming a step, in scripts",
+     "value": "6",
+     "tag": "steps 2 · 5",
+     "ok": true
+    },
+    {
+     "what": "keyframes defined / each mapped to a leg",
+     "value": "8 / 8",
+     "tag": "no orphans",
+     "ok": true
+    }
+   ],
    "contrast": {
-    "checked": 188,
+    "checked": 330,
     "min": 5.54,
     "p10": 6.61,
-    "median": 6.61,
+    "median": 7.03,
     "fails": [],
     "failCount": 0,
     "skippedOverImage": 0
@@ -1011,7 +1072,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790710,
+    "t": 1792795707,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -1096,7 +1157,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790713,
+    "t": 1792795709,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -1118,7 +1179,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: app",
+    "text": "leg · lateral0ms · --d-2reduced: on (snap)from: app",
     "visible": false
    },
    "live": false,
@@ -1181,7 +1242,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790726,
+    "t": 1792795723,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -1203,7 +1264,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: deep",
+    "text": "leg · lateral0ms · --d-2reduced: on (snap)from: deep",
     "visible": false
    },
    "live": false,
@@ -1264,7 +1325,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790727,
+    "t": 1792795724,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -1288,7 +1349,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: futarchy",
+    "text": "leg · lateral0ms · --d-2reduced: on (snap)from: futarchy",
     "visible": false
    },
    "live": false,
@@ -1351,7 +1412,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790728,
+    "t": 1792795725,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -1373,7 +1434,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: opportunity",
+    "text": "leg · lateral0ms · --d-2reduced: on (snap)from: opportunity",
     "visible": false
    },
    "live": true,
@@ -1435,7 +1496,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790730,
+    "t": 1792795727,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -1457,7 +1518,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: risk",
+    "text": "leg · lateral0ms · --d-2reduced: on (snap)from: risk",
     "visible": false
    },
    "live": false,
@@ -1578,7 +1639,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790731,
+    "t": 1792795728,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -1600,7 +1661,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · back0ms · --d-3cubic-bezier(0.05, 0.7, 0.1, 1)reduced: on (snap)from: contract",
+    "text": "leg · back0ms · --d-3reduced: on (snap)from: contract",
     "visible": false
    },
    "live": false,
@@ -1660,7 +1721,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790732,
+    "t": 1792795729,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -1682,7 +1743,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · fan0ms · --d-5cubic-bezier(0.05, 0.7, 0.1, 1)reduced: on (snap)from: home",
+    "text": "leg · fan0ms · --d-5reduced: on (snap)from: home",
     "visible": false
    },
    "live": true,
@@ -1742,7 +1803,7 @@
    "viewport": "390x844",
    "motion": "reduce",
    "probe": {
-    "t": 1792790734,
+    "t": 1792795731,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -1764,7 +1825,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · morph0ms · --d-3cubic-bezier(0.05, 0.7, 0.1, 1)reduced: on (snap)0x17340bafcb travels",
+    "text": "leg · morph0ms · --d-3reduced: on (snap)0x17340bafcb travels",
     "visible": false
    },
    "live": true,
@@ -1827,16 +1888,16 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790744,
+    "t": 1792795741,
     "path": "/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": true,
     "frames": 70,
-    "moving": 2,
-    "longest": 2,
-    "ms": 18,
+    "moving": 1,
+    "longest": 1,
+    "ms": 0,
     "anims": [
      "waapi"
     ]
@@ -1911,7 +1972,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790746,
+    "t": 1792795742,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -1993,7 +2054,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790747,
+    "t": 1792795744,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -2078,7 +2139,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790749,
+    "t": 1792795745,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -2161,7 +2222,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790750,
+    "t": 1792795746,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -2248,7 +2309,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790751,
+    "t": 1792795747,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -2332,7 +2393,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790752,
+    "t": 1792795748,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -2459,7 +2520,7 @@
     }
    ],
    "contrast": {
-    "checked": 389,
+    "checked": 388,
     "min": 5.54,
     "p10": 6.57,
     "median": 7.03,
@@ -2475,7 +2536,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790753,
+    "t": 1792795750,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -2560,7 +2621,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790756,
+    "t": 1792795752,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -2582,7 +2643,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: app",
+    "text": "leg · lateral0ms · --d-2reduced: on (snap)from: app",
     "visible": false
    },
    "live": false,
@@ -2645,7 +2706,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790769,
+    "t": 1792795766,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -2667,7 +2728,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: deep",
+    "text": "leg · lateral0ms · --d-2reduced: on (snap)from: deep",
     "visible": false
    },
    "live": false,
@@ -2728,7 +2789,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790771,
+    "t": 1792795767,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -2752,7 +2813,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: futarchy",
+    "text": "leg · lateral0ms · --d-2reduced: on (snap)from: futarchy",
     "visible": false
    },
    "live": false,
@@ -2815,7 +2876,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790772,
+    "t": 1792795768,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -2837,7 +2898,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: opportunity",
+    "text": "leg · lateral0ms · --d-2reduced: on (snap)from: opportunity",
     "visible": false
    },
    "live": true,
@@ -2899,7 +2960,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790773,
+    "t": 1792795769,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -2921,7 +2982,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: risk",
+    "text": "leg · lateral0ms · --d-2reduced: on (snap)from: risk",
     "visible": false
    },
    "live": false,
@@ -3026,7 +3087,7 @@
     }
    ],
    "contrast": {
-    "checked": 428,
+    "checked": 427,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -3042,7 +3103,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790775,
+    "t": 1792795771,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -3064,7 +3125,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · back0ms · --d-3cubic-bezier(0.05, 0.7, 0.1, 1)reduced: on (snap)from: contract",
+    "text": "leg · back0ms · --d-3reduced: on (snap)from: contract",
     "visible": false
    },
    "live": false,
@@ -3124,7 +3185,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790776,
+    "t": 1792795772,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -3146,7 +3207,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · fan0ms · --d-5cubic-bezier(0.05, 0.7, 0.1, 1)reduced: on (snap)from: home",
+    "text": "leg · fan0ms · --d-5reduced: on (snap)from: home",
     "visible": false
    },
    "live": true,
@@ -3206,7 +3267,7 @@
    "viewport": "768x1024",
    "motion": "reduce",
    "probe": {
-    "t": 1792790777,
+    "t": 1792795773,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -3228,7 +3289,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · morph0ms · --d-3cubic-bezier(0.05, 0.7, 0.1, 1)reduced: on (snap)0x17340bafcb travels",
+    "text": "leg · morph0ms · --d-3reduced: on (snap)0x17340bafcb travels",
     "visible": false
    },
    "live": true,
@@ -3291,7 +3352,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790789,
+    "t": 1792795780,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -3300,7 +3361,7 @@
     "frames": 70,
     "moving": 2,
     "longest": 2,
-    "ms": 39,
+    "ms": 30,
     "anims": [
      "waapi"
     ]
@@ -3375,7 +3436,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790790,
+    "t": 1792795782,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -3457,7 +3518,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790793,
+    "t": 1792795785,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -3542,7 +3603,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790795,
+    "t": 1792795786,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -3625,7 +3686,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790796,
+    "t": 1792795788,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -3712,7 +3773,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790797,
+    "t": 1792795789,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -3796,7 +3857,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790799,
+    "t": 1792795791,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
@@ -3939,7 +4000,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790800,
+    "t": 1792795792,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -4024,7 +4085,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790803,
+    "t": 1792795795,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -4046,7 +4107,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: app",
+    "text": "leg · lateral0ms · --d-2reduced: on (snap)from: app",
     "visible": true
    },
    "live": false,
@@ -4093,7 +4154,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 184,
+    "checked": 185,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -4109,7 +4170,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790817,
+    "t": 1792795809,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -4131,7 +4192,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: deep",
+    "text": "leg · lateral0ms · --d-2reduced: on (snap)from: deep",
     "visible": true
    },
    "live": false,
@@ -4176,7 +4237,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 166,
+    "checked": 167,
     "min": 5.54,
     "p10": 6.18,
     "median": 6.61,
@@ -4192,7 +4253,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790818,
+    "t": 1792795810,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
@@ -4216,7 +4277,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: futarchy",
+    "text": "leg · lateral0ms · --d-2reduced: on (snap)from: futarchy",
     "visible": true
    },
    "live": false,
@@ -4263,7 +4324,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 153,
+    "checked": 154,
     "min": 5.54,
     "p10": 6.18,
     "median": 7.03,
@@ -4279,7 +4340,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790819,
+    "t": 1792795811,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -4301,7 +4362,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: opportunity",
+    "text": "leg · lateral0ms · --d-2reduced: on (snap)from: opportunity",
     "visible": true
    },
    "live": true,
@@ -4347,7 +4408,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 289,
+    "checked": 291,
     "min": 5.54,
     "p10": 6.18,
     "median": 17.75,
@@ -4363,7 +4424,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790820,
+    "t": 1792795813,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -4385,7 +4446,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral0ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: on (snap)from: risk",
+    "text": "leg · lateral0ms · --d-2reduced: on (snap)from: risk",
     "visible": true
    },
    "live": false,
@@ -4490,7 +4551,7 @@
     }
    ],
    "contrast": {
-    "checked": 447,
+    "checked": 448,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -4506,7 +4567,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790821,
+    "t": 1792795814,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -4528,7 +4589,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · back0ms · --d-3cubic-bezier(0.05, 0.7, 0.1, 1)reduced: on (snap)from: contract",
+    "text": "leg · back0ms · --d-3reduced: on (snap)from: contract",
     "visible": true
    },
    "live": false,
@@ -4572,7 +4633,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 129,
+    "checked": 131,
     "min": 5.54,
     "p10": 6.18,
     "median": 6.61,
@@ -4588,7 +4649,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790823,
+    "t": 1792795815,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -4610,7 +4671,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · fan0ms · --d-5cubic-bezier(0.05, 0.7, 0.1, 1)reduced: on (snap)from: home",
+    "text": "leg · fan0ms · --d-5reduced: on (snap)from: home",
     "visible": true
    },
    "live": true,
@@ -4654,7 +4715,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 2372,
+    "checked": 2373,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -4670,7 +4731,7 @@
    "viewport": "1440x900",
    "motion": "reduce",
    "probe": {
-    "t": 1792790824,
+    "t": 1792795817,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
@@ -4692,7 +4753,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · morph0ms · --d-3cubic-bezier(0.05, 0.7, 0.1, 1)reduced: on (snap)0x17340bafcb travels",
+    "text": "leg · morph0ms · --d-3reduced: on (snap)0x17340bafcb travels",
     "visible": true
    },
    "live": true,
@@ -4739,7 +4800,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 74,
+    "checked": 76,
     "min": 5.54,
     "p10": 6.61,
     "median": 6.61,
@@ -4755,16 +4816,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790831,
+    "t": 1792795828,
     "path": "/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 33,
-    "longest": 33,
-    "ms": 522,
+    "moving": 32,
+    "longest": 32,
+    "ms": 513,
     "anims": [
      "waapi"
     ]
@@ -4839,7 +4900,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790832,
+    "t": 1792795830,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -4921,7 +4982,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790834,
+    "t": 1792795831,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -5006,7 +5067,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790835,
+    "t": 1792795832,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -5089,7 +5150,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790836,
+    "t": 1792795834,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -5174,7 +5235,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790838,
+    "t": 1792795835,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -5258,16 +5319,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790839,
+    "t": 1792795836,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 23,
-    "longest": 23,
-    "ms": 366,
+    "moving": 24,
+    "longest": 24,
+    "ms": 376,
     "anims": [
      "waapi"
     ]
@@ -5403,7 +5464,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790840,
+    "t": 1792795837,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -5412,7 +5473,7 @@
     "frames": 70,
     "moving": 25,
     "longest": 25,
-    "ms": 400,
+    "ms": 396,
     "anims": [
      "price-tick"
     ]
@@ -5490,7 +5551,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790843,
+    "t": 1792795840,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -5499,7 +5560,7 @@
     "frames": 70,
     "moving": 16,
     "longest": 16,
-    "ms": 232,
+    "ms": 228,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5520,7 +5581,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: app",
+    "text": "leg · lateral220ms · --d-2reduced: offfrom: app",
     "visible": false
    },
    "live": false,
@@ -5583,16 +5644,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790856,
+    "t": 1792795853,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 242,
+    "moving": 16,
+    "longest": 16,
+    "ms": 231,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5614,7 +5675,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: deep",
+    "text": "leg · lateral220ms · --d-2reduced: offfrom: deep",
     "visible": false
    },
    "live": false,
@@ -5675,16 +5736,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790857,
+    "t": 1792795855,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 238,
+    "moving": 17,
+    "longest": 17,
+    "ms": 251,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5706,7 +5767,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: futarchy",
+    "text": "leg · lateral220ms · --d-2reduced: offfrom: futarchy",
     "visible": false
    },
    "live": false,
@@ -5769,7 +5830,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790859,
+    "t": 1792795856,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -5784,8 +5845,6 @@
      "-ua-view-transition-fade-in",
      "-ua-view-transition-fade-out",
      "-ua-view-transition-group-anim-chrome",
-     "-ua-view-transition-group-anim-mkt-name",
-     "-ua-view-transition-group-anim-mkt-odds",
      "-ua-view-transition-group-anim-root",
      "slide-in",
      "slide-out"
@@ -5801,7 +5860,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: opportunity",
+    "text": "leg · lateral220ms · --d-2reduced: offfrom: opportunity",
     "visible": false
    },
    "live": true,
@@ -5863,7 +5922,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790860,
+    "t": 1792795857,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -5872,7 +5931,7 @@
     "frames": 70,
     "moving": 26,
     "longest": 26,
-    "ms": 401,
+    "ms": 403,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5954,7 +6013,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790863,
+    "t": 1792795860,
     "path": "/",
     "leg": "back",
     "from": "contract",
@@ -5963,7 +6022,7 @@
     "frames": 70,
     "moving": 20,
     "longest": 20,
-    "ms": 315,
+    "ms": 308,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -5983,7 +6042,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · back320ms · --d-3cubic-bezier(0.05, 0.7, 0.1, 1)reduced: offfrom: contract",
+    "text": "leg · back320ms · --d-3reduced: offfrom: contract",
     "visible": false
    },
    "live": false,
@@ -6043,7 +6102,7 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790864,
+    "t": 1792795862,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -6052,7 +6111,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 518,
+    "ms": 525,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6073,7 +6132,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · fan520ms · --d-5cubic-bezier(0.05, 0.7, 0.1, 1)reduced: offfrom: home",
+    "text": "leg · fan520ms · --d-5reduced: offfrom: home",
     "visible": false
    },
    "live": true,
@@ -6133,16 +6192,16 @@
    "viewport": "390x844",
    "motion": "full",
    "probe": {
-    "t": 1792790865,
+    "t": 1792795863,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 26,
-    "longest": 26,
-    "ms": 402,
+    "moving": 25,
+    "longest": 25,
+    "ms": 389,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6165,7 +6224,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · morph320ms · --d-3cubic-bezier(0.05, 0.7, 0.1, 1)reduced: off0x17340bafcb travels",
+    "text": "leg · morph320ms · --d-3reduced: off0x17340bafcb travels",
     "visible": false
    },
    "live": true,
@@ -6228,7 +6287,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790867,
+    "t": 1792795865,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -6237,7 +6296,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 514,
+    "ms": 519,
     "anims": [
      "waapi"
     ]
@@ -6312,7 +6371,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790869,
+    "t": 1792795866,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -6394,7 +6453,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790870,
+    "t": 1792795867,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -6479,7 +6538,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790872,
+    "t": 1792795869,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -6562,7 +6621,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790873,
+    "t": 1792795870,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -6647,7 +6706,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790874,
+    "t": 1792795871,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -6731,16 +6790,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790875,
+    "t": 1792795873,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 23,
-    "longest": 23,
-    "ms": 364,
+    "moving": 24,
+    "longest": 24,
+    "ms": 383,
     "anims": [
      "waapi"
     ]
@@ -6876,16 +6935,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790877,
+    "t": 1792795874,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 24,
-    "longest": 24,
-    "ms": 383,
+    "moving": 25,
+    "longest": 25,
+    "ms": 395,
     "anims": [
      "price-tick"
     ]
@@ -6963,7 +7022,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790879,
+    "t": 1792795877,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
@@ -6972,7 +7031,7 @@
     "frames": 70,
     "moving": 16,
     "longest": 16,
-    "ms": 230,
+    "ms": 236,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -6993,7 +7052,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: app",
+    "text": "leg · lateral220ms · --d-2reduced: offfrom: app",
     "visible": false
    },
    "live": false,
@@ -7056,7 +7115,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790893,
+    "t": 1792795890,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -7065,7 +7124,7 @@
     "frames": 70,
     "moving": 16,
     "longest": 16,
-    "ms": 237,
+    "ms": 238,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7087,7 +7146,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: deep",
+    "text": "leg · lateral220ms · --d-2reduced: offfrom: deep",
     "visible": false
    },
    "live": false,
@@ -7148,16 +7207,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790894,
+    "t": 1792795891,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 15,
-    "longest": 15,
-    "ms": 222,
+    "moving": 16,
+    "longest": 16,
+    "ms": 238,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7179,7 +7238,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: futarchy",
+    "text": "leg · lateral220ms · --d-2reduced: offfrom: futarchy",
     "visible": false
    },
    "live": false,
@@ -7242,21 +7301,23 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790895,
+    "t": 1792795893,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 253,
+    "moving": 16,
+    "longest": 16,
+    "ms": 235,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
      "-ua-view-transition-fade-out",
      "-ua-view-transition-group-anim-chrome",
+     "-ua-view-transition-group-anim-mkt-name",
+     "-ua-view-transition-group-anim-mkt-odds",
      "-ua-view-transition-group-anim-root",
      "slide-in",
      "slide-out"
@@ -7272,7 +7333,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: opportunity",
+    "text": "leg · lateral220ms · --d-2reduced: offfrom: opportunity",
     "visible": false
    },
    "live": true,
@@ -7334,16 +7395,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790897,
+    "t": 1792795894,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 26,
-    "longest": 26,
-    "ms": 404,
+    "moving": 25,
+    "longest": 25,
+    "ms": 381,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7356,16 +7417,16 @@
     ]
    },
    "depth": {
-    "text": "",
+    "text": "Contractthe rules the six obey · not a surface",
     "visible": true
    },
    "bar": {
-    "links": 0,
-    "current": 0,
-    "labelled": null
+    "links": 7,
+    "current": 1,
+    "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "",
+    "text": "leg · lateral220ms · --d-2reduced: offfrom: risk",
     "visible": false
    },
    "live": false,
@@ -7395,7 +7456,7 @@
      "why": "the stylesheet and script audit",
      "present": true,
      "visible": true,
-     "text": "auditing…",
+     "text": "Scope: 12 of 12 stylesheets and 10 scripts — the whole entry, not only what this page load",
      "page": "contract"
     },
     {
@@ -7407,12 +7468,73 @@
      "page": "contract"
     }
    ],
-   "audit": [],
+   "audit": [
+    {
+     "what": "stylesheets parsed",
+     "value": "12",
+     "tag": "of 12",
+     "ok": true
+    },
+    {
+     "what": "duration declarations walked",
+     "value": "37",
+     "tag": "all classified",
+     "ok": true
+    },
+    {
+     "what": "referencing var(--d-step)",
+     "value": "22",
+     "tag": "the rule",
+     "ok": true
+    },
+    {
+     "what": "none — the contract’s own stop states",
+     "value": "10",
+     "tag": "required by the contract",
+     "ok": true
+    },
+    {
+     "what": "the declared 0.01ms snap under reduce",
+     "value": "4",
+     "tag": "exception 1",
+     "ok": true
+    },
+    {
+     "what": "naming no duration at all (scroll-driven, or inheriting)",
+     "value": "1",
+     "tag": "exception 2",
+     "ok": true
+    },
+    {
+     "what": "ad-hoc numbers in stylesheets",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "literal durations in scripts",
+     "value": "0",
+     "tag": "clean",
+     "ok": true
+    },
+    {
+     "what": "call sites naming a step, in scripts",
+     "value": "6",
+     "tag": "steps 2 · 5",
+     "ok": true
+    },
+    {
+     "what": "keyframes defined / each mapped to a leg",
+     "value": "8 / 8",
+     "tag": "no orphans",
+     "ok": true
+    }
+   ],
    "contrast": {
-    "checked": 192,
+    "checked": 437,
     "min": 5.54,
     "p10": 6.61,
-    "median": 6.61,
+    "median": 7.03,
     "fails": [],
     "failCount": 0,
     "skippedOverImage": 0
@@ -7425,16 +7547,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790899,
+    "t": 1792795895,
     "path": "/",
     "leg": "back",
     "from": "contract",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 20,
-    "longest": 20,
-    "ms": 307,
+    "moving": 21,
+    "longest": 21,
+    "ms": 316,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7454,7 +7576,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · back320ms · --d-3cubic-bezier(0.05, 0.7, 0.1, 1)reduced: offfrom: contract",
+    "text": "leg · back320ms · --d-3reduced: offfrom: contract",
     "visible": false
    },
    "live": false,
@@ -7514,7 +7636,7 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790900,
+    "t": 1792795896,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -7523,7 +7645,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 527,
+    "ms": 521,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7544,7 +7666,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · fan520ms · --d-5cubic-bezier(0.05, 0.7, 0.1, 1)reduced: offfrom: home",
+    "text": "leg · fan520ms · --d-5reduced: offfrom: home",
     "visible": false
    },
    "live": true,
@@ -7604,16 +7726,16 @@
    "viewport": "768x1024",
    "motion": "full",
    "probe": {
-    "t": 1792790902,
+    "t": 1792795898,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 24,
-    "longest": 24,
-    "ms": 374,
+    "moving": 25,
+    "longest": 25,
+    "ms": 396,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -7636,7 +7758,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · morph320ms · --d-3cubic-bezier(0.05, 0.7, 0.1, 1)reduced: off0x17340bafcb travels",
+    "text": "leg · morph320ms · --d-3reduced: off0x17340bafcb travels",
     "visible": false
    },
    "live": true,
@@ -7699,7 +7821,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790904,
+    "t": 1792795899,
     "path": "/",
     "leg": "direct",
     "from": "—",
@@ -7708,7 +7830,7 @@
     "frames": 70,
     "moving": 33,
     "longest": 33,
-    "ms": 515,
+    "ms": 523,
     "anims": [
      "waapi"
     ]
@@ -7783,7 +7905,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790905,
+    "t": 1792795901,
     "path": "/app/",
     "leg": "direct",
     "from": "—",
@@ -7865,7 +7987,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790908,
+    "t": 1792795903,
     "path": "/deep/",
     "leg": "direct",
     "from": "—",
@@ -7950,7 +8072,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790910,
+    "t": 1792795905,
     "path": "/futarchy/",
     "leg": "direct",
     "from": "—",
@@ -8033,7 +8155,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790911,
+    "t": 1792795906,
     "path": "/opportunity/",
     "leg": "direct",
     "from": "—",
@@ -8118,7 +8240,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790913,
+    "t": 1792795908,
     "path": "/risk/",
     "leg": "direct",
     "from": "—",
@@ -8202,16 +8324,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790914,
+    "t": 1792795909,
     "path": "/contract/",
     "leg": "direct",
     "from": "—",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 24,
-    "longest": 24,
-    "ms": 381,
+    "moving": 23,
+    "longest": 23,
+    "ms": 367,
     "anims": [
      "waapi"
     ]
@@ -8347,7 +8469,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790916,
+    "t": 1792795911,
     "path": "/m/",
     "leg": "direct",
     "from": "—",
@@ -8356,7 +8478,7 @@
     "frames": 70,
     "moving": 24,
     "longest": 24,
-    "ms": 381,
+    "ms": 383,
     "anims": [
      "price-tick"
     ]
@@ -8434,16 +8556,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790919,
+    "t": 1792795914,
     "path": "/deep/",
     "leg": "lateral",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 17,
-    "longest": 17,
-    "ms": 249,
+    "moving": 16,
+    "longest": 16,
+    "ms": 231,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8464,7 +8586,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: app",
+    "text": "leg · lateral220ms · --d-2reduced: offfrom: app",
     "visible": true
    },
    "live": false,
@@ -8527,7 +8649,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790932,
+    "t": 1792795927,
     "path": "/futarchy/",
     "leg": "lateral",
     "from": "deep",
@@ -8536,7 +8658,7 @@
     "frames": 70,
     "moving": 17,
     "longest": 17,
-    "ms": 252,
+    "ms": 253,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8558,7 +8680,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: deep",
+    "text": "leg · lateral220ms · --d-2reduced: offfrom: deep",
     "visible": true
    },
    "live": false,
@@ -8603,7 +8725,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 166,
+    "checked": 167,
     "min": 5.54,
     "p10": 6.18,
     "median": 6.61,
@@ -8619,16 +8741,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790933,
+    "t": 1792795928,
     "path": "/opportunity/",
     "leg": "lateral",
     "from": "futarchy",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 16,
-    "longest": 16,
-    "ms": 239,
+    "moving": 17,
+    "longest": 17,
+    "ms": 249,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8650,7 +8772,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: futarchy",
+    "text": "leg · lateral220ms · --d-2reduced: offfrom: futarchy",
     "visible": true
    },
    "live": false,
@@ -8697,7 +8819,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 153,
+    "checked": 154,
     "min": 5.54,
     "p10": 6.18,
     "median": 7.03,
@@ -8713,7 +8835,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790934,
+    "t": 1792795930,
     "path": "/risk/",
     "leg": "lateral",
     "from": "opportunity",
@@ -8722,7 +8844,7 @@
     "frames": 70,
     "moving": 16,
     "longest": 16,
-    "ms": 232,
+    "ms": 234,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8745,7 +8867,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: opportunity",
+    "text": "leg · lateral220ms · --d-2reduced: offfrom: opportunity",
     "visible": true
    },
    "live": true,
@@ -8791,7 +8913,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 290,
+    "checked": 291,
     "min": 5.54,
     "p10": 6.18,
     "median": 17.75,
@@ -8807,7 +8929,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790936,
+    "t": 1792795931,
     "path": "/contract/",
     "leg": "lateral",
     "from": "risk",
@@ -8816,7 +8938,7 @@
     "frames": 70,
     "moving": 25,
     "longest": 25,
-    "ms": 395,
+    "ms": 378,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8838,7 +8960,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · lateral220ms · --d-2cubic-bezier(0.2, 0, 0, 1)reduced: offfrom: risk",
+    "text": "leg · lateral220ms · --d-2reduced: offfrom: risk",
     "visible": true
    },
    "live": false,
@@ -8943,7 +9065,7 @@
     }
    ],
    "contrast": {
-    "checked": 456,
+    "checked": 457,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -8959,16 +9081,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790937,
+    "t": 1792795932,
     "path": "/",
     "leg": "back",
     "from": "contract",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 21,
-    "longest": 21,
-    "ms": 315,
+    "moving": 20,
+    "longest": 20,
+    "ms": 308,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -8988,7 +9110,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · back320ms · --d-3cubic-bezier(0.05, 0.7, 0.1, 1)reduced: offfrom: contract",
+    "text": "leg · back320ms · --d-3reduced: offfrom: contract",
     "visible": true
    },
    "live": false,
@@ -9032,7 +9154,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 130,
+    "checked": 131,
     "min": 5.54,
     "p10": 6.18,
     "median": 6.61,
@@ -9048,7 +9170,7 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790938,
+    "t": 1792795933,
     "path": "/app/",
     "leg": "fan",
     "from": "home",
@@ -9078,7 +9200,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · fan520ms · --d-5cubic-bezier(0.05, 0.7, 0.1, 1)reduced: offfrom: home",
+    "text": "leg · fan520ms · --d-5reduced: offfrom: home",
     "visible": true
    },
    "live": true,
@@ -9122,7 +9244,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 2372,
+    "checked": 2373,
     "min": 5.54,
     "p10": 6.61,
     "median": 7.03,
@@ -9138,16 +9260,16 @@
    "viewport": "1440x900",
    "motion": "full",
    "probe": {
-    "t": 1792790939,
+    "t": 1792795935,
     "path": "/m/",
     "leg": "morph",
     "from": "app",
     "slow": "1",
     "reduced": false,
     "frames": 70,
-    "moving": 25,
-    "longest": 25,
-    "ms": 393,
+    "moving": 26,
+    "longest": 26,
+    "ms": 396,
     "anims": [
      "-ua-mix-blend-mode-plus-lighter",
      "-ua-view-transition-fade-in",
@@ -9171,7 +9293,7 @@
     "labelled": "Seer surfaces"
    },
    "badge": {
-    "text": "leg · morph320ms · --d-3cubic-bezier(0.05, 0.7, 0.1, 1)reduced: off0x17340bafcb travels",
+    "text": "leg · morph320ms · --d-3reduced: off0x17340bafcb travels",
     "visible": true
    },
    "live": true,
@@ -9218,7 +9340,7 @@
    ],
    "audit": null,
    "contrast": {
-    "checked": 74,
+    "checked": 76,
     "min": 5.54,
     "p10": 6.61,
     "median": 6.61,
@@ -9894,7 +10016,7 @@
   {
    "page": "contract",
    "theme": "dark",
-   "checked": 375,
+   "checked": 369,
    "min": 5.04,
    "p10": 5.54,
    "median": 7.1,
