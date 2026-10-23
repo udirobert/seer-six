@@ -569,11 +569,17 @@ function summarise(rows, axe, focus, dark) {
       }, {})).sort((a, b) => b[1] - a[1])
     },
     selfAudit: (() => {
-      const c = rows.filter((r) => r.page === 'contract' && r.audit);
+      /* The page fills #audit from a module script, so an early sample is an
+         empty list rather than a wrong one — and `[].every(ok)` is true. An
+         aggregator that reports a pass for a check it never read is the bug this
+         file exists to catch, so the empty case is dropped, not trusted. */
+      const c = rows.filter((r) => r.page === 'contract' && r.audit?.length);
       if (!c.length) return null;
       const kv = Object.fromEntries(c[0].audit.map((r) => [r.what, r.value]));
-      return { measuredInBrowser: true, rows: kv,
-        allChecksPass: c.every((r) => r.audit.every((x) => x.ok)) };
+      return { measuredInBrowser: true, rows: kv, checks: c[0].audit.length,
+        sampledFrom: `${c[0].motion}/${c[0].viewport}/${c[0].load}`,
+        emptySamples: rows.filter((r) => r.page === 'contract' && !r.audit?.length).length,
+        allChecksPass: c.every((r) => r.audit.length && r.audit.every((x) => x.ok)) };
     })()
   };
 }
