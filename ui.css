@@ -141,6 +141,21 @@ html[data-theme="dark"] .leg-badge { background: var(--ef-violet-soft); color: v
 .spine circle { fill: var(--ef-violet); }
 html[data-theme="dark"] .spine path.line { stroke: var(--ef-violet-alt); }
 
+/* ---------- the live line ---------- */
+
+/* One sentence saying which data is on screen, in a role="status" region so it
+   is read out. Deliberately unanimated: a provenance line that slides in is a
+   provenance line nobody finishes reading, and under reduced motion it must
+   still be the same sentence, not a summary of one. */
+.live-state {
+  font-family: var(--font-num); font-size: var(--t-micro); line-height: 1.55;
+  margin: 0 0 var(--s-4); padding: 7px 10px;
+  border: var(--rule); border-left: 3px solid var(--ink-150); border-radius: var(--r-sm);
+  color: var(--fg-mute);
+}
+.live-state[data-k="on"] { border-color: var(--ef-violet); border-left-color: var(--ef-violet); color: var(--fg-signal); }
+.live-state[data-k="off"] { border-style: dashed; }
+
 /* ---------- footer ---------- */
 
 #snapshot {
@@ -205,6 +220,12 @@ html[data-theme="dark"] .spine path.line { stroke: var(--ef-violet-alt); }
 .block { border-top: var(--rule); padding-top: var(--s-5); }
 .block h2 { font-size: var(--t-h3); margin-bottom: var(--s-2); }
 .blocknote { font-size: var(--t-small); color: var(--fg-mute); max-width: 74ch; }
+/* A fact the document is obliged to flag: the address asked for one market and
+   this bake holds another. Flagged, not hidden behind a fallback. */
+.blocknote.livenote {
+  border-left: 3px solid var(--ef-warn); padding-left: var(--s-3);
+  color: var(--fg-warn); margin-bottom: var(--s-4);
+}
 .detail { border: var(--rule-strong); border-radius: var(--r-lg); padding: var(--s-5); background: var(--bg); }
 .detail .eyebrow { margin-bottom: var(--s-2); }
 .detail h2 { font-size: var(--t-h3); margin-bottom: var(--s-3); }

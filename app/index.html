@@ -82,11 +82,12 @@
 <script type="module">
 import { load, boot, index, esc, money, pct, stateOf, ago, marketURL, armTravellers,
          sameDoc, reduced, legBadge, spine, ROOT, announce } from '../shell.js';
+import { fetchLive, liveState, merge, utc } from '../live.js';
 
 const d = await load('markets', 'tree', 'charts', 'links', 'meta');
 const [markets, tree, charts, links, meta] = [d.markets, d.tree, d.charts, d.links, d.meta];
 
-const ix = index(markets, tree);
+let ix = index(markets, tree);
 const rowsEl = document.getElementById('rows');
 const kidsOf = (id) => ix.kids.get(id) || [];
 const spread = (r) => {
@@ -150,13 +151,16 @@ function applyFilters() {
 
 render();
 
-document.getElementById('fineprint').innerHTML =
-  `${Object.keys(charts).length} of ${markets.length} markets in this snapshot have a Swapr pool, so only ` +
+function paintMeta() {
+  document.getElementById('fineprint').innerHTML =
+  `${Object.keys(charts).length} of ${markets.length} markets in this view have a Swapr pool, so only ` +
   `those rows draw a history line; the rest say <i>no pool history</i>. The line is indexed to its own first
   print, because the Swapr pool quotes the outcome against savings xDAI — the shape and the sign of the move are
   real, the level would need an FX assumption. Depth is the conditional-token tree: ` +
   `d0 is a question the protocol asks, d1 is a question asked only if one of its outcomes happens. ` +
   `<span class="num">${ix.kids.size}</span> parents, <span class="num">${markets.filter((m) => m.pm).length}</span> children.`;
+}
+paintMeta();
 
 const snap = document.getElementById('snapshot');
 snap.dataset.iso = meta.iso;
@@ -177,6 +181,27 @@ document.getElementById('surface-bar').addEventListener('click', (e) => {
     }, 400);
   }
 });
+
+/* ?live=1 — the call dev/bake.py made, made from the reader's own browser, so
+   "this is Seer's data" is checkable without opening a file. It runs after the
+   snapshot has painted: the page is never left waiting on a network. */
+if (new URLSearchParams(location.search).get('live') === '1') {
+  const say = liveState(rowsEl);
+  say('wait', 'Reading the live book from app.seer.pm…');
+  try {
+    const { rows, universe, at } = await fetchLive();
+    const matched = merge(rows, markets);
+    ix = index(markets, tree);
+    applyFilters();
+    paintMeta();
+    say('on', `LIVE · ${utc(at)} — ${rows.length} markets read from markets-search, ${matched} of them ` +
+      `already on this list, ${universe} in the book. Price histories stay the bake of ${meta.iso.slice(0, 10)}: ` +
+      `markets-charts is not re-fetched per row.`);
+  } catch (e) {
+    say('off', `Live fetch did not complete — ${e.message}. This list is the snapshot of ${meta.iso}, ` +
+      `and that is the case the page was built for.`);
+  }
+}
 </script>
 </body>
 </html>

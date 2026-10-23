@@ -75,11 +75,13 @@
 <script type="module">
 import { load, boot, index, esc, money, stateOf, ago, spine, tagTravellers, disarm, animate,
          legBadge, ROOT, announce, SURFACES } from '../shell.js';
+import { fetchLive, liveState, merge, utc } from '../live.js';
 
 const d = await load('markets', 'tree', 'charts', 'links', 'meta');
 const [markets, tree, charts, links, meta] = [d.markets, d.tree, d.charts, d.links, d.meta];
-const ix = index(markets, tree);
+let ix = index(markets, tree);
 const DAY = 86400, now = Date.now() / 1000;
+let whence = 'in this snapshot';
 
 const RUNGS = [
   ['Settled', 'verified, pooled, and either resolved or a long way from a deadline'],
@@ -207,32 +209,34 @@ $('ladder').addEventListener('click', (e) => {
 $('detail').addEventListener('click', (e) => { if (e.target.closest('#chal')) challenge(); });
 
 /* ---------- the fourteen ---------- */
-$('n-all').textContent = String(markets.length);
-$('multiples').innerHTML = Object.entries(charts).map(([id, ser]) => {
-  const m = ix.byId.get(id); if (!m) return '';
-  const pts = ser[0]?.s || []; if (pts.length < 2) return '';
-  const w = 240, h = 64, pad = 5;
-  const idx = pts.map((p) => (p[1] / pts[0][1]) * 100);
-  const lo = Math.min(...idx, 100), hi = Math.max(...idx, 100), rg = hi - lo || 1;
-  const t0 = pts[0][0], t1 = pts[pts.length - 1][0], tr = t1 - t0 || 1;
-  const X = (t) => ((t - t0) / tr) * (w - pad * 2) + pad;
-  const Y = (v) => h - pad - ((v - lo) / rg) * (h - pad * 2);
-  const path = idx.map((v, i) => `${i ? 'L' : 'M'}${X(pts[i][0]).toFixed(1)} ${Y(v).toFixed(1)}`).join(' ');
-  const last = idx[idx.length - 1];
-  const s = scoreOf(m, challenged.has(m.id));
-  return `<li>
-    <span class="mt" title="${esc(m.name)}">${esc(m.name)}</span>
-    <svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img"
-      aria-label="${esc(m.name)}: ${pts.length} prints, from index 100 to ${last.toFixed(1)}">
-      <line class="mbase" x1="0" x2="${w}" y1="${Y(100).toFixed(1)}" y2="${Y(100).toFixed(1)}"/>
-      <path class="mline" d="${path}"/><circle class="mdot" cx="${X(t1).toFixed(1)}" cy="${Y(last).toFixed(1)}" r="2.5"/>
-    </svg>
-    <span class="mf num"><span>${ago(t0).replace(' ago', '')} → ${ago(t1)}</span>
-      <span>idx <b>${last.toFixed(1)}</b></span></span>
-    <span class="mf num"><span>${pts.length} prints · range ${(hi - lo).toFixed(1)} pts</span>
-      <span>rung <b>${rungOf(s) + 1}</b></span></span>
-  </li>`;
-}).join('');
+function paintStats() {
+  $('n-all').textContent = String(markets.length);
+  $('multiples').innerHTML = Object.entries(charts).map(([id, ser]) => {
+    const m = ix.byId.get(id); if (!m) return '';
+    const pts = ser[0]?.s || []; if (pts.length < 2) return '';
+    const w = 240, h = 64, pad = 5;
+    const idx = pts.map((p) => (p[1] / pts[0][1]) * 100);
+    const lo = Math.min(...idx, 100), hi = Math.max(...idx, 100), rg = hi - lo || 1;
+    const t0 = pts[0][0], t1 = pts[pts.length - 1][0], tr = t1 - t0 || 1;
+    const X = (t) => ((t - t0) / tr) * (w - pad * 2) + pad;
+    const Y = (v) => h - pad - ((v - lo) / rg) * (h - pad * 2);
+    const path = idx.map((v, i) => `${i ? 'L' : 'M'}${X(pts[i][0]).toFixed(1)} ${Y(v).toFixed(1)}`).join(' ');
+    const last = idx[idx.length - 1];
+    const s = scoreOf(m, challenged.has(m.id));
+    return `<li>
+      <span class="mt" title="${esc(m.name)}">${esc(m.name)}</span>
+      <svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" role="img"
+        aria-label="${esc(m.name)}: ${pts.length} prints, from index 100 to ${last.toFixed(1)}">
+        <line class="mbase" x1="0" x2="${w}" y1="${Y(100).toFixed(1)}" y2="${Y(100).toFixed(1)}"/>
+        <path class="mline" d="${path}"/><circle class="mdot" cx="${X(t1).toFixed(1)}" cy="${Y(last).toFixed(1)}" r="2.5"/>
+      </svg>
+      <span class="mf num"><span>${ago(t0).replace(' ago', '')} → ${ago(t1)}</span>
+        <span>idx <b>${last.toFixed(1)}</b></span></span>
+      <span class="mf num"><span>${pts.length} prints · range ${(hi - lo).toFixed(1)} pts</span>
+        <span>rung <b>${rungOf(s) + 1}</b></span></span>
+    </li>`;
+  }).join('');
+}
 
 /* ---------- the model, stated ---------- */
 $('model').innerHTML = [
@@ -246,16 +250,20 @@ $('model').innerHTML = [
   ['resolved', '−1 – 0', 'resolved', 'A settled market has no forward risk left, only a redemption to collect.']
 ].map(([k, p, f, w]) => `<tr><td><b>${k}</b></td><td>${p}</td><td><code>${f}</code></td><td>${w}</td></tr>`).join('');
 
-const vCounts = markets.reduce((a, m) => (a[String(m.v)] = (a[String(m.v)] || 0) + 1, a), {});
-const arbN = markets.filter((m) => m.arb || m.pa).length;
-const noPoolN = markets.filter((m) => !m.hl).length;
-$('negatives').innerHTML = `Two factors are present in the API and empty in practice, and this page says so
-  instead of quietly dropping them: <b>${arbN}</b> markets have a question in arbitration in this snapshot,
-  so that column contributes nothing to any score today — it is the column that would matter most if a
-  dispute ever landed. Verification is the load-bearing one: ${vCounts.verified || 0} markets are
-  <code>verified</code>, ${vCounts.not_verified || 0} are <code>not_verified</code>, and
-  ${vCounts.null || 0} carry no verification field at all. ${noPoolN} markets have no pool, which is why
-  most of this page has no line to draw.`;
+function paintNegatives() {
+  const vCounts = markets.reduce((a, m) => (a[String(m.v)] = (a[String(m.v)] || 0) + 1, a), {});
+  const arbN = markets.filter((m) => m.arb || m.pa).length;
+  const noPoolN = markets.filter((m) => !m.hl).length;
+  $('negatives').innerHTML = `Two factors are present in the API and empty in practice, and this page says so
+    instead of quietly dropping them: <b>${arbN}</b> markets have a question in arbitration ${whence},
+    so that column contributes nothing to any score today — it is the column that would matter most if a
+    dispute ever landed. Verification is the load-bearing one: ${vCounts.verified || 0} markets are
+    <code>verified</code>, ${vCounts.not_verified || 0} are <code>not_verified</code>, and
+    ${vCounts.null || 0} carry no verification field at all. ${noPoolN} markets have no pool, which is why
+    most of this page has no line to draw.`;
+}
+paintStats();
+paintNegatives();
 
 $('lateral').innerHTML = SURFACES.filter((s) => s.key !== 'risk').map((s) => {
   const u = new URL(`${ROOT}/${s.href}`, location.href);
@@ -274,6 +282,28 @@ legBadge();
 paintLadder();
 paintDetail();
 boot({ surface: 'risk', marketDepth: ix.depthOf(cur.id) });
+
+/* ?live=1 — the same recomputation the page already does for a hand challenge,
+   driven by the endpoint instead. The ladder is a function of the record, so a
+   live row and a baked row are scored by identical code; that is the claim this
+   surface exists to make, and it is why the fetch repaints rather than appends. */
+if (new URLSearchParams(location.search).get('live') === '1') {
+  const say = liveState($('ladder').closest('.mktcard'));
+  say('wait', 'Reading the live book from app.seer.pm…');
+  try {
+    const { rows, universe, at } = await fetchLive();
+    const matched = merge(rows, markets);
+    ix = index(markets, tree);
+    whence = 'read from the live book just now';
+    paintLadder(); paintDetail(); paintStats(); paintNegatives();
+    say('on', `LIVE · ${utc(at)} — the ladder is re-scored on ${rows.length} markets read from ` +
+      `markets-search (${matched} already on this page, ${universe} in the book). History lines stay the ` +
+      `${meta.iso.slice(0, 10)} bake.`);
+  } catch (e) {
+    say('off', `Live fetch did not complete — ${e.message}. The ladder is the snapshot of ${meta.iso}, ` +
+      `which is what this page renders with no network at all.`);
+  }
+}
 </script>
 </body>
 </html>

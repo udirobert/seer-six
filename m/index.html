@@ -206,6 +206,19 @@ document.getElementById('snapshot').innerHTML =
   `<a href="${ROOT}/contract/?leg=lateral&from=m">why this page moves the way it does</a> · ` +
   `press <span class="kbd">R</span> to remove the motion and keep the meaning.`;
 
+/* An address asking for a market this bake never saw is not an error — it is
+   what /app/?live=1 produces, where a market newer than the snapshot exists.
+   Silently substituting the deepest row would be the one lie this document
+   could tell, so it says which market it is holding and where the other one is. */
+if (id && !ix.byId.has(id)) {
+  document.getElementById('stage').insertAdjacentHTML('afterbegin',
+    `<p class="blocknote livenote">This address asks for market <code>${esc(id)}</code>, which is not in the
+      <b>${esc(META.iso)}</b> bake — the book has moved since. What follows is the first market the bake does
+      hold, so the page is never blank: the tree, the price block and the CTF calls are all real, just not the
+      ones for the market you asked for. <a href="${ROOT}/app/?live=1">The explorer reads the live book</a> and
+      can name markets this file has never seen.</p>`);
+}
+
 /* One element per name, or the transition is discarded. tagTravellers assigns
    the four names the explorer armed on the row that just moved. */
 tagTravellers(document.querySelector('.mktcard'));
