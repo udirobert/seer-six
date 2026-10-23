@@ -1,7 +1,10 @@
 {
+ "current": "776f0e285f57f252b3d607174a1273fdf2f1ce655606989ca567a920ee8153ca",
+ "note": "Assets are listed in the order they were uploaded. Lens/Grove storage is immutable and an uploader cannot delete an object, so the pre-polish capture stays reachable below and is marked superseded here rather than removed. `current` names the one SUBMISSION.md links.",
  "assets": [
   {
    "file": "seer-six-reel.mp4",
+   "status": "superseded — captured before the leg-badge, whole-name and finalizeTs fixes; the UI in it is not the UI at the deployed URLs",
    "bytes": 8013521,
    "type": "video/mp4",
    "chain_id": 232,
@@ -13,6 +16,7 @@
   },
   {
    "file": "seer-six-reel.mp4",
+   "status": "current",
    "bytes": 8789941,
    "type": "video/mp4",
    "chain_id": 232,
@@ -20,7 +24,11 @@
    "gateway_url": "https://api.grove.storage/776f0e285f57f252b3d607174a1273fdf2f1ce655606989ca567a920ee8153ca",
    "storage_key": "776f0e285f57f252b3d607174a1273fdf2f1ce655606989ca567a920ee8153ca",
    "uploaded_at": "2026-10-23T23:00:38.236Z",
-   "readback": "200 8789941 bytes · byte-for-byte"
+   "readback": "200 8789941 bytes · byte-for-byte",
+   "sha256": "97b403d00d8c635c933ae4bc5476e83e8fefef3a2448de41a8ac55e4eb24a89b",
+   "verified_at": "2026-10-23T23:06:52Z — re-fetched from the gateway; SHA-256 of the served bytes equals SHA-256 of the local file",
+   "container": "72.8 s, 1440x900, h264, 30 fps",
+   "captured_from": "https://udirobert.github.io/seer-six/ at ?slow=3, after the leg-badge, whole-name and finalizeTs fixes"
   }
  ]
 }
