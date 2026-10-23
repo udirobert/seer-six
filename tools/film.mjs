@@ -130,11 +130,16 @@ const SCENES = [
     } },
   { name: '03-morph-row-to-market', note: 'the claim: a row in the book becomes its own document as one object',
     run: async (p) => {
+      /* The signature take follows the same market scenes 04–06 follow, and its
+         question is 100 characters long — two lines in the row, whole in the
+         document. That difference is the point of shipping names unsliced. */
       await p.goto(`${BASE}/app/?slow=${SLOW}`, { waitUntil: 'load' });
       await p.waitForTimeout(2400);
-      await p.hover('[data-market]');
+      await p.locator('[data-market="17340bafcb"]').scrollIntoViewIfNeeded();
+      await p.waitForTimeout(900);
+      await p.hover('[data-market="17340bafcb"]');
       await p.waitForTimeout(800);
-      await p.click('[data-market]');
+      await p.click('[data-market="17340bafcb"]');
       await p.waitForTimeout(3200);
     } },
   { name: '04-lateral-market-to-risk', note: 'lateral: a sibling reading of the same market — sideways, and the shortest interval',
